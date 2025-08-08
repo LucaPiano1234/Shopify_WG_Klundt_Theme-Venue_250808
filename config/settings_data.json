@@ -106,7 +106,16 @@
     "favicon": "shopify://shop_images/web_favicon_klundt.png",
     "currency_codes_on_products_enabled": true,
     "currency_codes_on_totals_enabled": true,
-    "content_for_index": []
+    "content_for_index": [],
+    "blocks": {
+      "13180643132867056963": {
+        "type": "shopify://apps/complianz-gdpr-cookie-consent/blocks/bc-block/e49729f0-d37d-4e24-ac65-e0e2f472ac27",
+        "disabled": false,
+        "settings": {
+          "hide_label": false
+        }
+      }
+    }
   },
   "presets": {
     "Venue": {
