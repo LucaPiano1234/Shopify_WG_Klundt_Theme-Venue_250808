@@ -16,6 +16,9 @@
     },
     "section_rich_text_kL3mx8": {
       "type": "section-rich-text",
+      "custom_css": [
+        ".container {display: }"
+      ],
       "settings": {
         "section_title": "{{ page.title }}",
         "text": "<p>Willkommen im Weingut Klundt</p>",
