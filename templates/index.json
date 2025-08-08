@@ -51,10 +51,10 @@
         ".c-btn--mono {background-color: #f0f2f5;}"
       ],
       "settings": {
-        "bg_image": "shopify://shop_images/WG_Klundt_hero_Start_annika_martin.webp",
+        "bg_image": "shopify://shop_images/Annika_Martin_Fotografie-8297_1.jpg",
         "content_alignment": "left",
         "section_height": 880,
-        "section_height_mobile": 400,
+        "section_height_mobile": 490,
         "section_full_screen": false,
         "section_width": "full",
         "bg_color": "#f2f2f2",
