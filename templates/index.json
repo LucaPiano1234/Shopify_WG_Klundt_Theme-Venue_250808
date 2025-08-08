@@ -539,139 +539,6 @@
         "section_bottom_margin": false
       }
     },
-    "section_collection_list_3kBDH6": {
-      "type": "section-collection-list",
-      "blocks": {
-        "collection_DLKnkG": {
-          "type": "collection",
-          "disabled": true,
-          "settings": {
-            "collection": "alle-weine",
-            "heading": "",
-            "description": "",
-            "button_label": "",
-            "link": "",
-            "image": "shopify://shop_images/20250319_WG_Kludt_Alle_Weine_2_1.png"
-          }
-        },
-        "collection_KbiAEC": {
-          "type": "collection",
-          "settings": {
-            "collection": "sekt",
-            "heading": "",
-            "description": "",
-            "button_label": "",
-            "link": ""
-          }
-        },
-        "collection_UChWMJ": {
-          "type": "collection",
-          "settings": {
-            "collection": "weissweine",
-            "heading": "",
-            "description": "",
-            "button_label": "",
-            "link": ""
-          }
-        },
-        "collection_HJf9eT": {
-          "type": "collection",
-          "settings": {
-            "collection": "roseweine",
-            "heading": "",
-            "description": "",
-            "button_label": "",
-            "link": ""
-          }
-        },
-        "collection_Cdj38H": {
-          "type": "collection",
-          "settings": {
-            "collection": "rotweine",
-            "heading": "",
-            "description": "",
-            "button_label": "",
-            "link": ""
-          }
-        },
-        "collection_79TP6f": {
-          "type": "collection",
-          "settings": {
-            "collection": "probierpakete",
-            "heading": "",
-            "description": "",
-            "button_label": "",
-            "link": ""
-          }
-        },
-        "collection_LyU4Vt": {
-          "type": "collection",
-          "settings": {
-            "collection": "monats-empfehlung",
-            "heading": "",
-            "description": "",
-            "button_label": "",
-            "link": ""
-          }
-        },
-        "collection_7gGFk6": {
-          "type": "collection",
-          "settings": {
-            "collection": "aktion",
-            "heading": "",
-            "description": "",
-            "button_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_DLKnkG",
-        "collection_KbiAEC",
-        "collection_UChWMJ",
-        "collection_HJf9eT",
-        "collection_Cdj38H",
-        "collection_79TP6f",
-        "collection_LyU4Vt",
-        "collection_7gGFk6"
-      ],
-      "custom_css": [],
-      "settings": {
-        "title": "",
-        "desc": "",
-        "image_ratio": "2:3",
-        "heading_alignment": "center",
-        "alignment": "middle-center",
-        "text_alignment": "center",
-        "visibility_heading": true,
-        "visibility_count": true,
-        "visibility_border": true,
-        "visibility_description": false,
-        "visibility_button": false,
-        "hover_options": "hover-button",
-        "section_width": "large",
-        "grid": 4,
-        "spacing": 5,
-        "enable_carousel_desktop": true,
-        "grid_mobile": "1",
-        "enable_carousel_mobile": false,
-        "color_text": "#ffffff",
-        "color_overlay": "#000000",
-        "color_overlay_strength": 30,
-        "color_default_heading": false,
-        "color_default_border": true,
-        "divider_top": false,
-        "divider_bottom": true,
-        "title_size": 4,
-        "button_style": "c-btn c-btn--hollow",
-        "section_link_title": "View all",
-        "section_link_link": "",
-        "section_link_style": "link link--arrow",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "section_bottom_margin": false
-      }
-    },
     "section_rich_text_fjwVpY": {
       "type": "section-rich-text",
       "disabled": true,
@@ -985,6 +852,139 @@
         "section_bottom_margin": false
       }
     },
+    "section_collection_list_3kBDH6": {
+      "type": "section-collection-list",
+      "blocks": {
+        "collection_DLKnkG": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "alle-weine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": "",
+            "image": "shopify://shop_images/20250319_WG_Kludt_Alle_Weine_2_1.png"
+          }
+        },
+        "collection_KbiAEC": {
+          "type": "collection",
+          "settings": {
+            "collection": "sekt",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_UChWMJ": {
+          "type": "collection",
+          "settings": {
+            "collection": "weissweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_HJf9eT": {
+          "type": "collection",
+          "settings": {
+            "collection": "roseweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_Cdj38H": {
+          "type": "collection",
+          "settings": {
+            "collection": "rotweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_79TP6f": {
+          "type": "collection",
+          "settings": {
+            "collection": "probierpakete",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_LyU4Vt": {
+          "type": "collection",
+          "settings": {
+            "collection": "monats-empfehlung",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_7gGFk6": {
+          "type": "collection",
+          "settings": {
+            "collection": "aktion",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_DLKnkG",
+        "collection_KbiAEC",
+        "collection_UChWMJ",
+        "collection_HJf9eT",
+        "collection_Cdj38H",
+        "collection_79TP6f",
+        "collection_LyU4Vt",
+        "collection_7gGFk6"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "",
+        "desc": "",
+        "image_ratio": "2:3",
+        "heading_alignment": "center",
+        "alignment": "middle-center",
+        "text_alignment": "center",
+        "visibility_heading": true,
+        "visibility_count": true,
+        "visibility_border": true,
+        "visibility_description": false,
+        "visibility_button": false,
+        "hover_options": "hover-button",
+        "section_width": "large",
+        "grid": 4,
+        "spacing": 5,
+        "enable_carousel_desktop": true,
+        "grid_mobile": "1",
+        "enable_carousel_mobile": false,
+        "color_text": "#ffffff",
+        "color_overlay": "#000000",
+        "color_overlay_strength": 30,
+        "color_default_heading": false,
+        "color_default_border": true,
+        "divider_top": false,
+        "divider_bottom": true,
+        "title_size": 4,
+        "button_style": "c-btn c-btn--hollow",
+        "section_link_title": "View all",
+        "section_link_link": "",
+        "section_link_style": "link link--arrow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
     "section_testimonials_8FhyHj": {
       "type": "section-testimonials",
       "blocks": {
@@ -1077,7 +1077,6 @@
     "section_product_tce4FF",
     "section_testimonials_J4JtqX",
     "section_image_with_text_overlap_tGGhtp",
-    "section_collection_list_3kBDH6",
     "section_rich_text_fjwVpY",
     "section_countdown_timer_hFyqfK",
     "section_collection_ba3jhY",
@@ -1085,6 +1084,7 @@
     "section_image_text_banner_nzJKgG",
     "section_collection_GD7LrG",
     "section_image_text_banner_MWrRTr",
+    "section_collection_list_3kBDH6",
     "section_testimonials_8FhyHj"
   ]
 }
