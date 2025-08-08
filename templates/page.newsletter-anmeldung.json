@@ -16,6 +16,7 @@
     },
     "section_rich_text_kL3mx8": {
       "type": "section-rich-text",
+      "disabled": true,
       "settings": {
         "section_title": "Standard-Layout",
         "text": "<h5>Standard-Layout</h5>",

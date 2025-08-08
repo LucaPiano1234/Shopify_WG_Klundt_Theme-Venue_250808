@@ -1,1 +1,45 @@
-{"name":"Pop-ups","type":"aside","sections":{"promo-pop":{"type":"promo-pop","custom_css":[".popup.popup--promo .popup__content {background-color: #d6b247;}"],"settings":{"enable_newsletter":false,"title":"JETZT ANMELDEN UND 10% RABATT SICHERN","text":"<p>Jetzt zum Newsletter anmelden, 10 % Rabatt sichern (ab 100 € Einkaufswert) und exklusive Einblicke aus unserem Weingut erhalten!<\/p>","link_title":"Zur Newsletter-Anmeldung","link":"shopify:\/\/pages\/newsletteranmeldung","delay":13,"expiry":20}},"age-checker":{"type":"age-checker","disabled":true,"settings":{"title":"Altersprüfung","text":"<p>Bestätige uns bitte, dass du über 18 Jahre alt bist. Wir verkaufen keinen Alkohol an Minderjährige.<\/p>","enter_btn_label":"Ich bin 18+ Jahre","leave_btn_label":"Ich bin leider unter 18 Jahren","leave_link":"shopify:\/\/pages\/contact"}}},"order":["promo-pop","age-checker"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Pop-ups",
+  "type": "aside",
+  "sections": {
+    "promo-pop": {
+      "type": "promo-pop",
+      "custom_css": [
+        ".popup.popup--promo .popup__content {background-color: #d6b247;}"
+      ],
+      "settings": {
+        "enable_newsletter": false,
+        "title": "JETZT ANMELDEN UND 10% RABATT SICHERN",
+        "text": "<p>Jetzt zum Newsletter anmelden, 10 % Rabatt sichern (ab 100 € Einkaufswert) und exklusive Einblicke aus unserem Weingut erhalten!</p>",
+        "link_title": "Zur Newsletter-Anmeldung",
+        "link": "shopify://pages/newsletteranmeldung",
+        "delay": 15,
+        "expiry": 20
+      }
+    },
+    "age-checker": {
+      "type": "age-checker",
+      "disabled": true,
+      "settings": {
+        "title": "Altersprüfung",
+        "text": "<p>Bestätige uns bitte, dass du über 18 Jahre alt bist. Wir verkaufen keinen Alkohol an Minderjährige.</p>",
+        "enter_btn_label": "Ich bin 18+ Jahre",
+        "leave_btn_label": "Ich bin leider unter 18 Jahren",
+        "leave_link": "shopify://pages/contact"
+      }
+    }
+  },
+  "order": [
+    "promo-pop",
+    "age-checker"
+  ]
+}
