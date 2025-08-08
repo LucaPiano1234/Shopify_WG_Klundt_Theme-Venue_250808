@@ -16,10 +16,9 @@
     },
     "section_rich_text_kL3mx8": {
       "type": "section-rich-text",
-      "disabled": true,
       "settings": {
-        "section_title": "Standard-Layout",
-        "text": "<h5>Standard-Layout</h5>",
+        "section_title": "{{ page.title }}",
+        "text": "<p>Willkommen im Weingut Klundt</p>",
         "section_width": "tiny",
         "padding_top": 21,
         "padding_bottom": 9,
