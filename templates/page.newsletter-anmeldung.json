@@ -11,15 +11,15 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "custom_css": [],
       "settings": {}
     },
     "section_rich_text_kL3mx8": {
       "type": "section-rich-text",
-      "disabled": true,
       "settings": {
         "section_title": "{{ page.title }}",
-        "text": "<p>Willkommen im Weingut Klundt</p>",
+        "text": "<p>Willkommen im Weingut Klundt! </p>",
         "section_width": "tiny",
         "padding_top": 21,
         "padding_bottom": 9,
