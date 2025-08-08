@@ -20,6 +20,10 @@
     {% endunless %}
   {% endcapture %}
 
+  {% if request.visual_preview_mode %}
+    {% assign margin_class = 'section--mb-0' %}
+  {% endif %}
+
   <section
     class="
       section
@@ -40,7 +44,7 @@
         <div
           class="
             section__title
-            js-animate-single
+            {% unless request.visual_preview_mode %}js-animate-single{% endunless %}
             {% if section.settings.heading_alignment == 'center' %}section__title--center{% endif %}
             {% unless section.settings.desc == blank %} section__title--desc{% endunless %}
           "
@@ -286,7 +290,7 @@
               </{{ wrapper_tag }}>
             </{{ slider_tag }}>
 
-            {%- if carousel or mobile_carousel -%}
+            {%- if section.blocks.size > 1 and carousel or mobile_carousel -%}
               <media-carousel-navigation class="media-carousel__navigation" hidden>
                 <button
                   class="

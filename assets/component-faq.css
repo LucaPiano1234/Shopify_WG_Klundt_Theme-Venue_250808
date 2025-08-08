@@ -72,7 +72,7 @@ scroll-to-target,
 .faq__accordion accordion-group summary:hover {
   opacity: 1;
   text-decoration: none;
-  background: var(--color--text-lightest);
+  background: var(--color--text-bg);
   transition: background-color 0.25s ease-in-out;
 }
 .faq__accordion accordion-group summary summary-icon {

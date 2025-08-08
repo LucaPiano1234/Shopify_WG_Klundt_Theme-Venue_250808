@@ -51,6 +51,8 @@
         switch (string) {
           case 'ADD_TO_CART':
             return '{{ "products.product.add_to_cart" | t }}';
+          case 'PRE_ORDER':
+            return '{{ "products.product.pre_order" | t }}';
           case 'CART_ITEM_PLURAL':
             return '{{ "cart.general.items.plural" | t }}';
           case 'CART_ITEM_SINGULAR':
@@ -79,6 +81,8 @@
             return '{{ "recipient.form.message" | t }}';
           case 'QTY_NOTICE_IN_STOCK':
             return '{{ "products.product.qty_notice_in_stock" | t }}';
+          case 'QTY_NOTICE_CONTINUE_SELLING':
+            return '{{ "products.product.qty_notice_continue_selling" | t }}';
           case 'QTY_NOTICE_LOW_STOCK':
             return '{{ "products.product.qty_notice_low_stock" | t }}';
           case 'QTY_NOTICE_NUMBER_IN_STOCK_HTML':
@@ -141,6 +145,7 @@
           "dotlottie": "{{ 'dotlottie.lib.js' | asset_url }}",
           "googlemaps-js-api-loader": "{{ 'googlemaps-js-api-loader.lib.js' | asset_url }}",
           "immer": "{{ 'immer.lib.js' | asset_url }}",
+          "items-scroll": "{{ 'items-scroll.js' | asset_url }}",
           "js-cookie": "{{ 'js-cookie.lib.js' | asset_url }}",
           "map-settings": "{{ 'map-settings.js' | asset_url }}",
           "modal-dialog": "{{ 'modal-dialog.js' | asset_url }}",
@@ -212,6 +217,7 @@
       <script src="{{ 'items-scroll.js' | asset_url }}" type="module"></script>
       <script src="{{ 'tabbed-content.js' | asset_url }}" type="module"></script>
       <script src="{{ 'announcement-bar.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'utility-bar.js' | asset_url }}" type="module"></script>
       <script src="{{ 'predictive-search.js' | asset_url }}" type="module"></script>
       <script src="{{ 'lazy-video.js' | asset_url }}" type="module"></script>
       <script src="{{ 'scrolling-marquee.js' | asset_url }}" type="module"></script>
@@ -234,10 +240,15 @@
       <script src="{{ 'video-dialog.js' | asset_url }}" type="module"></script>
       <script src="{{ 'scrolling-logos.js' | asset_url }}" type="module"></script>
       <script src="{{ 'countdown-timer.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'sub-collections.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'lazy-video-switcher.js' | asset_url }}" type="module"></script>
+      {% comment %} Theme-specific {% endcomment %}
+      <script src="{{ 'items-scroll-paged-navigation.js' | asset_url }}" type="module"></script>
     {% endif %}
 
     {% if template contains 'customers' %}
       <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+      <script src="{{ 'customer_area.js' | shopify_asset_url }}" defer="defer"></script>
     {% endif %}
 
     <!-- Header hook for plugins ================================================== -->
@@ -254,6 +265,7 @@
     data-editor-mode="{% if request.design_mode %}true{% else %}false{% endif %}"
     data-quick-shop-show-cart="{{ settings.quick_shop_show_cart }}"
     data-heading-border="{{ settings.type_header_border }}"
+    data-overlap-style="{{ settings.design_overlap }}"
   >
     {%- if request.design_mode -%}
       {% comment %} Check if the document is used for visual preview {% endcomment %}
@@ -317,7 +329,6 @@
 
     {% if settings.back_to_top_btn_enable %}
       {% render 'back-to-top-button',
-        btn_square: settings.back_to_top_btn_square,
         btn_position: settings.back_to_top_btn_position,
         btn_color: settings.back_to_top_btn_color
       %}
@@ -353,6 +364,9 @@
           aria-hidden="true"
           style="--background-color: {{ modal_background }};"
           {{ additional_attributes }}
+          {% if dialog_type == 'popup' %}
+            data-a11y-dialog-no-focus-trap
+          {% endif %}
         >
           {%- if dialog_type == 'modal' -%}
             <div class="{{ dialog_type }}__overlay" data-a11y-dialog-hide></div>
@@ -387,26 +401,8 @@
 
     <div id="moved-modal-elements"></div>
 
-    {% unless request.design_mode %}
-      <script>
-        const announcementBars = document.querySelectorAll('announcement-bar');
-
-        if (announcementBars.length > 0) {
-          announcementBars.forEach((announcementBar) => {
-            const sectionId = announcementBar.getAttribute('id');
-            const sessionStorageValue = sessionStorage.getItem(sectionId);
-
-            if (sessionStorageValue === '0') {
-              announcementBar.setAttribute('hidden', 'hidden');
-            }
-          });
-        }
-      </script>
-    {% endunless %}
-
     {%- render 'ui-templates' -%}
-
     <!-- Venue theme by Safe As Milk - http://safeasmilk.co/ -->
-    <!-- Theme version 14.0.0 -->
+    <!-- Theme version 17.0.0 -->
   </body>
 </html>

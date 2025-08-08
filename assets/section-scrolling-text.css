@@ -130,12 +130,6 @@
     transform: translate3d(calc(-100% - var(--gap-mob)), 0, 0);
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .marquee__content {
-    -webkit-animation-play-state: paused !important;
-    animation-play-state: paused !important;
-  }
-}
 .marquee__content {
   -webkit-animation-name: scroll-desk;
   animation-name: scroll-desk;

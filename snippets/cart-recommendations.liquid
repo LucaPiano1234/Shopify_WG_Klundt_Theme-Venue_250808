@@ -30,24 +30,6 @@
   assign small_buttons_on_mobile = true
 
   assign render_quickshop = true
-
-  assign image_scroll_navigation_ratio = null
-  unless image_ratio == 'natural'
-    assign values = settings.product_grid_image_size | split: ':'
-    assign i_w = values[0] | plus: 0.0 | times: grid
-    assign i_h = values[1] | plus: 0.0
-
-    assign image_scroll_navigation_ratio = i_w | append: ' / ' | append: i_h
-  endunless
-
-  assign image_scroll_navigation_ratio_mobile = null
-  unless image_ratio == 'natural'
-    assign values = settings.product_grid_image_size | split: ':'
-    assign i_w = values[0] | plus: 0.0 | times: grid_mobile
-    assign i_h = values[1] | plus: 0.0
-
-    assign image_scroll_navigation_ratio_mobile = i_w | append: ' / ' | append: i_h
-  endunless
 -%}
 
 <cart-recommendations
@@ -84,18 +66,17 @@
   </noscript>
   <items-scroll
     {% unless show_mini_cards %}
-      class="{% if image_scroll_navigation_ratio %}ratio-navigation{% endif %} {% if image_scroll_navigation_ratio_mobile %}ratio-navigation-mobile{% endif %}"
-      {% if image_scroll_navigation_ratio or image_scroll_navigation_ratio_mobile %}
-        style="
-          {% if image_scroll_navigation_ratio %}--navigation-ratio: {{ image_scroll_navigation_ratio }};{% endif %}
-          {% if image_scroll_navigation_ratio_mobile %}--navigation-ratio-mobile: {{ image_scroll_navigation_ratio_mobile }};{% endif %}
-        "
-      {% endif %}
+      class="
+        items-scroll
+        {% unless image_ratio == 'natural' %}
+          ratio-navigation
+        {% endunless %}
+      "
     {% else %}
-      class="mini-navigation"
-      page-navigation-disabled
+      class="items-scroll mini-navigation"
       snap="start"
     {% endunless %}
+    image-container-ratio="{{ image_ratio }}"
   >
     <div
       class="

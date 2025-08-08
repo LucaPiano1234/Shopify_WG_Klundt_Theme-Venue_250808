@@ -16,6 +16,10 @@
     assign margin_class = 'section--mb-0'
   endif
 
+  if request.visual_preview_mode
+    assign margin_class = 'section--mb-m'
+  endif
+
   if section.settings.color_text.alpha > 0
     assign color_text = section.settings.color_text
   else
@@ -130,14 +134,22 @@
       media="print"
       onload="this.media='all'"
     >
+    <link
+      rel="stylesheet"
+      href="{{ 'theme-component-items-scroll-paged-navigation.css' | asset_url }}"
+      media="print"
+      onload="this.media='all'"
+    >
     <noscript>
       {{ 'component-items-scroll.css' | asset_url | stylesheet_tag }}
+      {{ 'theme-component-items-scroll-paged-navigation.css' | asset_url | stylesheet_tag }}
     </noscript>
   {%- endif -%}
 {% else %}
   {{ 'section-logo-list.css' | asset_url | stylesheet_tag }}
   {%- if enable_carousel_mobile -%}
     {{ 'component-items-scroll.css' | asset_url | stylesheet_tag }}
+    {{ 'theme-component-items-scroll-paged-navigation.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
 {% endif %}
 
@@ -224,7 +236,8 @@
             assign grid_tag = 'div'
             assign grid_tag_attributes = ''
             if enable_carousel_desktop or enable_carousel_mobile
-              assign grid_tag = 'items-scroll'
+              assign grid_tag = 'items-scroll-paged-navigation'
+              assign classes = 'items-scroll'
               comment
                 Can choose from 'mob', 'phab', 'tab', 'desk'
                 Widths need to be in sync with the ones in items-scroll.js
@@ -243,7 +256,7 @@
             endif
           -%}
 
-          {%- if grid_tag == 'items-scroll' -%}
+          {%- if grid_tag == 'items-scroll-paged-navigation' -%}
             {%- capture selector -%}
                 .section--{{ section.id }} [data-items] {
                     display: flex;
@@ -305,6 +318,7 @@
           -%}
 
           <{{ grid_tag }}
+            class="{{ classes }}"
             {% if items_overflow %}
               items-overflow
             {% elsif items_overflow_max %}
@@ -415,7 +429,7 @@
   </div>
 
   {%- if enable_carousel_desktop or enable_carousel_mobile or request.design_mode -%}
-    <script src="{{ 'items-scroll.js' | asset_url }}" type="module"></script>
+    <script src="{{ 'items-scroll-paged-navigation.js' | asset_url }}" type="module"></script>
   {%- endif -%}
 </section>
 

@@ -16,14 +16,22 @@
         media="print"
         onload="this.media='all'"
       >
+      <link
+        rel="stylesheet"
+        href="{{ 'theme-component-items-scroll-paged-navigation.css' | asset_url }}"
+        media="print"
+        onload="this.media='all'"
+      >
       <noscript>
         {{ 'component-items-scroll.css' | asset_url | stylesheet_tag }}
+        {{ 'theme-component-items-scroll-paged-navigation.css' | asset_url | stylesheet_tag }}
       </noscript>
     {%- endif -%}
   {% else %}
     {{ 'section-events.css' | asset_url | stylesheet_tag }}
     {%- if section.settings.mobile_carousel -%}
       {{ 'component-items-scroll.css' | asset_url | stylesheet_tag }}
+      {{ 'theme-component-items-scroll-paged-navigation.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
   {% endif %}
   {%- liquid
@@ -33,7 +41,7 @@
       assign section_bg = true
     endif
 
-    if section.settings.section_bottom_margin
+    if section.settings.section_bottom_margin or request.visual_preview_mode
       assign margin_class = 'section--mb-0'
     endif
   -%}
@@ -89,8 +97,11 @@
         endcomment
         assign grid_tag = 'div'
         assign grid_tag_attributes = ''
+        assign classes = ''
         if section.settings.mobile_carousel
-          assign grid_tag = 'items-scroll'
+          assign grid_tag = 'items-scroll-paged-navigation'
+          assign classes = 'items-scroll'
+          assign classes = classes | append: ' ratio-navigation'
           comment
             Can choose from 'mob', 'phab', 'tab', 'desk'
             Widths need to be in sync with the ones in items-scroll.js
@@ -102,7 +113,7 @@
         endif
       -%}
 
-      {%- if grid_tag == 'items-scroll' -%}
+      {%- if grid_tag == 'items-scroll-paged-navigation' -%}
         {%- capture selector -%}
           .section--{{ section.id }} [data-items] {
             display: flex;
@@ -146,7 +157,7 @@
 
       <div class="home-event" data-section-id="{{ section.id }}">
         <{{ grid_tag }}
-          class="ratio-navigation"
+          class="{{ classes }}"
           {% if breakpoint %}
             items-overflow-max="{{ breakpoint }}"
           {% endif %}
@@ -244,6 +255,9 @@
         %}
       </div>
     </div>
+    {%- if section.settings.mobile_carousel or request.design_mode -%}
+      <script src="{{ 'items-scroll-paged-navigation.js' | asset_url }}" type="module"></script>
+    {%- endif -%}
   </section>
 
 {% else %}

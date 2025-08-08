@@ -173,7 +173,7 @@
   "collections": {
     "general": {
       "all_collections": "Todas as coleções",
-      "view_collection": "Ver coleção",
+      "view_collection": "Ver",
       "products_label": "produtos",
       "product_label": "produto",
       "no_matches": "Desculpe, mas não há produtos correspondentes à sua busca.",
@@ -279,6 +279,7 @@
       "compare_at": "Preço normal:",
       "quantity": "Quantidade",
       "add_to_cart": "Adicionar ao carrinho",
+      "pre_order": "Pedido antecipado",
       "select_options": "Olhada rápida",
       "view_in_space": "Ver no seu espaço",
       "view_in_space_label": "Ver em seu espaço, carregar item na janela de realidade aumentada",
@@ -286,6 +287,7 @@
       "video_thumbnail_alt": "Carregar e reproduzir vídeo {{ imageAlt }} no visualizador da galeria",
       "model_thumbnail_alt": "Carregar modelo 3D {{ imageAlt }} no visualizador da galeria",
       "qty_notice_in_stock": "Em estoque",
+      "qty_notice_continue_selling": "Em estoque",
       "qty_notice_low_stock": "Baixo estoque",
       "qty_notice_sold_out": "Esgotado",
       "qty_notice_number_in_stock_html": "<span>{{ count }}</span> em estoque",
@@ -295,7 +297,8 @@
       "sold_out_label": "Esgotado",
       "discount_text": "Em promoção",
       "discount_currency": "Salvar {{ discount_format_currency }}",
-      "discount_percentage": "Salvar {{ discount_format_percentage }}%"
+      "discount_percentage": "Salvar {{ discount_format_percentage }}%",
+      "pre_order_label": "Pedido antecipado"
     },
     "layout": {
       "tab_label": "Aberto",
@@ -384,7 +387,8 @@
       "sign_in": "Entrar",
       "cancel": "Retornar à loja",
       "guest_title": "Prosseguir como convidado(a)",
-      "guest_continue": "Prosseguir"
+      "guest_continue": "Prosseguir",
+      "alternate_provider_separator": "ou"
     },
     "orders": {
       "title": "Histórico de pedidos",

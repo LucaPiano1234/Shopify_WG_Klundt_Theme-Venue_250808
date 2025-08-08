@@ -1,2 +1,33 @@
-import PopupDialog from"popup-dialog";class VideoDialog extends PopupDialog{#o;#e;constructor(){super(),this.#o=this.#d.bind(this),this.#e=this.#i.bind(this)}connectedCallback(){this.videoPlayer=this.querySelector("video-player"),this.videoPlayer&&(super.connectedCallback(),this.on("on:popup:opened",this.#o).on("on:popup:closing",this.#e))}disconnectedCallback(){this.off("on:popup:opened",this.#o).off("on:popup:closing",this.#e),super.disconnectedCallback()}#d(){this.videoPlayer&&this.videoPlayer.loadContent().play()}#i(){this.videoPlayer&&this.videoPlayer.pause()}}customElements.define("video-dialog",VideoDialog);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import PopupDialog from "popup-dialog";
+
+class VideoDialog extends PopupDialog {
+    #boundLoadVideoAndPlay;
+    #boundPauseVideo;
+    constructor() {
+        super();
+        this.#boundLoadVideoAndPlay = this.#loadVideoAndPlay.bind(this);
+        this.#boundPauseVideo = this.#pauseVideo.bind(this);
+    }
+    connectedCallback() {
+        this.videoPlayer = this.querySelector("video-player");
+        if (!this.videoPlayer) return;
+        super.connectedCallback();
+        this.on("on:popup:opened", this.#boundLoadVideoAndPlay).on("on:popup:closing", this.#boundPauseVideo);
+    }
+    disconnectedCallback() {
+        this.off("on:popup:opened", this.#boundLoadVideoAndPlay).off("on:popup:closing", this.#boundPauseVideo);
+        super.disconnectedCallback();
+    }
+    #loadVideoAndPlay() {
+        if (!this.videoPlayer) return;
+        this.videoPlayer.loadContent().play();
+    }
+    #pauseVideo() {
+        if (!this.videoPlayer) return;
+        this.videoPlayer.pause();
+    }
+}
+
+customElements.define("video-dialog", VideoDialog);
 //# sourceMappingURL=video-dialog.js.map

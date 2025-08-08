@@ -15,14 +15,22 @@
       media="print"
       onload="this.media='all'"
     >
+    <link
+      rel="stylesheet"
+      href="{{ 'theme-component-items-scroll-paged-navigation.css' | asset_url }}"
+      media="print"
+      onload="this.media='all'"
+    >
     <noscript>
       {{ 'component-items-scroll.css' | asset_url | stylesheet_tag }}
+      {{ 'theme-component-items-scroll-paged-navigation.css' | asset_url | stylesheet_tag }}
     </noscript>
   {%- endif -%}
 {% else %}
   {{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
   {%- if section.settings.enable_carousel_desktop or section.settings.enable_carousel_mobile -%}
     {{ 'component-items-scroll.css' | asset_url | stylesheet_tag }}
+    {{ 'theme-component-items-scroll-paged-navigation.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
 {% endif %}
 {%- liquid
@@ -80,6 +88,10 @@
 
   if section.settings.section_bottom_margin
     assign margin_class = 'section--mb-0'
+  endif
+
+  if request.visual_preview_mode
+    assign margin_class = 'section--mb-m'
   endif
 
   comment
@@ -151,9 +163,14 @@
         Items scroll logic
       endcomment
       assign grid_tag = 'div'
+      assign classes = ''
       assign grid_tag_attributes = ''
       if section.settings.enable_carousel_desktop or section.settings.enable_carousel_mobile
-        assign grid_tag = 'items-scroll'
+        assign grid_tag = 'items-scroll-paged-navigation'
+        assign classes = 'items-scroll'
+        unless container_ratio == 'natural'
+          assign classes = classes | append: ' ratio-navigation'
+        endunless
         comment
           Can choose from 'mob', 'phab', 'tab', 'desk'
           Widths need to be in sync with the ones in items-scroll.js
@@ -172,7 +189,7 @@
       endif
     -%}
 
-    {%- if grid_tag == 'items-scroll' -%}
+    {%- if grid_tag == 'items-scroll-paged-navigation' -%}
       {%- capture selector -%}
         .section--{{ section.id }} [data-items] {
           display: flex;
@@ -251,9 +268,7 @@
     -%}
     <div class="container container--{{ section.settings.section_width }}{% if section.settings.enable_carousel_mobile %} u-ph0@mob{% endif %}{% if section.settings.section_width == 'full' %} container--p-0{% endif %}">
       <{{ grid_tag }}
-        {% unless section.settings.image_ratio == 'natural' %}
-          class="ratio-navigation"
-        {% endunless %}
+        class="{{ classes }}"
         {% if items_overflow %}
           items-overflow
         {% elsif items_overflow_max %}
@@ -445,7 +460,14 @@
                       >
                         <div class="collection-list__content-wrapper">
                           {%- if block.settings.heading != blank -%}
-                            <h3 class="collection-list__content-heading{% unless section.settings.visibility_border %} collection-list__content-heading--no-border{% endunless %}">
+                            <h3
+                              class="
+                                collection-list__content-heading
+                                {% unless section.settings.visibility_border %}
+                                  collection-list__content-heading--no-border
+                                {% endunless %}
+                              "
+                            >
                               {{ block.settings.heading | escape }}
                             </h3>
                           {%- endif -%}
@@ -599,7 +621,14 @@
                       >
                         <div class="collection-list__content-wrapper">
                           {%- if block.settings.heading != blank -%}
-                            <h3 class="collection-list__content-heading{% unless section.settings.visibility_border %} collection-list__content-heading--no-border{% endunless %}">
+                            <h3
+                              class="
+                                collection-list__content-heading
+                                {% unless section.settings.visibility_border %}
+                                  collection-list__content-heading--no-border
+                                {% endunless %}
+                              "
+                            >
                               {{ block.settings.heading | escape }}
                             </h3>
                           {%- endif -%}
@@ -641,7 +670,7 @@
   </div>
 
   {%- if section.settings.enable_carousel_desktop or section.settings.enable_carousel_mobile or request.design_mode -%}
-    <script src="{{ 'items-scroll.js' | asset_url }}" type="module"></script>
+    <script src="{{ 'items-scroll-paged-navigation.js' | asset_url }}" type="module"></script>
   {%- endif -%}
 </section>
 
@@ -1130,19 +1159,19 @@
     },
     {
       "type": "text",
-      "name": "Text promo",
+      "name": "Text block",
       "settings": [
         {
           "type": "text",
           "id": "heading",
           "label": "Heading",
-          "default": "Text promo"
+          "default": "Text block"
         },
         {
           "type": "richtext",
           "id": "text",
           "label": "Text",
-          "default": "<p>Use these text blocks to promote seasonal sales or store events</p>"
+          "default": "<p>Use these text blocks to promote seasonal sales or store events.</p>"
         },
         {
           "type": "text",
@@ -1258,13 +1287,13 @@
           "type": "color",
           "id": "color_text",
           "label": "Text color",
-          "default": "#111111"
+          "default": "#212121"
         },
         {
           "type": "color",
           "id": "color_bg",
           "label": "Background color",
-          "default": "#f0f0f0"
+          "default": "#f2f2f2"
         },
         {
           "type": "checkbox",
@@ -1439,13 +1468,13 @@
     },
     {
       "type": "media",
-      "name": "Media promo",
+      "name": "Media block",
       "settings": [
         {
           "type": "text",
           "id": "heading",
           "label": "Heading",
-          "default": "Media promo"
+          "default": "Media block"
         },
         {
           "type": "textarea",

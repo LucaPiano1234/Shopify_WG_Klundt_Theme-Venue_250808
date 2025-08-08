@@ -18,7 +18,7 @@
     assign section_bg = true
   endif
 
-  if section.settings.section_bottom_margin
+  if section.settings.section_bottom_margin or request.visual_preview_mode
     assign margin_class = 'section--mb-0'
   endif
 
@@ -27,25 +27,25 @@
   else
     assign color_text = section.settings.color_text
   endif
+
+  assign section_size = section.settings.section_width
+  if section.settings.section_width == 'large'
+    assign section_size = 'contained'
+  endif
 -%}
 <section
   class="
     section
     section-contact-form
     section--{{ section.id }}
+    section--{{ section_size }}
     {{ margin_class }}
     {% if section_bg %}section--has-bg{% else %}section--no-bg{% endif %}
-    {% if section.settings.divider_top %}
-      section-divider--top
-    {% endif %}
-    {% if section.settings.divider_bottom %}
-      section-divider--bottom
-    {% endif %}
   "
   style="
     --color-text: {{ color_text }};
     --color-text-light: {{ color_text | color_modify: 'alpha', 0.3 }};
-    --color-background: {{ section.settings.color_bg }};
+    --color-text-lightest: {{ color_text | color_modify: 'alpha', 0.1 }};
     --color-heading: {% if section.settings.color_default_heading %}{{ settings.color_headings }}{% else %}{{ color_text }}{% endif %};
     {% unless section.settings.color_default_border %}
       --color--title-border: {{ color_text }};
@@ -54,99 +54,111 @@
   data-section-id="{{ section.id }}"
   data-section-type="contact-form"
 >
-  <div class="container{% if section.settings.section_width == 'full' %} container--p-0{% endif %}">
+  {%- if section.settings.section_width == 'large' -%}<div class="container">{%- endif -%}
+  <div
+    class="section__content section__content--padded"
+    style="
+      --space-top: {{ section.settings.padding_top }}px;
+      --space-bottom: {{ section.settings.padding_bottom }}px;
+    "
+  >
     <div
-      class="section__content section__content--padded"
-      style="
-        --space-top: {{ section.settings.padding_top }}px;
-        --space-bottom: {{ section.settings.padding_bottom }}px;
+      class="
+        contact-form
+        {% if section.settings.divider_top %}
+          section-divider--top
+        {% endif %}
+        {% if section.settings.divider_bottom %}
+          section-divider--bottom
+        {% endif %}
       "
+      style="--background-color: {{ section.settings.color_bg }};"
     >
-      <div class="contact-form">
-        <div class="container container--tiny container--mob-0">
-          {%- if section.settings.title != blank or section.settings.desc != blank -%}
-            <div
-              class="
-                section__title
-                js-animate-single
-                {% if section.settings.heading_alignment == 'center' %}section__title--center{% endif %}
-                {% unless section.settings.desc == blank %} section__title--desc{% endunless %}
-              "
-              data-animation-displacement="5"
-            >
-              {%- unless section.settings.title == blank -%}
-                <h2 class="section__title-text">{{ section.settings.title | escape }}</h2>
-              {%- endunless -%}
-              {%- unless section.settings.desc == blank -%}
-                <div
-                  class="section__title-desc rte js-animate-single"
-                  data-animation-displacement="0"
-                  data-animation-delay="0.1"
-                >
-                  {{ section.settings.desc }}
-                </div>
-              {%- endunless -%}
+      <div class="container container--tiny container--mob-0">
+        {%- if section.settings.title != blank or section.settings.desc != blank -%}
+          <div
+            class="
+              section__title
+              js-animate-single
+              {% if section.settings.heading_alignment == 'center' %}section__title--center{% endif %}
+              {% unless section.settings.desc == blank %} section__title--desc{% endunless %}
+            "
+            data-animation-displacement="5"
+          >
+            {%- unless section.settings.title == blank -%}
+              <h2 class="section__title-text">{{ section.settings.title | escape }}</h2>
+            {%- endunless -%}
+            {%- unless section.settings.desc == blank -%}
+              <div
+                class="section__title-desc rte js-animate-single"
+                data-animation-displacement="0"
+                data-animation-delay="0.1"
+              >
+                {{ section.settings.desc }}
+              </div>
+            {%- endunless -%}
+          </div>
+        {%- endif -%}
+
+        {% form 'contact', class: 'contact-form__form' %}
+          {% if form.posted_successfully? %}
+            <p class="contact-form__note form-success">{{ 'contact.form.post_success' | t }}</p>
+          {% endif %}
+
+          {{ form.errors | default_errors }}
+
+          <div class="o-layout">
+            <div class="o-layout__item u-1/1 u-1/2@tab">
+              <label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+              <input
+                type="text"
+                id="ContactFormName"
+                name="contact[name]"
+                value="{% if form['name'] %}{{ form['name'] }}{% elsif customer %}{{ customer.name }}{% endif %}"
+              >
             </div>
-          {%- endif -%}
+            <div class="o-layout__item u-1/1 u-1/2@tab">
+              <label for="ContactFormEmail" class="{% if form.errors contains 'email' %}label--error{% endif %}">
+                {{- 'contact.form.email' | t -}}
+              </label>
+              <input
+                type="email"
+                id="ContactFormEmail"
+                name="contact[email]"
+                autocorrect="off"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                class="{% if form.errors contains 'email' %}input--error{% endif %}"
+              >
+            </div>
 
-          {% form 'contact', class: 'contact-form__form' %}
-            {% if form.posted_successfully? %}
-              <p class="contact-form__note form-success">{{ 'contact.form.post_success' | t }}</p>
-            {% endif %}
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'text' -%}
+                  {%- if block.settings.label != blank -%}
+                    <div class="o-layout__item u-1/1" {{ block.shopify_attributes }}>
+                      <label for="ContactForm-{{ block.id }}">{{ block.settings.label }}</label>
 
-            {{ form.errors | default_errors }}
-
-            <div class="o-layout">
-              <div class="o-layout__item u-1/1 u-1/2@tab">
-                <label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
-                <input
-                  type="text"
-                  id="ContactFormName"
-                  name="contact[name]"
-                  value="{% if form['name'] %}{{ form['name'] }}{% elsif customer %}{{ customer.name }}{% endif %}"
-                >
-              </div>
-              <div class="o-layout__item u-1/1 u-1/2@tab">
-                <label for="ContactFormEmail" class="{% if form.errors contains 'email' %}label--error{% endif %}">
-                  {{- 'contact.form.email' | t -}}
-                </label>
-                <input
-                  type="email"
-                  id="ContactFormEmail"
-                  name="contact[email]"
-                  autocorrect="off"
-                  autocapitalize="off"
-                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-                  class="{% if form.errors contains 'email' %}input--error{% endif %}"
-                >
-              </div>
-
-              {%- for block in section.blocks -%}
-                {%- case block.type -%}
-                  {%- when 'text' -%}
-                    {%- if block.settings.label != blank -%}
-                      <div class="o-layout__item u-1/1" {{ block.shopify_attributes }}>
-                        <label for="ContactForm-{{ block.id }}">{{ block.settings.label }}</label>
-
-                        {%- capture input_attributes -%}
+                      {%- capture input_attributes -%}
                       {% if block.settings.required %}required{% endif %}
                       id="ContactForm-{{ block.id }}"
                       type="text"
                       name="contact[{{ block.settings.label }}]"
                     {%- endcapture -%}
 
-                        {%- if block.settings.long -%}
-                          <textarea {{ input_attributes }}></textarea>
-                        {%- else -%}
-                          <input {{ input_attributes }}>
-                        {%- endif -%}
-                      </div>
-                    {%- endif -%}
+                      {%- if block.settings.long -%}
+                        <textarea {{ input_attributes }}></textarea>
+                      {%- else -%}
+                        <input {{ input_attributes }}>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
 
-                  {%- when 'checkbox' -%}
-                    {%- if block.settings.label != blank -%}
-                      <div class="o-layout__item u-1/1" {{ block.shopify_attributes }}>
-                        <fieldset>
+                {%- when 'checkbox' -%}
+                  {%- if block.settings.label != blank -%}
+                    <div class="o-layout__item u-1/1" {{ block.shopify_attributes }}>
+                      <fieldset>
+                        <label for="ContactForm-{{ block.id }}" class="checkbox-label">
                           <input
                             type="hidden"
                             name="contact[{{ block.settings.label }}]"
@@ -163,62 +175,61 @@
                             name="contact[{{ block.settings.label }}]"
                             value="{{ block.settings.yes }}"
                           >
+                          {%- render 'icons-theme', icon: 'check' -%}
+                          {{- block.settings.label -}}
+                        </label>
+                      </fieldset>
+                    </div>
+                  {%- endif -%}
 
-                          <label for="ContactForm-{{ block.id }}" class="checkbox-label">
-                            {{- block.settings.label -}}
-                          </label>
-                        </fieldset>
+                {%- when 'dropdown' -%}
+                  {%- if block.settings.label != blank -%}
+                    {% assign options = block.settings.options | split: ', ' %}
+
+                    <div class="o-layout__item u-1/1" {{ block.shopify_attributes }}>
+                      <div class="selector-wrapper selector-wrapper--standalone-labels">
+                        <label for="ContactForm-{{ block.id }}" class="contact-form__dropdown-label">
+                          {{- block.settings.label -}}
+                        </label>
+
+                        <select
+                          class="contact-form__dropdown"
+                          id="ContactForm-{{ block.id }}"
+                          name="contact[{{ block.settings.label }}]"
+                        >
+                          {% for option in options %}
+                            <option value="{{ option }}">{{ option }}</option>
+                          {% endfor %}
+                        </select>
+                        {%- render 'icons-theme', icon: 'chevron', additional_classes: 'icon--down' -%}
                       </div>
-                    {%- endif -%}
+                    </div>
+                  {%- endif -%}
+              {%- endcase -%}
+            {%- endfor -%}
 
-                  {%- when 'dropdown' -%}
-                    {%- if block.settings.label != blank -%}
-                      {% assign options = block.settings.options | split: ', ' %}
-
-                      <div class="o-layout__item u-1/1" {{ block.shopify_attributes }}>
-                        <div class="selector-wrapper selector-wrapper--standalone-labels">
-                          <label for="ContactForm-{{ block.id }}" class="contact-form__dropdown-label">
-                            {{- block.settings.label -}}
-                          </label>
-
-                          <select
-                            class="contact-form__dropdown"
-                            id="ContactForm-{{ block.id }}"
-                            name="contact[{{ block.settings.label }}]"
-                          >
-                            {% for option in options %}
-                              <option value="{{ option }}">{{ option }}</option>
-                            {% endfor %}
-                          </select>
-                          {%- render 'icons-theme', icon: 'chevron', additional_classes: 'icon--down' -%}
-                        </div>
-                      </div>
-                    {%- endif -%}
-                {%- endcase -%}
-              {%- endfor -%}
-
-              <div class="o-layout__item u-1/1">
-                <label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
-                <textarea
-                  rows="10"
-                  id="ContactFormMessage"
-                  name="contact[body]"
-                >{% if form.body %}{{ form.body }}{% endif %}</textarea>
-              </div>
-
-              <div class="o-layout__item u-1/1">
-                <input
-                  type="submit"
-                  class="c-btn c-btn--primary c-btn--center c-btn--full u-mt- u-mb0"
-                  value="{{ 'contact.form.send' | t }}"
-                >
-              </div>
+            <div class="o-layout__item u-1/1">
+              <label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
+              <textarea
+                rows="10"
+                id="ContactFormMessage"
+                name="contact[body]"
+              >{% if form.body %}{{ form.body }}{% endif %}</textarea>
             </div>
-          {% endform %}
-        </div>
+
+            <div class="o-layout__item u-1/1">
+              <input
+                type="submit"
+                class="c-btn c-btn--primary c-btn--center c-btn--full u-mt- u-mb0"
+                value="{{ 'contact.form.send' | t }}"
+              >
+            </div>
+          </div>
+        {% endform %}
       </div>
     </div>
   </div>
+  {%- if section.settings.section_width == 'large' -%}</div>{%- endif -%}
 </section>
 
 {% schema %}

@@ -1,2 +1,118 @@
-import{debounce}from"utils";class StickyScroll extends HTMLElement{#t;#s;#i;#e;#o;#n;constructor(){super(),this.#s=18,this.#o=null}connectedCallback(){const t=()=>{this.#t||(window.requestAnimationFrame((()=>{this.#l(),this.#t=!1})),this.#t=!0)},s=s=>{s.forEach((s=>{s.isIntersecting?window.addEventListener("scroll",t):window.removeEventListener("scroll",t)}))},i=()=>{this.#i=window.innerHeight-(()=>{if(Number(window.getComputedStyle(this).getPropertyValue("padding-bottom").replace("px","")))return this.offsetHeight;{this.style.paddingBottom="1px";const t=this.offsetHeight-1;return this.style.paddingBottom=null,t}})()-18},e=()=>{this.#r(),this.#n||(this.#n=this.#s),i(),this.#e=window.scrollY,this.#c(),window.innerHeight<this.offsetHeight?(this.#o||(this.#o=new IntersectionObserver(s.bind(this),{rootMargin:"0px"})),this.#o.observe(this),this.classList.add("is-scrollable"),this.classList.remove("is-not-scrollable")):window.innerHeight>=this.offsetHeight&&this.#o&&(this.#o.disconnect(),window.removeEventListener("scroll",t),this.classList.add("is-not-scrollable"),this.classList.remove("is-scrollable"))};e(),window.addEventListener("resize",debounce(e,100));new ResizeObserver(debounce(e,100)).observe(this)}#r(){const t=document.querySelector("header");this.#s="true"===t.getAttribute("data-sticky-header")?t.offsetHeight+18:18}#c(){this.style.display="block",this.style.position="sticky",this.style.top=`${this.#n}px`,this.classList.add("is-not-scrollable")}#l(){const t=Number(this.style.top.replace("px",""));if(window.scrollY<this.#e)if(t<this.#s){const s=t+this.#e-window.scrollY;this.style.top=`${s}px`,this.#n=s,s>=this.#s&&(this.style.top=`${this.#s}px`,this.#n=this.#s)}else t>=this.#s&&(this.style.top=`${this.#s}px`,this.#n=this.#s);else if(t>this.#i){const s=t+this.#e-window.scrollY;this.style.top=`${s}px`,this.#n=s,s<=this.#i&&(this.style.top=`${this.#i}px`,this.#n=this.#i)}else t<=this.#i&&(this.style.top=`${this.#i}px`,this.#n=this.#i);this.#e=window.scrollY}}customElements.define("sticky-scroll",StickyScroll);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import { debounce } from "utils";
+
+class StickyScroll extends HTMLElement {
+    #ticking;
+    #topGap;
+    #maxDisplacement;
+    #scrollPosition;
+    #intersectionObserver;
+    #topPosition;
+    constructor() {
+        super();
+        this.#topGap = 18;
+        this.#intersectionObserver = null;
+    }
+    connectedCallback() {
+        const scrollListener = () => {
+            if (!this.#ticking) {
+                window.requestAnimationFrame((() => {
+                    this.#setStickyDisplacement();
+                    this.#ticking = false;
+                }));
+                this.#ticking = true;
+            }
+        };
+        const handleIntersection = entries => {
+            entries.forEach((entry => {
+                if (entry.isIntersecting) {
+                    window.addEventListener("scroll", scrollListener);
+                } else {
+                    window.removeEventListener("scroll", scrollListener);
+                }
+            }));
+        };
+        const updateMaxDisplacement = () => {
+            const getHeightWithBottomMargin = () => {
+                const paddingBottom = Number(window.getComputedStyle(this).getPropertyValue("padding-bottom").replace("px", ""));
+                if (!paddingBottom) {
+                    this.style.paddingBottom = "1px";
+                    const fullHeight = this.offsetHeight - 1;
+                    this.style.paddingBottom = null;
+                    return fullHeight;
+                } else {
+                    return this.offsetHeight;
+                }
+            };
+            this.#maxDisplacement = window.innerHeight - getHeightWithBottomMargin() - 18;
+        };
+        const updateObserver = () => {
+            this.#setTopGap();
+            if (!this.#topPosition) this.#topPosition = this.#topGap;
+            updateMaxDisplacement();
+            this.#scrollPosition = window.scrollY;
+            this.#setStyles();
+            if (window.innerHeight < this.offsetHeight) {
+                if (!this.#intersectionObserver) {
+                    this.#intersectionObserver = new IntersectionObserver(handleIntersection.bind(this), {
+                        rootMargin: "0px"
+                    });
+                }
+                this.#intersectionObserver.observe(this);
+                this.classList.add("is-scrollable");
+                this.classList.remove("is-not-scrollable");
+            } else if (window.innerHeight >= this.offsetHeight && this.#intersectionObserver) {
+                this.#intersectionObserver.disconnect();
+                window.removeEventListener("scroll", scrollListener);
+                this.classList.add("is-not-scrollable");
+                this.classList.remove("is-scrollable");
+            }
+        };
+        updateObserver();
+        window.addEventListener("resize", debounce(updateObserver, 100));
+        const resizeObserver = new ResizeObserver(debounce(updateObserver, 100));
+        resizeObserver.observe(this);
+    }
+    #setTopGap() {
+        const header = document.querySelector("header");
+        this.#topGap = header.getAttribute("data-sticky-header") === "true" ? header.offsetHeight + 18 : 18;
+    }
+    #setStyles() {
+        this.style.display = "block";
+        this.style.position = "sticky";
+        this.style.top = `${this.#topPosition}px`;
+        this.classList.add("is-not-scrollable");
+    }
+    #setStickyDisplacement() {
+        const stickyElementTop = Number(this.style.top.replace("px", ""));
+        if (window.scrollY < this.#scrollPosition) {
+            if (stickyElementTop < this.#topGap) {
+                const topMath = stickyElementTop + this.#scrollPosition - window.scrollY;
+                this.style.top = `${topMath}px`;
+                this.#topPosition = topMath;
+                if (topMath >= this.#topGap) {
+                    this.style.top = `${this.#topGap}px`;
+                    this.#topPosition = this.#topGap;
+                }
+            } else if (stickyElementTop >= this.#topGap) {
+                this.style.top = `${this.#topGap}px`;
+                this.#topPosition = this.#topGap;
+            }
+        } else if (stickyElementTop > this.#maxDisplacement) {
+            const topMath = stickyElementTop + this.#scrollPosition - window.scrollY;
+            this.style.top = `${topMath}px`;
+            this.#topPosition = topMath;
+            if (topMath <= this.#maxDisplacement) {
+                this.style.top = `${this.#maxDisplacement}px`;
+                this.#topPosition = this.#maxDisplacement;
+            }
+        } else if (stickyElementTop <= this.#maxDisplacement) {
+            this.style.top = `${this.#maxDisplacement}px`;
+            this.#topPosition = this.#maxDisplacement;
+        }
+        this.#scrollPosition = window.scrollY;
+    }
+}
+
+customElements.define("sticky-scroll", StickyScroll);
 //# sourceMappingURL=sticky-scroll.js.map

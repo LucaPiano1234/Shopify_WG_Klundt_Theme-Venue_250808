@@ -293,10 +293,10 @@ recent-searches {
 .modal--search.modal--light .predictive-search__list-item:hover > *,
 .modal--search.modal--light .predictive-search__list-item[aria-selected=true] > * {
   color: rgb(255, 255, 255);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.06);
 }
 .modal--search.modal--light image-skeleton rect {
-  fill: rgba(255, 255, 255, 0.12);
+  fill: rgba(255, 255, 255, 0.06);
 }
 
 .modal--search.modal--dark .search__label-title,
@@ -304,47 +304,47 @@ recent-searches {
 .modal--search.modal--dark .search__products-title,
 .modal--search.modal--dark .search__form-input,
 .modal--search.modal--dark .modal__close {
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
 }
 .modal--search.modal--dark .search__form-submit,
 .modal--search.modal--dark .search__nav-link {
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
 }
 .modal--search.modal--dark .search__form-input-wrapper {
-  border-color: rgba(13, 13, 13, 0.2);
+  border-color: rgba(33, 33, 33, 0.2);
 }
 .modal--search.modal--dark .search__form-input::-webkit-input-placeholder {
-  color: rgba(13, 13, 13, 0.5);
+  color: rgba(33, 33, 33, 0.5);
 }
 .modal--search.modal--dark .search__form-input:-moz-placeholder {
-  color: rgba(13, 13, 13, 0.5);
+  color: rgba(33, 33, 33, 0.5);
 }
 .modal--search.modal--dark .search__form-input::-moz-placeholder {
-  color: rgba(13, 13, 13, 0.5);
+  color: rgba(33, 33, 33, 0.5);
 }
 .modal--search.modal--dark .search__form-input:-ms-input-placeholder {
-  color: rgba(13, 13, 13, 0.5);
+  color: rgba(33, 33, 33, 0.5);
 }
 .modal--search.modal--dark .predictive-search__heading,
 .modal--search.modal--dark .predictive-search__item-heading,
 .modal--search.modal--dark .predictive-search__item-price,
 .modal--search.modal--dark .predictive-search-empty__btn {
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
 }
 .modal--search.modal--dark .predictive-search__item-price .price__compare {
-  color: rgba(13, 13, 13, 0.5);
+  color: rgba(33, 33, 33, 0.5);
 }
 .modal--search.modal--dark .search-draw__loader .theme-spinner__border {
-  border-color: rgb(13, 13, 13) transparent transparent transparent;
+  border-color: rgb(33, 33, 33) transparent transparent transparent;
 }
 .modal--search.modal--dark .search__nav-item:hover > *,
 .modal--search.modal--dark .predictive-search__list-item:hover > *,
 .modal--search.modal--dark .predictive-search__list-item[aria-selected=true] > * {
-  color: rgb(13, 13, 13);
-  background-color: rgba(13, 13, 13, 0.1);
+  color: rgb(33, 33, 33);
+  background-color: rgba(33, 33, 33, 0.06);
 }
 .modal--search.modal--dark image-skeleton rect {
-  fill: rgba(13, 13, 13, 0.05);
+  fill: rgba(33, 33, 33, 0.06);
 }
 
 @media (min-width: 47.9375em) {

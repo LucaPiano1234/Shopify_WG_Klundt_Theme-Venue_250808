@@ -173,7 +173,7 @@
   "collections": {
     "general": {
       "all_collections": "Collections",
-      "view_collection": "View collection",
+      "view_collection": "View",
       "products_label": "products",
       "product_label": "product",
       "no_matches": "No products found",
@@ -279,6 +279,7 @@
       "compare_at": "Compare at",
       "quantity": "Quantity",
       "add_to_cart": "Add to cart",
+      "pre_order": "Pre-order",
       "select_options": "Quick view",
       "view_in_space": "View in your space",
       "view_in_space_label": "View in your space, loads item in augmented reality window",
@@ -286,6 +287,7 @@
       "video_thumbnail_alt": "Load and play video {{ imageAlt }} in Gallery viewer",
       "model_thumbnail_alt": "Load 3D model {{ imageAlt }} into Gallery viewer",
       "qty_notice_in_stock": "In stock",
+      "qty_notice_continue_selling": "In stock",
       "qty_notice_low_stock": "Low stock",
       "qty_notice_sold_out": "Out of stock",
       "qty_notice_number_in_stock_html": "<span>{{ count }}</span> in stock",
@@ -295,7 +297,8 @@
       "sold_out_label": "Sold Out",
       "discount_text": "On Sale",
       "discount_currency": "Save {{ discount_format_currency }}",
-      "discount_percentage": "Save {{ discount_format_percentage }}%"
+      "discount_percentage": "Save {{ discount_format_percentage }}%",
+      "pre_order_label": "Pre-order"
     },
     "layout": {
       "tab_label": "Open tab",
@@ -384,7 +387,8 @@
       "sign_in": "Sign In",
       "cancel": "Return to Store",
       "guest_title": "Continue as a guest",
-      "guest_continue": "Continue"
+      "guest_continue": "Continue",
+      "alternate_provider_separator": "or"
     },
     "orders": {
       "title": "Order History",

@@ -13,6 +13,18 @@
 {% endif %}
 {%- liquid
   assign text_color_brightness = section.settings.content_color | color_brightness
+
+  if section.settings.section_bottom_margin
+    if section.settings.section_width == 'contained'
+      assign margin_class = 'section--mb-m'
+    else
+      assign margin_class = 'section--mb-0'
+    endif
+  endif
+
+  if request.visual_preview_mode
+    assign margin_class = 'section--mb-0'
+  endif
 -%}
 
 <section
@@ -20,13 +32,7 @@
     section
     section--{{ section.id }}
     section--{{ section.settings.section_width }}
-    {% if section.settings.section_bottom_margin %}
-      {% if section.settings.section_width == 'contained' %}
-        section--mb-m
-      {% else %}
-        section--mb-0
-      {% endif %}
-    {% endif %}
+    {{ margin_class }}
   "
   data-section-id="{{ section.id }}"
   data-section-type="image-banner"
@@ -67,7 +73,7 @@
         {% if section.settings.divider_bottom %}
           section-divider--bottom
         {% endif %}
-        js-animate-single
+        {% unless request.visual_preview_mode %}js-animate-single{% endunless %}
       "
       style="
         --height-desktop: {{ section.settings.section_height }}px;
@@ -87,25 +93,55 @@
         {% if section.settings.bg_image != blank %}
           {%- liquid
             assign loading = 'lazy'
+            assign fetchpriority = 'auto'
             if section.location == 'template' and section.index == 1
               assign loading = 'eager'
-            endif
-
-            assign sizes = '(min-width: 2200px) 2140px, calc(100vw - 36px)'
-            if section.settings.section_width == 'full'
-              assign sizes = '100vw'
+              assign fetchpriority = 'high'
             endif
           -%}
-          {% render 'image',
-            image: section.settings.bg_image,
-            image_ratio: 'natural',
-            additional_classes: 'image-banner__bg',
-            image_srcset_widths: '300, 400, 500, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400',
-            image_sizes: sizes,
-            render_skeleton: true,
-            skeleton_ratio: '1.5',
-            loading: loading
-          %}
+
+          <picture>
+            <source
+              {% if section.settings.bg_image_mobile %}
+                srcset="{% render 'bgset', image: section.settings.bg_image_mobile %}"
+              {% else %}
+                srcset="{% render 'bgset', image: section.settings.bg_image %}"
+              {% endif %}
+              media="all and (max-width: 767px)"
+            >
+            <source
+              srcset="{% render 'bgset', image: section.settings.bg_image %}"
+              media="all and (min-width: 768px)"
+            >
+            {%- liquid
+              assign class = 'image-banner__bg'
+
+              assign image_width = 600
+              assign image_height = 600 | divided_by: section.settings.bg_image.aspect_ratio | round
+            -%}
+            {%- liquid
+              assign skeleton_image_height = image_height
+              if section.settings.bg_image_mobile
+                assign skeleton_image_height = 600 | divided_by: section.settings.bg_image_mobile.aspect_ratio | round
+              endif
+
+              assign loading_alt = 'Loading image: ' | append: section.settings.bg_image.alt
+            -%}
+            {%- render 'image-skeleton', alt: loading_alt, width: image_width, height: skeleton_image_height -%}
+            <img
+              class="{{ class }}"
+              src="{{ section.settings.bg_image | image_url: width: 600 }}"
+              width="{{ image_width }}"
+              height="{{ image_height }}"
+              alt="{{ section.settings.bg_image.alt }}"
+              loading="{{ loading }}"
+              fetchpriority="{{ fetchpriority }}"
+              style="
+                --image-position: {{ section.settings.bg_image.presentation.focal_point }};
+                --image-position-mobile:  {% if section.settings.bg_image_mobile %}{{ section.settings.bg_image_mobile.presentation.focal_point }}{% else %}{{ section.settings.bg_image.presentation.focal_point }}{% endif %};
+              "
+            >
+          </picture>
         {% else %}
           <style type="text/css">
             .section--{{ section.id }} .image-banner__bg--placeholder:before {
@@ -190,7 +226,7 @@
                     style="
                       --inline-image-width: {{ block.settings.inline_image_width }}px;
                       --inline-image-width-mobile: {{ block.settings.inline_image_width_mobile }}px;
-                      --inline-image-radius: {{ block.settings.inline_image_radius | divided_by: 2 }}%;
+                      --inline-image-radius: {{ block.settings.inline_image_radius }}px;
                     "
                   >
                     {%- liquid
@@ -299,62 +335,118 @@
 
             {%- when 'button' -%}
               {% if block.settings.button_label != blank or block.settings.button_2_label != blank %}
-                {%- liquid
-                  assign button_color = 'initial'
-                  assign button_hover_color = 'initial'
-                  assign button_hover_background_color = 'initial'
-                  if block.settings.button_style == 'c-btn c-btn--hollow' or block.settings.button_2_style == 'c-btn c-btn--hollow'
-                    assign button_color = section.settings.content_color
-                    if text_color_brightness > 125
-                      assign text_contrast_color = '#000'
-                    else
-                      assign text_contrast_color = '#fff'
-                    endif
-                    assign button_hover_color = text_contrast_color
-                    assign button_hover_background_color = section.settings.content_color
-                  endif
-                -%}
                 <div
                   class="image-banner__content__block image-banner__content__block--{{ block.type }}"
                   {{ block.shopify_attributes }}
                 >
                   <div class="image-banner__link-wrap">
-                    {% if block.settings.button_label != blank %}
+                    {%- if block.settings.button_label != blank -%}
+                      {%- liquid
+                        assign button_color = 'initial'
+                        assign button_hover_color = 'initial'
+                        assign button_background_color = 'initial'
+                        assign button_hover_background_color = 'initial'
+
+                        if block.settings.button_style == 'c-btn c-btn--hollow'
+                          assign button_color = section.settings.content_color
+                          if text_color_brightness > 125
+                            assign text_contrast_color = '#000'
+                          else
+                            assign text_contrast_color = '#fff'
+                          endif
+                          assign button_hover_color = text_contrast_color
+                          assign button_hover_background_color = section.settings.content_color
+
+                        elsif block.settings.button_style == 'c-btn c-btn--mono'
+                          assign button_background_color = section.settings.content_color
+                          if text_color_brightness > 125
+                            assign button_color = '#000'
+                            assign button_hover_color = '#000'
+                            assign button_hover_background_color = section.settings.content_color | color_darken: 10
+                          else
+                            assign button_color = '#fff'
+                            assign button_hover_color = '#fff'
+                            assign button_hover_background_color = section.settings.content_color | color_lighten: 10
+                          endif
+                        endif
+                      -%}
                       <a
                         href="{{ block.settings.button_link }}"
                         class="image-banner__link {{ block.settings.button_style }}"
-                        {% if block.settings.button_style == 'c-btn c-btn--hollow' %}
-                          style="
-                            --button-color: {{ button_color }};
-                            --button-hover-color: {{ button_hover_color }};
-                            --button-hover-background-color: {{ button_hover_background_color }};
-                          "
-                        {% endif %}
+
+                        style="
+                          {% if block.settings.button_style == 'c-btn c-btn--hollow' %}
+                          --button-color: {{ button_color }};
+                          --button-hover-color: {{ button_hover_color }};
+                          --button-hover-background-color: {{ button_hover_background_color }};
+                          {% elsif block.settings.button_style == 'c-btn c-btn--mono' %}
+                          --button-color:{{ button_color }};
+                          --button-hover-color:{{ button_hover_color }};
+                          --button-background-color:{{ button_background_color }};
+                          --button-hover-background-color:{{ button_hover_background_color }};
+                          {% endif %}
+                        "
                       >
                         {{- block.settings.button_label | escape -}}
                         {%- if block.settings.button_style contains 'link--arrow' -%}
                           {% render 'icons-theme', icon: 'chevron' %}
                         {%- endif -%}
                       </a>
-                    {% endif %}
-                    {% if block.settings.button_2_label != blank %}
+                    {%- endif -%}
+                    {%- if block.settings.button_2_label != blank -%}
+                      {%- liquid
+                        assign button_color = 'initial'
+                        assign button_hover_color = 'initial'
+                        assign button_background_color = 'initial'
+                        assign button_hover_background_color = 'initial'
+
+                        if block.settings.button_2_style == 'c-btn c-btn--hollow'
+                          assign button_color = section.settings.content_color
+                          if text_color_brightness > 125
+                            assign text_contrast_color = '#000'
+                          else
+                            assign text_contrast_color = '#fff'
+                          endif
+                          assign button_hover_color = text_contrast_color
+                          assign button_hover_background_color = section.settings.content_color
+
+                        elsif block.settings.button_2_style == 'c-btn c-btn--mono'
+                          assign button_background_color = section.settings.content_color
+                          if text_color_brightness > 125
+                            assign button_color = '#000'
+                            assign button_hover_color = '#000'
+                            assign button_hover_background_color = section.settings.content_color | color_darken: 10
+                          else
+                            assign button_color = '#fff'
+                            assign button_hover_color = '#fff'
+                            assign button_hover_background_color = section.settings.content_color | color_lighten: 10
+                          endif
+                        endif
+                      -%}
                       <a
                         href="{{ block.settings.button_2_link }}"
                         class="image-banner__link {{ block.settings.button_2_style }}"
-                        {% if block.settings.button_2_style == 'c-btn c-btn--hollow' %}
-                          style="
-                            --button-color: {{ button_color }};
-                            --button-hover-color: {{ button_hover_color }};
-                            --button-hover-background-color: {{ button_hover_background_color }};
-                          "
-                        {% endif %}
+
+                        style="
+                          {% if block.settings.button_2_style == 'c-btn c-btn--hollow' %}
+                          --button-color: {{ button_color }};
+                          --button-hover-color: {{ button_hover_color }};
+                          --button-hover-background-color: {{ button_hover_background_color }};
+                          {% endif %}
+                          {% if block.settings.button_2_style == 'c-btn c-btn--mono' %}
+                          --button-color:{{ button_color }};
+                          --button-hover-color:{{ button_hover_color }};
+                          --button-background-color:{{ button_background_color }};
+                          --button-hover-background-color:{{ button_hover_background_color }};
+                          {% endif %}
+                        "
                       >
                         {{- block.settings.button_2_label | escape -}}
                         {%- if block.settings.button_2_style contains 'link--arrow' -%}
                           {% render 'icons-theme', icon: 'chevron' %}
                         {%- endif -%}
                       </a>
-                    {% endif %}
+                    {%- endif -%}
                   </div>
                 </div>
               {% endif %}
@@ -398,12 +490,18 @@
   "settings": [
     {
       "type": "header",
-      "content": "Images"
+      "content": "Background image"
     },
     {
       "type": "image_picker",
       "id": "bg_image",
-      "label": "Background image"
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Mobile image",
+      "info": "Alternative image for mobile devices. 1200px width and portrait ratio recommended."
     },
     {
       "type": "header",
@@ -465,7 +563,7 @@
       "min": 200,
       "max": 1000,
       "step": 10,
-      "default": 600
+      "default": 360
     },
     {
       "type": "range",
@@ -475,7 +573,7 @@
       "min": 150,
       "max": 800,
       "step": 10,
-      "default": 400
+      "default": 540
     },
     {
       "type": "checkbox",
@@ -513,7 +611,7 @@
       "type": "color",
       "id": "content_color",
       "label": "Text",
-      "default": "#131313"
+      "default": "#212121"
     },
     {
       "type": "color",
@@ -766,7 +864,7 @@
           "min": 0,
           "max": 100,
           "step": 1,
-          "unit": "%",
+          "unit": "px",
           "default": 0
         }
       ]

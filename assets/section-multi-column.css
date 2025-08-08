@@ -1,10 +1,10 @@
 /* ==========================================================================
    #MULtI-COLUMN SECTIONS
    ========================================================================== */
-.multi-column items-scroll[scroll-enabled] .multi-column__item {
+.multi-column .items-scroll[scroll-enabled] .multi-column__item {
   margin-bottom: 0;
 }
-.multi-column items-scroll .navigation {
+.multi-column .items-scroll .navigation {
   display: none !important;
 }
 
@@ -37,8 +37,10 @@
   }
 }
 
-.multi-column--image .multi-column__column-link:hover .multi-column__media-img,
-.multi-column--image .multi-column__column-link:hover .multi-column__media-video {
+.multi-column--image .multi-column__column-link .o-ratio__content {
+  transition: transform 1s ease;
+}
+.multi-column--image .multi-column__column-link:hover .o-ratio__content {
   transform: scale3d(1.05, 1.05, 1.05);
   -webkit-transition: transform 1s ease;
   -moz-transition: transform 1s ease;

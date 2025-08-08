@@ -281,6 +281,17 @@
     </announcement-bar>
 
     <script src="{{ 'announcement-bar.js' | asset_url }}" type="module"></script>
+
+    {% if section.settings.close_icon and request.design_mode == false %}
+      <script>
+        var thisAnnouncementBar = document.querySelector('announcement-bar#{{ section.id }}');
+        var announcementSessionStorageValue = sessionStorage.getItem(thisAnnouncementBar.id);
+
+        if (announcementSessionStorageValue === '0') {
+          thisAnnouncementBar.setAttribute('hidden', 'hidden');
+        }
+      </script>
+    {% endif %}
   </section>
 {%- endif -%}
 
@@ -342,7 +353,7 @@
       "type": "color",
       "id": "message_color_text",
       "label": "Text",
-      "default": "#FFFFFF"
+      "default": "#F2F2F2"
     },
     {
       "type": "checkbox",

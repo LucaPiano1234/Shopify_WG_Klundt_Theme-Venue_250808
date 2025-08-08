@@ -9,11 +9,13 @@
   - id: {String} Unique price element id
   - from_price: {Boolean} Determines whether or not to output a generalised or specific price.
   - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
-  - show_price_notes: {Boolean} Renders prie notes. Default: true
-  - show_tax_note: {Boolean} Rebders tax notice. Default: false,
+  - show_price_notes: {Boolean} Renders price notes. Default: true
+  - show_tax_notice: {Boolean} Renders tax notice. Default: false,
   - show_label: {Boolean} Renders on sale label
   - label_type: {String}
   - label_color: {String}
+  - label_text_color: {String}
+  - label_border {Boolean}
 
   Usage:
   {% render 'product-price',
@@ -30,8 +32,8 @@
     assign show_price_notes = true
   endif
 
-  if show_tax_note == null
-    assign show_tax_note = false
+  if show_tax_notice == null
+    assign show_tax_notice = false
   endif
 
   if show_label == null
@@ -97,12 +99,12 @@
 
   <div class="price">
     <div id="{{ id }}" class="price__text">
-      <span class="u-hidden-visually">{{ 'products.general.regular_price' | t }}</span>
+      <span class="u-hidden-visually">{{ 'products.general.sale_price' | t }}</span>
       <span class="price__number{% if compare_at_price > price %} price__number--sale{% endif %}">
         <span class="money">{{ money_price }}</span>
       </span>
       {%- if compare_at_price > price -%}
-        <span class="u-hidden-visually">{{ 'products.general.sale_price' | t }}</span>
+        <span class="u-hidden-visually">{{ 'products.general.regular_price' | t }}</span>
         <s class="price__compare"
           ><span class="money">{{ compare_at_price | money }}</span></s
         >
@@ -113,7 +115,14 @@
       {%- liquid
         assign label_id = 'label-' | append: section_id
       -%}
-      {% render 'product-label', product: product, id: label_id, color: label_color, type: label_type %}
+      {% render 'product-label',
+        product: product,
+        id: label_id,
+        color: label_color,
+        text_color: label_text_color,
+        type: label_type,
+        border: label_border
+      %}
     {%- endif -%}
   </div>
 
@@ -125,12 +134,12 @@
         {%- endif -%}
       </p>
       {%- if show_tax_notice == true -%}
-        {%- if cart.taxes_included -%}
+        {%- if cart.taxes_included and settings.price_details_tax_show -%}
           <p class="price__note price__note--tax">
             {{ 'products.general.include_taxes' | t }}
           </p>
         {%- endif -%}
-        {%- if shop.shipping_policy.body != blank -%}
+        {%- if shop.shipping_policy.body != blank and settings.price_details_shipping_show -%}
           <p class="price__note price__note--tax">
             {{ 'products.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
           </p>

@@ -1,2 +1,33 @@
-import{debounce}from"utils";class ScrollingMarquee extends HTMLElement{constructor(){super(),this.marqueeContainer=this.querySelector(".marquee"),this.marqueeWidth=this.marqueeContainer.offsetWidth,this.marqueeElements=[...this.querySelectorAll(".marquee__content")],this.marqueeSpeed=this.getAttribute("marquee-speed"),this.speedModifier=10,this.speed=this.marqueeSpeed*this.speedModifier,this.resizeObserver=new ResizeObserver(debounce((()=>{this.setMarqueeSpeed()})),50)}connectedCallback(){this.observeMarquee(),this.setMarqueeSpeed()}observeMarquee(){this.resizeObserver.observe(this.marqueeContainer)}setMarqueeSpeed(){const e=window.getComputedStyle(this.marqueeContainer),t=parseInt(e.getPropertyValue("column-gap"),10),{speed:s}=this;this.marqueeElements.forEach((e=>{const r=(e.offsetWidth+t)/s;e.style.animationDuration=`${r}s`}))}}customElements.define("scrolling-marquee",ScrollingMarquee);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import { debounce } from "utils";
+
+class ScrollingMarquee extends HTMLElement {
+    #debouncedSetMarqueeSpeed;
+    constructor() {
+        super();
+        this.#debouncedSetMarqueeSpeed = debounce(this.#setMarqueeSpeed.bind(this), 50);
+    }
+    connectedCallback() {
+        this.marqueeContainer = this.querySelector(".marquee");
+        this.marqueeElements = Array.from(this.querySelectorAll(".marquee__content"));
+        this.resizeObserver = new ResizeObserver(this.#debouncedSetMarqueeSpeed);
+        this.resizeObserver.observe(this.marqueeContainer);
+        this.#setMarqueeSpeed();
+    }
+    disconnectedCallback() {
+        this.resizeObserver.unobserve(this.marqueeContainer);
+    }
+    #setMarqueeSpeed() {
+        const marqueeComputedStyle = window.getComputedStyle(this.marqueeContainer);
+        const gapValue = parseInt(marqueeComputedStyle.getPropertyValue("column-gap"), 10);
+        const speed = (parseFloat(this.getAttribute("marquee-speed")) || 0) * 10;
+        this.marqueeElements.forEach((element => {
+            const elementWidth = element.offsetWidth + gapValue;
+            const timeTaken = elementWidth / speed;
+            element.style.animationDuration = `${timeTaken}s`;
+        }));
+    }
+}
+
+customElements.define("scrolling-marquee", ScrollingMarquee);
 //# sourceMappingURL=scrolling-marquee.js.map

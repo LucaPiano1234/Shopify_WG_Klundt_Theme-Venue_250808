@@ -168,7 +168,7 @@ filters-dialog {
 }
 
 .collection-sidebar--dark .collection-sidebar__label-title {
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
 }
 
 .collection-sidebar__section {
@@ -294,26 +294,29 @@ filters-dialog {
   display: flex;
   position: relative;
   width: 100%;
+  border: 1px solid var(--color--text-lightest);
+  gap: 6px;
+  padding-left: 9px;
+  align-items: center;
 }
 .collection-sidebar__filter-group .collection-sidebar__filter-price__item--separator {
   margin: 0 5%;
   font-size: 1.1em;
   line-height: 36px;
   width: 14px;
+  border: 0 none;
+  padding-left: 0px;
 }
 .collection-sidebar__filter-group .collection-sidebar__filter-price__input {
   padding: 0;
-  padding-left: 30px;
   height: auto;
-  line-height: 36px;
   margin-bottom: 0;
   background: transparent;
-  border: 1px solid var(--color--text-lightest);
+  border: 0 none;
+  line-height: 36px;
 }
 .collection-sidebar__filter-group .collection-sidebar__filter-price__currency {
-  position: absolute;
-  line-height: 38px;
-  left: 12px;
+  position: relative;
   opacity: 0.5;
 }
 .collection-sidebar__filter-group input.collection-sidebar__filter__input,
@@ -806,9 +809,6 @@ filters-dialog {
   padding-bottom: 3px;
   color: rgb(255, 255, 255);
 }
-body[data-heading-border=true] .collection-sidebar--desktop-drawer .collection-sidebar__main-title {
-  padding-bottom: calc(1.15rem + var(--font--title-border-size));
-}
 .collection-sidebar--desktop-drawer .collection-sidebar__wrapper {
   flex: 1 1 auto;
   order: 2;
@@ -846,7 +846,7 @@ body[data-heading-border=true] .collection-sidebar--desktop-drawer .collection-s
 .collection-sidebar--desktop-drawer .collection-sidebar__filter-form .selector-wrapper .icon--chevron {
   --color: #ffffff4d;
 }
-.collection-sidebar--desktop-drawer .collection-sidebar__filter-group .collection-sidebar__filter-price__input {
+.collection-sidebar--desktop-drawer .collection-sidebar__filter-group .collection-sidebar__filter-price__item {
   border-color: rgba(255, 255, 255, 0.2);
 }
 .collection-sidebar--desktop-drawer .collection-sidebar__link__box {
@@ -864,7 +864,7 @@ body[data-heading-border=true] .collection-sidebar--desktop-drawer .collection-s
   visibility: visible;
 }
 .collection-sidebar--desktop-drawer .collection-sidebar__filter-group .collection-sidebar__link__box .icon {
-  --color: rgb(13, 13, 13);
+  --color: rgb(33, 33, 33);
 }
 .collection-sidebar--desktop-drawer .collection-sidebar__filter-group input.collection-sidebar__filter__input + label .collection-sidebar__link__box--swatch.is-blank .icon {
   --color: rgb(255, 255, 255);
@@ -911,21 +911,21 @@ body[data-heading-border=true] .collection-sidebar--desktop-drawer .collection-s
 }
 .collection-sidebar--desktop-drawer .c-btn--hollow:active:not([disabled]), .collection-sidebar--desktop-drawer .c-btn--hollow:hover:not([disabled]) {
   background-color: rgb(255, 255, 255);
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__wrapper label.collection-filters__label,
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__filter-form .selector-wrapper select {
   background: var(--color--drawer-bg);
 }
-.collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__filter-group .collection-sidebar__filter-price__input {
-  border-color: rgba(13, 13, 13, 0.2);
+.collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__filter-group .collection-sidebar__filter-price__item {
+  border-color: rgba(33, 33, 33, 0.2);
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__link__box {
-  border-color: rgb(13, 13, 13);
+  border-color: rgb(33, 33, 33);
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__link:hover .collection-sidebar__link__box:not(.collection-sidebar__link__box--swatch),
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__filter-group input.collection-sidebar__filter__input:checked + label .collection-sidebar__link__box:not(.collection-sidebar__link__box--swatch) {
-  background: rgb(13, 13, 13);
+  background: rgb(33, 33, 33);
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__filter-group .collection-sidebar__link__box .icon {
   --color: rgb(255, 255, 255);
@@ -934,7 +934,7 @@ body[data-heading-border=true] .collection-sidebar--desktop-drawer .collection-s
   --color: #0000004d;
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__filter-group input.collection-sidebar__filter__input + label .collection-sidebar__link__box--swatch.is-blank .icon {
-  --color: rgb(13, 13, 13);
+  --color: rgb(33, 33, 33);
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .modal__close,
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__main-title,
@@ -949,38 +949,38 @@ body[data-heading-border=true] .collection-sidebar--desktop-drawer .collection-s
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__link,
 .collection-sidebar--desktop-drawer.collection-sidebar--dark accordion-group summary,
 .collection-sidebar--desktop-drawer.collection-sidebar--dark accordion-group summary summary-icon {
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__filter-group .collection-sidebar__link__count,
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__filter-form .selector-wrapper:after {
-  color: rgba(13, 13, 13, 0.8);
+  color: rgba(33, 33, 33, 0.8);
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__draw-actions,
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__filter-group,
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .collection-sidebar__filter-form .selector-wrapper select {
-  border-color: rgba(13, 13, 13, 0.2);
+  border-color: rgba(33, 33, 33, 0.2);
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .price-range__track {
-  background: rgba(13, 13, 13, 0.4);
+  background: rgba(33, 33, 33, 0.4);
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .price-range__input::-webkit-slider-thumb {
-  background: rgb(13, 13, 13);
+  background: rgb(33, 33, 33);
   border-color: var(--color--drawer-bg);
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .price-range__input::-moz-range-thumb {
-  background: rgb(13, 13, 13);
+  background: rgb(33, 33, 33);
   border-color: var(--color--drawer-bg);
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .c-btn--hollow {
-  color: rgb(13, 13, 13);
-  box-shadow: inset 0px 0px 0px 1px rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
+  box-shadow: inset 0px 0px 0px 1px rgb(33, 33, 33);
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .c-btn--hollow:hover[disabled] {
   opacity: 0.6;
   background-color: transparent;
 }
 .collection-sidebar--desktop-drawer.collection-sidebar--dark .c-btn--hollow:active:not([disabled]), .collection-sidebar--desktop-drawer.collection-sidebar--dark .c-btn--hollow:hover:not([disabled]) {
-  background-color: rgb(13, 13, 13);
+  background-color: rgb(33, 33, 33);
   color: rgb(255, 255, 255);
 }
 
@@ -1038,9 +1038,6 @@ body[data-heading-border=true] .collection-sidebar--desktop-drawer .collection-s
     padding-bottom: 3px;
     color: rgb(255, 255, 255);
   }
-  body[data-heading-border=true] .collection-sidebar--desktop-sidebar .collection-sidebar__main-title {
-    padding-bottom: calc(1.15rem + var(--font--title-border-size));
-  }
   .collection-sidebar--desktop-sidebar .collection-sidebar__wrapper {
     flex: 1 1 auto;
     order: 2;
@@ -1082,7 +1079,7 @@ body[data-heading-border=true] .collection-sidebar--desktop-drawer .collection-s
   .collection-sidebar--desktop-sidebar .collection-sidebar__filter-form .selector-wrapper .icon--chevron {
     --color: #ffffff4d;
   }
-  .collection-sidebar--desktop-sidebar .collection-sidebar__filter-group .collection-sidebar__filter-price__input {
+  .collection-sidebar--desktop-sidebar .collection-sidebar__filter-group .collection-sidebar__filter-price__item {
     border-color: rgba(255, 255, 255, 0.2);
   }
   .collection-sidebar--desktop-sidebar .collection-sidebar__link__box {
@@ -1100,7 +1097,7 @@ body[data-heading-border=true] .collection-sidebar--desktop-drawer .collection-s
     visibility: visible;
   }
   .collection-sidebar--desktop-sidebar .collection-sidebar__filter-group .collection-sidebar__link__box .icon {
-    --color: rgb(13, 13, 13);
+    --color: rgb(33, 33, 33);
   }
   .collection-sidebar--desktop-sidebar .collection-sidebar__filter-group input.collection-sidebar__filter__input + label .collection-sidebar__link__box--swatch.is-blank .icon {
     --color: rgb(255, 255, 255);
@@ -1147,21 +1144,21 @@ body[data-heading-border=true] .collection-sidebar--desktop-drawer .collection-s
   }
   .collection-sidebar--desktop-sidebar .c-btn--hollow:active:not([disabled]), .collection-sidebar--desktop-sidebar .c-btn--hollow:hover:not([disabled]) {
     background-color: rgb(255, 255, 255);
-    color: rgb(13, 13, 13);
+    color: rgb(33, 33, 33);
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__wrapper label.collection-filters__label,
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__filter-form .selector-wrapper select {
     background: var(--color--drawer-bg);
   }
-  .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__filter-group .collection-sidebar__filter-price__input {
-    border-color: rgba(13, 13, 13, 0.2);
+  .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__filter-group .collection-sidebar__filter-price__item {
+    border-color: rgba(33, 33, 33, 0.2);
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__link__box {
-    border-color: rgb(13, 13, 13);
+    border-color: rgb(33, 33, 33);
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__link:hover .collection-sidebar__link__box:not(.collection-sidebar__link__box--swatch),
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__filter-group input.collection-sidebar__filter__input:checked + label .collection-sidebar__link__box:not(.collection-sidebar__link__box--swatch) {
-    background: rgb(13, 13, 13);
+    background: rgb(33, 33, 33);
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__filter-group .collection-sidebar__link__box .icon {
     --color: rgb(255, 255, 255);
@@ -1170,7 +1167,7 @@ body[data-heading-border=true] .collection-sidebar--desktop-drawer .collection-s
     --color: #0000004d;
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__filter-group input.collection-sidebar__filter__input + label .collection-sidebar__link__box--swatch.is-blank .icon {
-    --color: rgb(13, 13, 13);
+    --color: rgb(33, 33, 33);
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .modal__close,
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__main-title,
@@ -1185,38 +1182,38 @@ body[data-heading-border=true] .collection-sidebar--desktop-drawer .collection-s
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__link,
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark accordion-group summary,
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark accordion-group summary summary-icon {
-    color: rgb(13, 13, 13);
+    color: rgb(33, 33, 33);
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__filter-group .collection-sidebar__link__count,
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__filter-form .selector-wrapper:after {
-    color: rgba(13, 13, 13, 0.8);
+    color: rgba(33, 33, 33, 0.8);
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__draw-actions,
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__filter-group,
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .collection-sidebar__filter-form .selector-wrapper select {
-    border-color: rgba(13, 13, 13, 0.2);
+    border-color: rgba(33, 33, 33, 0.2);
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .price-range__track {
-    background: rgba(13, 13, 13, 0.4);
+    background: rgba(33, 33, 33, 0.4);
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .price-range__input::-webkit-slider-thumb {
-    background: rgb(13, 13, 13);
+    background: rgb(33, 33, 33);
     border-color: var(--color--drawer-bg);
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .price-range__input::-moz-range-thumb {
-    background: rgb(13, 13, 13);
+    background: rgb(33, 33, 33);
     border-color: var(--color--drawer-bg);
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .c-btn--hollow {
-    color: rgb(13, 13, 13);
-    box-shadow: inset 0px 0px 0px 1px rgb(13, 13, 13);
+    color: rgb(33, 33, 33);
+    box-shadow: inset 0px 0px 0px 1px rgb(33, 33, 33);
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .c-btn--hollow:hover[disabled] {
     opacity: 0.6;
     background-color: transparent;
   }
   .collection-sidebar--desktop-sidebar.collection-sidebar--dark .c-btn--hollow:active:not([disabled]), .collection-sidebar--desktop-sidebar.collection-sidebar--dark .c-btn--hollow:hover:not([disabled]) {
-    background-color: rgb(13, 13, 13);
+    background-color: rgb(33, 33, 33);
     color: rgb(255, 255, 255);
   }
 }

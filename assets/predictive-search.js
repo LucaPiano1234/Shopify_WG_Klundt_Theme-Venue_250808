@@ -1,2 +1,244 @@
-import{debounce}from"utils";class PredictiveSearch extends HTMLElement{#t;#e;#i;#s;#n;#r;constructor(){super(),this.type=this.getAttribute("type"),this.isDropdown=this.hasAttribute("dropdown"),this.#t=debounce(this.#o.bind(this),250),this.#s=this.#h.bind(this),this.#e=this.#a.bind(this),this.#i=this.#d.bind(this),this.#n=this.#c.bind(this),this.#r=debounce(this.#u.bind(this),50)}connectedCallback(){this.#l(),this.input=this.querySelector('input[type="search"]'),this.results=this.querySelector("predictive-search-results"),this.additionalContent=this.parentElement.querySelector(".js-search-content"),this.searchTerm="",this.abortController=null,this.#p(),this.input.addEventListener("input",this.#t),this.addEventListener("keyup",this.#s),this.addEventListener("keydown",PredictiveSearch.#b),this.isDropdown&&(this.input.addEventListener("focus",this.#e),this.addEventListener("focusout",this.#i)),this.results.addEventListener("click",this.#n),"sidebar"===this.type&&window.visualViewport.addEventListener("resize",this.#r)}disconnectedCallback(){this.input.removeEventListener("input",this.#t),this.removeEventListener("keyup",this.#s),this.removeEventListener("keydown",PredictiveSearch.#b),this.isDropdown&&(this.input.removeEventListener("focus",this.#e),this.removeEventListener("focusout",this.#i)),this.results.removeEventListener("click",this.#n),"sidebar"===this.type&&window.visualViewport.removeEventListener("resize",this.#r)}getQuery(){return this.input.value.trim()}#h(t){switch(this.getQuery().length||this.close(!0),t.preventDefault(),t.code){case"ArrowUp":this.switchOption("up");break;case"ArrowDown":this.switchOption("down");break;case"Enter":this.selectOption()}}static#b(t){"ArrowUp"!==t.code&&"ArrowDown"!==t.code||t.preventDefault()}#o(){this.abortController&&this.abortController.abort();const t=this.getQuery();if(this.searchTerm=t,!t.length)return this.close(),void this.#p();this.getSearchResults(t)}#a(){const t=this.getQuery();t.length&&(this.searchTerm!==t?this.#o():"true"===this.getAttribute("results")?this.open():this.getSearchResults(this.searchTerm))}#d(){this.abortController&&this.abortController.abort(),this.#p(),setTimeout((()=>{this.contains(document.activeElement)||this.close()}))}#c(t){const e=t.target.closest("a");if(!e)return;const i=this.getAttribute("search-url"),[s]=e.getAttribute("href").split("?");if(i&&i===s)return;const n=e.closest("search-form");n&&n.addFormStateToRecentSearches()}getSearchResults(t){this.abortController=new AbortController,this.#p(!0),fetch(`/search/suggest?q=${t}&section_id=predictive-search`,{signal:this.abortController.signal}).then((t=>{if(!t.ok){const e=new Error(t.status);throw this.close(),e}return t.text()})).then((t=>{const e=(new DOMParser).parseFromString(t.replaceAll('id="predictive-search',`id="${this.type}-predictive-search`).replaceAll('aria-labelledby="predictive-search',`aria-labelledby="${this.type}-predictive-search`),"text/html").querySelector("#shopify-section-predictive-search").innerHTML;this.results.innerHTML=e,this.isDropdown&&this.results.querySelector(".predictive-search__empty-heading")&&this.results.querySelector(".predictive-search__empty-heading").remove(),this.open(),this.#p(),this.input.setAttribute("aria-activedescendant","")})).catch((t=>{if(!t.name||"AbortError"!==t.name)throw this.#p(),this.close(),t})).finally((()=>{this.abortController=null}))}open(){this.setAttribute("open",!0),this.input.setAttribute("aria-expanded","true"),this.spinner.setAttribute("hidden","true"),this.results.removeAttribute("hidden"),this.additionalContent&&this.additionalContent.setAttribute("hidden",!0)}close(){this.removeAttribute("open"),this.input.setAttribute("aria-expanded","false"),this.spinner.setAttribute("hidden","true"),this.results.setAttribute("hidden","true"),this.additionalContent&&this.additionalContent.removeAttribute("hidden")}switchOption(t){if(!this.getAttribute("open"))return;const e="up"===t,i=this.querySelector('[aria-selected="true"]'),s=Array.from(this.querySelectorAll("predictive-search-results li, button.predictive-search__btn"));let n=0;if(e&&!i)return;let r=-1,o=0;for(;-1===r&&o<=s.length;)s[o]===i&&(r=o),o+=1;if(!e&&i?n=r===s.length-1?0:r+1:e&&(n=0===r?s.length-1:r-1),n===r)return;const h=s[n];h.setAttribute("aria-selected",!0),i&&i.setAttribute("aria-selected",!1),this.input.setAttribute("aria-activedescendant",h.id);const a=this.querySelector(".predictive-search__panels");a.offsetHeight<a.scrollHeight&&!h.classList.contains("predictive-search__btn")&&(h.getBoundingClientRect().top<a.getBoundingClientRect().top&&a.scrollTo({top:h.offsetTop,behavior:"instant"}),h.getBoundingClientRect().bottom>a.getBoundingClientRect().bottom-72&&a.scrollTo({top:h.offsetTop-(a.offsetHeight-h.offsetHeight-72),behavior:"instant"}))}selectOption(){const t=this.querySelector('[aria-selected="true"] a, button[aria-selected="true"]');t&&t.click()}#l(){const t=document.createElement("div");t.classList.add("search-form__loader"),t.setAttribute("hidden",!0),t.innerHTML='\n      <div class="theme-spinner theme-spinner--small">\n        <div class="theme-spinner__border"></div>\n        <div class="theme-spinner__border"></div>\n        <div class="theme-spinner__border"></div>\n        <div class="theme-spinner__border"></div>\n      </div>\n    ',this.spinner=t,this.querySelector(".search__form-input-wrapper").append(t)}#p(t=!1){t?(this.classList.add("is-loading"),this.spinner&&this.spinner.removeAttribute("hidden")):(this.classList.remove("is-loading"),this.spinner&&this.spinner.setAttribute("hidden",!0))}#u(){const t=this;if(t&&t.closest(".modal__content")){const e=t.querySelector(".search__form-input-wrapper");window.visualViewport.height<window.innerHeight?t.style.setProperty("--max-content-height",window.visualViewport.height-(e?e.offsetHeight:0)+"px"):t.style.removeProperty("--max-content-height")}}}customElements.define("predictive-search",PredictiveSearch);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import { debounce } from "utils";
+
+class PredictiveSearch extends HTMLElement {
+    #boundOnChange;
+    #boundOnFocus;
+    #boundOnFocusOut;
+    #boundOnKeyUp;
+    #boundOnResultsClick;
+    #boundSetDrawerContentMaxHeight;
+    constructor() {
+        super();
+        this.type = this.getAttribute("type");
+        this.isDropdown = this.hasAttribute("dropdown");
+        this.#boundOnChange = debounce(this.#onChange.bind(this), 250);
+        this.#boundOnKeyUp = this.#onKeyup.bind(this);
+        this.#boundOnFocus = this.#onFocus.bind(this);
+        this.#boundOnFocusOut = this.#onFocusOut.bind(this);
+        this.#boundOnResultsClick = this.#onResultsClick.bind(this);
+        this.#boundSetDrawerContentMaxHeight = debounce(this.#setDrawerContentMaxHeight.bind(this), 50);
+    }
+    connectedCallback() {
+        this.#addSpinner();
+        this.input = this.querySelector('input[type="search"]');
+        this.results = this.querySelector("predictive-search-results");
+        this.additionalContent = this.parentElement.querySelector(".js-search-content");
+        this.searchTerm = "";
+        this.abortController = null;
+        this.#updateLoading();
+        this.input.addEventListener("input", this.#boundOnChange);
+        this.addEventListener("keyup", this.#boundOnKeyUp);
+        this.addEventListener("keydown", PredictiveSearch.#onKeydown);
+        if (this.isDropdown) {
+            this.input.addEventListener("focus", this.#boundOnFocus);
+            this.addEventListener("focusout", this.#boundOnFocusOut);
+        }
+        this.results.addEventListener("click", this.#boundOnResultsClick);
+        if (this.type === "sidebar") {
+            window.visualViewport.addEventListener("resize", this.#boundSetDrawerContentMaxHeight);
+        }
+    }
+    disconnectedCallback() {
+        this.input.removeEventListener("input", this.#boundOnChange);
+        this.removeEventListener("keyup", this.#boundOnKeyUp);
+        this.removeEventListener("keydown", PredictiveSearch.#onKeydown);
+        if (this.isDropdown) {
+            this.input.removeEventListener("focus", this.#boundOnFocus);
+            this.removeEventListener("focusout", this.#boundOnFocusOut);
+        }
+        this.results.removeEventListener("click", this.#boundOnResultsClick);
+        if (this.type === "sidebar") {
+            window.visualViewport.removeEventListener("resize", this.#boundSetDrawerContentMaxHeight);
+        }
+    }
+    getQuery() {
+        return this.input.value.trim();
+    }
+    #onKeyup(event) {
+        if (!this.getQuery().length) this.close(true);
+        event.preventDefault();
+        switch (event.code) {
+          case "ArrowUp":
+            this.switchOption("up");
+            break;
+
+          case "ArrowDown":
+            this.switchOption("down");
+            break;
+
+          case "Enter":
+            this.selectOption();
+            break;
+
+          default:
+            break;
+        }
+    }
+    static #onKeydown(event) {
+        if (event.code === "ArrowUp" || event.code === "ArrowDown") {
+            event.preventDefault();
+        }
+    }
+    #onChange() {
+        if (this.abortController) this.abortController.abort();
+        const searchTerm = this.getQuery();
+        this.searchTerm = searchTerm;
+        if (!searchTerm.length) {
+            this.close();
+            this.#updateLoading();
+            return;
+        }
+        this.getSearchResults(searchTerm);
+    }
+    #onFocus() {
+        const currentSearchTerm = this.getQuery();
+        if (!currentSearchTerm.length) return;
+        if (this.searchTerm !== currentSearchTerm) {
+            this.#onChange();
+        } else if (this.getAttribute("results") === "true") {
+            this.open();
+        } else {
+            this.getSearchResults(this.searchTerm);
+        }
+    }
+    #onFocusOut() {
+        if (this.abortController) this.abortController.abort();
+        this.#updateLoading();
+        setTimeout((() => {
+            if (!this.contains(document.activeElement)) this.close();
+        }));
+    }
+    #onResultsClick(e) {
+        const link = e.target.closest("a");
+        if (!link) return;
+        const searchUrl = this.getAttribute("search-url");
+        const [linkPath] = link.getAttribute("href").split("?");
+        if (searchUrl && searchUrl === linkPath) return;
+        const searchForm = link.closest("search-form");
+        if (searchForm) {
+            searchForm.addFormStateToRecentSearches();
+        }
+    }
+    getSearchResults(searchTerm) {
+        const searchUrl = this.getAttribute("search-url") || "/search";
+        this.abortController = new AbortController;
+        this.#updateLoading(true);
+        fetch(`${searchUrl}/suggest?q=${searchTerm}&section_id=predictive-search`, {
+            signal: this.abortController.signal
+        }).then((response => {
+            if (!response.ok) {
+                const error = new Error(response.status);
+                this.close();
+                throw error;
+            }
+            return response.text();
+        })).then((text => {
+            const resultsMarkup = (new DOMParser).parseFromString(text.replaceAll('id="predictive-search', `id="${this.type}-predictive-search`).replaceAll('aria-labelledby="predictive-search', `aria-labelledby="${this.type}-predictive-search`), "text/html").querySelector("#shopify-section-predictive-search").innerHTML;
+            this.results.innerHTML = resultsMarkup;
+            if (this.isDropdown && this.results.querySelector(".predictive-search__empty-heading")) {
+                this.results.querySelector(".predictive-search__empty-heading").remove();
+            }
+            this.open();
+            this.#updateLoading();
+            this.input.setAttribute("aria-activedescendant", "");
+        })).catch((error => {
+            if (error.name && error.name === "AbortError") return;
+            this.#updateLoading();
+            this.close();
+            throw error;
+        })).finally((() => {
+            this.abortController = null;
+        }));
+    }
+    open() {
+        this.setAttribute("open", true);
+        this.input.setAttribute("aria-expanded", "true");
+        this.spinner.setAttribute("hidden", "true");
+        this.results.removeAttribute("hidden");
+        if (this.additionalContent) this.additionalContent.setAttribute("hidden", true);
+    }
+    close() {
+        this.removeAttribute("open");
+        this.input.setAttribute("aria-expanded", "false");
+        this.spinner.setAttribute("hidden", "true");
+        this.results.setAttribute("hidden", "true");
+        if (this.additionalContent) this.additionalContent.removeAttribute("hidden");
+    }
+    switchOption(direction) {
+        if (!this.getAttribute("open")) return;
+        const moveUp = direction === "up";
+        const selectedElement = this.querySelector('[aria-selected="true"]');
+        const allVisibleElements = Array.from(this.querySelectorAll("predictive-search-results li, button.predictive-search__btn"));
+        let activeElementIndex = 0;
+        if (moveUp && !selectedElement) return;
+        let selectedElementIndex = -1;
+        let i = 0;
+        while (selectedElementIndex === -1 && i <= allVisibleElements.length) {
+            if (allVisibleElements[i] === selectedElement) {
+                selectedElementIndex = i;
+            }
+            i += 1;
+        }
+        if (!moveUp && selectedElement) {
+            activeElementIndex = selectedElementIndex === allVisibleElements.length - 1 ? 0 : selectedElementIndex + 1;
+        } else if (moveUp) {
+            activeElementIndex = selectedElementIndex === 0 ? allVisibleElements.length - 1 : selectedElementIndex - 1;
+        }
+        if (activeElementIndex === selectedElementIndex) return;
+        const activeElement = allVisibleElements[activeElementIndex];
+        activeElement.setAttribute("aria-selected", true);
+        if (selectedElement) selectedElement.setAttribute("aria-selected", false);
+        this.input.setAttribute("aria-activedescendant", activeElement.id);
+        const resultsContainer = this.querySelector(".predictive-search__panels");
+        if (resultsContainer.offsetHeight < resultsContainer.scrollHeight && !activeElement.classList.contains("predictive-search__btn")) {
+            if (activeElement.getBoundingClientRect().top < resultsContainer.getBoundingClientRect().top) {
+                resultsContainer.scrollTo({
+                    top: activeElement.offsetTop,
+                    behavior: "instant"
+                });
+            }
+            if (activeElement.getBoundingClientRect().bottom > resultsContainer.getBoundingClientRect().bottom - 72) {
+                resultsContainer.scrollTo({
+                    top: activeElement.offsetTop - (resultsContainer.offsetHeight - activeElement.offsetHeight - 72),
+                    behavior: "instant"
+                });
+            }
+        }
+    }
+    selectOption() {
+        const selectedOption = this.querySelector('[aria-selected="true"] a, button[aria-selected="true"]');
+        if (selectedOption) selectedOption.click();
+    }
+    #addSpinner() {
+        const spinner = document.createElement("div");
+        spinner.classList.add("search-form__loader");
+        spinner.setAttribute("hidden", true);
+        spinner.innerHTML = `\n      <div class="theme-spinner theme-spinner--small">\n        <div class="theme-spinner__border"></div>\n        <div class="theme-spinner__border"></div>\n        <div class="theme-spinner__border"></div>\n        <div class="theme-spinner__border"></div>\n      </div>\n    `;
+        this.spinner = spinner;
+        this.querySelector(".search__form-input-wrapper").append(spinner);
+    }
+    #updateLoading(isLoading = false) {
+        if (isLoading) {
+            this.classList.add("is-loading");
+            if (this.spinner) this.spinner.removeAttribute("hidden");
+        } else {
+            this.classList.remove("is-loading");
+            if (this.spinner) this.spinner.setAttribute("hidden", true);
+        }
+    }
+    #setDrawerContentMaxHeight() {
+        const searchDraw = this;
+        if (searchDraw && searchDraw.closest(".modal__content")) {
+            const sidebarSearchForm = searchDraw.querySelector(".search__form-input-wrapper");
+            if (window.visualViewport.height < window.innerHeight) {
+                searchDraw.style.setProperty("--max-content-height", `${window.visualViewport.height - (sidebarSearchForm ? sidebarSearchForm.offsetHeight : 0)}px`);
+            } else {
+                searchDraw.style.removeProperty("--max-content-height");
+            }
+        }
+    }
+}
+
+customElements.define("predictive-search", PredictiveSearch);
 //# sourceMappingURL=predictive-search.js.map

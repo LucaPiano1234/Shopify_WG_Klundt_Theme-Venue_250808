@@ -1,2 +1,29 @@
-import ModalDialog from"modal-dialog";class SearchModal extends ModalDialog{#e;constructor(){super(),this.#e=this.#o.bind(this)}connectedCallback(){super.connectedCallback(),this.predictiveSearch=this.querySelector("predictive-search"),this.on("on:modal:closed",this.#e)}disconnectedCallback(){super.disconnectedCallback(),this.off("on:modal:closed",this.#e)}#o(){if(this.predictiveSearch){this.predictiveSearch.close();const e=this.predictiveSearch.querySelector(".js-search-input");e&&(e.value="")}}}customElements.define("search-modal",SearchModal);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import ModalDialog from "modal-dialog";
+
+class SearchModal extends ModalDialog {
+    #boundCloseSearchModal;
+    constructor() {
+        super();
+        this.#boundCloseSearchModal = this.#onCloseSearchModal.bind(this);
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        this.predictiveSearch = this.querySelector("predictive-search");
+        this.on("on:modal:closed", this.#boundCloseSearchModal);
+    }
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        this.off("on:modal:closed", this.#boundCloseSearchModal);
+    }
+    #onCloseSearchModal() {
+        if (this.predictiveSearch) {
+            this.predictiveSearch.close();
+            const input = this.predictiveSearch.querySelector(".js-search-input");
+            if (input) input.value = "";
+        }
+    }
+}
+
+customElements.define("search-modal", SearchModal);
 //# sourceMappingURL=search-modal.js.map

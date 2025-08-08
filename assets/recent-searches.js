@@ -1,2 +1,22 @@
-class RecentSearches extends HTMLElement{constructor(){super(),this.update()}update(){const e=localStorage.getItem("recentSearches");if(e){const s=this.querySelector("ul"),t=JSON.parse(e);t.length>0&&(this.parentElement.classList.add("has-recent-searches"),s.innerHTML=t.reverse().reduce(((e,s)=>`\n            ${e}\n            <li class="search__nav-item">\n              <a href="${s.uri}" class="search__nav-link">${s.query}</a>\n            </li>\n          `),""),this.removeAttribute("hidden"))}}}customElements.define("recent-searches",RecentSearches);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+class RecentSearches extends HTMLElement {
+    constructor() {
+        super();
+        this.update();
+    }
+    update() {
+        const recentSearchesStoredString = localStorage.getItem("recentSearches");
+        if (recentSearchesStoredString) {
+            const ul = this.querySelector("ul");
+            const recentSearchesStored = JSON.parse(recentSearchesStoredString);
+            if (recentSearchesStored.length > 0) {
+                this.parentElement.classList.add("has-recent-searches");
+                ul.innerHTML = recentSearchesStored.reverse().reduce(((innerHTML, item) => `\n            ${innerHTML}\n            <li class="search__nav-item">\n              <a href="${item.uri}" class="search__nav-link">${item.query}</a>\n            </li>\n          `), "");
+                this.removeAttribute("hidden");
+            }
+        }
+    }
+}
+
+customElements.define("recent-searches", RecentSearches);
 //# sourceMappingURL=recent-searches.js.map

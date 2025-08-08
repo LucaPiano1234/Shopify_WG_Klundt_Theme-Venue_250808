@@ -1,39 +1,48 @@
 {% comment %}
-    Renders product label
+  Renders product label
 
-    Accepts:
-    - product: {Object} Product
-    - id: {String} Unique label id
-    - color: {Color} Color of the label
-    - type: {String} Label type: currency / percentage / text
-    - component: {String} Component main class
+  Accepts:
+  - product: {Object} Product
+  - id: {String} Unique label id
+  - color: {Color} Color of the label
+  - text_color: {Color} Text color of the label
+  - border: {Boolean} Show border
+  - type: {String} Label type: currency / percentage / text
+  - component: {String} Component main class
 
-    Usage:
-    {% render 'product-label',
-        product: product,
-        color: block.settings.label_color,
-        type: 'currency',
-        component: 'product-single'
-    %}
+  Usage:
+  {% render 'product-label',
+      product: product,
+      color: block.settings.label_color,
+      text_color: block.settings.label_text_color,
+      border: block.settings.show_border,
+      type: 'currency',
+      component: 'product-single'
+  %}
 
-    !!! NOTE: When changing this element, update the HTML in
-    VariantSelects.renderProductInfo()
+  !!! NOTE: When changing this element, update the HTML in
+  VariantSelects.renderProductInfo()
 {% endcomment %}
 
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
-
-  assign label_brightness = color | color_brightness
-  assign contrast_point = 125
-
-  if label_brightness < contrast_point
-    assign text_color = '#FFFFFF'
-  else
-    assign text_color = '#000000'
-  endif
+  assign border_color = settings.color_text | color_modify: 'alpha', 0.2
 -%}
 
-<div id="{{ id }}" style="--background-color: {{ color }}; --text-color: {{ text_color }}" data-type="{{ type }}">
+<div
+  id="{{ id }}"
+  {% if border %}
+    class="label--border"
+  {% endif %}
+  style="
+    --background-color: {{ color }};
+    --text-color: {{ text_color }};
+    {% if border %}
+      --border-color: {{ border_color }};
+    {% endif %}
+  "
+  data-type="{{ type }}"
+>
   {%- if current_variant.compare_at_price > current_variant.price -%}
     {%- liquid
       case type:

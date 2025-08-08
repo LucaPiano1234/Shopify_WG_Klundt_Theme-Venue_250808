@@ -18,7 +18,7 @@
       section--padded
       section--mb-m
       section--{{ section.id }}
-      {% if section.settings.section-bottom-margin %}section--mb-0{% endif %}
+      {% if section.settings.section-bottom-margin or request.visual_preview_mode %}section--mb-0{% endif %}
     "
     data-section-id="{{ section.id }}"
     data-section-type="custom-content"

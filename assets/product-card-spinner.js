@@ -1,2 +1,51 @@
-class ProductCardSpinner extends HTMLElement{#s;#t;constructor(){super(),this.loadingClass="loading",this.#t=null,this.#s=this.#e.bind(this)}connectedCallback(){this.#a()}disconnectedCallback(){this.#t&&this.#t.disconnect()}#a(){const s=this.nextElementSibling;s&&"IMG"===s.tagName&&(this.#t||(this.#t=new MutationObserver(this.#s)),this.#t.observe(s,{attributeFilter:["src"],attributeOldValue:!0,subtree:!1}))}#e(s){s.forEach((s=>{if("attributes"===s.type&&"src"===s.attributeName){if(s.oldValue.split("//cdn.shopify.com/").pop()!==s.target.src.split("//cdn.shopify.com/").pop()){const t=s.target;t.classList.contains(this.loadingClass)||(t.classList.add(this.loadingClass),this.classList.add(this.loadingClass)),t.onload=()=>{t.classList.remove(this.loadingClass),this.classList.remove(this.loadingClass)}}}}))}}customElements.define("product-card-spinner",ProductCardSpinner);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+class ProductCardSpinner extends HTMLElement {
+    #boundHandleImageLoad;
+    #observer;
+    constructor() {
+        super();
+        this.loadingClass = "loading";
+        this.#observer = null;
+        this.#boundHandleImageLoad = this.#handleImageLoad.bind(this);
+    }
+    connectedCallback() {
+        this.#init();
+    }
+    disconnectedCallback() {
+        if (this.#observer) this.#observer.disconnect();
+    }
+    #init() {
+        const image = this.nextElementSibling;
+        if (!image || image.tagName !== "IMG") return;
+        if (!this.#observer) this.#observer = new MutationObserver(this.#boundHandleImageLoad);
+        this.#observer.observe(image, {
+            attributeFilter: [ "src" ],
+            attributeOldValue: true,
+            subtree: false
+        });
+    }
+    #handleImageLoad(mutationList) {
+        mutationList.forEach((mutation => {
+            if (mutation.type === "attributes") {
+                if (mutation.attributeName === "src") {
+                    const oldUrlStr = mutation.oldValue.split("//cdn.shopify.com/").pop();
+                    const newUrlStr = mutation.target.src.split("//cdn.shopify.com/").pop();
+                    if (oldUrlStr !== newUrlStr) {
+                        const currImage = mutation.target;
+                        if (!currImage.classList.contains(this.loadingClass)) {
+                            currImage.classList.add(this.loadingClass);
+                            this.classList.add(this.loadingClass);
+                        }
+                        currImage.onload = () => {
+                            currImage.classList.remove(this.loadingClass);
+                            this.classList.remove(this.loadingClass);
+                        };
+                    }
+                }
+            }
+        }));
+    }
+}
+
+customElements.define("product-card-spinner", ProductCardSpinner);
 //# sourceMappingURL=product-card-spinner.js.map

@@ -1,2 +1,291 @@
-import{BREAKPOINTS,debounce}from"utils";class ItemsScroll extends HTMLElement{items;scrollBar;scrollBarTrack;navigationContainer;navigationPrevButton;navigationNextButton;pageNavigationContainer;#t;#i;#e;#n;#a;#s;#o;#r;#l;#h;#g;#c;#v;#u;#d;#m;static observedAttributes=["scroll-enabled"];constructor(){super(),this.items=this.querySelector("[data-items]"),this.pageNavigationContainer=null,this.breakpointMin=Object.keys(BREAKPOINTS).includes(this.getAttribute("breakpoint-min"))?BREAKPOINTS[this.getAttribute("breakpoint-min")]:Number(this.getAttribute("breakpoint-min")||"0"),this.breakpointMax=Object.keys(BREAKPOINTS).includes(this.getAttribute("breakpoint-max"))?BREAKPOINTS[this.getAttribute("breakpoint-max")]:Number(this.getAttribute("breakpoint-max")||"Infinity"),this.pageNavigationWrapper=null,this.navigationContainer=null,this.navigationPrevButton=null,this.navigationNextButton=null,this.navigationCounterOnly=this.hasAttribute("mobile-counter-only"),this.navigationCounterSeparator="/",this.navigationCounterShowForPagesAmount=7,this.navigationCounterShowUpToContainerSize=768,this.pageNavigationDisabled=this.hasAttribute("page-navigation-disabled"),this.snap=this.getAttribute("snap"),this.#t=!1,this.#e=null,this.#n=null,this.#l=null,this.#h=null,this.#g=!1,this.#c=0,this.#r=!1,this.#v=null,this.#u=null,this.#d=null}connectedCallback(){if(!this.items)throw Error("Items container missing");this.#c=this.items.scrollLeft,this.#d=new ResizeObserver(debounce((()=>{this.#b()})),50),this.#d.observe(this.items),this.#v||this.#p(),this.#u||this.#N(),this.#m=this.getAttribute("image-container-ratio"),this.#C(),this.items.addEventListener("scrollend",(()=>{const t=this.items.scrollLeft,i=t>this.#c?"FORWARD":"BACKWARD";this.dispatchEvent(new CustomEvent("on:items-scroll:scroll",{detail:{direction:i,position:t}})),this.#c=t}))}disconnectedCallback(){this.#v&&(this.#v.disconnect(),this.#v=null),this.#u&&(this.#u.disconnect(),this.#u=null),this.#d&&(this.#d.disconnect(),this.#d=null)}attributeChangedCallback(t,i,e){"scroll-enabled"===t&&i!==e&&this.dispatchEvent(new CustomEvent("on:items-scroll:change-state",{detail:{scrollable:this.hasAttribute("scroll-enabled")}}))}#f(){const t=window.getComputedStyle(this.items),i=Number(t.getPropertyValue("column-gap").replace("px","")),e=window.getComputedStyle(this.items.firstElementChild),n=Number(e.getPropertyValue("margin-left").replace("px","")),a=Number(e.getPropertyValue("margin-right").replace("px",""));return Array.from(this.items.children)[Math.round(this.items.scrollLeft/(n+this.items.firstElementChild.getBoundingClientRect().width+a+i))]}#P(){this.pageNavigationDisabled||this.#t||(window.requestAnimationFrame((()=>{this.#C(),this.#t=!1})),this.#t=!0)}#A(){if(this.pageNavigationDisabled)return;this.pageNavigationWrapper||(this.pageNavigationWrapper=document.createElement("div"),this.pageNavigationWrapper.classList.add("page-navigation-wrapper"),this.appendChild(this.pageNavigationWrapper));const t=Math.ceil(this.items.children.length/this.#a);t!==this.#s&&(this.#s=t,this.navigationCounterShowUpToContainerSize&&this.navigationCounterShowUpToContainerSize>=this.offsetWidth&&this.navigationCounterShowForPagesAmount&&(this.navigationCounterOnly||this.#s>=this.navigationCounterShowForPagesAmount)?(this.pageNavigationContainer&&this.pageNavigationContainer.setAttribute("hidden",!0),this.pageNavigationCounter||(this.pageNavigationCounter=document.createElement("div"),this.pageNavigationCounter.classList.add("page-navigation-counter"),this.pageNavigationWrapper.appendChild(this.pageNavigationCounter)),this.pageNavigationCounter.removeAttribute("hidden"),this.pageNavigationCounter.innerHTML=`\n          <span class="page-navigation-counter__current">${this.#o||1}</span>\n          <span class="page-navigation-counter__separator">${this.navigationCounterSeparator}</span>\n          <span class="page-navigation-counter__total">${this.#s}</span>\n        `,this.#C()):(this.pageNavigationCounter&&this.pageNavigationCounter.setAttribute("hidden",!0),this.pageNavigationContainer||(this.pageNavigationContainer=document.createElement("ul"),this.pageNavigationContainer.classList.add("page-navigation"),this.pageNavigationContainer.setAttribute("role","tablist"),this.pageNavigationWrapper.appendChild(this.pageNavigationContainer)),this.pageNavigationContainer.removeAttribute("hidden"),this.#s>1?(this.pageNavigationContainer.innerHTML=`\n            ${Array.from({length:t},((t,i)=>`\n              <li class="page-navigation__item" role="presentation">\n                <button type="button" role="tab" class="page-navigation__button" data-page="${i+1}" aria-label="Scroll to page ${i+1} of ${this.#s}" tabindex="-1">\n                  <span class="visually-hidden">${i+1}</span>\n                </button>\n              </li>\n            `)).join("\n")}\n          `,this.#C()):this.pageNavigationContainer.innerHTML=""))}#S(t){const{target:i}=t;if(!i.classList.contains("page-navigation__button"))return;const e=Number(i.dataset.page);this.#L(this.items.children[this.#a*(e-1)].offsetLeft,"smooth")}#E(){const t=document.createElement("div");t.classList.add("navigation"),t.innerHTML='\n      <button type="button" class="navigation__button navigation__button--prev" data-navigation-prev aria-label="Previous page"></button>\n      <button type="button" class="navigation__button navigation__button--next" data-navigation-next aria-label="Next page"></button>\n    ',this.appendChild(t),this.navigationContainer=t,this.navigationPrevButton=t.querySelector("[data-navigation-prev]"),this.navigationNextButton=t.querySelector("[data-navigation-next]");const i=document.getElementById("template-icon-chevron").content.cloneNode(!0).firstElementChild;i.classList.add("icon--left"),this.navigationPrevButton.append(i);const e=document.getElementById("template-icon-chevron").content.cloneNode(!0).firstElementChild;this.navigationNextButton.append(e)}#O(t){if(t.preventDefault(),this.#g)return;const i=this.#f().previousElementSibling;i&&(this.#g=!0,this.classList.add("is-scrolling"),this.smoothScrollItems(i.offsetLeft).finally((()=>{this.#g=!1,this.classList.remove("is-scrolling")})))}#y(t){if(t.preventDefault(),this.#g)return;const i=this.#f().nextElementSibling;i&&(this.#g=!0,this.classList.add("is-scrolling"),this.smoothScrollItems(i.offsetLeft).finally((()=>{this.#g=!1,this.classList.remove("is-scrolling")})))}#x(){this.#r||(this.#e=this.#P.bind(this),this.#n=this.#S.bind(this),this.#l=this.#O.bind(this),this.#h=this.#y.bind(this),this.items.addEventListener("scroll",this.#e),this.pageNavigationContainer&&this.pageNavigationContainer.addEventListener("click",this.#S.bind(this)),this.navigationPrevButton.addEventListener("click",this.#l),this.navigationNextButton.addEventListener("click",this.#h),this.#r=!0)}#I(){this.#r&&(this.items.removeEventListener("scroll",this.#e),this.pageNavigationContainer&&this.pageNavigationContainer.removeEventListener("click",this.#n),this.navigationPrevButton.removeEventListener("click",this.#l),this.navigationNextButton.removeEventListener("click",this.#h),this.#r=!1)}#b(){const t=(t,i)=>{const[e,n]=t.split(":").map((t=>Number(t))),a=Number(window.getComputedStyle(this.items).getPropertyValue("column-gap").replace("px","")||0),s=(t,i)=>i?s(i,t%i):t,o=s(n,Math.round(this.items.offsetHeight));return`${e*i*Math.round(this.items.offsetHeight)/o+a*(i-1)*n/o} / ${n*Math.round(this.items.offsetHeight)/o}`};if(this.items.children.length>0){const t=Math.floor(this.items.offsetWidth/this.items.children[0].offsetWidth);this.#a=t}document.body.offsetWidth>this.breakpointMin&&document.body.offsetWidth<=this.breakpointMax?this.setAttribute("scroll-enabled",""):this.removeAttribute("scroll-enabled"),this.hasAttribute("scroll-enabled")&&this.items.scrollWidth>this.items.offsetWidth+10?(this.setAttribute("scrollable",""),this.navigationContainer||this.#E(),this.#A(),this.snap||(this.items.children.length>0&&this.items.children[0].offsetWidth>this.items.offsetWidth/2?this.setAttribute("snap","center"):this.setAttribute("snap","start")),this.#x()):(this.navigationContainer&&this.pageNavigationContainer&&this.#I(),this.removeAttribute("scrollable","")),this.#m&&"natural"!==this.#m.toLowerCase()&&this.style.setProperty("--navigation-ratio",t(this.#m,this.#a)),this.items.classList.contains("grid-layout")&&(this.items.children.length<this.#a?this.items.classList.add("grid-layout--align-center"):this.items.classList.remove("grid-layout--align-center"))}#C(){if(this.pageNavigationDisabled)return;if(!this.#s||!this.#s>1)return;const t=this.#f(),i=[...this.items.children].indexOf(t);this.#o=i;const e=this.#o+this.#a>this.items.children.length-1?this.#s-1:Math.floor(i/this.#a);if(this.pageNavigationContainer&&(this.pageNavigationContainer.querySelector(".is-active")&&this.pageNavigationContainer.querySelector(".is-active").classList.remove("is-active"),this.pageNavigationContainer.children[e]&&this.pageNavigationContainer.children[e].querySelector("button").classList.add("is-active")),this.pageNavigationCounter){const t=this.pageNavigationCounter.querySelector(".page-navigation-counter__current");this.pageNavigationCounter.setAttribute("aria-label",`Page ${e+1} of ${this.#s}`),t&&(t.innerHTML=e+1)}}#N(){this.#u=new MutationObserver((t=>{t.forEach((t=>{"childList"===t.type&&(this.#b(),this.#p())}))})),this.#u.observe(this.items,{attributes:!1,childList:!0,subtree:!1})}#p(){if(!this.items.firstElementChild)return;const t={root:this.items,rootMargin:"0px",threshold:.75};this.#v&&this.#v.disconnect(),this.#v=new IntersectionObserver((t=>{this.navigationContainer&&t.forEach((({target:t,isIntersecting:i})=>{t.previousElementSibling||(this.navigationPrevButton.disabled=i),t.nextElementSibling||(this.navigationNextButton.disabled=i)}))}),t),this.#v.observe(this.items.firstElementChild),this.#v.observe(this.items.lastElementChild)}#L(t,i="instant"){let e=t;e<0?e=0:e>this.items.scrollWidth-this.items.offsetWidth&&(e=this.items.scrollWidth-this.items.offsetWidth),"instant"===i?this.items.scrollTo({behavior:"instant",left:e}):(this.#g=!0,this.classList.add("is-scrolling"),this.smoothScrollItems(e).finally((()=>{this.#g=!1,this.classList.remove("is-scrolling")})))}smoothScrollItems(t){return new Promise(((i,e)=>{let n=0,a=null;const s=()=>{const o=this.items.scrollLeft;if(this.#i)return e(o);if(o===a){if(n+=1,n>2)return i(t)}else n=0,a=o;return window.requestAnimationFrame(s),null};this.items.scrollTo({left:t,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"}),window.requestAnimationFrame(s)}))}}customElements.define("items-scroll",ItemsScroll);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import { BREAKPOINTS, debounce } from "utils";
+
+class ItemsScroll extends HTMLElement {
+    items;
+    scrollBar;
+    scrollBarTrack;
+    navigationContainer;
+    navigationPrevButton;
+    navigationNextButton;
+    pageNavigationContainer;
+    #isScrollBarDragged;
+    #boundScrollStart;
+    #boundScrollEnd;
+    #itemsPerPage;
+    #controlsListenersEnabled;
+    #boundPrevNavigationAction;
+    #boundNextNavigationAction;
+    #isNavigating=false;
+    #scrollPosition=0;
+    #navigationStateControlObserver;
+    #itemsMutationObserver;
+    #resizeObserver;
+    #imageContainerRatio;
+    static observedAttributes=[ "scrollable" ];
+    constructor() {
+        super();
+        this.items = this.querySelector("[data-items]");
+        this.breakpointMin = Object.keys(BREAKPOINTS).includes(this.getAttribute("breakpoint-min")) ? BREAKPOINTS[this.getAttribute("breakpoint-min")] : Number(this.getAttribute("breakpoint-min") || "0");
+        this.breakpointMax = Object.keys(BREAKPOINTS).includes(this.getAttribute("breakpoint-max")) ? BREAKPOINTS[this.getAttribute("breakpoint-max")] : Number(this.getAttribute("breakpoint-max") || "Infinity");
+        this.pageNavigationWrapper = null;
+        this.navigationContainer = null;
+        this.navigationPrevButton = null;
+        this.navigationNextButton = null;
+        this.snap = this.getAttribute("snap");
+        this.#boundPrevNavigationAction = null;
+        this.#boundNextNavigationAction = null;
+        this.#controlsListenersEnabled = false;
+        this.#navigationStateControlObserver = null;
+        this.#itemsMutationObserver = null;
+        this.#resizeObserver = null;
+        this.#boundScrollStart = this.#handleScrollStart.bind(this);
+        this.#boundScrollEnd = this.#handleScrollEnd.bind(this);
+    }
+    connectedCallback() {
+        if (!this.items) throw Error("Items container missing");
+        this.#scrollPosition = this.items.scrollLeft;
+        this.#resizeObserver = new ResizeObserver(debounce((() => {
+            this.#updateControls();
+        })), 50);
+        this.#resizeObserver.observe(this.items);
+        if (!this.#navigationStateControlObserver) {
+            this.#setUpNavigationStateControl();
+        }
+        if (!this.#itemsMutationObserver) {
+            this.#setUpItemsMutationObserver();
+        }
+        this.#imageContainerRatio = this.getAttribute("image-container-ratio");
+        this.items.addEventListener("scroll", this.#boundScrollStart, {
+            once: true
+        });
+        this.items.addEventListener("scrollend", this.#boundScrollEnd);
+    }
+    disconnectedCallback() {
+        this.items.removeEventListener("scroll", this.#boundScrollStart);
+        this.items.removeEventListener("scrollend", this.#boundScrollEnd);
+        if (this.#navigationStateControlObserver) {
+            this.#navigationStateControlObserver.disconnect();
+            this.#navigationStateControlObserver = null;
+        }
+        if (this.#itemsMutationObserver) {
+            this.#itemsMutationObserver.disconnect();
+            this.#itemsMutationObserver = null;
+        }
+        if (this.#resizeObserver) {
+            this.#resizeObserver.disconnect();
+            this.#resizeObserver = null;
+        }
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === "scrollable" && oldValue !== newValue) {
+            this.dispatchEvent(new CustomEvent("on:items-scroll:change-state", {
+                detail: {
+                    scrollable: this.hasAttribute("scrollable")
+                }
+            }));
+        }
+    }
+    get isNavigating() {
+        return this.#isNavigating;
+    }
+    get itemAtScroll() {
+        return this.#getItemAtScroll();
+    }
+    get itemsPerPage() {
+        return this.#itemsPerPage;
+    }
+    #getItemAtScroll() {
+        const itemsComputedStyle = window.getComputedStyle(this.items);
+        const itemsGap = Number(itemsComputedStyle.getPropertyValue("column-gap").replace("px", ""));
+        const itemComputedStyle = window.getComputedStyle(this.items.firstElementChild);
+        const itemMarginLeft = Number(itemComputedStyle.getPropertyValue("margin-left").replace("px", ""));
+        const itemMarginRight = Number(itemComputedStyle.getPropertyValue("margin-right").replace("px", ""));
+        const itemAtScroll = Array.from(this.items.children)[Math.round(this.items.scrollLeft / (itemMarginLeft + this.items.firstElementChild.getBoundingClientRect().width + itemMarginRight + itemsGap))];
+        return itemAtScroll;
+    }
+    #createNavigation() {
+        const navigationContainer = document.createElement("div");
+        navigationContainer.classList.add("navigation");
+        navigationContainer.innerHTML = `\n      <button type="button" class="navigation__button navigation__button--prev" data-navigation-prev aria-label="Previous page"></button>\n      <button type="button" class="navigation__button navigation__button--next" data-navigation-next aria-label="Next page"></button>\n    `;
+        this.appendChild(navigationContainer);
+        this.navigationContainer = navigationContainer;
+        this.navigationPrevButton = navigationContainer.querySelector("[data-navigation-prev]");
+        this.navigationNextButton = navigationContainer.querySelector("[data-navigation-next]");
+        const arrowPreviousSVG = document.getElementById("template-icon-chevron").content.cloneNode(true).firstElementChild;
+        arrowPreviousSVG.classList.add("icon--left");
+        this.navigationPrevButton.append(arrowPreviousSVG);
+        const arrowNextSVG = document.getElementById("template-icon-chevron").content.cloneNode(true).firstElementChild;
+        this.navigationNextButton.append(arrowNextSVG);
+    }
+    #handlePrevNavigationAction(e) {
+        e.preventDefault();
+        if (this.#isNavigating) return;
+        const itemAtScroll = this.#getItemAtScroll();
+        const previousItem = itemAtScroll.previousElementSibling;
+        if (previousItem) {
+            this.smoothScrollItems(previousItem.offsetLeft);
+        }
+    }
+    #handleNextNavigationAction(e) {
+        e.preventDefault();
+        if (this.#isNavigating) return;
+        const itemAtScroll = this.#getItemAtScroll();
+        const nextItem = itemAtScroll.nextElementSibling;
+        if (nextItem) {
+            this.smoothScrollItems(nextItem.offsetLeft);
+        }
+    }
+    #handleScrollStart() {
+        const position = this.items.scrollLeft;
+        const direction = position > this.#scrollPosition ? "FORWARD" : "BACKWARD";
+        this.#isNavigating = true;
+        this.classList.add("is-scrolling");
+        this.dispatchEvent(new CustomEvent("on:items-scroll:scroll-start", {
+            detail: {
+                direction: direction
+            }
+        }));
+    }
+    #handleScrollEnd() {
+        const position = this.items.scrollLeft;
+        const direction = position > this.#scrollPosition ? "FORWARD" : "BACKWARD";
+        this.#isNavigating = false;
+        this.classList.remove("is-scrolling");
+        this.dispatchEvent(new CustomEvent("on:items-scroll:scroll-end", {
+            detail: {
+                direction: direction,
+                position: position
+            }
+        }));
+        this.#scrollPosition = position;
+        this.items.addEventListener("scroll", this.#boundScrollStart, {
+            once: true
+        });
+    }
+    #enableControlsListeners() {
+        if (this.#controlsListenersEnabled) return;
+        this.#boundPrevNavigationAction = this.#handlePrevNavigationAction.bind(this);
+        this.#boundNextNavigationAction = this.#handleNextNavigationAction.bind(this);
+        this.navigationPrevButton.addEventListener("click", this.#boundPrevNavigationAction);
+        this.navigationNextButton.addEventListener("click", this.#boundNextNavigationAction);
+        this.#controlsListenersEnabled = true;
+    }
+    #disableControlsListeners() {
+        if (!this.#controlsListenersEnabled) return;
+        this.navigationPrevButton.removeEventListener("click", this.#boundPrevNavigationAction);
+        this.navigationNextButton.removeEventListener("click", this.#boundNextNavigationAction);
+        this.#controlsListenersEnabled = false;
+    }
+    #updateControls() {
+        const getNavigationRatio = (imageContainerRatio, itemsPerPage) => {
+            const [imageContainerWidth, imageContainerHeight] = imageContainerRatio.split(":").map((string => Number(string)));
+            const gap = Number(window.getComputedStyle(this.items).getPropertyValue("column-gap").replace("px", "") || 0);
+            const findGcd = (a, b) => b ? findGcd(b, a % b) : a;
+            const gcd = findGcd(imageContainerHeight, Math.round(this.items.offsetHeight));
+            return `${imageContainerWidth * itemsPerPage * Math.round(this.items.offsetHeight) / gcd + gap * (itemsPerPage - 1) * imageContainerHeight / gcd} / ${imageContainerHeight * Math.round(this.items.offsetHeight) / gcd}`;
+        };
+        if (this.items.children.length > 0) {
+            const itemsPerPage = Math.floor(this.items.offsetWidth / this.items.children[0].offsetWidth);
+            if (itemsPerPage) this.#itemsPerPage = itemsPerPage;
+        }
+        if (document.body.offsetWidth > this.breakpointMin && document.body.offsetWidth <= this.breakpointMax) {
+            this.setAttribute("scroll-enabled", "");
+        } else {
+            this.removeAttribute("scroll-enabled");
+        }
+        if (this.hasAttribute("scroll-enabled") && this.items.scrollWidth > this.items.offsetWidth + 10) {
+            this.setAttribute("scrollable", "");
+            if (!this.navigationContainer) this.#createNavigation();
+            if (!this.snap) {
+                if (this.items.children.length > 0 && this.items.children[0].offsetWidth > this.items.offsetWidth / 2) {
+                    this.setAttribute("snap", "center");
+                } else {
+                    this.setAttribute("snap", "start");
+                }
+            }
+            this.#enableControlsListeners();
+        } else {
+            if (this.navigationContainer) {
+                this.#disableControlsListeners();
+            }
+            this.removeAttribute("scrollable", "");
+        }
+        if (this.#imageContainerRatio && this.#imageContainerRatio.toLowerCase() !== "natural") {
+            this.style.setProperty("--navigation-ratio", getNavigationRatio(this.#imageContainerRatio, this.#itemsPerPage));
+        }
+        if (this.items.classList.contains("grid-layout")) {
+            if (this.items.children.length < this.#itemsPerPage) {
+                this.items.classList.add("grid-layout--align-center");
+            } else {
+                this.items.classList.remove("grid-layout--align-center");
+            }
+        }
+    }
+    #setUpItemsMutationObserver() {
+        const config = {
+            attributes: false,
+            childList: true,
+            subtree: false
+        };
+        this.#itemsMutationObserver = new MutationObserver((mutationList => {
+            mutationList.forEach((mutation => {
+                if (mutation.type === "childList") {
+                    this.#updateControls();
+                    this.#setUpNavigationStateControl();
+                }
+            }));
+        }));
+        this.#itemsMutationObserver.observe(this.items, config);
+    }
+    #setUpNavigationStateControl() {
+        if (!this.items.firstElementChild) return;
+        const options = {
+            root: this.items,
+            rootMargin: "0px",
+            threshold: .75
+        };
+        if (this.#navigationStateControlObserver) this.#navigationStateControlObserver.disconnect();
+        this.#navigationStateControlObserver = new IntersectionObserver((entries => {
+            if (this.navigationContainer) {
+                entries.forEach((({target: target, isIntersecting: isIntersecting}) => {
+                    if (!target.previousElementSibling) this.navigationPrevButton.disabled = isIntersecting;
+                    if (!target.nextElementSibling) this.navigationNextButton.disabled = isIntersecting;
+                }));
+            }
+        }), options);
+        this.#navigationStateControlObserver.observe(this.items.firstElementChild);
+        this.#navigationStateControlObserver.observe(this.items.lastElementChild);
+    }
+    smoothScrollItems(position) {
+        return new Promise(((resolve, reject) => {
+            let same = 0;
+            let lastPos = null;
+            const check = () => {
+                const newPos = this.items.scrollLeft;
+                if (this.#isScrollBarDragged) return reject(newPos);
+                if (newPos === lastPos) {
+                    same += 1;
+                    if (same > 2) {
+                        return resolve(position);
+                    }
+                } else {
+                    same = 0;
+                    lastPos = newPos;
+                }
+                window.requestAnimationFrame(check);
+                return null;
+            };
+            this.items.scrollTo({
+                left: position,
+                behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"
+            });
+            window.requestAnimationFrame(check);
+        }));
+    }
+}
+
+customElements.define("items-scroll", ItemsScroll);
+
+export default ItemsScroll;
 //# sourceMappingURL=items-scroll.js.map

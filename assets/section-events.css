@@ -6,6 +6,7 @@
   position: relative;
   height: auto;
   width: 100%;
+  overflow: hidden;
   background: var(--color--bg);
 }
 
@@ -85,7 +86,7 @@
     margin-top: 12px;
   }
 }
-.home-event items-scroll .navigation {
+.home-event .items-scroll .navigation {
   display: none !important;
 }
 
@@ -93,7 +94,7 @@
   .event {
     margin-bottom: 24px;
   }
-  items-scroll .event {
+  .items-scroll .event {
     margin-bottom: 0;
   }
   .event__details {

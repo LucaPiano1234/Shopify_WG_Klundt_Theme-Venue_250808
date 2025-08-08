@@ -162,7 +162,7 @@
       assign image_height = image_width | divided_by: skeleton_ratio | round
     endif
     unless skeleton_color
-      assign skeleton_color = settings.color_text | color_modify: 'alpha', 0.05
+      assign skeleton_color = settings.color_text | color_modify: 'alpha', 0.06
     endunless
   -%}
 

@@ -43,9 +43,6 @@
 .image-grid__link:hover {
   opacity: 1;
 }
-.image-grid__link:hover .image-grid__bg--overlay:before {
-  opacity: 0.6;
-}
 
 .image-grid__title.image-grid__title.image-grid__title--adapt-border:after {
   background: rgb(255, 255, 255);
@@ -73,6 +70,14 @@
 
 .image-grid__btn {
   margin-top: 18px;
+}
+.image-grid__btn.c-btn {
+  min-width: 120px;
+}
+@media (max-width: 47.9275em) {
+  .image-grid__btn.c-btn {
+    min-width: 110px;
+  }
 }
 
 .image-grid__btn.link {

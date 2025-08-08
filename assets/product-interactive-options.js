@@ -1,2 +1,233 @@
-class ProductInteractiveOptions extends HTMLElement{#t;#e;#n;constructor(){super(),this.#t=this.#i.bind(this),this.#e=this.#s.bind(this)}connectedCallback(){if(this.variantsControlElement=this.parentElement,this.inputs=this.getOptionsElementsObject(),this.options=Object.keys(this.inputs).reduce(((t,e)=>(t[this.inputs[e].position]=e,t)),[]),this.#n=[],this.dataset.variantId){const t=Number(this.dataset.variantId);this.selectVariantById(t)}setTimeout((()=>{this.variants=this.variantsControlElement.getVariantData(),this.currentVariant=this.getCurrentVariant(),this.setOptionInputsAvailability(),this.setUpInputListeners()}))}disconnectedCallback(){this.#n.forEach((t=>{t.element.removeEventListener(t.event,t.handler)})),this.variantsControlElement.removeEventListener("change",this.variantsControlElement.onVariantChange)}getOptionsElementsObject(){return Array.from(this.variantsControlElement.querySelectorAll("input, select > option")).reduce(((t,e)=>{if("INPUT"===e.nodeName){const n=e.name.trim();t.hasOwnProperty(n)||(t[n]={position:Object.keys(t).length,type:"inputs",elements:{}}),t[n].elements[e.value]={element:e}}else if("OPTION"===e.nodeName){const n=e.parentElement,i=n.name.replace("options[","").replace("]","").trim();t.hasOwnProperty(i)||(t[i]={position:Object.keys(t).length,type:"select",elements:{},selectElement:n}),t[i].elements[e.value]={element:e,text:e.innerHTML.trim()}}return t}),{})}getCurrentOptions(){return Array.from(this.variantsControlElement.querySelectorAll("input:checked, select")).map((t=>t.value))}getCurrentVariant(){const t=this.getCurrentOptions();return this.variants.filter((e=>t.every(((t,n)=>e.options[n]===t))))[0]||null}getVariantById(t){const[e]=this.variants.filter((e=>e.id===t));return e||null}optionsAvailableInOtherVariants(){const t=this.getCurrentVariant(),e=this.variants.filter((e=>e.available&&e.id!==t.id&&e.options[0]===t.options[0]));return t.options.reduce(((t,n,i)=>(e.some((t=>t.options.map(((t,e)=>`${t}_${e}`)).includes(`${n}_${i}`)))&&t.push(`${n}_${i}`),t)),[])}setOptionInputsAvailability(){this.currentVariant=this.getCurrentVariant(),Object.keys(this.inputs).forEach((t=>{Object.keys(this.inputs[t].elements).forEach((e=>{const{element:n,text:i}=this.inputs[t].elements[e];n.disabled=!0,"inputs"===this.inputs[t].type&&n.nextElementSibling.classList.add("is-disabled"),"select"===this.inputs[t].type&&(n.innerHTML=`${i} - Unavailable`)}))}));const t=new Set;this.currentVariant.options.forEach(((e,n)=>{const i=this.inputs[this.options[n]].elements[e],s=this.inputs[this.options[n]].type;i.element.disabled=!1,this.currentVariant.available&&(t.add(`${this.options[n]}_${e}`),"inputs"===s&&i.element.nextElementSibling.classList.remove("is-disabled"),"select"===s&&(i.element.innerHTML=i.text)),"select"!==s||t.has(`${this.options[n]}_${e}`)||(i.element.innerHTML=`${i.text} - ${window.theme.localize("SOLD_OUT")}`)})),this.variants.forEach((e=>{if(e.id!==this.currentVariant.id&&e.options[0]===this.currentVariant.options[0])e.options.every(((n,i)=>{if(i>0&&e.options[i-1]===this.currentVariant.options[i-1]){const s=this.inputs[this.options[i]].elements[n],r=this.inputs[this.options[i]].type;if(s.element.disabled=!1,!this.currentVariant.available&&this.currentVariant.options.includes(n))return!0;e.available&&(t.add(`${this.options[i]}_${n}`),"inputs"===r&&s.element.nextElementSibling.classList.remove("is-disabled"),"select"===r&&(s.element.innerHTML=s.text)),"select"!==r||t.has(`${this.options[i]}_${n}`)||(s.element.innerHTML=`${s.text} - ${window.theme.localize("SOLD_OUT")}`)}return!0}));else if(e.id!==this.currentVariant.id){const n=this.inputs[this.options[0]].elements[e.options[0]],i=this.inputs[this.options[0]].type;n.element.disabled=!1,e.available&&(t.add(`${this.options[0]}_${e.options[0]}`),"inputs"===i&&n.element.nextElementSibling.classList.remove("is-disabled"),"select"===i&&(n.element.innerHTML=n.text)),"select"!==i||t.has(`${this.options[0]}_${e.options[0]}`)||(n.element.innerHTML=`${n.text} - ${window.theme.localize("SOLD_OUT")}`)}}))}getFirstExistingVariant(t,e){const n=this.options.indexOf(e),i=this.variants.filter((e=>e.options[n]===t&&(0===n||e.options.slice(0,n).every(((t,e)=>t===this.currentVariant.options[e])))));for(let t=0,e=i.length;t<e;t+=1)if(i[t].available)return i[t];return i.length>0?i[0]:null}getExistingVariantFromSelectedOption(t,e){const n=this.getCurrentOptions(),i=this.options.indexOf(e);n[i]=t;return this.variants.find((t=>t.options.every(((t,e)=>t===n[e]))))||null}selectVariant(t){const e=document.activeElement,n=t.options.reduce(((t,e,n)=>(t[this.options[n]]=e,t)),{});Object.keys(this.inputs).forEach((t=>{Object.keys(this.inputs[t].elements).forEach((e=>{const{element:i,text:s}=this.inputs[t].elements[e];i.disabled=!1,"inputs"===this.inputs[t].type&&(i.nextElementSibling.classList.remove("is-disabled"),i.checked=!1),"select"===this.inputs[t].type&&(i.innerHTML=s),n[t]===e&&("inputs"===this.inputs[t].type&&(i.checked=!0),"select"===this.inputs[t].type&&(this.inputs[t].selectElement.value=e))}))})),this.setOptionInputsAvailability(),e&&e.focus()}selectVariantById(t){const e=this.getVariantById(t);e&&(this.selectVariant(e),this.variantsControlElement.onVariantChange())}selectCurrentOrFirstExistingVariant(t,e){const n=this.getExistingVariantFromSelectedOption(t.trim(),e.trim());if(n)this.selectVariant(n);else{const n=this.getFirstExistingVariant(t.trim(),e.trim());n&&this.selectVariant(n)}}setUpInputListeners(){this.variantsControlElement.removeEventListener("change",this.variantsControlElement.onVariantChange),Object.keys(this.inputs).forEach((t=>{"inputs"===this.inputs[t].type?Object.keys(this.inputs[t].elements).forEach((e=>{const n=this.inputs[t].elements[e].element;n.addEventListener("click",this.#t),this.#n.push({element:n,event:"click",handler:this.#t})})):"select"===this.inputs[t].type&&(this.inputs[t].selectElement.addEventListener("change",this.#e),this.#n.push({element:this.inputs[t].selectElement,event:"change",handler:this.#e}))})),this.variantsControlElement.addEventListener("change",this.variantsControlElement.onVariantChange)}#i(t){this.selectCurrentOrFirstExistingVariant(t.target.value.trim(),t.target.name.trim())}#s(t){this.selectCurrentOrFirstExistingVariant(t.target.value.trim(),t.target.name.trim().replace("options[","").replace("]",""))}}customElements.define("product-interactive-options",ProductInteractiveOptions);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+class ProductInteractiveOptions extends HTMLElement {
+    #boundOnClick;
+    #boundOnChange;
+    #listeners;
+    constructor() {
+        super();
+        this.#boundOnClick = this.#onClick.bind(this);
+        this.#boundOnChange = this.#onChange.bind(this);
+    }
+    connectedCallback() {
+        this.variantsControlElement = this.parentElement;
+        this.inputs = this.getOptionsElementsObject();
+        this.options = Object.keys(this.inputs).reduce(((options, key) => {
+            options[this.inputs[key].position] = key;
+            return options;
+        }), []);
+        this.#listeners = [];
+        if (this.dataset.variantId) {
+            const id = Number(this.dataset.variantId);
+            this.selectVariantById(id);
+        }
+        setTimeout((() => {
+            this.variants = this.variantsControlElement.getVariantData();
+            this.currentVariant = this.getCurrentVariant();
+            this.setOptionInputsAvailability();
+            this.setUpInputListeners();
+        }));
+    }
+    disconnectedCallback() {
+        this.#listeners.forEach((listener => {
+            listener.element.removeEventListener(listener.event, listener.handler);
+        }));
+        this.variantsControlElement.removeEventListener("change", this.variantsControlElement.onVariantChange);
+    }
+    getOptionsElementsObject() {
+        const options = Array.from(this.variantsControlElement.querySelectorAll("input, select > option"));
+        const obj = options.reduce(((finalObject, el) => {
+            if (el.nodeName === "INPUT") {
+                const optionName = el.name.trim();
+                if (!finalObject.hasOwnProperty(optionName)) finalObject[optionName] = {
+                    position: Object.keys(finalObject).length,
+                    type: "inputs",
+                    elements: {}
+                };
+                finalObject[optionName].elements[el.value] = {
+                    element: el
+                };
+            } else if (el.nodeName === "OPTION") {
+                const selectElement = el.parentElement;
+                const optionName = selectElement.name.replace("options[", "").replace("]", "").trim();
+                if (!finalObject.hasOwnProperty(optionName)) {
+                    finalObject[optionName] = {
+                        position: Object.keys(finalObject).length,
+                        type: "select",
+                        elements: {},
+                        selectElement: selectElement
+                    };
+                }
+                finalObject[optionName].elements[el.value] = {
+                    element: el,
+                    text: el.innerHTML.trim()
+                };
+            }
+            return finalObject;
+        }), {});
+        return obj;
+    }
+    getCurrentOptions() {
+        return Array.from(this.variantsControlElement.querySelectorAll("input:checked, select")).map((input => input.value));
+    }
+    getCurrentVariant() {
+        const options = this.getCurrentOptions();
+        const result = this.variants.filter((variant => options.every(((option, index) => variant.options[index] === option))));
+        return result[0] || null;
+    }
+    getVariantById(id) {
+        const [result] = this.variants.filter((variant => variant.id === id));
+        return result || null;
+    }
+    optionsAvailableInOtherVariants() {
+        const currentVariant = this.getCurrentVariant();
+        const availableVariants = this.variants.filter((variant => variant.available && variant.id !== currentVariant.id && variant.options[0] === currentVariant.options[0]));
+        return currentVariant.options.reduce(((options, option, i) => {
+            if (availableVariants.some((variant => variant.options.map(((o, j) => `${o}_${j}`)).includes(`${option}_${i}`)))) options.push(`${option}_${i}`);
+            return options;
+        }), []);
+    }
+    setOptionInputsAvailability() {
+        this.currentVariant = this.getCurrentVariant();
+        Object.keys(this.inputs).forEach((option => {
+            Object.keys(this.inputs[option].elements).forEach((value => {
+                const {element: element, text: text} = this.inputs[option].elements[value];
+                element.disabled = true;
+                if (this.inputs[option].type === "inputs") element.nextElementSibling.classList.add("is-disabled");
+                if (this.inputs[option].type === "select") element.innerHTML = `${text} - Unavailable`;
+            }));
+        }));
+        const availableOptions = new Set;
+        this.currentVariant.options.forEach(((option, i) => {
+            const optionInput = this.inputs[this.options[i]].elements[option];
+            const inputType = this.inputs[this.options[i]].type;
+            optionInput.element.disabled = false;
+            if (this.currentVariant.available) {
+                availableOptions.add(`${this.options[i]}_${option}`);
+                if (inputType === "inputs") optionInput.element.nextElementSibling.classList.remove("is-disabled");
+                if (inputType === "select") optionInput.element.innerHTML = optionInput.text;
+            }
+            if (inputType === "select" && !availableOptions.has(`${this.options[i]}_${option}`)) optionInput.element.innerHTML = `${optionInput.text} - ${window.theme.localize("SOLD_OUT")}`;
+        }));
+        this.variants.forEach((variant => {
+            if (variant.id !== this.currentVariant.id && variant.options[0] === this.currentVariant.options[0]) {
+                variant.options.every(((option, i) => {
+                    if (i > 0 && variant.options[i - 1] === this.currentVariant.options[i - 1]) {
+                        const optionInput = this.inputs[this.options[i]].elements[option];
+                        const inputType = this.inputs[this.options[i]].type;
+                        optionInput.element.disabled = false;
+                        if (!this.currentVariant.available && this.currentVariant.options.includes(option)) return true;
+                        if (variant.available) {
+                            availableOptions.add(`${this.options[i]}_${option}`);
+                            if (inputType === "inputs") optionInput.element.nextElementSibling.classList.remove("is-disabled");
+                            if (inputType === "select") optionInput.element.innerHTML = optionInput.text;
+                        }
+                        if (inputType === "select" && !availableOptions.has(`${this.options[i]}_${option}`)) optionInput.element.innerHTML = `${optionInput.text} - ${window.theme.localize("SOLD_OUT")}`;
+                    }
+                    return true;
+                }));
+            } else if (variant.id !== this.currentVariant.id) {
+                const optionInput = this.inputs[this.options[0]].elements[variant.options[0]];
+                const inputType = this.inputs[this.options[0]].type;
+                optionInput.element.disabled = false;
+                if (variant.available) {
+                    availableOptions.add(`${this.options[0]}_${variant.options[0]}`);
+                    if (inputType === "inputs") optionInput.element.nextElementSibling.classList.remove("is-disabled");
+                    if (inputType === "select") optionInput.element.innerHTML = optionInput.text;
+                }
+                if (inputType === "select" && !availableOptions.has(`${this.options[0]}_${variant.options[0]}`)) optionInput.element.innerHTML = `${optionInput.text} - ${window.theme.localize("SOLD_OUT")}`;
+            }
+        }));
+    }
+    getFirstExistingVariant(option, optionGroup) {
+        const optionPosition = this.options.indexOf(optionGroup);
+        const existingVariantsWithOption = this.variants.filter((variant => variant.options[optionPosition] === option && (optionPosition === 0 || variant.options.slice(0, optionPosition).every(((o, index) => o === this.currentVariant.options[index])))));
+        for (let i = 0, l = existingVariantsWithOption.length; i < l; i += 1) {
+            if (existingVariantsWithOption[i].available) return existingVariantsWithOption[i];
+        }
+        return existingVariantsWithOption.length > 0 ? existingVariantsWithOption[0] : null;
+    }
+    getExistingVariantFromSelectedOption(option, optionGroup) {
+        const options = this.getCurrentOptions();
+        const optionPosition = this.options.indexOf(optionGroup);
+        options[optionPosition] = option;
+        const variant = this.variants.find((v => v.options.every(((val, idx) => val === options[idx]))));
+        return variant || null;
+    }
+    selectVariant(variant) {
+        const currentFocusedElement = document.activeElement;
+        const optionsByGroup = variant.options.reduce(((grouped, option, index) => {
+            grouped[this.options[index]] = option;
+            return grouped;
+        }), {});
+        Object.keys(this.inputs).forEach((option => {
+            Object.keys(this.inputs[option].elements).forEach((value => {
+                const {element: element, text: text} = this.inputs[option].elements[value];
+                element.disabled = false;
+                if (this.inputs[option].type === "inputs") {
+                    element.nextElementSibling.classList.remove("is-disabled");
+                    element.checked = false;
+                }
+                if (this.inputs[option].type === "select") element.innerHTML = text;
+                if (optionsByGroup[option] === value) {
+                    if (this.inputs[option].type === "inputs") element.checked = true;
+                    if (this.inputs[option].type === "select") this.inputs[option].selectElement.value = value;
+                }
+            }));
+        }));
+        this.setOptionInputsAvailability();
+        if (currentFocusedElement) {
+            currentFocusedElement.focus();
+        }
+    }
+    selectVariantById(id) {
+        const variant = this.getVariantById(id);
+        if (variant) {
+            this.selectVariant(variant);
+            this.variantsControlElement.onVariantChange();
+        }
+    }
+    selectCurrentOrFirstExistingVariant(option, optionGroup) {
+        const selectedVariant = this.getExistingVariantFromSelectedOption(option.trim(), optionGroup.trim());
+        if (selectedVariant) {
+            this.selectVariant(selectedVariant);
+        } else {
+            const firstExistingVariant = this.getFirstExistingVariant(option.trim(), optionGroup.trim());
+            if (firstExistingVariant) {
+                this.selectVariant(firstExistingVariant);
+            }
+        }
+    }
+    setUpInputListeners() {
+        this.variantsControlElement.removeEventListener("change", this.variantsControlElement.onVariantChange);
+        Object.keys(this.inputs).forEach((optionGroup => {
+            if (this.inputs[optionGroup].type === "inputs") {
+                Object.keys(this.inputs[optionGroup].elements).forEach((option => {
+                    const input = this.inputs[optionGroup].elements[option].element;
+                    input.addEventListener("click", this.#boundOnClick);
+                    this.#listeners.push({
+                        element: input,
+                        event: "click",
+                        handler: this.#boundOnClick
+                    });
+                }));
+            } else if (this.inputs[optionGroup].type === "select") {
+                this.inputs[optionGroup].selectElement.addEventListener("change", this.#boundOnChange);
+                this.#listeners.push({
+                    element: this.inputs[optionGroup].selectElement,
+                    event: "change",
+                    handler: this.#boundOnChange
+                });
+            }
+        }));
+        this.variantsControlElement.addEventListener("change", this.variantsControlElement.onVariantChange);
+    }
+    #onClick(e) {
+        this.selectCurrentOrFirstExistingVariant(e.target.value.trim(), e.target.name.trim());
+    }
+    #onChange(e) {
+        this.selectCurrentOrFirstExistingVariant(e.target.value.trim(), e.target.name.trim().replace("options[", "").replace("]", ""));
+    }
+}
+
+customElements.define("product-interactive-options", ProductInteractiveOptions);
 //# sourceMappingURL=product-interactive-options.js.map

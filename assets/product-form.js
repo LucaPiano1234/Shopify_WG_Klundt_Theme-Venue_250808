@@ -1,2 +1,94 @@
-import Cart from"cart-store";class ProductForm extends HTMLElement{#t;#e;static#r=[];constructor(){super(),this.#t=this.submit.bind(this)}connectedCallback(){this.#e=!1,setTimeout((()=>{this.form=this.querySelector("form"),this.idInput=this.form.querySelector('input[name="id"]'),this.submitButton=this.form.elements.add,this.stagedAction=this.querySelector("staged-action"),this.idInput.removeAttribute("disabled"),this.notifyOnAdd=this.hasAttribute("notify-on-add"),this.redirectOnAdd=this.getAttribute("redirect-on-add"),this.#e=!0,this.form.addEventListener("submit",this.#t)}))}disconnectedCallback(){this.#e&&(this.#e=!1,this.form.removeEventListener("submit",this.#t))}async submit(t){t.preventDefault();const e=new FormData(t.target),r=Object.fromEntries(e.entries());try{this.removeError(),this.redirectOnAdd&&!ProductForm.#r.includes(this.form.id)&&ProductForm.#r.push(this.form.id),this.stagedAction&&await this.stagedAction.setState("DOING"),await Cart.add(r),this.redirectOnAdd&&(ProductForm.#r=ProductForm.#r.filter((t=>t!==this.form.id)),0===ProductForm.#r.length&&(window.location.href=this.redirectOnAdd)),this.stagedAction&&await this.stagedAction.setState("DONE");const t=this.closest("quick-shop");if(t&&await t.close(),this.notifyOnAdd){if(await Cart.resetVariantsBeingAdded(),!this.closest(".modal--cart")){const t=document.querySelector(".modal--cart, .popup--cart-notification");t&&!t.shown?t.open():t&&t.interval&&(t.interval.reset(),t.interval.start())}}else await Cart.resetLatestAddedProduct(),await Cart.resetVariantsBeingAdded(r.id)}catch(t){this.#s(t.message),this.stagedAction&&await this.stagedAction.setState("IDLE"),this.redirectOnAdd&&(ProductForm.#r=ProductForm.#r.filter((t=>t!==this.form.id)))}}removeError(){const t=this.querySelector(".errors");t&&t.remove()}#s(t){if(this.removeError(),this.submitButton){const e=document.createElement("div");e.classList.add("errors","qty-error","u-small"),e.innerHTML=t,this.submitButton.before(e)}}}customElements.define("product-form",ProductForm);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import Cart from "cart-store";
+
+class ProductForm extends HTMLElement {
+    #boundSubmit;
+    #eventAttached;
+    static #formsBeingProcessed=[];
+    constructor() {
+        super();
+        this.#boundSubmit = this.submit.bind(this);
+    }
+    connectedCallback() {
+        this.#eventAttached = false;
+        setTimeout((() => {
+            this.form = this.querySelector("form");
+            this.idInput = this.form.querySelector('input[name="id"]');
+            this.submitButton = this.form.elements.add;
+            this.stagedAction = this.querySelector("staged-action");
+            this.idInput.removeAttribute("disabled");
+            this.notifyOnAdd = this.hasAttribute("notify-on-add");
+            this.redirectOnAdd = this.getAttribute("redirect-on-add");
+            this.#eventAttached = true;
+            this.form.addEventListener("submit", this.#boundSubmit);
+        }));
+    }
+    disconnectedCallback() {
+        if (this.#eventAttached) {
+            this.#eventAttached = false;
+            this.form.removeEventListener("submit", this.#boundSubmit);
+        }
+    }
+    async submit(e) {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const item = Object.fromEntries(data.entries());
+        try {
+            this.removeError();
+            if (this.redirectOnAdd && !ProductForm.#formsBeingProcessed.includes(this.form.id)) {
+                ProductForm.#formsBeingProcessed.push(this.form.id);
+            }
+            if (this.stagedAction) await this.stagedAction.setState("DOING");
+            await Cart.add(item);
+            if (this.redirectOnAdd) {
+                ProductForm.#formsBeingProcessed = ProductForm.#formsBeingProcessed.filter((id => id !== this.form.id));
+                if (ProductForm.#formsBeingProcessed.length === 0) {
+                    window.location.href = this.redirectOnAdd;
+                }
+            }
+            if (this.stagedAction) await this.stagedAction.setState("DONE");
+            const quickShop = this.closest("quick-shop");
+            if (quickShop) {
+                await quickShop.close();
+            }
+            if (this.notifyOnAdd) {
+                await Cart.resetVariantsBeingAdded();
+                if (!this.closest(".modal--cart")) {
+                    const cart = document.querySelector(".modal--cart, .popup--cart-notification");
+                    if (cart && !cart.shown) {
+                        cart.open();
+                    } else if (cart && cart.interval) {
+                        cart.interval.reset();
+                        cart.interval.start();
+                    }
+                }
+            } else {
+                await Cart.resetLatestAddedProduct();
+                await Cart.resetVariantsBeingAdded(item.id);
+            }
+        } catch (error) {
+            this.#renderError(error.message);
+            if (this.stagedAction) await this.stagedAction.setState("IDLE");
+            if (this.redirectOnAdd) {
+                ProductForm.#formsBeingProcessed = ProductForm.#formsBeingProcessed.filter((id => id !== this.form.id));
+            }
+        }
+    }
+    removeError() {
+        const error = this.querySelector(".errors");
+        if (!error) return;
+        error.remove();
+    }
+    #renderError(message) {
+        this.removeError();
+        if (this.submitButton) {
+            const error = document.createElement("div");
+            error.classList.add("errors", "qty-error", "u-small");
+            error.innerHTML = message;
+            this.submitButton.before(error);
+        }
+    }
+}
+
+customElements.define("product-form", ProductForm);
 //# sourceMappingURL=product-form.js.map

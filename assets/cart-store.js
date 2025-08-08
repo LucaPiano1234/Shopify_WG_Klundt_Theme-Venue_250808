@@ -1,2 +1,759 @@
-import{produce}from"immer";import{createStore}from"zustand";import plugins from"cart-plugins";const ALLOWED_STORE_KEYS=["cart","giftWrapping","latestAddedProduct","lineItemsBeingUpdated","noteBeingUpdated","productVariantsBeingAdded","recommendations"];class CartStore{#t={};#e;#a;static#n=!1;constructor(t={}){if(CartStore.#n)throw new Error("Cart store instance already exists");CartStore.#n=!0,this.#e=window.Shopify?.routes?.root??"/",this.#a=null,this.#t=Object.entries(t).reduce(((t,[e,a])=>({...t,..."function"!=typeof a?{[e]:a}:{}})),{}),this.#i(),0===this.#a.getState().cart.total_price&&localStorage.removeItem("freeShippingAnimationShown")}static async getCart(){try{const t=await fetch(`${window.Shopify?.routes?.root??"/"}cart.js`);return await t.json()}catch(t){throw new Error(`Could not get cart data: "${t}"`)}}static async clearCart(){try{const t=await fetch(`${window.Shopify?.routes?.root??"/"}cart/clear.js`,{method:"POST"});return await t.json()}catch(t){throw new Error(`Could not clear cart: "${t}"`)}}static async addVariantsToCart(t){if(!t)throw new Error("Variant(s) must be specified");const e=(Array.isArray(t)?t:[t]).map((t=>Object.keys(t).find((t=>t.includes("properties")))?Object.entries(t).reduce(((t,[e,a])=>e.includes("properties")&&""!==a?{...t,properties:{...t.properties||{},[e.replace("properties[","").replace("]","")]:a}}:{...t,[e]:a}),{}):t)),a=await fetch(`${window.Shopify?.routes?.root??"/"}cart/add.js`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({items:e})}),n=await a.json();if(n.status)throw new Error(n.description);return n.items}static async changeCartLineItem(t={},e=null){const{id:a,quantity:n,properties:i}=t;if(!a)throw new Error("Line item id must be present in request body");const r=await fetch(`${window.Shopify?.routes?.root??"/"}cart/change.js`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:a,quantity:n,properties:i}),signal:e}),o=await r.json();if(o.status)throw new Error(o.description);return o}static async updateCart(t={},e=null){if(!t.hasOwnProperty("attributes")&&!t.hasOwnProperty("updates")&&!t.hasOwnProperty("note"))throw new Error("Cart 'attributes' or 'updates' must be specified");const a=await fetch(`${window.Shopify?.routes?.root??"/"}cart/update.js`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(t),signal:e}),n=await a.json();if(n.status)throw new Error(n.description);return n}getState(){return Object.fromEntries(Object.entries(this.#a.getState()).filter((([t])=>[...ALLOWED_STORE_KEYS,...Object.keys(this.#t)].includes(t))))}setState(t,e){if("cart"===t)throw new Error("Cannot set cart field directly");this.#a.getState().setFieldState(t,e)}subscribe(t){if(!t)throw new Error("Callback function must be provided");return this.#a.subscribe(((e,a)=>{const n=Object.fromEntries(Object.entries(e).filter((([t])=>[...ALLOWED_STORE_KEYS,...Object.keys(this.#t)].includes(t)))),i=Object.fromEntries(Object.entries(a).filter((([t])=>[...ALLOWED_STORE_KEYS,...Object.keys(this.#t)].includes(t))));return t.call(this,n,i)}))}async clear(){document.dispatchEvent(new CustomEvent("on:cart:loading",{detail:{type:"CLEAR"}}));try{const t=await this.#a.getState().clear();return document.dispatchEvent(new CustomEvent("on:cart:loaded",{detail:{cart:t,type:"CLEAR"}})),t}catch(t){throw document.dispatchEvent(new CustomEvent("on:cart:failed",{detail:{error:t,type:"CLEAR"}})),t}}async add(t){document.dispatchEvent(new CustomEvent("on:cart:loading",{detail:{type:"ADD"}}));try{const e=await this.#a.getState().add(t),a=(Array.isArray(t)?t:[t]).map((t=>({id:t.id,quantity:Number(t.quantity)})));return document.dispatchEvent(new CustomEvent("on:cart:loaded",{detail:{items:a,cart:e,type:"ADD"}})),e}catch(t){throw document.dispatchEvent(new CustomEvent("on:cart:failed",{detail:{error:t,type:"ADD"}})),t}}async change(t){const{id:e,quantity:a,properties:n}=t;document.dispatchEvent(new CustomEvent("on:cart:loading",{detail:{type:"CHANGE"}}));try{const t=await this.#a.getState().change(e,a,n);return document.dispatchEvent(new CustomEvent("on:cart:loaded",{detail:{cart:t,type:"CHANGE"}})),t}catch(t){throw document.dispatchEvent(new CustomEvent("on:cart:failed",{detail:{error:t,type:"CHANGE"}})),t}}async update(t,e="cartUpdate"){const{attributes:a,updates:n,note:i}=t;document.dispatchEvent(new CustomEvent("on:cart:loading",{detail:{type:"UPDATE"}}));try{const t=await this.#a.getState().update({attributes:a,updates:n,note:i},e);return document.dispatchEvent(new CustomEvent("on:cart:loaded",{detail:{cart:t,type:"UPDATE"}})),t}catch(t){throw document.dispatchEvent(new CustomEvent("on:cart:failed",{detail:{error:t,type:"UPDATE"}})),t}}async refresh(){document.dispatchEvent(new CustomEvent("on:cart:loading",{detail:{type:"REFRESH"}}));try{const t=await this.#a.getState().refresh();return document.dispatchEvent(new CustomEvent("on:cart:loaded",{detail:{cart:t,type:"REFRESH"}})),t}catch(t){throw document.dispatchEvent(new CustomEvent("on:cart:failed",{detail:{error:t,type:"REFRESH"}})),t}}async enableCartRecommendations(t="related"){if("related"!==t&&"complementary"!==t)throw new Error('Recommendations intent must be set to either "related" or "complementary"');this.cartRecommendationsIntent=t,await this.#a.getState().enableRecommendations(t)}async disableCartRecommendations(){this.cartRecommendationsIntent=null,await this.#a.getState().disableRecommendations()}async resetLatestAddedProduct(){await this.#a.getState().resetLatestAddedProduct()}async resetVariantsBeingAdded(t=""){await this.#a.getState().resetVariantsBeingAdded(t)}async setGiftWrapping(t=!0){return await this.#a.getState().setGiftWrapping(t)}async syncGiftWrapping(){await this.#a.getState().syncGiftWrapping()}async updateGiftWrappingMessage(t=""){return this.#a.getState().updateGiftWrappingMessage(t)}async updateCartNote(t=""){return this.#a.getState().updateNote(t)}#i(){const t=document.getElementById("cart-data"),e=t?JSON.parse(t.textContent):{},a=document.getElementById("cart-gift-wrapping-data"),n={giftWrapping:{...a?{...JSON.parse(a.textContent)}:{productId:null,wrapIndividually:!1},statusBeingUpdated:!1,messageBeingUpdated:!1}};this.#a=createStore(((t,a)=>({...this.#t,...n,lineItemsBeingUpdated:[],latestAddedProduct:null,noteBeingUpdated:!1,ongoingUpdates:{items:{},note:null,giftWrappingMessage:null},cart:e,recommendations:{enabled:!1,intent:"related",items:{}},productVariantsBeingAdded:[],setFieldState:async(e,a)=>{t(produce((t=>{t[e]=a})))},clear:async()=>{const e=await CartStore.clearCart();return t(produce((t=>{t.lineItemsBeingUpdated=[],t.latestAddedProduct=null,t.cart={},t.recommendations={},t.productVariantsBeingAdded=[]}))),e},add:async e=>{if(!e)throw new Error("Variant(s) must be specified");t(produce((t=>{t.productVariantsBeingAdded=(Array.isArray(e)?e:[e]).map((t=>t.id))})));let n=null;try{const a=await CartStore.addVariantsToCart(e);t(produce((t=>{t.latestAddedProduct=a?a[0]:null})))}catch(t){n=t}const i=a().cart.item_count,r=await CartStore.getCart();if(t(produce((t=>{t.cart=r}))),i!==r.item_count&&await a().updateGiftWrapping(),await a().updateRecommendations(),n)throw n;return a().cart},change:async(e,n,i)=>{if(!e)throw new Error("Line item key must be specified");a().ongoingUpdates.items[e]&&(a().ongoingUpdates.items[e].abort(),t(produce((t=>{t.ongoingUpdates.items[e]=null}))));const r=new AbortController,{signal:o}=r;let s;t(produce((t=>{a().lineItemsBeingUpdated.includes(e)||t.lineItemsBeingUpdated.push(e),t.ongoingUpdates.items[e]=r})));let d=null;try{s=await CartStore.changeCartLineItem({quantity:n,properties:i,id:e},o)}catch(t){d=t,s=await CartStore.getCart()}const c=a().cart.item_count;if(s={...s,items:s.items.filter((t=>t.quantity>0))},t(produce((t=>{t.lineItemsBeingUpdated=t.lineItemsBeingUpdated.filter((t=>t!==e)),t.cart=s,t.ongoingUpdates.items[e]=null}))),c!==s.item_count&&await a().updateGiftWrapping(),await a().updateRecommendations(),d)throw d;return s},update:async({attributes:e,updates:n,note:i},r)=>{if(!e&&!n&&!i)throw new Error("At least one of 'attributes', 'updates' or 'note must be specified");if("items"===r)throw new Error("'items' operation id is reserved");a().ongoingUpdates[r]&&(a().ongoingUpdates[r].abort(),t(produce((t=>{t.ongoingUpdates[r]=null}))));const o=new AbortController,{signal:s}=o;t(produce((t=>{t.ongoingUpdates[r]=o})));const d=await CartStore.updateCart({attributes:e,updates:n,note:i},s);return t(produce((t=>{t.cart=d,t.ongoingUpdates[r]=null}))),d},refresh:async()=>{const e=await CartStore.getCart(),n=a().cart.item_count;return t(produce((t=>{t.cart=e}))),n!==e.item_count&&await a().updateGiftWrapping(),await a().updateRecommendations(),e},enableRecommendations:async(e="related")=>{a().recommendations.enabled||(t(produce((t=>{t.recommendations.enabled=!0,t.recommendations.intent=e}))),await a().updateRecommendations())},disableRecommendations:async()=>{a().recommendations.enabled&&(t(produce((t=>{t.recommendations.enabled=!1}))),await a().updateRecommendations())},resetLatestAddedProduct:()=>{t(produce((t=>{t.latestAddedProduct=null})))},resetVariantsBeingAdded:(e="")=>{t(produce((t=>{t.productVariantsBeingAdded=e?t.productVariantsBeingAdded.filter((t=>t!==e)):[]})))},setGiftWrapping:async(e=!0)=>{const n=a().giftWrapping.productId;if(!n)return null;let i;const r=a().cart,o=a().giftWrapping.wrapIndividually;if(e){t(produce((t=>{t.giftWrapping.statusBeingUpdated=!0})));const s=a().cart.attributes["_gift-wrapping-product-id"];i=await CartStore.updateCart({attributes:{...s!==n?{"_gift-wrapping-product-id":n}:{},"gift-wrapping":e,"gift-wrapping-message":""},updates:{[n]:o?r.items.reduce(((t,e)=>e.variant_id!==n?t+e.quantity:t),0):1}}),t(produce((t=>{t.giftWrapping.statusBeingUpdated=!1,t.cart=i})))}else{let r=null,o=null;const s=a().cart.items.find((t=>t.variant_id===n));if(t(produce((t=>{t.giftWrapping.statusBeingUpdated=!0}))),s){o=s.key,a().ongoingUpdates.items[o]&&(a().ongoingUpdates.items[o].abort(),t(produce((t=>{t.ongoingUpdates.items[o]=null}))));const e=new AbortController;r=e.signal,t(produce((t=>{a().lineItemsBeingUpdated.includes(o)||t.lineItemsBeingUpdated.push(o),t.ongoingUpdates.items[o]=e})))}i=await CartStore.updateCart({attributes:{"_gift-wrapping-product-id":null,"gift-wrapping":e,"gift-wrapping-message":""},updates:{[n]:0}},r),t(produce((t=>{o&&(t.lineItemsBeingUpdated=t.lineItemsBeingUpdated.filter((t=>t!==o))),t.giftWrapping.statusBeingUpdated=!1,t.cart=i})))}return i},syncGiftWrapping:async()=>{const e=a().giftWrapping.productId,n=a().cart.attributes["_gift-wrapping-product-id"];if(n&&n!==e){const e=a().cart.items.find((t=>t.id===n));if(e){a().ongoingUpdates.items[e.key]&&(a().ongoingUpdates.items[e.key].abort(),t(produce((t=>{t.ongoingUpdates.items[e.key]=null}))));const i=new AbortController,{signal:r}=i;t(produce((t=>{a().lineItemsBeingUpdated.includes(e.key)||t.lineItemsBeingUpdated.push(e.key),t.ongoingUpdates.items[e.key]=i})));const o=await CartStore.updateCart({attributes:{"_gift-wrapping-product-id":null},updates:{[n]:0}},r);t(produce((t=>{t.lineItemsBeingUpdated=t.lineItemsBeingUpdated.filter((t=>t!==e.key)),t.giftWrapping.statusBeingUpdated=!1,t.cart=o})))}}if(!e)return;const i=Boolean(a().cart.attributes["gift-wrapping"]),r=a().giftWrapping.wrapIndividually,o=a().cart.items.find((t=>t.variant_id===e));!i&&o&&await a().setGiftWrapping(!1),i&&!o&&await a().setGiftWrapping(!0),i&&o&&r&&1===o.quantity&&await a().updateGiftWrapping(),i&&o&&!r&&o.quantity>1&&await a().updateGiftWrapping()},updateGiftWrapping:async()=>{const e=a().giftWrapping.productId;if(!e)return;const n=a().giftWrapping.wrapIndividually,i=a().cart.items.find((t=>t.variant_id===e));if(!i||a().cart.items_count>1&&!n&&i)return;const{key:r}=i;a().ongoingUpdates.items[r]&&(a().ongoingUpdates.items[r].abort(),t(produce((t=>{t.ongoingUpdates.items[r]=null}))));const o=new AbortController,{signal:s}=o;t(produce((t=>{a().lineItemsBeingUpdated.includes(r)||t.lineItemsBeingUpdated.push(r),t.ongoingUpdates.items[r]=o})));let d=n?a().cart.items.reduce(((t,a)=>a.variant_id!==e?t+a.quantity:t),0):1;i&&0===a().cart.items.filter((t=>t.id!==e)).length&&(d=0);const c=0===d?{attributes:{"gift-wrapping":!1,"gift-wrapping-message":""}}:{},p=await CartStore.updateCart({...c,updates:{[e]:d}},s);t(produce((t=>{t.lineItemsBeingUpdated=t.lineItemsBeingUpdated.filter((t=>t!==r)),t.cart=p})))},updateGiftWrappingMessage:async e=>{a().giftWrapping.messageBeingUpdated&&a().ongoingUpdates.giftWrappingMessage&&(a().ongoingUpdates.giftWrappingMessage.abort(),t(produce((t=>{t.ongoingUpdates.giftWrappingMessage=null,t.giftWrapping.messageBeingUpdated=!1}))));const n=new AbortController,{signal:i}=n;t(produce((t=>{t.ongoingUpdates.giftWrappingMessage=n,t.giftWrapping.messageBeingUpdated=!0})));const r=await CartStore.updateCart({attributes:{"gift-wrapping-message":e}},i);return t(produce((t=>{t.ongoingUpdates.giftWrappingMessage=null,t.giftWrapping.messageBeingUpdated=!1,t.cart=r}))),r},updateNote:async e=>{a().noteBeingUpdated&&a().ongoingUpdates.note&&(a().ongoingUpdates.note.abort(),t(produce((t=>{t.ongoingUpdates.note=null,t.noteBeingUpdated=!1}))));const n=new AbortController,{signal:i}=n;t(produce((t=>{t.ongoingUpdates.note=n,t.noteBeingUpdated=!0})));const r=await CartStore.updateCart({note:e},i);return t(produce((t=>{t.ongoingUpdates.note=null,t.noteBeingUpdated=!1,t.cart=r}))),r},updateRecommendations:async()=>{if(!a().recommendations.enabled)return;const{intent:e,items:n}=a().recommendations,i={},r=Object.keys(n),o=a().cart.items.reduce(((t,e)=>(e.gift_card||t.includes(e.product_id.toString())||t.push(e.product_id.toString()),t)),[]),s=r.filter((t=>o.includes(t))),d=s.reduce(((t,e)=>({...t,[e]:n[e]})),{}),c=o.filter((t=>!r.includes(t)));await Promise.all([...s.length<r.length?s:[],...c].map((async t=>{const a=await fetch(`${this.#e}recommendations/products.json?product_id=${t}&intent=${e}`),n=await a.json();s.includes(t)?d[t]=n:i[t]=n})));const p={...d,...i};t(produce((t=>{t.recommendations.items=Object.keys(p).reduce(((t,e)=>({...t,[e]:{weight:1/a().cart.items.reduce(((t,e)=>(t.includes(e.id)||t.push(e.id),t)),[]).length,products:p[e].products}})),{})})))}})))}}const Cart=new CartStore(plugins.reduce(((t,e)=>({...t,...e.fields?e.fields:{}})),{}));Cart.syncGiftWrapping();export{CartStore};export default Cart;
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import { produce } from "immer";
+
+import { createStore } from "zustand";
+
+import plugins from "cart-plugins";
+
+const ALLOWED_STORE_KEYS = [ "cart", "giftWrapping", "latestAddedProduct", "lineItemsBeingUpdated", "noteBeingUpdated", "productVariantsBeingAdded", "recommendations" ];
+
+class CartStore {
+    #additionalFields={};
+    #rootRoute;
+    #store;
+    static #instantiated=false;
+    constructor(fields = {}) {
+        if (CartStore.#instantiated) throw new Error("Cart store instance already exists");
+        CartStore.#instantiated = true;
+        this.#rootRoute = window.Shopify?.routes?.root ?? "/";
+        this.#store = null;
+        this.#additionalFields = Object.entries(fields).reduce(((acc, [key, value]) => ({
+            ...acc,
+            ...typeof value !== "function" ? {
+                [key]: value
+            } : {}
+        })), {});
+        this.#init();
+        if (this.#store.getState().cart.total_price === 0) localStorage.removeItem("freeShippingAnimationShown");
+    }
+    static async getCart() {
+        try {
+            const data = await fetch(`${window.Shopify?.routes?.root ?? "/"}cart.js`);
+            const cart = await data.json();
+            return cart;
+        } catch (e) {
+            throw new Error(`Could not get cart data: "${e}"`);
+        }
+    }
+    static async clearCart() {
+        try {
+            const data = await fetch(`${window.Shopify?.routes?.root ?? "/"}cart/clear.js`, {
+                method: "POST"
+            });
+            const cart = await data.json();
+            return cart;
+        } catch (e) {
+            throw new Error(`Could not clear cart: "${e}"`);
+        }
+    }
+    static async addVariantsToCart(variants) {
+        if (!variants) throw new Error("Variant(s) must be specified");
+        const items = (Array.isArray(variants) ? variants : [ variants ]).map((item => {
+            if (Object.keys(item).find((key => key.includes("properties")))) {
+                return Object.entries(item).reduce(((newItem, [key, value]) => key.includes("properties") && value !== "" ? {
+                    ...newItem,
+                    properties: {
+                        ...newItem.properties || {},
+                        [key.replace("properties[", "").replace("]", "")]: value
+                    }
+                } : {
+                    ...newItem,
+                    [key]: value
+                }), {});
+            }
+            return item;
+        }));
+        const responseData = await fetch(`${window.Shopify?.routes?.root ?? "/"}cart/add.js`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                items: items
+            })
+        });
+        const response = await responseData.json();
+        if (response.status) throw new Error(response.description);
+        return response.items;
+    }
+    static async changeCartLineItem(requestBody = {}, signal = null) {
+        const {id: id, quantity: quantity, properties: properties} = requestBody;
+        if (!id) throw new Error("Line item id must be present in request body");
+        const responseData = await fetch(`${window.Shopify?.routes?.root ?? "/"}cart/change.js`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id: id,
+                quantity: quantity,
+                properties: properties
+            }),
+            signal: signal
+        });
+        const response = await responseData.json();
+        if (response.status) throw new Error(response.description);
+        return response;
+    }
+    static async updateCart(requestBody = {}, signal = null) {
+        if (!requestBody.hasOwnProperty("attributes") && !requestBody.hasOwnProperty("updates") && !requestBody.hasOwnProperty("note")) throw new Error(`Cart 'attributes' or 'updates' must be specified`);
+        const responseData = await fetch(`${window.Shopify?.routes?.root ?? "/"}cart/update.js`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestBody),
+            signal: signal
+        });
+        const response = await responseData.json();
+        if (response.status) throw new Error(response.description);
+        return response;
+    }
+    getState() {
+        return Object.fromEntries(Object.entries(this.#store.getState()).filter((([key]) => [ ...ALLOWED_STORE_KEYS, ...Object.keys(this.#additionalFields) ].includes(key))));
+    }
+    setState(field, value) {
+        if (field === "cart") throw new Error("Cannot set cart field directly");
+        this.#store.getState().setFieldState(field, value);
+    }
+    subscribe(callback) {
+        if (!callback) throw new Error("Callback function must be provided");
+        const filteredCallback = (state, prevState) => {
+            const filteredState = Object.fromEntries(Object.entries(state).filter((([key]) => [ ...ALLOWED_STORE_KEYS, ...Object.keys(this.#additionalFields) ].includes(key))));
+            const filteredPrevState = Object.fromEntries(Object.entries(prevState).filter((([key]) => [ ...ALLOWED_STORE_KEYS, ...Object.keys(this.#additionalFields) ].includes(key))));
+            return callback.call(this, filteredState, filteredPrevState);
+        };
+        return this.#store.subscribe(filteredCallback);
+    }
+    async clear() {
+        document.dispatchEvent(new CustomEvent("on:cart:loading", {
+            detail: {
+                type: "CLEAR"
+            }
+        }));
+        try {
+            const cart = await this.#store.getState().clear();
+            document.dispatchEvent(new CustomEvent("on:cart:loaded", {
+                detail: {
+                    cart: cart,
+                    type: "CLEAR"
+                }
+            }));
+            return cart;
+        } catch (error) {
+            document.dispatchEvent(new CustomEvent("on:cart:failed", {
+                detail: {
+                    error: error,
+                    type: "CLEAR"
+                }
+            }));
+            throw error;
+        }
+    }
+    async add(variants) {
+        document.dispatchEvent(new CustomEvent("on:cart:loading", {
+            detail: {
+                type: "ADD"
+            }
+        }));
+        try {
+            const cart = await this.#store.getState().add(variants);
+            const items = (Array.isArray(variants) ? variants : [ variants ]).map((v => ({
+                id: v.id,
+                quantity: Number(v.quantity)
+            })));
+            document.dispatchEvent(new CustomEvent("on:cart:loaded", {
+                detail: {
+                    items: items,
+                    cart: cart,
+                    type: "ADD"
+                }
+            }));
+            return cart;
+        } catch (error) {
+            document.dispatchEvent(new CustomEvent("on:cart:failed", {
+                detail: {
+                    error: error,
+                    type: "ADD"
+                }
+            }));
+            throw error;
+        }
+    }
+    async change(requestBody) {
+        const {id: id, quantity: quantity, properties: properties} = requestBody;
+        document.dispatchEvent(new CustomEvent("on:cart:loading", {
+            detail: {
+                type: "CHANGE"
+            }
+        }));
+        try {
+            const cart = await this.#store.getState().change(id, quantity, properties);
+            document.dispatchEvent(new CustomEvent("on:cart:loaded", {
+                detail: {
+                    cart: cart,
+                    type: "CHANGE"
+                }
+            }));
+            return cart;
+        } catch (error) {
+            document.dispatchEvent(new CustomEvent("on:cart:failed", {
+                detail: {
+                    error: error,
+                    type: "CHANGE"
+                }
+            }));
+            throw error;
+        }
+    }
+    async update(cartUpdates, operationId = "cartUpdate") {
+        const {attributes: attributes, updates: updates, note: note} = cartUpdates;
+        document.dispatchEvent(new CustomEvent("on:cart:loading", {
+            detail: {
+                type: "UPDATE"
+            }
+        }));
+        try {
+            const cart = await this.#store.getState().update({
+                attributes: attributes,
+                updates: updates,
+                note: note
+            }, operationId);
+            document.dispatchEvent(new CustomEvent("on:cart:loaded", {
+                detail: {
+                    cart: cart,
+                    type: "UPDATE"
+                }
+            }));
+            return cart;
+        } catch (error) {
+            document.dispatchEvent(new CustomEvent("on:cart:failed", {
+                detail: {
+                    error: error,
+                    type: "UPDATE"
+                }
+            }));
+            throw error;
+        }
+    }
+    async refresh() {
+        document.dispatchEvent(new CustomEvent("on:cart:loading", {
+            detail: {
+                type: "REFRESH"
+            }
+        }));
+        try {
+            const cart = await this.#store.getState().refresh();
+            document.dispatchEvent(new CustomEvent("on:cart:loaded", {
+                detail: {
+                    cart: cart,
+                    type: "REFRESH"
+                }
+            }));
+            return cart;
+        } catch (error) {
+            document.dispatchEvent(new CustomEvent("on:cart:failed", {
+                detail: {
+                    error: error,
+                    type: "REFRESH"
+                }
+            }));
+            throw error;
+        }
+    }
+    async enableCartRecommendations(intent = "related") {
+        if (intent !== "related" && intent !== "complementary") throw new Error('Recommendations intent must be set to either "related" or "complementary"');
+        this.cartRecommendationsIntent = intent;
+        await this.#store.getState().enableRecommendations(intent);
+    }
+    async disableCartRecommendations() {
+        this.cartRecommendationsIntent = null;
+        await this.#store.getState().disableRecommendations();
+    }
+    async resetLatestAddedProduct() {
+        await this.#store.getState().resetLatestAddedProduct();
+    }
+    async resetVariantsBeingAdded(id = "") {
+        await this.#store.getState().resetVariantsBeingAdded(id);
+    }
+    async setGiftWrapping(enable = true) {
+        const cart = await this.#store.getState().setGiftWrapping(enable);
+        return cart;
+    }
+    async syncGiftWrapping() {
+        await this.#store.getState().syncGiftWrapping();
+    }
+    async updateGiftWrappingMessage(message = "") {
+        const cart = this.#store.getState().updateGiftWrappingMessage(message);
+        return cart;
+    }
+    async updateCartNote(note = "") {
+        const cart = this.#store.getState().updateNote(note);
+        return cart;
+    }
+    #init() {
+        const initialCartDataJson = document.getElementById("cart-data");
+        const initialCartData = initialCartDataJson ? JSON.parse(initialCartDataJson.textContent) : {};
+        const giftWrappingDataJson = document.getElementById("cart-gift-wrapping-data");
+        const giftWrappingData = {
+            giftWrapping: {
+                ...giftWrappingDataJson ? {
+                    ...JSON.parse(giftWrappingDataJson.textContent)
+                } : {
+                    productId: null,
+                    wrapIndividually: false
+                },
+                statusBeingUpdated: false,
+                messageBeingUpdated: false
+            }
+        };
+        this.#store = createStore(((set, get) => ({
+            ...this.#additionalFields,
+            ...giftWrappingData,
+            lineItemsBeingUpdated: [],
+            latestAddedProduct: null,
+            noteBeingUpdated: false,
+            ongoingUpdates: {
+                items: {},
+                note: null,
+                giftWrappingMessage: null
+            },
+            cart: initialCartData,
+            recommendations: {
+                enabled: false,
+                intent: "related",
+                items: {}
+            },
+            productVariantsBeingAdded: [],
+            setFieldState: async (field, value) => {
+                set(produce((draft => {
+                    draft[field] = value;
+                })));
+            },
+            clear: async () => {
+                const cart = await CartStore.clearCart();
+                set(produce((draft => {
+                    draft.lineItemsBeingUpdated = [];
+                    draft.latestAddedProduct = null;
+                    draft.cart = {};
+                    draft.recommendations = {};
+                    draft.productVariantsBeingAdded = [];
+                })));
+                return cart;
+            },
+            add: async variants => {
+                if (!variants) throw new Error("Variant(s) must be specified");
+                set(produce((draft => {
+                    draft.productVariantsBeingAdded = (Array.isArray(variants) ? variants : [ variants ]).map((v => v.id));
+                })));
+                let error = null;
+                try {
+                    const addedItems = await CartStore.addVariantsToCart(variants);
+                    set(produce((draft => {
+                        draft.latestAddedProduct = addedItems ? addedItems[0] : null;
+                    })));
+                } catch (e) {
+                    error = e;
+                }
+                const prevItemsCount = get().cart.item_count;
+                const cart = await CartStore.getCart();
+                set(produce((draft => {
+                    draft.cart = cart;
+                })));
+                if (prevItemsCount !== cart.item_count) {
+                    await get().updateGiftWrapping();
+                }
+                await get().updateRecommendations();
+                if (error) throw error;
+                return get().cart;
+            },
+            change: async (key, quantity, properties) => {
+                if (!key) throw new Error("Line item key must be specified");
+                if (get().ongoingUpdates.items[key]) {
+                    get().ongoingUpdates.items[key].abort();
+                    set(produce((draft => {
+                        draft.ongoingUpdates.items[key] = null;
+                    })));
+                }
+                const controller = new AbortController;
+                const {signal: signal} = controller;
+                set(produce((draft => {
+                    if (!get().lineItemsBeingUpdated.includes(key)) {
+                        draft.lineItemsBeingUpdated.push(key);
+                    }
+                    draft.ongoingUpdates.items[key] = controller;
+                })));
+                let cart;
+                let error = null;
+                try {
+                    await CartStore.changeCartLineItem({
+                        quantity: quantity,
+                        properties: properties,
+                        id: key
+                    }, signal);
+                } catch (e) {
+                    error = e;
+                }
+                cart = await CartStore.getCart();
+                const prevItemsCount = get().cart.item_count;
+                cart = {
+                    ...cart,
+                    items: cart.items.filter((item => item.quantity > 0))
+                };
+                set(produce((draft => {
+                    draft.lineItemsBeingUpdated = draft.lineItemsBeingUpdated.filter((k => k !== key));
+                    draft.cart = cart;
+                    draft.ongoingUpdates.items[key] = null;
+                })));
+                if (prevItemsCount !== cart.item_count) {
+                    await get().updateGiftWrapping();
+                }
+                await get().updateRecommendations();
+                if (error) throw error;
+                return cart;
+            },
+            update: async ({attributes: attributes, updates: updates, note: note}, operationId) => {
+                if (!attributes && !updates && !note) throw new Error(`At least one of 'attributes', 'updates' or 'note must be specified`);
+                if (operationId === "items") throw new Error(`'items' operation id is reserved`);
+                if (get().ongoingUpdates[operationId]) {
+                    get().ongoingUpdates[operationId].abort();
+                    set(produce((draft => {
+                        draft.ongoingUpdates[operationId] = null;
+                    })));
+                }
+                const controller = new AbortController;
+                const {signal: signal} = controller;
+                set(produce((draft => {
+                    draft.ongoingUpdates[operationId] = controller;
+                })));
+                await CartStore.updateCart({
+                    attributes: attributes,
+                    updates: updates,
+                    note: note
+                }, signal);
+                const cart = await CartStore.getCart();
+                set(produce((draft => {
+                    draft.cart = cart;
+                    draft.ongoingUpdates[operationId] = null;
+                })));
+                return cart;
+            },
+            refresh: async () => {
+                const cart = await CartStore.getCart();
+                const prevItemsCount = get().cart.item_count;
+                set(produce((draft => {
+                    draft.cart = cart;
+                })));
+                if (prevItemsCount !== cart.item_count) {
+                    await get().updateGiftWrapping();
+                }
+                await get().updateRecommendations();
+                return cart;
+            },
+            enableRecommendations: async (intent = "related") => {
+                if (get().recommendations.enabled) return;
+                set(produce((draft => {
+                    draft.recommendations.enabled = true;
+                    draft.recommendations.intent = intent;
+                })));
+                await get().updateRecommendations();
+            },
+            disableRecommendations: async () => {
+                if (!get().recommendations.enabled) return;
+                set(produce((draft => {
+                    draft.recommendations.enabled = false;
+                })));
+                await get().updateRecommendations();
+            },
+            resetLatestAddedProduct: () => {
+                set(produce((draft => {
+                    draft.latestAddedProduct = null;
+                })));
+            },
+            resetVariantsBeingAdded: (variantId = "") => {
+                set(produce((draft => {
+                    draft.productVariantsBeingAdded = variantId ? draft.productVariantsBeingAdded.filter((id => id !== variantId)) : [];
+                })));
+            },
+            setGiftWrapping: async (enable = true) => {
+                const giftWrappingProductId = get().giftWrapping.productId;
+                if (!giftWrappingProductId) return null;
+                let cart;
+                const oldCart = get().cart;
+                const giftWrappingIndividual = get().giftWrapping.wrapIndividually;
+                if (enable) {
+                    set(produce((draft => {
+                        draft.giftWrapping.statusBeingUpdated = true;
+                    })));
+                    const savedGiftWrappingProductId = get().cart.attributes["_gift-wrapping-product-id"];
+                    await CartStore.updateCart({
+                        attributes: {
+                            ...savedGiftWrappingProductId !== giftWrappingProductId ? {
+                                "_gift-wrapping-product-id": giftWrappingProductId
+                            } : {},
+                            "gift-wrapping": enable,
+                            "gift-wrapping-message": ""
+                        },
+                        updates: {
+                            [giftWrappingProductId]: giftWrappingIndividual ? oldCart.items.reduce(((nonGiftWrappingQuantity, item) => item.variant_id !== giftWrappingProductId ? nonGiftWrappingQuantity + item.quantity : nonGiftWrappingQuantity), 0) : 1
+                        }
+                    });
+                    cart = await CartStore.getCart();
+                    set(produce((draft => {
+                        draft.giftWrapping.statusBeingUpdated = false;
+                        draft.cart = cart;
+                    })));
+                } else {
+                    let signal = null;
+                    let key = null;
+                    const giftWrappingItem = get().cart.items.find((item => item.variant_id === giftWrappingProductId));
+                    set(produce((draft => {
+                        draft.giftWrapping.statusBeingUpdated = true;
+                    })));
+                    if (giftWrappingItem) {
+                        key = giftWrappingItem.key;
+                        if (get().ongoingUpdates.items[key]) {
+                            get().ongoingUpdates.items[key].abort();
+                            set(produce((draft => {
+                                draft.ongoingUpdates.items[key] = null;
+                            })));
+                        }
+                        const controller = new AbortController;
+                        signal = controller.signal;
+                        set(produce((draft => {
+                            if (!get().lineItemsBeingUpdated.includes(key)) {
+                                draft.lineItemsBeingUpdated.push(key);
+                            }
+                            draft.ongoingUpdates.items[key] = controller;
+                        })));
+                    }
+                    await CartStore.updateCart({
+                        attributes: {
+                            "_gift-wrapping-product-id": null,
+                            "gift-wrapping": enable,
+                            "gift-wrapping-message": ""
+                        },
+                        updates: {
+                            [giftWrappingProductId]: 0
+                        }
+                    }, signal);
+                    cart = await CartStore.getCart();
+                    set(produce((draft => {
+                        if (key) {
+                            draft.lineItemsBeingUpdated = draft.lineItemsBeingUpdated.filter((k => k !== key));
+                        }
+                        draft.giftWrapping.statusBeingUpdated = false;
+                        draft.cart = cart;
+                    })));
+                }
+                return cart;
+            },
+            syncGiftWrapping: async () => {
+                const giftWrappingProductId = get().giftWrapping.productId;
+                const savedGiftWrappingProductId = get().cart.attributes["_gift-wrapping-product-id"];
+                if (savedGiftWrappingProductId && savedGiftWrappingProductId !== giftWrappingProductId) {
+                    const savedGiftWrappingProduct = get().cart.items.find((item => item.id === savedGiftWrappingProductId));
+                    if (savedGiftWrappingProduct) {
+                        if (get().ongoingUpdates.items[savedGiftWrappingProduct.key]) {
+                            get().ongoingUpdates.items[savedGiftWrappingProduct.key].abort();
+                            set(produce((draft => {
+                                draft.ongoingUpdates.items[savedGiftWrappingProduct.key] = null;
+                            })));
+                        }
+                        const controller = new AbortController;
+                        const {signal: signal} = controller;
+                        set(produce((draft => {
+                            if (!get().lineItemsBeingUpdated.includes(savedGiftWrappingProduct.key)) {
+                                draft.lineItemsBeingUpdated.push(savedGiftWrappingProduct.key);
+                            }
+                            draft.ongoingUpdates.items[savedGiftWrappingProduct.key] = controller;
+                        })));
+                        await CartStore.updateCart({
+                            attributes: {
+                                "_gift-wrapping-product-id": null
+                            },
+                            updates: {
+                                [savedGiftWrappingProductId]: 0
+                            }
+                        }, signal);
+                        const cart = await CartStore.getCart();
+                        set(produce((draft => {
+                            draft.lineItemsBeingUpdated = draft.lineItemsBeingUpdated.filter((k => k !== savedGiftWrappingProduct.key));
+                            draft.giftWrapping.statusBeingUpdated = false;
+                            draft.cart = cart;
+                        })));
+                    }
+                }
+                if (!giftWrappingProductId) return;
+                const giftWrappingEnabled = Boolean(get().cart.attributes["gift-wrapping"] === "false" ? false : get().cart.attributes["gift-wrapping"]);
+                const giftWrappingIndividual = get().giftWrapping.wrapIndividually;
+                const giftWrappingItem = get().cart.items.find((item => item.variant_id === giftWrappingProductId));
+                if (!giftWrappingEnabled && giftWrappingItem) {
+                    await get().setGiftWrapping(false);
+                }
+                if (giftWrappingEnabled && !giftWrappingItem) {
+                    await get().setGiftWrapping(true);
+                }
+                if (giftWrappingEnabled && giftWrappingItem && giftWrappingIndividual && giftWrappingItem.quantity === 1) {
+                    await get().updateGiftWrapping();
+                }
+                if (giftWrappingEnabled && giftWrappingItem && !giftWrappingIndividual && giftWrappingItem.quantity > 1) {
+                    await get().updateGiftWrapping();
+                }
+            },
+            updateGiftWrapping: async () => {
+                const giftWrappingProductId = get().giftWrapping.productId;
+                if (!giftWrappingProductId) return;
+                const giftWrappingIndividual = get().giftWrapping.wrapIndividually;
+                const giftWrappingItem = get().cart.items.find((item => item.variant_id === giftWrappingProductId));
+                if (!giftWrappingItem || get().cart.items_count > 1 && !giftWrappingIndividual && giftWrappingItem) return;
+                const {key: key} = giftWrappingItem;
+                if (get().ongoingUpdates.items[key]) {
+                    get().ongoingUpdates.items[key].abort();
+                    set(produce((draft => {
+                        draft.ongoingUpdates.items[key] = null;
+                    })));
+                }
+                const controller = new AbortController;
+                const {signal: signal} = controller;
+                set(produce((draft => {
+                    if (!get().lineItemsBeingUpdated.includes(key)) {
+                        draft.lineItemsBeingUpdated.push(key);
+                    }
+                    draft.ongoingUpdates.items[key] = controller;
+                })));
+                let giftWrappingQuantity = giftWrappingIndividual ? get().cart.items.reduce(((nonGiftWrappingQuantity, item) => item.variant_id !== giftWrappingProductId ? nonGiftWrappingQuantity + item.quantity : nonGiftWrappingQuantity), 0) : 1;
+                if (giftWrappingItem && get().cart.items.filter((i => i.id !== giftWrappingProductId)).length === 0) {
+                    giftWrappingQuantity = 0;
+                }
+                const giftWrappingAttributeUpdate = giftWrappingQuantity === 0 ? {
+                    attributes: {
+                        "gift-wrapping": false,
+                        "gift-wrapping-message": ""
+                    }
+                } : {};
+                await CartStore.updateCart({
+                    ...giftWrappingAttributeUpdate,
+                    updates: {
+                        [giftWrappingProductId]: giftWrappingQuantity
+                    }
+                }, signal);
+                const cart = await CartStore.getCart();
+                set(produce((draft => {
+                    draft.lineItemsBeingUpdated = draft.lineItemsBeingUpdated.filter((k => k !== key));
+                    draft.cart = cart;
+                })));
+            },
+            updateGiftWrappingMessage: async message => {
+                if (get().giftWrapping.messageBeingUpdated && get().ongoingUpdates.giftWrappingMessage) {
+                    get().ongoingUpdates.giftWrappingMessage.abort();
+                    set(produce((draft => {
+                        draft.ongoingUpdates.giftWrappingMessage = null;
+                        draft.giftWrapping.messageBeingUpdated = false;
+                    })));
+                }
+                const controller = new AbortController;
+                const {signal: signal} = controller;
+                set(produce((draft => {
+                    draft.ongoingUpdates.giftWrappingMessage = controller;
+                    draft.giftWrapping.messageBeingUpdated = true;
+                })));
+                await CartStore.updateCart({
+                    attributes: {
+                        "gift-wrapping-message": message
+                    }
+                }, signal);
+                const cart = await CartStore.getCart();
+                set(produce((draft => {
+                    draft.ongoingUpdates.giftWrappingMessage = null;
+                    draft.giftWrapping.messageBeingUpdated = false;
+                    draft.cart = cart;
+                })));
+                return cart;
+            },
+            updateNote: async note => {
+                if (get().noteBeingUpdated && get().ongoingUpdates.note) {
+                    get().ongoingUpdates.note.abort();
+                    set(produce((draft => {
+                        draft.ongoingUpdates.note = null;
+                        draft.noteBeingUpdated = false;
+                    })));
+                }
+                const controller = new AbortController;
+                const {signal: signal} = controller;
+                set(produce((draft => {
+                    draft.ongoingUpdates.note = controller;
+                    draft.noteBeingUpdated = true;
+                })));
+                await CartStore.updateCart({
+                    note: note
+                }, signal);
+                const cart = await CartStore.getCart();
+                set(produce((draft => {
+                    draft.ongoingUpdates.note = null;
+                    draft.noteBeingUpdated = false;
+                    draft.cart = cart;
+                })));
+                return cart;
+            },
+            updateRecommendations: async () => {
+                if (!get().recommendations.enabled) return;
+                const weightDistribution = "equal";
+                const {intent: intent, items: existingRecommendations} = get().recommendations;
+                const newRecommendations = {};
+                const existingRecommendationsIds = Object.keys(existingRecommendations);
+                const productIds = get().cart.items.reduce(((ids, item) => {
+                    if (!item.gift_card && !ids.includes(item.product_id.toString())) ids.push(item.product_id.toString());
+                    return ids;
+                }), []);
+                const remainingProductIds = existingRecommendationsIds.filter((productId => productIds.includes(productId)));
+                const remainingRecommendations = remainingProductIds.reduce(((recommendations, productId) => ({
+                    ...recommendations,
+                    [productId]: existingRecommendations[productId]
+                })), {});
+                const newProductIds = productIds.filter((productId => !existingRecommendationsIds.includes(productId)));
+                await Promise.all([ ...remainingProductIds.length < existingRecommendationsIds.length ? remainingProductIds : [], ...newProductIds ].map((async productId => {
+                    const data = await fetch(`${this.#rootRoute}recommendations/products.json?product_id=${productId}&intent=${intent}`);
+                    const recommendations = await data.json();
+                    if (remainingProductIds.includes(productId)) {
+                        remainingRecommendations[productId] = recommendations;
+                    } else {
+                        newRecommendations[productId] = recommendations;
+                    }
+                })));
+                const finalRecommendations = {
+                    ...remainingRecommendations,
+                    ...newRecommendations
+                };
+                const calculateWeight = productId => {
+                    const totalPrice = get().cart.items.filter((item => item.product_id.toString() === productId)).reduce(((total, item) => total + item.line_price), 0);
+                    return totalPrice / get().cart.total_price;
+                };
+                set(produce((draft => {
+                    draft.recommendations.items = Object.keys(finalRecommendations).reduce(((recommendations, productId) => ({
+                        ...recommendations,
+                        [productId]: {
+                            weight: weightDistribution === "proportional" ? calculateWeight(productId) : 1 / get().cart.items.reduce(((items, item) => {
+                                if (!items.includes(item.id)) items.push(item.id);
+                                return items;
+                            }), []).length,
+                            products: finalRecommendations[productId].products
+                        }
+                    })), {});
+                })));
+            }
+        })));
+    }
+}
+
+const Cart = new CartStore(plugins.reduce(((allFields, plugin) => ({
+    ...allFields,
+    ...plugin.fields ? plugin.fields : {}
+})), {}));
+
+Cart.syncGiftWrapping();
+
+export { CartStore };
+
+export default Cart;
 //# sourceMappingURL=cart-store.js.map

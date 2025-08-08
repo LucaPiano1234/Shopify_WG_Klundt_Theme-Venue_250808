@@ -1,18 +1,27 @@
 {%- liquid
+  assign sold_out_label = false
   if settings.product_grid_label_sold_out and product.available == false
     assign sold_out_label = true
   endif
 
+  assign discount_label = false
   if settings.product_grid_label_discount and product.compare_at_price > product.price or product.compare_at_price_varies
     assign discount_label = true
   endif
 
+  assign new_label = false
   assign product_created_at = product.created_at | date: '%s'
   assign time_ago = 'now' | date: '%s' | minus: product_created_at | divided_by: 86400
   if time_ago < settings.product_grid_label_new_days and settings.product_grid_label_new
     assign new_label = true
   endif
 
+  assign pre_order_label = false
+  if settings.product_grid_label_pre_order and product.template_suffix contains 'pre-order'
+    assign pre_order_label = true
+  endif
+
+  assign custom_label_1 = false
   if settings.product_grid_label_custom_1
     for collection in product.collections
       if collection.title == collections[settings.product_grid_label_collection_1].title
@@ -22,6 +31,7 @@
     endfor
   endif
 
+  assign custom_label_2 = false
   if settings.product_grid_label_custom_2
     for collection in product.collections
       if collection.title == collections[settings.product_grid_label_collection_2].title
@@ -31,7 +41,7 @@
     endfor
   endif
 -%}
-{%- if sold_out_label or discount_label or new_label or custom_label_1 or custom_label_2 -%}
+{%- if sold_out_label or discount_label or new_label or pre_order_label or custom_label_1 or custom_label_2 -%}
   <!-- snippet/product-grid-label.liquid -->
   <ul class="product-card__label__items o-list-bare{% if settings.product_grid_label_position_left %} product-card__label__items--left{% endif %}">
     {%- if sold_out_label -%}
@@ -98,6 +108,17 @@
         {% endif %}
       >
         <p class="product-card__label-text label__text">{{ settings.product_grid_label_title_new }}</p>
+      </li>
+    {% endif %}
+
+    {% if pre_order_label %}
+      <li
+        class="product-card__label product-card__label--pre-order label label--pre-order"
+        {% if settings.product_grid_label_hide_all and product.available == false %}
+          hidden
+        {% endif %}
+      >
+        <p class="product-card__label-text label__text">{{ 'products.product_labels.pre_order_label' | t }}</p>
       </li>
     {% endif %}
 

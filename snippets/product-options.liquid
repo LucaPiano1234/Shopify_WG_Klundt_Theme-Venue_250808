@@ -40,6 +40,12 @@
   else
     assign unique_id = section_id
   endif
+
+  if product.template_suffix contains 'pre-order'
+    assign add_to_cart_text = 'products.product.pre_order' | t
+  else
+    assign add_to_cart_text = 'products.product.add_to_cart' | t
+  endif
 -%}
 
 {%- if style == 'swatches-buttons' or style == 'buttons' -%}
@@ -56,6 +62,7 @@
     {% if local_render %}
       data-local-render="true"
     {% endif %}
+    data-add-to-cart-text="{{ add_to_cart_text }}"
   >
     <product-interactive-options>
       {%- for option in product.options_with_values -%}
@@ -81,6 +88,7 @@
                   popup
                   popup--full
                 "
+                data-move-to-modals-element
                 data-disable-body-scroll
                 aria-labelledby="product-popup-draw-{{ section_id }}-{{ option_name | handleize }}-title"
                 aria-hidden="true"
@@ -154,7 +162,10 @@
             popup: popup
           -%}
         {%- else -%}
-          <fieldset class="product-form__swatch">
+          <fieldset
+            class="product-form__swatch{% if settings.design_variant_button_uniform %} product-form__swatch--uniform{% endif %}"
+            style="--columns: {{ settings.design_variant_button_uniform_columns }}"
+          >
             <div class="product-form__swatch__title">
               <legend class="f-family--{{ settings.type_product_form_headings_style }} f-caps--{{ settings.type_product_form_headings_capitalize }} f-space--{{ settings.type_product_form_headings_letterspace }}">
                 {{ option.name }}
@@ -182,7 +193,7 @@
                 >
                 <label
                   for="{{ unique_id }}-{{ option.position }}-{{ forloop.index0 }}"
-                  class="product-form__swatch__label"
+                  class="product-form__swatch__label product-form__swatch__label--{{ settings.design_variant_button_size }}"
                 >
                   {{ value }}
                 </label>
@@ -218,6 +229,7 @@
     {% if local_render %}
       data-local-render="true"
     {% endif %}
+    data-add-to-cart-text="{{ add_to_cart_text }}"
   >
     <product-interactive-options>
       {%- for option in product.options_with_values -%}
@@ -243,6 +255,7 @@
                   popup
                   popup--full
                 "
+                data-move-to-modals-element
                 data-disable-body-scroll
                 aria-labelledby="product-popup-draw-{{ section_id }}-{{ option_name | handleize }}-title"
                 aria-hidden="true"
@@ -254,7 +267,7 @@
                     class="popup__content"
                     role="document"
                   >
-                    <div class="product-popup-draw__wrapper">
+                    <div class="product-popup">
                       {% unless pages[popup_content].title == blank
                       %}
                         <div class="product-popup__head">

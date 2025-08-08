@@ -161,6 +161,15 @@
         gap: var(--gap-mob);
       }
     }
+    {% if request.visual_preview_mode %}
+      scrolling-marquee .marquee {
+        display: grid;
+        grid: auto / auto-flow max-content;
+      }
+      scrolling-marquee .marquee__content {
+        display: flex;
+      }
+    {% endif %}
   </style>
 
   <section

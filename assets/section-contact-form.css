@@ -1,23 +1,23 @@
 /* ==========================================================================
    #CONTACT FORM
    ========================================================================== */
-.section-contact-form .section__content {
-  background-color: var(--color-background);
-}
-
 .contact-form {
   color: var(--color-text);
+  background-color: var(--background-color);
 }
 .contact-form .selector-wrapper label {
   color: var(--color-text);
-  background-color: var(--color-background);
+  background-color: var(--background-color);
 }
 .contact-form .selector-wrapper .icon {
   --color: var(--color-text);
 }
 .contact-form [type=checkbox] {
   border: 1px solid var(--color-text-light);
-  background-color: var(--color-background);
+  background-color: transparent;
+}
+.contact-form [type=checkbox]:hover {
+  background-color: var(--color-text-lightest);
 }
 .contact-form [type=text],
 .contact-form [type=password],
@@ -35,9 +35,9 @@
 .contact-form [type=color],
 .contact-form select,
 .contact-form textarea {
+  background-color: transparent;
   border-color: var(--color-text-light);
   color: var(--color-text);
-  background-color: var(--color-background);
 }
 .contact-form .container {
   padding-top: 36px;

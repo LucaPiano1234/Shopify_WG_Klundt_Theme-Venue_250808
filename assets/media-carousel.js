@@ -1,2 +1,250 @@
-import Swiper,{A11y,Autoplay,EffectFade,Navigation,Pagination,Virtual}from"swiper";import{BREAKPOINTS}from"utils";class MediaCarousel extends HTMLElement{#e;#i;#t;#s=null;#a;#r;#n;#l;#d=null;#o;static#h="swiper";static#p="swiper-wrapper";static#u="swiper-slide";constructor(){super(),this.#e=this.#c.bind(this)}connectedCallback(){this.#l=this.querySelector("media-carousel-slider"),this.#o=this.querySelector("media-carousel-wrapper"),this.#n=this.querySelectorAll("media-carousel-slide"),this.#r=this.querySelector("media-carousel-pagination"),this.#a=this.querySelector("media-carousel-navigation"),this.#i=this.dataset.loop?"realIndex":"activeIndex",this.#t=Boolean(this.dataset.virtual&&this.querySelector(".js-slides")),this.breakpointMin=Object.keys(BREAKPOINTS).includes(this.dataset.breakpointMin)?BREAKPOINTS[this.dataset.breakpointMin]:Number(this.dataset.breakpointMin||"0"),this.breakpointMax=Object.keys(BREAKPOINTS).includes(this.dataset.breakpointMax)?BREAKPOINTS[this.dataset.breakpointMax]:Number(this.dataset.breakpointMax||"0");new IntersectionObserver(((e,i)=>{e.forEach((e=>{e.isIntersecting&&(i.unobserve(this),this.breakpointMin||this.breakpointMax?(this.#s=window.matchMedia(`(${this.breakpointMin?`min-width: ${this.breakpointMin}px${this.breakpointMax?" and ":""}`:""}${this.breakpointMax?`max-width: ${this.breakpointMax-1}px`:""})`),this.#s.matches&&this.#v(),this.#s.addEventListener("change",this.#e)):this.#v())}))}).bind(this)).observe(this)}disconnectedCallback(){this.#d&&(this.#d.destroy(),this.#d=null),this.#s&&this.#s.removeEventListener("change",this.#e)}get initialized(){return Boolean(!!this.#d&&(this.#t?this.#d.virtual.cache[this.#d[this.#i]]:this.#d.slides[this.#d[this.#i]]))}get index(){return this.#d?this.#d[this.#i]:void 0}get currentSlide(){return this.#d?this.#t?this.#d.virtual.cache[this.#d[this.#i]]:this.#d.slides[this.#d[this.#i]]:void 0}slideTo(e,i=0){if(!("number"==typeof e&&e>=0))throw new Error("Invalid slide index");return this.dataset.loop?this.#d.slideToLoop(e,i):this.#d.slideTo(e,i),this.#d.update(),this.#d}stop(){return this.#d?.autoplay?(this.#d.autoplay.stop(),this.#d):this.#d}start(){return this.#d?.autoplay?(this.#d.autoplay.start(),this.#d):this.#d}on(e,i,t){return this.addEventListener(e,i,t),this}off(e,i,t){return this.removeEventListener(e,i,t),this}#v(){this.#d||(this.#l.classList.add(MediaCarousel.#h),this.#o&&this.#o.classList.add(MediaCarousel.#p),this.#n.length>0&&this.#n.forEach((e=>e.classList.add(MediaCarousel.#u))),this.#r&&this.#r.removeAttribute("hidden"),this.#a&&this.#a.removeAttribute("hidden"),this.#d=new Swiper(this.#l,{autoHeight:Boolean(this.dataset.autoHeight),initialSlide:Number(this.dataset.initialSlide||0),loop:Boolean(this.dataset.loop),modules:[A11y,...this.dataset.autoplay?[Autoplay]:[],...this.dataset.fade?[EffectFade]:[],...this.dataset.navigation?[Navigation]:[],...this.dataset.pagination?[Pagination]:[],...this.#t?[Virtual]:[]],observer:!0,observeParents:!0,slidesPerGroup:Number(this.dataset.slidesPerGroup||1),slidesPerView:Number(this.dataset.slidesPerView||1),spaceBetween:Number(this.dataset.spaceBetween||30),speed:Number(this.dataset.speed||200),...this.dataset.autoplay?{autoplay:{delay:Number(this.dataset.autoplay||3e3)}}:{},...this.dataset.fade?{effect:"fade",fadeEffect:{crossFade:!0}}:{},...this.dataset.navigation?{navigation:{nextEl:this.querySelector(".js-carousel-next"),prevEl:this.querySelector(".js-carousel-prev")}}:{},...this.dataset.pagination?{pagination:{clickable:!0,el:this.querySelector(".js-carousel-pagination")}}:{},...this.#t?{virtual:{slides:(()=>Array.from(this.querySelector(".js-slides").children).map((e=>e.innerHTML)))()}}:{},on:{afterInit:e=>{const i=this.querySelector("media-carousel-preview-image");i&&i.setAttribute("hidden","");const t=setInterval((()=>{const i=this.#t?e.virtual.cache[e[this.#i]]:e.el?.querySelector(".swiper-slide-active"),s=()=>{this.dispatchEvent(new CustomEvent("on:media-carousel:init",{detail:{currentSlide:i,activeIndex:e[this.#i]}})),this.classList.remove("is-loading"),this.classList.add("is-initialized"),i.classList.add("is-visible")};i&&(s(),clearInterval(t))}),5)},slideChange:e=>{const i=setInterval((()=>{const t=this.#t?e.virtual.cache[e[this.#i]]:e.el?.querySelector(".swiper-slide-active");t&&((()=>{this.dispatchEvent(new CustomEvent("on:media-carousel:slide-change",{detail:{currentSlide:t,activeIndex:e[this.#i],previousIndex:e.previousIndex,previousSlide:this.#t?e.virtual.cache[e.previousIndex]:e.el?.querySelector(".swiper-slide-prev")}}))})(),clearInterval(i))}),5)},slideChangeTransitionStart:e=>{const i=setInterval((()=>{const t=this.#t?e.virtual.cache[e[this.#i]]:e.el?.querySelector(".swiper-slide-active"),s=this.#t?e.virtual.cache[e.previousIndex]:e.el?.querySelector(".swiper-slide-prev"),a=()=>{this.dispatchEvent(new CustomEvent("on:media-carousel:before-slide-change",{detail:{currentSlide:t,previousSlide:s,activeIndex:e[this.#i],previousIndex:e.previousIndex}})),t.classList.add("is-visible")};t&&(a(),clearInterval(i))}),5)},transitionEnd:e=>{const i=this.#t?e.virtual.cache[e[this.#i]]:e.el?.querySelector(".swiper-slide-active"),t=this.#t?e.virtual.cache[e.previousIndex]:e.el?.querySelector(".swiper-slide-prev");t?.classList.remove("is-visible"),this.dispatchEvent(new CustomEvent("on:media-carousel:slide-transition-end",{detail:{currentSlide:i,previousSlide:t,activeIndex:e[this.#i],previousIndex:e.previousIndex}}))}}}))}#m(){this.#d&&(this.#d.destroy(),this.#d=null,this.#l.classList.remove(MediaCarousel.#h),this.querySelector("is-visible")?.classList.remove("is-visible"),this.#o&&this.#o.classList.remove(MediaCarousel.#p),this.#n.length>0&&this.#n.forEach((e=>e.classList.remove(MediaCarousel.#u))),this.#r&&this.#r.setAttribute("hidden",""),this.#a&&this.#a.setAttribute("hidden",""))}#c(e){e.matches&&!this.#d?this.#v():this.#d&&this.#m()}}customElements.define("media-carousel",MediaCarousel);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import Swiper, { A11y, Autoplay, EffectFade, Navigation, Pagination, Virtual } from "swiper";
+
+import { BREAKPOINTS } from "utils";
+
+class MediaCarousel extends HTMLElement {
+    #boundHandleMediaQueryChange;
+    #indexProp;
+    #isVirtual;
+    #mediaQuery=null;
+    #navigationElement;
+    #paginationElement;
+    #slideElements;
+    #sliderElement;
+    #swiper=null;
+    #wrapperElement;
+    static #MEDIA_CAROUSEL_CLASS="swiper";
+    static #MEDIA_CAROUSEL_WRAPPER_CLASS="swiper-wrapper";
+    static #MEDIA_CAROUSEL_SLIDE_CLASS="swiper-slide";
+    constructor() {
+        super();
+        this.#boundHandleMediaQueryChange = this.#handleMediaQueryChange.bind(this);
+    }
+    connectedCallback() {
+        this.#sliderElement = this.querySelector("media-carousel-slider");
+        this.#wrapperElement = this.querySelector("media-carousel-wrapper");
+        this.#slideElements = this.querySelectorAll("media-carousel-slide");
+        this.#paginationElement = this.querySelector("media-carousel-pagination");
+        this.#navigationElement = this.querySelector("media-carousel-navigation");
+        this.#indexProp = this.dataset.loop ? "realIndex" : "activeIndex";
+        this.#isVirtual = Boolean(this.dataset.virtual && this.querySelector(".js-slides"));
+        this.breakpointMin = Object.keys(BREAKPOINTS).includes(this.dataset.breakpointMin) ? BREAKPOINTS[this.dataset.breakpointMin] : Number(this.dataset.breakpointMin || "0");
+        this.breakpointMax = Object.keys(BREAKPOINTS).includes(this.dataset.breakpointMax) ? BREAKPOINTS[this.dataset.breakpointMax] : Number(this.dataset.breakpointMax || "0");
+        const handleIntersection = (entries, observer) => {
+            entries.forEach((entry => {
+                if (entry.isIntersecting) {
+                    observer.unobserve(this);
+                    if (this.breakpointMin || this.breakpointMax) {
+                        this.#mediaQuery = window.matchMedia(`(${this.breakpointMin ? `min-width: ${this.breakpointMin}px${this.breakpointMax ? " and " : ""}` : ""}${this.breakpointMax ? `max-width: ${this.breakpointMax - 1}px` : ""})`);
+                        if (this.#mediaQuery.matches) {
+                            this.#init();
+                        }
+                        this.#mediaQuery.addEventListener("change", this.#boundHandleMediaQueryChange);
+                    } else {
+                        this.#init();
+                    }
+                }
+            }));
+        };
+        new IntersectionObserver(handleIntersection.bind(this)).observe(this);
+    }
+    disconnectedCallback() {
+        if (this.#swiper) {
+            this.#swiper.destroy();
+            this.#swiper = null;
+        }
+        if (this.#mediaQuery) this.#mediaQuery.removeEventListener("change", this.#boundHandleMediaQueryChange);
+    }
+    get initialized() {
+        return Boolean(this.#swiper ? this.#isVirtual ? this.#swiper.virtual.cache[this.#swiper[this.#indexProp]] : this.#swiper.slides[this.#swiper[this.#indexProp]] : false);
+    }
+    get index() {
+        return this.#swiper ? this.#swiper[this.#indexProp] : undefined;
+    }
+    get currentSlide() {
+        return this.#swiper ? this.#isVirtual ? this.#swiper.virtual.cache[this.#swiper[this.#indexProp]] : this.#swiper.slides[this.#swiper[this.#indexProp]] : undefined;
+    }
+    slideTo(index, speed = 0) {
+        if (!(typeof index === "number" && index >= 0)) throw new Error("Invalid slide index");
+        if (this.dataset.loop) {
+            this.#swiper.slideToLoop(index, speed);
+        } else {
+            this.#swiper.slideTo(index, speed);
+        }
+        this.#swiper.update();
+        return this.#swiper;
+    }
+    stop() {
+        if (!this.#swiper?.autoplay) return this.#swiper;
+        this.#swiper.autoplay.stop();
+        return this.#swiper;
+    }
+    start() {
+        if (!this.#swiper?.autoplay) return this.#swiper;
+        this.#swiper.autoplay.start();
+        return this.#swiper;
+    }
+    on(type, handler, options) {
+        this.addEventListener(type, handler, options);
+        return this;
+    }
+    off(type, handler, options) {
+        this.removeEventListener(type, handler, options);
+        return this;
+    }
+    #init() {
+        if (this.#swiper) return;
+        this.#sliderElement.classList.add(MediaCarousel.#MEDIA_CAROUSEL_CLASS);
+        if (this.#wrapperElement) {
+            this.#wrapperElement.classList.add(MediaCarousel.#MEDIA_CAROUSEL_WRAPPER_CLASS);
+        }
+        if (this.#slideElements.length > 0) {
+            this.#slideElements.forEach((el => el.classList.add(MediaCarousel.#MEDIA_CAROUSEL_SLIDE_CLASS)));
+        }
+        if (this.#paginationElement) this.#paginationElement.removeAttribute("hidden");
+        if (this.#navigationElement) this.#navigationElement.removeAttribute("hidden");
+        this.#swiper = new Swiper(this.#sliderElement, {
+            autoHeight: Boolean(this.dataset.autoHeight),
+            initialSlide: Number(this.dataset.initialSlide || 0),
+            loop: Boolean(this.dataset.loop),
+            modules: [ A11y, ...this.dataset.autoplay ? [ Autoplay ] : [], ...this.dataset.fade ? [ EffectFade ] : [], ...this.dataset.navigation ? [ Navigation ] : [], ...this.dataset.pagination ? [ Pagination ] : [], ...this.#isVirtual ? [ Virtual ] : [] ],
+            observer: true,
+            observeParents: true,
+            slidesPerGroup: Number(this.dataset.slidesPerGroup || 1),
+            slidesPerView: Number(this.dataset.slidesPerView || 1),
+            spaceBetween: Number(this.dataset.spaceBetween || 30),
+            speed: Number(this.dataset.speed || 200),
+            ...this.dataset.autoplay ? {
+                autoplay: {
+                    delay: Number(this.dataset.autoplay || 3e3)
+                }
+            } : {},
+            ...this.dataset.fade ? {
+                effect: "fade",
+                fadeEffect: {
+                    crossFade: true
+                }
+            } : {},
+            ...this.dataset.navigation ? {
+                navigation: {
+                    nextEl: this.querySelector(".js-carousel-next"),
+                    prevEl: this.querySelector(".js-carousel-prev")
+                }
+            } : {},
+            ...this.dataset.pagination ? {
+                pagination: {
+                    clickable: true,
+                    el: this.querySelector(".js-carousel-pagination")
+                }
+            } : {},
+            ...this.#isVirtual ? {
+                virtual: {
+                    slides: (() => Array.from(this.querySelector(".js-slides").children).map((el => el.innerHTML)))()
+                }
+            } : {},
+            on: {
+                afterInit: swiper => {
+                    const previewImage = this.querySelector("media-carousel-preview-image");
+                    if (previewImage) previewImage.setAttribute("hidden", "");
+                    const interval = setInterval((() => {
+                        const currentSlide = this.#isVirtual ? swiper.virtual.cache[swiper[this.#indexProp]] : swiper.el?.querySelector(".swiper-slide-active");
+                        const dispatch = () => {
+                            this.dispatchEvent(new CustomEvent("on:media-carousel:init", {
+                                detail: {
+                                    currentSlide: currentSlide,
+                                    activeIndex: swiper[this.#indexProp]
+                                }
+                            }));
+                            this.classList.remove("is-loading");
+                            this.classList.add("is-initialized");
+                            currentSlide.classList.add("is-visible");
+                        };
+                        if (currentSlide) {
+                            dispatch();
+                            clearInterval(interval);
+                        }
+                    }), 5);
+                },
+                slideChange: swiper => {
+                    const interval = setInterval((() => {
+                        const currentSlide = this.#isVirtual ? swiper.virtual.cache[swiper[this.#indexProp]] : swiper.el?.querySelector(".swiper-slide-active");
+                        const dispatch = () => {
+                            this.dispatchEvent(new CustomEvent("on:media-carousel:slide-change", {
+                                detail: {
+                                    currentSlide: currentSlide,
+                                    activeIndex: swiper[this.#indexProp],
+                                    previousIndex: swiper.previousIndex,
+                                    previousSlide: this.#isVirtual ? swiper.virtual.cache[swiper.previousIndex] : swiper.el?.querySelector(".swiper-slide-prev")
+                                }
+                            }));
+                        };
+                        if (currentSlide) {
+                            dispatch();
+                            clearInterval(interval);
+                        }
+                    }), 5);
+                },
+                slideChangeTransitionStart: swiper => {
+                    const interval = setInterval((() => {
+                        const currentSlide = this.#isVirtual ? swiper.virtual.cache[swiper[this.#indexProp]] : swiper.el?.querySelector(".swiper-slide-active");
+                        const previousSlide = this.#isVirtual ? swiper.virtual.cache[swiper.previousIndex] : swiper.el?.querySelector(".swiper-slide-prev");
+                        const dispatch = () => {
+                            this.dispatchEvent(new CustomEvent("on:media-carousel:before-slide-change", {
+                                detail: {
+                                    currentSlide: currentSlide,
+                                    previousSlide: previousSlide,
+                                    activeIndex: swiper[this.#indexProp],
+                                    previousIndex: swiper.previousIndex
+                                }
+                            }));
+                            currentSlide.classList.add("is-visible");
+                        };
+                        if (currentSlide) {
+                            dispatch();
+                            clearInterval(interval);
+                        }
+                    }), 5);
+                },
+                transitionEnd: swiper => {
+                    const currentSlide = this.#isVirtual ? swiper.virtual.cache[swiper[this.#indexProp]] : swiper.el?.querySelector(".swiper-slide-active");
+                    const previousSlide = this.#isVirtual ? swiper.virtual.cache[swiper.previousIndex] : swiper.el?.querySelector(".swiper-slide-prev");
+                    previousSlide?.classList.remove("is-visible");
+                    this.dispatchEvent(new CustomEvent("on:media-carousel:slide-transition-end", {
+                        detail: {
+                            currentSlide: currentSlide,
+                            previousSlide: previousSlide,
+                            activeIndex: swiper[this.#indexProp],
+                            previousIndex: swiper.previousIndex
+                        }
+                    }));
+                }
+            }
+        });
+    }
+    #destroy() {
+        if (!this.#swiper) return;
+        this.#swiper.destroy();
+        this.#swiper = null;
+        this.#sliderElement.classList.remove(MediaCarousel.#MEDIA_CAROUSEL_CLASS);
+        this.querySelector("is-visible")?.classList.remove("is-visible");
+        if (this.#wrapperElement) {
+            this.#wrapperElement.classList.remove(MediaCarousel.#MEDIA_CAROUSEL_WRAPPER_CLASS);
+        }
+        if (this.#slideElements.length > 0) {
+            this.#slideElements.forEach((el => el.classList.remove(MediaCarousel.#MEDIA_CAROUSEL_SLIDE_CLASS)));
+        }
+        if (this.#paginationElement) this.#paginationElement.setAttribute("hidden", "");
+        if (this.#navigationElement) this.#navigationElement.setAttribute("hidden", "");
+    }
+    #handleMediaQueryChange(e) {
+        if (e.matches && !this.#swiper) {
+            this.#init();
+        } else if (this.#swiper) {
+            this.#destroy();
+        }
+    }
+}
+
+customElements.define("media-carousel", MediaCarousel);
 //# sourceMappingURL=media-carousel.js.map

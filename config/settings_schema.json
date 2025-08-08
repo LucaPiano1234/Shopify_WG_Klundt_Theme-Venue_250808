@@ -3,9 +3,264 @@
     "name": "theme_info",
     "theme_name": "Venue",
     "theme_author": "Safe As Milk",
-    "theme_version": "14.0.0",
+    "theme_version": "17.0.0",
     "theme_documentation_url": "https://support.safeasmilk.co",
-    "theme_support_url": "http://support.safeasmilk.co/contact"
+    "theme_support_url": "https://support.safeasmilk.co/contact"
+  },
+  {
+    "name": "Design",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "checkbox",
+        "id": "type_header_border",
+        "label": "Show brand border",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "type_header_border_size",
+        "label": "Brand border weight",
+        "unit": "px",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "header",
+        "content": "Component overlap",
+        "info": "Some labels and buttons overlap their container. Looks best with corner radius off."
+      },
+      {
+        "type": "checkbox",
+        "id": "design_overlap",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Component corner radius"
+      },
+      {
+        "type": "select",
+        "id": "design_radius_button",
+        "label": "Buttons",
+        "options": [
+          {
+            "value": "0",
+            "label": "Off"
+          },
+          {
+            "value": "3",
+            "label": "Subtle"
+          },
+          {
+            "value": "10",
+            "label": "Strong"
+          }
+        ],
+        "default": "10"
+      },
+      {
+        "type": "select",
+        "id": "design_radius_small_button",
+        "label": "Small buttons",
+        "options": [
+          {
+            "value": "0",
+            "label": "Off"
+          },
+          {
+            "value": "3",
+            "label": "Subtle"
+          },
+          {
+            "value": "10",
+            "label": "Strong"
+          }
+        ],
+        "default": "10"
+      },
+      {
+        "type": "select",
+        "id": "design_radius_variant_button",
+        "label": "Variant buttons",
+        "options": [
+          {
+            "value": "0",
+            "label": "Off"
+          },
+          {
+            "value": "3",
+            "label": "Subtle"
+          },
+          {
+            "value": "10",
+            "label": "Strong"
+          }
+        ],
+        "default": "3"
+      },
+      {
+        "type": "select",
+        "id": "design_radius_form",
+        "label": "Form elements",
+        "options": [
+          {
+            "value": "0",
+            "label": "Off"
+          },
+          {
+            "value": "3",
+            "label": "Subtle"
+          },
+          {
+            "value": "10",
+            "label": "Strong"
+          }
+        ],
+        "default": "3"
+      },
+      {
+        "type": "select",
+        "id": "design_radius_label",
+        "label": "Labels",
+        "options": [
+          {
+            "value": "0",
+            "label": "Off"
+          },
+          {
+            "value": "3",
+            "label": "Subtle"
+          },
+          {
+            "value": "10",
+            "label": "Strong"
+          }
+        ],
+        "default": "3"
+      },
+      {
+        "type": "header",
+        "content": "Content corner radius",
+        "info": "These settings are disabled on elements where the content stretches the full width of the browser or where rounded corners are inappropriate."
+      },
+      {
+        "type": "select",
+        "id": "design_radius_content",
+        "label": "Radius strength",
+        "options": [
+          {
+            "value": "0",
+            "label": "Off"
+          },
+          {
+            "value": "2.7",
+            "label": "Subtle"
+          },
+          {
+            "value": "10",
+            "label": "Strong"
+          }
+        ],
+        "default": "2.7"
+      },
+      {
+        "type": "checkbox",
+        "id": "design_radius_popup",
+        "label": "Popups and modals",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "design_radius_menu",
+        "label": "Menus and drawers",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "design_radius_container",
+        "label": "Content containers",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "design_radius_media",
+        "label": "Media",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Variant buttons"
+      },
+      {
+        "type": "select",
+        "id": "design_variant_button_size",
+        "label": "Button size",
+        "options": [
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "small"
+      },
+      {
+        "type": "checkbox",
+        "id": "design_variant_button_uniform",
+        "label": "Use uniform button widths",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "design_variant_button_uniform_columns",
+        "label": "Buttons per row",
+        "min": 1,
+        "max": 7,
+        "step": 1,
+        "default": 3,
+        "visible_if": "{{ settings.design_variant_button_uniform }}"
+      },
+      {
+        "type": "header",
+        "content": "Swatches"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_square_swatch",
+        "label": "Use square swatches",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "use_emphasized_borders",
+        "label": "Show swatch borders",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "design_variant_swatch_size",
+        "label": "Swatch size",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "default": 3,
+        "info": "Grid swatches are adjusted in 'Product grid' settings."
+      }
+    ]
   },
   {
     "name": "Colors",
@@ -198,22 +453,6 @@
         "id": "type_header_capitalize",
         "label": "Capitalize",
         "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "type_header_border",
-        "label": "Show brand border",
-        "default": true
-      },
-      {
-        "type": "range",
-        "id": "type_header_border_size",
-        "label": "Brand border weight",
-        "unit": "px",
-        "min": 1,
-        "max": 6,
-        "step": 1,
-        "default": 3
       },
       {
         "type": "header",
@@ -457,7 +696,7 @@
       },
       {
         "type": "header",
-        "content": "Buttons and labels"
+        "content": "Buttons"
       },
       {
         "type": "select",
@@ -494,6 +733,52 @@
       {
         "type": "range",
         "id": "type_button_letterspace",
+        "label": "Letter spacing",
+        "unit": "px",
+        "min": 0,
+        "max": 3,
+        "step": 1,
+        "default": 1
+      },
+      {
+        "type": "header",
+        "content": "Labels"
+      },
+      {
+        "type": "select",
+        "id": "type_label_style",
+        "label": "Font style",
+        "options": [
+          {
+            "value": "body",
+            "label": "Body"
+          },
+          {
+            "value": "heading",
+            "label": "Heading"
+          }
+        ],
+        "default": "body"
+      },
+      {
+        "type": "checkbox",
+        "id": "type_label_capitalize",
+        "label": "Capitalize",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "type_label_scale",
+        "label": "Font size scale",
+        "unit": "%",
+        "min": 50,
+        "max": 150,
+        "step": 5,
+        "default": 60
+      },
+      {
+        "type": "range",
+        "id": "type_label_letterspace",
         "label": "Letter spacing",
         "unit": "px",
         "min": 0,
@@ -644,7 +929,7 @@
     ]
   },
   {
-    "name": "Product Grid",
+    "name": "Product grid",
     "settings": [
       {
         "type": "paragraph",
@@ -771,12 +1056,12 @@
     ]
   },
   {
-    "name": "Grid Labels",
+    "name": "Product labels",
     "settings": [
       {
         "type": "checkbox",
         "id": "product_grid_label_position_left",
-        "label": "Position labels left",
+        "label": "Position grid labels left",
         "default": false
       },
       {
@@ -808,8 +1093,14 @@
       {
         "type": "color",
         "id": "color_label_sold_out",
-        "label": "Color",
-        "default": "#E5E5E5"
+        "label": "Background",
+        "default": "#F2F2F2"
+      },
+      {
+        "type": "color",
+        "id": "color_label_text_sold_out",
+        "label": "Text",
+        "default": "#212121"
       },
       {
         "type": "header",
@@ -844,8 +1135,37 @@
       {
         "type": "color",
         "id": "color_label_discount",
-        "label": "Color",
+        "label": "Background",
         "default": "#C00000"
+      },
+      {
+        "type": "color",
+        "id": "color_label_text_discount",
+        "label": "Text",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "header",
+        "content": "Pre-order label",
+        "info": "Label only displays on products using the 'Pre-order' template. [Learn more](https://support.safeasmilk.co/article/268-all-themes-product-page-set-up-a-product-for-pre-order)"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_grid_label_pre_order",
+        "label": "Show label",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "color_label_pre_order",
+        "label": "Background",
+        "default": "#BBFCBB"
+      },
+      {
+        "type": "color",
+        "id": "color_label_text_pre_order",
+        "label": "Text",
+        "default": "#212121"
       },
       {
         "type": "header",
@@ -877,8 +1197,14 @@
       {
         "type": "color",
         "id": "color_label_new",
-        "label": "Color",
-        "default": "#E5E5E5"
+        "label": "Background",
+        "default": "#F2F2F2"
+      },
+      {
+        "type": "color",
+        "id": "color_label_text_new",
+        "label": "Text",
+        "default": "#212121"
       },
       {
         "type": "header",
@@ -904,8 +1230,14 @@
       {
         "type": "color",
         "id": "color_label_custom_one",
-        "label": "Color",
-        "default": "#E5E5E5"
+        "label": "Background",
+        "default": "#F2F2F2"
+      },
+      {
+        "type": "color",
+        "id": "color_label_text_custom_one",
+        "label": "Text",
+        "default": "#212121"
       },
       {
         "type": "header",
@@ -931,8 +1263,14 @@
       {
         "type": "color",
         "id": "color_label_custom_two",
-        "label": "Color",
-        "default": "#E5E5E5"
+        "label": "Background",
+        "default": "#F2F2F2"
+      },
+      {
+        "type": "color",
+        "id": "color_label_text_custom_two",
+        "label": "Text",
+        "default": "#212121"
       }
     ]
   },
@@ -965,22 +1303,6 @@
         "label": "Custom swatch images",
         "placeholder": "Camo: camo.png\nPolka dot: Polka-Dot.jpg",
         "info": "One entry per line. Upload images via Content > Files in the admin. Names must exactly match variant names. File names are case sensitive. [Learn more](https://support.safeasmilk.co/article/213-theme-settings-swatches)"
-      },
-      {
-        "type": "header",
-        "content": "Design"
-      },
-      {
-        "type": "checkbox",
-        "id": "use_square_swatch",
-        "label": "Use square swatches",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "use_emphasized_borders",
-        "label": "Emphasize borders",
-        "default": false
       }
     ]
   },
@@ -1093,12 +1415,6 @@
             "label": "Brand"
           }
         ]
-      },
-      {
-        "type": "checkbox",
-        "id": "back_to_top_btn_square",
-        "label": "Use square button",
-        "default": false
       }
     ]
   },
@@ -2502,19 +2818,21 @@
         "type": "text",
         "id": "social_facebook_link",
         "label": "Facebook",
+        "default": "https://facebook.com/facebook",
         "info": "https://facebook.com/shopify"
       },
       {
         "type": "text",
         "id": "social_instagram_link",
         "label": "Instagram",
-        "info": "http://instagram.com/shopify"
+        "default": "https://instagram.com/instagram",
+        "info": "https://instagram.com/shopify"
       },
       {
         "type": "text",
         "id": "social_linkedin_link",
         "label": "LinkedIn",
-        "info": "https://www.linkedin.com/company/example"
+        "info": "https://www.linkedin.com/company/shopify/"
       },
       {
         "type": "text",
@@ -2538,13 +2856,14 @@
         "type": "text",
         "id": "social_tiktok_link",
         "label": "TikTok",
-        "info": "https://tiktok.com/shopify"
+        "info": "https://www.tiktok.com/@tiktok",
+        "default": "https://www.tiktok.com/@tiktok"
       },
       {
         "type": "text",
         "id": "social_tumblr_link",
         "label": "Tumblr",
-        "info": "http://shopify.tumblr.com"
+        "info": "https://shopify.tumblr.com"
       },
       {
         "type": "text",
@@ -2604,7 +2923,7 @@
         "type": "text",
         "id": "social_custom_2_link",
         "label": "Custom icon 2",
-        "info": "https://www.website.com"
+        "info": "https://www.shopify.com"
       },
       {
         "type": "html",
@@ -2616,7 +2935,7 @@
         "type": "text",
         "id": "social_custom_3_link",
         "label": "Custom icon 3",
-        "info": "https://www.website.com"
+        "info": "https://www.shopify.com"
       },
       {
         "type": "html",
@@ -2628,7 +2947,7 @@
         "type": "text",
         "id": "social_custom_4_link",
         "label": "Custom icon 4",
-        "info": "https://www.website.com"
+        "info": "https://www.shopify.com"
       },
       {
         "type": "html",
@@ -2640,7 +2959,7 @@
         "type": "text",
         "id": "social_custom_5_link",
         "label": "Custom icon 5",
-        "info": "https://www.website.com"
+        "info": "https://www.shopify.com"
       },
       {
         "type": "html",
@@ -2662,8 +2981,12 @@
     ]
   },
   {
-    "name": "Currency codes",
+    "name": "Advanced",
     "settings": [
+      {
+        "type": "header",
+        "content": "Currency codes"
+      },
       {
         "type": "paragraph",
         "content": "Example: $100 USD. Codes will not be shown on line items and unit prices."
@@ -2679,6 +3002,26 @@
         "id": "currency_codes_on_totals_enabled",
         "label": "Show codes on totals",
         "default": false
+      },
+      {
+        "type": "header",
+        "content": "Price details"
+      },
+      {
+        "type": "paragraph",
+        "content": "Applies to product page, featured products and Quick Shop."
+      },
+      {
+        "type": "checkbox",
+        "id": "price_details_tax_show",
+        "label": "Show tax message",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "price_details_shipping_show",
+        "label": "Show shipping message",
+        "default": true
       }
     ]
   }

@@ -11,23 +11,45 @@
 {% else %}
   {{ 'section-newsletter.css' | asset_url | stylesheet_tag }}
 {% endif %}
+{%- liquid
+  if section.settings.newsletter_bg == 'rgba(0,0,0,0)' or section.settings.newsletter_bg == '#ffffff'
+    assign section_bg = false
+  else
+    assign section_bg = true
+  endif
 
+  if section.settings.section_bottom_margin
+    if section.settings.section_width == 'contained'
+      assign margin_class = 'section--mb-m'
+    else
+      assign margin_class = 'section--mb-0'
+    endif
+  endif
+
+  if request.visual_preview_mode
+    assign margin_class = 'section--mb-0'
+  endif
+
+  if settings.design_radius_button != '0' or settings.design_radius_form != '0'
+    assign radius_form_value = 'true'
+  else
+    assign radius_form_value = 'false'
+  endif
+-%}
 <section
   class="
-    section
-    section-newsletter
-    section--{{ section.id }}
-
-    {% if section.settings.section_bottom_margin %}
-      {% if section.settings.section_width == 'contained' %}
-        section--mb-m
-      {% else %}
-        section--mb-0
-      {% endif %}
-    {% endif %}
+        section
+        section-newsletter
+        section--{{ section.id }}
+    <<<<<<< HEAD
+        {% if section_bg %}section--has-bg{% else %}section--no-bg{% endif %}
+    =======
+    >>>>>>> upstream/develop
+        {{ margin_class }}
   "
   data-section-id="{{ section.id }}"
   data-section-type="newsletter"
+  data-radius-form="{{ radius_form_value }}"
   style="
     --space-top: {{ section.settings.padding_top }}px;
     --space-bottom: {{ section.settings.padding_bottom }}px;
@@ -37,8 +59,8 @@
     <div
       class="
         newsletter
-        js-animate-single
-          {% if section.settings.divider_top %}
+        {% unless request.visual_preview_mode %}js-animate-single{% endunless %}
+        {% if section.settings.divider_top %}
           newsletter--divider-top
         {% endif %}
         {% if section.settings.divider_bottom %}
@@ -48,6 +70,7 @@
       data-animation-displacement="0"
       style="
         --text-color: {{ section.settings.newsletter_text }};
+        --text-color-light: {{ section.settings.newsletter_text | color_modify: 'alpha', 0.2 }};
         --background-color: {{ section.settings.newsletter_bg }};
         {% unless section.settings.text_border_color -%}
           --color--title-border: {{ section.settings.newsletter_text }};
@@ -181,7 +204,7 @@
       "type": "color",
       "id": "newsletter_text",
       "label": "Text",
-      "default": "#131313"
+      "default": "#212121"
     },
     {
       "type": "checkbox",

@@ -190,6 +190,14 @@
   display: block;
   line-height: 2;
 }
+.image-with-text__btn.c-btn {
+  min-width: 120px;
+}
+@media (max-width: 47.9275em) {
+  .image-with-text__btn.c-btn {
+    min-width: 110px;
+  }
+}
 
 .image-with-text__media {
   position: relative;

@@ -1,2 +1,151 @@
-import Cart from"cart-store";import{formatMoney}from"utils";class FreeShippingBar extends HTMLElement{#t=null;#e;#i;#a;constructor(){super(),this.#e=this.#n.bind(this)}async connectedCallback(){if(this.amountToSpendElement=this.querySelector("amount-to-spend"),this.amountLeftElement=this.querySelector("amount-left"),this.moneyValueLeftElement=this.amountLeftElement.querySelector("money-value"),this.minimumReachedElement=this.querySelector("minimum-reached"),this.track=this.querySelector("free-shipping-bar-track"),this.goalAnimation=null,this.#a=!1,this.minimumValue=Number(this.getAttribute("minimum-value")),this.value=Number(this.getAttribute("value")),this.#i=this.closest("modal-dialog, popup-dialog"),this.#s(),this.unsubscribe=Cart.subscribe((t=>{this.value!==t.cart.total_price&&(this.value=t.cart.total_price,this.#o()),this.value>=this.minimumValue&&this.track.addEventListener("transitionend",(()=>{setTimeout((()=>{this.#r()}),250)}),{once:!0})})),this.revealDelay=this.getAttribute("reveal-delay")||0,this.#i)this.#i.addEventListener("on:modal:opened",this.#e),this.#i.addEventListener("on:modal:closed",this.#e);else{const t={rootMargin:"0px",threshold:.95};this.visibilityObserver=new IntersectionObserver((t=>{t.forEach((t=>{setTimeout((()=>{t.isIntersecting&&(t.target.classList.add("is-visible"),setTimeout((()=>{0===this.amountLeft&&this.#r()}),500),this.visibilityObserver.disconnect())}),this.revealDelay)}))}),t),this.visibilityObserver.observe(this)}const t=this.querySelector("free-shipping-bar-goal-animation");if(t){const{DotLottie:e}=await import("dotlottie"),i=()=>{this.goalAnimation=new e({canvas:t.querySelector("canvas"),loop:!1,autoplay:!1,src:t.getAttribute("data-url")})};this.#i?this.#i.on("on:modal:opening",i,{once:!0}):i()}}disconnectedCallback(){this.classList.remove("is-visible"),this.visibilityObserver&&this.visibilityObserver.disconnect(),this.#i&&(this.#i.removeEventListener("on:modal:opened",this.#e),this.#i.removeEventListener("on:modal:closed",this.#e)),this.unsubscribe&&this.unsubscribe(),this.#t&&clearInterval(this.#t)}#s(){this.amountLeft=this.minimumValue-this.value<=0?0:this.minimumValue-this.value,this.moneyLeft=formatMoney(this.amountLeft,window.theme.money_format).replace(/[.,]00$/,""),this.displacement=Math.round(this.amountLeft/this.minimumValue*100)}#o(){this.setAttribute("value",this.value),this.#s(),this.moneyValueLeftElement&&(this.moneyValueLeftElement.innerHTML=this.moneyLeft),this.value>0?this.amountToSpendElement.setAttribute("hidden",""):this.amountToSpendElement.removeAttribute("hidden"),0===this.value||0===this.amountLeft?this.amountLeftElement.setAttribute("hidden",""):this.amountLeftElement.removeAttribute("hidden"),this.amountLeft>0?this.minimumReachedElement.setAttribute("hidden",""):this.minimumReachedElement.removeAttribute("hidden"),this.track.style.setProperty("--displacement",`${this.displacement}%`)}#r(){const t=this.querySelector("free-shipping-bar-goal-animation"),e=Boolean(localStorage.getItem("freeShippingAnimationShown"));!t||e||this.#a||(this.#a=!0,this.#t=setInterval((()=>{if(this.goalAnimation&&this.goalAnimation.isLoaded){clearInterval(this.#t),this.#t=null;const t=this.querySelector("free-shipping-bar-goal-animation canvas");"0"===t.getAttribute("width")&&(t.setAttribute("width",300),t.setAttribute("height",300)),localStorage.setItem("freeShippingAnimationShown",!0),this.goalAnimation.play()}}),100))}#n(t){"on:modal:opened"===t.type?this.classList.add("is-visible"):"on:modal:closed"===t.type&&this.classList.remove("is-visible")}}customElements.define("free-shipping-bar",FreeShippingBar);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import Cart from "cart-store";
+
+import { formatMoney } from "utils";
+
+class FreeShippingBar extends HTMLElement {
+    #animationInterval=null;
+    #boundOrchestrateModalEvent;
+    #parentModal;
+    #playingAnimation;
+    constructor() {
+        super();
+        this.#boundOrchestrateModalEvent = this.#orchestrateModalEvent.bind(this);
+    }
+    async connectedCallback() {
+        this.amountToSpendElement = this.querySelector("amount-to-spend");
+        this.amountLeftElement = this.querySelector("amount-left");
+        this.moneyValueLeftElement = this.amountLeftElement.querySelector("money-value");
+        this.minimumReachedElement = this.querySelector("minimum-reached");
+        this.track = this.querySelector("free-shipping-bar-track");
+        this.goalAnimation = null;
+        this.#playingAnimation = false;
+        this.minimumValue = Number(this.getAttribute("minimum-value"));
+        this.value = Number(this.getAttribute("value"));
+        this.#parentModal = this.closest("modal-dialog, popup-dialog");
+        this.#setVariables();
+        this.unsubscribe = Cart.subscribe((state => {
+            if (this.value !== state.cart.total_price) {
+                this.value = state.cart.total_price;
+                this.#update();
+            }
+            if (this.value >= this.minimumValue) {
+                this.track.addEventListener("transitionend", (() => {
+                    setTimeout((() => {
+                        this.#playGoalAnimation();
+                    }), 250);
+                }), {
+                    once: true
+                });
+            }
+        }));
+        this.revealDelay = this.getAttribute("reveal-delay") || 0;
+        if (this.#parentModal) {
+            this.#parentModal.addEventListener("on:modal:opened", this.#boundOrchestrateModalEvent);
+            this.#parentModal.addEventListener("on:modal:closed", this.#boundOrchestrateModalEvent);
+        } else {
+            const options = {
+                rootMargin: "0px",
+                threshold: .95
+            };
+            this.visibilityObserver = new IntersectionObserver((entries => {
+                entries.forEach((entry => {
+                    setTimeout((() => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                            setTimeout((() => {
+                                if (this.amountLeft === 0) this.#playGoalAnimation();
+                            }), 500);
+                            this.visibilityObserver.disconnect();
+                        }
+                    }), this.revealDelay);
+                }));
+            }), options);
+            this.visibilityObserver.observe(this);
+        }
+        const goalAnimationElement = this.querySelector("free-shipping-bar-goal-animation");
+        if (goalAnimationElement) {
+            const {DotLottie: DotLottie} = await import("dotlottie");
+            const loadAnimation = () => {
+                this.goalAnimation = new DotLottie({
+                    canvas: goalAnimationElement.querySelector("canvas"),
+                    loop: false,
+                    autoplay: false,
+                    src: goalAnimationElement.getAttribute("data-url")
+                });
+            };
+            if (this.#parentModal) {
+                this.#parentModal.on("on:modal:opening", loadAnimation, {
+                    once: true
+                });
+            } else {
+                loadAnimation();
+            }
+        }
+    }
+    disconnectedCallback() {
+        this.classList.remove("is-visible");
+        if (this.visibilityObserver) this.visibilityObserver.disconnect();
+        if (this.#parentModal) {
+            this.#parentModal.removeEventListener("on:modal:opened", this.#boundOrchestrateModalEvent);
+            this.#parentModal.removeEventListener("on:modal:closed", this.#boundOrchestrateModalEvent);
+        }
+        if (this.unsubscribe) this.unsubscribe();
+        if (this.#animationInterval) clearInterval(this.#animationInterval);
+    }
+    #setVariables() {
+        this.amountLeft = this.minimumValue - this.value <= 0 ? 0 : this.minimumValue - this.value;
+        this.moneyLeft = formatMoney(this.amountLeft, window.theme.money_format).replace(/[.,]00$/, "");
+        this.displacement = Math.round(this.amountLeft / this.minimumValue * 100);
+    }
+    #update() {
+        this.setAttribute("value", this.value);
+        this.#setVariables();
+        if (this.moneyValueLeftElement) this.moneyValueLeftElement.innerHTML = this.moneyLeft;
+        if (this.value > 0) {
+            this.amountToSpendElement.setAttribute("hidden", "");
+        } else {
+            this.amountToSpendElement.removeAttribute("hidden");
+        }
+        if (this.value === 0 || this.amountLeft === 0) {
+            this.amountLeftElement.setAttribute("hidden", "");
+        } else {
+            this.amountLeftElement.removeAttribute("hidden");
+        }
+        if (this.amountLeft > 0) {
+            this.minimumReachedElement.setAttribute("hidden", "");
+        } else {
+            this.minimumReachedElement.removeAttribute("hidden");
+        }
+        this.track.style.setProperty("--displacement", `${this.displacement}%`);
+    }
+    #playGoalAnimation() {
+        const goalAnimationElement = this.querySelector("free-shipping-bar-goal-animation");
+        const animationShown = Boolean(localStorage.getItem("freeShippingAnimationShown"));
+        if (!goalAnimationElement || animationShown || this.#playingAnimation) return;
+        this.#playingAnimation = true;
+        this.#animationInterval = setInterval((() => {
+            if (this.goalAnimation && this.goalAnimation.isLoaded) {
+                clearInterval(this.#animationInterval);
+                this.#animationInterval = null;
+                const goalAnimationElementCanvas = this.querySelector("free-shipping-bar-goal-animation canvas");
+                if (goalAnimationElementCanvas.getAttribute("width") === "0") {
+                    goalAnimationElementCanvas.setAttribute("width", 300);
+                    goalAnimationElementCanvas.setAttribute("height", 300);
+                }
+                localStorage.setItem("freeShippingAnimationShown", true);
+                this.goalAnimation.play();
+            }
+        }), 100);
+    }
+    #orchestrateModalEvent(e) {
+        if (e.type === "on:modal:opened") {
+            this.classList.add("is-visible");
+        } else if (e.type === "on:modal:closed") {
+            this.classList.remove("is-visible");
+        }
+    }
+}
+
+customElements.define("free-shipping-bar", FreeShippingBar);
 //# sourceMappingURL=cart-free-shipping-bar.js.map

@@ -1,19 +1,19 @@
 /* ==========================================================================
-   #HOME LIST COLLECTIONS SECTION
+   #COLLECTIONS LIST & GALLERY SECTION
    ========================================================================== */
 @media (min-width: 47.9375em) {
-  .section--collections-list items-scroll[scroll-enabled] [data-items].grid-spacing--0 {
+  .section--collections-list .items-scroll[scroll-enabled] [data-items].grid-spacing--0 {
     padding: 0 1px;
     scroll-padding: 0;
     margin-left: 0;
     width: 100%;
     column-gap: 1px;
   }
-  .section--collections-list items-scroll[scroll-enabled] [data-items].grid-spacing--0 .collection-list__item {
+  .section--collections-list .items-scroll[scroll-enabled] [data-items].grid-spacing--0 .collection-list__item {
     width: calc(100% + 1px);
   }
 }
-.section--collections-list items-scroll[scroll-enabled].ratio-navigation .navigation {
+.section--collections-list .items-scroll[scroll-enabled].ratio-navigation .navigation {
   height: 100%;
 }
 
@@ -188,6 +188,12 @@
 .collection-list__content-link.collection-list__content-link.collection-list__content-link.c-btn {
   margin-top: 18px;
   transition: opacity 0.4s ease-out, transform 0.4s ease-out, background-color 0.2s ease-out, color 0.2s ease-out;
+  min-width: 120px;
+}
+@media (max-width: 47.9275em) {
+  .collection-list__content-link.collection-list__content-link.collection-list__content-link.c-btn {
+    min-width: 110px;
+  }
 }
 .collection-list__content-link.collection-list__content-link.collection-list__content-link.link, .collection-list__content-link.collection-list__content-link.collection-list__content-link.link--underline {
   line-height: 2;
@@ -262,5 +268,12 @@ body[data-anim-zoom=true] .collection-list__item:hover .collection-list__video {
   .list-collections .collection-list__item {
     margin-bottom: 15px;
   }
+}
+
+.section--collections-list .collection-list__link .collection-list__content-wrapper {
+  transition: 1s transform ease-in-out;
+}
+.section--collections-list .collection-list__link:hover .collection-list__content-wrapper {
+  transform: scale(1.07);
 }
 /*# sourceMappingURL=section-collection-list.css.map */

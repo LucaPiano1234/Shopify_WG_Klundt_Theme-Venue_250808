@@ -3,6 +3,7 @@
     const headerSection = document.querySelector('header-container');
     const header = document.querySelector('.js-header');
     const announcement = document.querySelector('.shopify-section-group-header-group.js-section__announcement');
+    const utility = document.querySelector('.shopify-section-group-header-group.js-section__utility-bar');
 
     document.documentElement.style.setProperty('--window-height', `${window.innerHeight}px`);
 
@@ -10,6 +11,8 @@
       '--announcement-height',
       `${announcement ? announcement.offsetHeight : 0}px`,
     );
+
+    document.documentElement.style.setProperty('--utility-height', `${utility ? utility.offsetHeight : 0}px`);
 
     //header section (zero height if transparent)
     if (headerSection)

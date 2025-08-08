@@ -173,7 +173,7 @@
   "collections": {
     "general": {
       "all_collections": "Tutte le raccolte",
-      "view_collection": "Visualizza la raccolta",
+      "view_collection": "Visualizza",
       "products_label": "prodotti",
       "product_label": "prodotto",
       "no_matches": "Nessun prodotto trovato",
@@ -279,6 +279,7 @@
       "compare_at": "Confronto",
       "quantity": "Quantità",
       "add_to_cart": "Aggiungi al carrello",
+      "pre_order": "Ordine prestabilito",
       "select_options": "Occhiata veloce",
       "view_in_space": "Visualizza nel tuo spazio",
       "view_in_space_label": "Visualizza nel tuo spazio caricherà gli articoli nella finestra della realtà aumentata",
@@ -286,6 +287,7 @@
       "video_thumbnail_alt": "Carica e riproduci video {{ imageAlt }} nel Visualizzatore galleria",
       "model_thumbnail_alt": "Carica modelli 3D {{ imageAlt }} nel Visualizzatore galleria",
       "qty_notice_in_stock": "Disponibile",
+      "qty_notice_continue_selling": "Disponibile",
       "qty_notice_low_stock": "Stock basso",
       "qty_notice_sold_out": "Esaurito",
       "qty_notice_number_in_stock_html": "<span>{{ count }}</span> in stock",
@@ -295,7 +297,8 @@
       "sold_out_label": "Esaurito",
       "discount_text": "In offerta",
       "discount_currency": "Salva {{ discount_format_currency }}",
-      "discount_percentage": "Salva {{ discount_format_percentage }}%"
+      "discount_percentage": "Salva {{ discount_format_percentage }}%",
+      "pre_order_label": "Ordine prestabilito"
     },
     "layout": {
       "tab_label": "Apri scheda",
@@ -384,7 +387,8 @@
       "sign_in": "Accedi",
       "cancel": "Annulla",
       "guest_title": "Continua senza registrarti",
-      "guest_continue": "Continua"
+      "guest_continue": "Continua",
+      "alternate_provider_separator": "oppure"
     },
     "orders": {
       "title": "Cronologia ordini",

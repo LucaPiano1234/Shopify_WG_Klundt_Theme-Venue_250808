@@ -4,7 +4,7 @@
     section--padded
     section--rich-text
     section--{{ section.id }}
-    {% if section.settings.section_bottom_margin %}section--mb-0{% endif %}
+    {% if section.settings.section_bottom_margin or request.visual_preview_mode %}section--mb-0{% endif %}
   "
   data-section-id="{{ section.id }}"
   data-section-type="rich-text"
@@ -17,7 +17,7 @@
     <div class="container container--{{ section.settings.section_width }}">
       {% if section.settings.section_title != blank %}
         <div
-          class="section__title section__title--mb-s section__title--center home-rich-text__title js-animate-single"
+          class="section__title section__title--mb-s section__title--center home-rich-text__title {% unless request.visual_preview_mode %}js-animate-single{% endunless %}"
           data-animation-displacement="5"
         >
           <h2 class="section__title-text">{{ section.settings.section_title | escape }}</h2>
@@ -25,7 +25,7 @@
       {% endif %}
       {% if section.settings.text != blank %}
         <div
-          class="home-rich-text__content u-text-center rte js-animate-single"
+          class="home-rich-text__content u-text-center rte {% unless request.visual_preview_mode %}js-animate-single{% endunless %}"
           data-animation-displacement="0"
           data-animation-delay="0.1"
         >

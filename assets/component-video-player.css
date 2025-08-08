@@ -17,18 +17,19 @@ video-player .v-vlite:not(.v-playing) .v-container::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--overlay-color, rgb(13, 13, 13));
+  background-color: var(--overlay-color, rgb(33, 33, 33));
   opacity: var(--overlay-opacity, 0);
   z-index: 2;
   pointer-events: none;
 }
 video-player .v-vlite.v-video {
   aspect-ratio: var(--aspect-ratio);
+  background-color: transparent;
 }
 video-player .v-vlite .v-bigPlay {
   height: 60px;
   width: 60px;
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
   opacity: 1;
@@ -56,12 +57,12 @@ video-player video-element video {
   width: 100%;
 }
 video-player.video-player--button-light .v-vlite .v-bigPlay {
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
   background-color: rgb(255, 255, 255);
 }
 video-player.video-player--button-dark .v-vlite .v-bigPlay {
   color: rgb(255, 255, 255);
-  background-color: rgb(13, 13, 13);
+  background-color: rgb(33, 33, 33);
 }
 video-player.video-player--button-primary .v-vlite .v-bigPlay {
   color: rgb(255, 255, 255);

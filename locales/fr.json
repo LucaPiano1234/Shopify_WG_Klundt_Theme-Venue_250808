@@ -173,7 +173,7 @@
   "collections": {
     "general": {
       "all_collections": "Toutes les collections",
-      "view_collection": "Voir la collection",
+      "view_collection": "Voir",
       "products_label": "produits",
       "product_label": "produits",
       "no_matches": "Aucun produit ne correspond à votre recherche.",
@@ -279,6 +279,7 @@
       "compare_at": "Était",
       "quantity": "Quantité",
       "add_to_cart": "Ajouter au panier",
+      "pre_order": "Précommande",
       "select_options": "Aperçu rapide",
       "view_in_space": "Afficher dans votre espace",
       "view_in_space_label": "Affichage dans votre espace, charge l'article dans une fenêtre de réalité augmentée",
@@ -286,6 +287,7 @@
       "video_thumbnail_alt": "Charger et lire la vidéo {{ imageAlt }} dans la visionneuse de la Galerie",
       "model_thumbnail_alt": "Charger le modèle 3D {{ imageAlt }} dans la Galerie",
       "qty_notice_in_stock": "En stock",
+      "qty_notice_continue_selling": "En stock",
       "qty_notice_low_stock": "Stock faible",
       "qty_notice_sold_out": "Épuisé",
       "qty_notice_number_in_stock_html": "<span>{{ count }}</span> en stock",
@@ -295,7 +297,8 @@
       "sold_out_label": "Épuisé",
       "discount_text": "En solde",
       "discount_currency": "Sauvegarder {{ discount_format_currency }}",
-      "discount_percentage": "Sauvegarder {{ discount_format_percentage }}%"
+      "discount_percentage": "Sauvegarder {{ discount_format_percentage }}%",
+      "pre_order_label": "Précommande"
     },
     "layout": {
       "tab_label": "Ouvrir",
@@ -384,7 +387,8 @@
       "sign_in": "Se connecter",
       "cancel": "Retourner à la boutique",
       "guest_title": "Continuer en tant qu'invité",
-      "guest_continue": "Continuer"
+      "guest_continue": "Continuer",
+      "alternate_provider_separator": "ou"
     },
     "orders": {
       "title": "Historique des commandes",

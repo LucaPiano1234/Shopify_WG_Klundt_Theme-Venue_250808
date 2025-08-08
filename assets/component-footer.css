@@ -35,6 +35,7 @@
 
 .footer-nav__image-img {
   position: relative;
+  overflow: hidden;
 }
 .footer-nav__image-img img {
   width: 100%;
@@ -168,41 +169,41 @@
 }
 
 .footer--dark {
-  --title-color: rgb(13, 13, 13);
+  --title-color: rgb(33, 33, 33);
 }
 .footer--dark .footer-nav__text,
 .footer--dark .footer-copyright__text,
 .footer--dark .footer__icons-item,
 .footer--dark .footer-nav__text.rte :is(h1, h2, h3, h4, h5, h6) {
-  color: rgba(13, 13, 13, 0.8);
+  color: rgba(33, 33, 33, 0.8);
 }
 .footer--dark .footer-nav__link,
 .footer--dark .footer-localize .localize__toggle,
 .footer--dark .footer-nav__text.footer-nav__text a,
 .footer--dark .footer-tweet__link,
 .footer--dark .footer-copyright__text a {
-  color: rgba(13, 13, 13, 0.8);
+  color: rgba(33, 33, 33, 0.8);
 }
 .footer--dark .footer-nav__link:hover,
 .footer--dark .footer-localize .localize__toggle:hover,
 .footer--dark .footer-nav__text.footer-nav__text a:hover,
 .footer--dark .footer-tweet__link:hover,
 .footer--dark .footer-copyright__text a:hover {
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
 }
 .footer--dark .footer-nav .social-links__link,
 .footer--dark .footer-nav__text.footer-nav__text.rte a {
-  color: rgba(13, 13, 13, 0.8);
-  border-color: rgba(13, 13, 13, 0.8);
+  color: rgba(33, 33, 33, 0.8);
+  border-color: rgba(33, 33, 33, 0.8);
 }
 .footer--dark .footer-nav .social-links__link:hover,
 .footer--dark .footer-nav__text.footer-nav__text.rte a:hover {
-  color: rgb(13, 13, 13);
-  border-color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
+  border-color: rgb(33, 33, 33);
 }
 .footer--dark.footer-divider,
 .footer--dark .footer__bottom {
-  border-top: 1px solid rgba(13, 13, 13, 0.2);
+  border-top: 1px solid rgba(33, 33, 33, 0.2);
 }
 
 @media (max-width: 61.24em) {
@@ -265,19 +266,19 @@
 }
 
 .footer--dark .footer-localize .localize__items {
-  border-color: rgba(13, 13, 13, 0.2);
+  border-color: rgba(33, 33, 33, 0.2);
 }
 .footer--dark .footer-localize .localize__items:before {
-  border-color: rgba(13, 13, 13, 0.2) transparent transparent transparent;
+  border-color: rgba(33, 33, 33, 0.2) transparent transparent transparent;
 }
 .footer--dark .footer-localize .list-menu {
-  --active-color: rgba(17, 17, 17, 0.15);
-  --hover-color: rgba(17, 17, 17, 0.05);
+  --active-color: rgba(33, 33, 33, 0.15);
+  --hover-color: rgba(33, 33, 33, 0.06);
 }
 .footer--dark .footer-localize .list-menu__link {
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
 }
 .footer--dark .footer-localize .list-menu__link:hover {
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
 }
 /*# sourceMappingURL=component-footer.css.map */

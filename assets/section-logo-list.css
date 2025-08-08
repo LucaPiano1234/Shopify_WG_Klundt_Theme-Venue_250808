@@ -28,7 +28,7 @@
 .logo-list .grid-layout {
   justify-content: center;
 }
-.logo-list items-scroll .navigation {
+.logo-list .items-scroll .navigation {
   display: none !important;
 }
 

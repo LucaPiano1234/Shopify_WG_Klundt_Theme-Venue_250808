@@ -13,16 +13,24 @@
     {{ 'section-image-grid.css' | asset_url | stylesheet_tag }}
   {% endif %}
 
+  {%- liquid
+    if section.settings.section_bottom_margin
+      assign margin_class = 'section--mb-0'
+    else
+      assign margin_class = 'section--mb-s'
+    endif
+
+    if request.visual_preview_mode
+      assign margin_class = 'section--mb-0'
+    endif
+  -%}
+
   <section
     class="
       section
       section--padded
       section--{{ section.id }}
-      {% if section.settings.section-bottom-margin %}
-        section--mb-0
-      {% else %}
-        section--mb-s
-      {% endif %}
+      {{ margin_class }}
     "
     data-section-id="{{ section.id }}"
     data-section-type="image-grid"
@@ -152,7 +160,13 @@
                       ></div>
                       <div class="image-grid__content">
                         {% unless block.settings.title == blank %}
-                          <h3 class="image-grid__title{% unless block.settings.text_border_color %} image-grid__title--adapt-border{% endunless %} {% if section.settings.featured and forloop.index == 1 %}h1{% else %}h2{% endif %}">
+                          <h3
+                            class="
+                              image-grid__title
+                              {% unless block.settings.text_border_color %}image-grid__title--adapt-border{% endunless %}
+                              {% if section.settings.featured and forloop.index == 1 %}h1{% else %}h2{% endif %}
+                            "
+                          >
                             {{ block.settings.title }}
                           </h3>
                         {% endunless %}
@@ -189,7 +203,13 @@
                       ></div>
                       <div class="image-grid__content">
                         {% unless block.settings.title == blank %}
-                          <h3 class="image-grid__title{% unless block.settings.text_border_color %} image-grid__title--adapt-border{% endunless %} {% if section.settings.featured and forloop.index == 1 %}h1{% else %}h2{% endif %}">
+                          <h3
+                            class="
+                              image-grid__title
+                              {% unless block.settings.text_border_color %}image-grid__title--adapt-border{% endunless %}
+                              {% if section.settings.featured and forloop.index == 1 %}h1{% else %}h2{% endif %}
+                            "
+                          >
                             {{ block.settings.title }}
                           </h3>
                         {% endunless %}
@@ -210,7 +230,7 @@
                     >
                       {% liquid
                         if block.settings.text_color == 'rgba(0,0,0,0)'
-                          assign text_color = '#131313'
+                          assign text_color = '#212121'
                         else
                           assign text_color = block.settings.text_color
                         endif
@@ -230,7 +250,11 @@
                       >
                         {% unless block.settings.title == blank %}
                           <h3
-                            class="image-grid__title{% unless block.settings.text_border_color %} image-grid__title--adapt-border{% endunless %} {% if section.settings.featured and forloop.index == 1 %}h1{% else %}h2{% endif %}"
+                            class="
+                              image-grid__title
+                              {% unless block.settings.text_border_color %}image-grid__title--adapt-border{% endunless %}
+                              {% if section.settings.featured and forloop.index == 1 %}h1{% else %}h2{% endif %}
+                            "
                             {% if block.settings.text_heading_color %}
                               style="color:{{ settings.color_headings }}"
                             {% endif %}
@@ -409,7 +433,7 @@
     },
     {
       "type": "checkbox",
-      "id": "section-bottom-margin",
+      "id": "section_bottom_margin",
       "label": "Reduce bottom margin",
       "default": false
     }
@@ -566,7 +590,7 @@
           "type": "color",
           "id": "text_color",
           "label": "Text",
-          "default": "#131313"
+          "default": "#212121"
         },
         {
           "type": "checkbox",

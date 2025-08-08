@@ -17,6 +17,7 @@
     section
     section--padded
     section--{{ section.id }}
+    {% if request.visual_preview_mode %}section--mb-0{% endif %}
   "
   data-section-id="{{ section.id }}"
   data-section-type="home-video"
@@ -371,6 +372,18 @@
     {
       "name": "Video gallery",
       "blocks": [
+        {
+          "type": "video",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+          }
+        },
+        {
+          "type": "video",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+          }
+        },
         {
           "type": "video",
           "settings": {

@@ -131,7 +131,7 @@ countdown-timer .countdown--heading .countdown__divider {
 }
 countdown-timer .countdown--mono .countdown__unit,
 countdown-timer .countdown--mono .countdown__divider {
-  font-family: "PT Mono", monospace;
+  font-family: "SF Mono", monospace;
   font-weight: normal;
   font-style: normal;
 }

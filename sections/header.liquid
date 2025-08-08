@@ -131,7 +131,7 @@
       --header-text-color-light: {{ section.settings.header_text | color_modify: 'alpha', 0.7 }};
       --header-text-color-lighter: {{ section.settings.header_text | color_modify: 'alpha', 0.5 }};
       --header-text-color-lightest: {{ section.settings.header_text | color_modify: 'alpha', 0.1 }};
-      --header-text-color-bg: {{ section.settings.header_text | color_modify: 'alpha', 0.01 }};
+      --header-text-color-bg: {{ section.settings.header_text | color_modify: 'alpha', 0.06 }};
       --header-transparent-text-color: {{ section.settings.header_transparent_text }};
       --header-transparent-text-color-light: {{ section.settings.header_transparent_text | color_modify: 'alpha', 0.3 }};
       --header-text-contrast-color: {{ header_text_contrast }};
@@ -495,17 +495,18 @@
                                     {%- else -%}
                                       <header-details-disclosure>
                                         <details id="Details-HeaderSubMenu-{{ forloop.index }}">
-                                          <summary class="header__menu-item list-menu__link">
+                                          <summary class="header__menu-item">
                                             <a
                                               href="{{ childlink.url }}"
-                                              class="list-menu__text"
+                                              class="list-menu__link"
                                               {% if link.current %}
                                                 aria-current="page"
                                               {% endif %}
+                                              style="z-index: 1"
                                             >
-                                              {{ childlink.title | escape }}
+                                              <span class="list-menu__text">{{ childlink.title | escape }}</span>
+                                              {%- render 'icons-theme', icon: 'chevron' -%}
                                             </a>
-                                            {%- render 'icons-theme', icon: 'chevron' -%}
                                           </summary>
                                           <div
                                             id="HeaderSubMenu-MenuList-{{ forloop.index }}"
@@ -1415,7 +1416,7 @@
       "type": "color",
       "id": "header_text",
       "label": "Text and icons",
-      "default": "#111111"
+      "default": "#212121"
     },
     {
       "type": "image_picker",
@@ -1487,7 +1488,7 @@
       "label": "Logo size desktop",
       "min": 10,
       "max": 100,
-      "step": 5,
+      "step": 1,
       "default": 25
     },
     {
@@ -1505,7 +1506,7 @@
       "label": "Logo size mobile",
       "min": 10,
       "max": 100,
-      "step": 5,
+      "step": 1,
       "default": 20
     },
     {
@@ -1537,7 +1538,7 @@
       "type": "checkbox",
       "id": "sidebar_show_borders",
       "label": "Show borders",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",

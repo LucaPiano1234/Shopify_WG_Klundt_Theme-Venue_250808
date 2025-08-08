@@ -1,2 +1,125 @@
-import{Animations}from"animations";import{debounce}from"utils";class TabbedContent extends HTMLElement{connectedCallback(){this.tabs=this.querySelectorAll("tab-triggers button"),this.tabPanels=this.querySelectorAll("tab-panel"),this.tabList=this.querySelector("tab-triggers"),this.currentTab=Array.from(this.tabs).find((t=>"true"===t.getAttribute("aria-selected"))),this.currentTabIndex=Array.from(this.tabs).findIndex((t=>"true"===t.getAttribute("aria-selected"))),this.tabs.forEach((t=>{t.addEventListener("click",(t=>this.openTab(t.target.id)))})),this.tabList.addEventListener("keydown",(t=>{"ArrowRight"!==t.key&&"ArrowLeft"!==t.key||(this.tabs[this.currentTabIndex].setAttribute("tabindex",-1),"ArrowRight"===t.key?(this.currentTabIndex+=1,this.currentTabIndex>=this.tabs.length&&(this.currentTabIndex=0)):"ArrowLeft"===t.key&&(this.currentTabIndex-=1,this.currentTabIndex<0&&(this.currentTabIndex=this.tabs.length-1)),this.tabs[this.currentTabIndex].setAttribute("tabindex",0),this.tabs[this.currentTabIndex].focus())}))}openTab(t){if(this.currentTab.id===t)return;this.currentTab=Array.from(this.tabs).find((e=>e.id===t)),this.tabList.querySelectorAll('[aria-selected="true"]').forEach((t=>{t.setAttribute("aria-selected",!1),t.setAttribute("tabindex","-1")})),this.currentTab.setAttribute("aria-selected",!0),this.currentTab.setAttribute("tabindex","0"),Array.from(this.tabPanels).forEach((t=>{t.setAttribute("hidden",!0);const e=t.querySelector(".js-animate-sequence");Animations.resetAnimations(e)}));this.querySelector(`#${this.currentTab.getAttribute("aria-controls")}`).removeAttribute("hidden")}}customElements.define("tabbed-content",TabbedContent);class TabTriggers extends HTMLElement{#t;constructor(){super(),this.#t=null,this.alignItems=this.parentElement.getAttribute("align-items")||"left"}connectedCallback(){this.#e(),this.#r();new ResizeObserver(debounce((()=>{this.#s()}),50)).observe(this)}#e(){this.#t=new MutationObserver((t=>{t.forEach((t=>{"attributes"===t.type&&"aria-selected"===t.attributeName&&t.target.getAttribute("aria-selected","true")&&this.#i()}))}))}#r(){const t=this.querySelectorAll("button"),e=this.closest(".section").querySelector(".js-update-link");e&&Array.from(t).forEach((t=>{t.addEventListener("click",(()=>{const r=t.dataset.updateLink;r&&e.setAttribute("href",r)}))}))}#i(){if(!["left","center"].includes(this.alignItems))return;const t=this.querySelector('[aria-selected="true"]'),e=Number(window.getComputedStyle(this).paddingLeft.replace("px",""));if(t){const r="left"===this.alignItems?t.offsetLeft-e:t.offsetLeft-(this.offsetWidth-t.offsetWidth)/2;this.scrollTo({left:r,behavior:"smooth"})}}#s(){if(this.scrollWidth>this.offsetWidth){const t=this.querySelectorAll("button");Array.from(t).forEach((t=>{this.#t.observe(t,{attributes:!0,childList:!1,subtree:!1})})),this.#i()}else this.#t.disconnect()}}customElements.define("tab-triggers",TabTriggers);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import { Animations } from "animations";
+
+import { debounce } from "utils";
+
+class TabbedContent extends HTMLElement {
+    connectedCallback() {
+        this.tabs = this.querySelectorAll("tab-triggers button");
+        this.tabPanels = this.querySelectorAll("tab-panel");
+        this.tabList = this.querySelector("tab-triggers");
+        this.currentTab = Array.from(this.tabs).find((el => el.getAttribute("aria-selected") === "true"));
+        this.currentTabIndex = Array.from(this.tabs).findIndex((el => el.getAttribute("aria-selected") === "true"));
+        this.tabs.forEach((tab => {
+            tab.addEventListener("click", (e => this.openTab(e.target.id)));
+        }));
+        this.tabList.addEventListener("keydown", (e => {
+            if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+                this.tabs[this.currentTabIndex].setAttribute("tabindex", -1);
+                if (e.key === "ArrowRight") {
+                    this.currentTabIndex += 1;
+                    if (this.currentTabIndex >= this.tabs.length) {
+                        this.currentTabIndex = 0;
+                    }
+                } else if (e.key === "ArrowLeft") {
+                    this.currentTabIndex -= 1;
+                    if (this.currentTabIndex < 0) {
+                        this.currentTabIndex = this.tabs.length - 1;
+                    }
+                }
+                this.tabs[this.currentTabIndex].setAttribute("tabindex", 0);
+                this.tabs[this.currentTabIndex].focus();
+            }
+        }));
+    }
+    openTab(id) {
+        if (this.currentTab.id === id) return;
+        this.currentTab = Array.from(this.tabs).find((t => t.id === id));
+        this.tabList.querySelectorAll('[aria-selected="true"]').forEach((t => {
+            t.setAttribute("aria-selected", false);
+            t.setAttribute("tabindex", "-1");
+        }));
+        this.currentTab.setAttribute("aria-selected", true);
+        this.currentTab.setAttribute("tabindex", "0");
+        Array.from(this.tabPanels).forEach((p => {
+            p.setAttribute("hidden", true);
+            const animationElement = p.querySelector(".js-animate-sequence");
+            Animations.resetAnimations(animationElement);
+        }));
+        const newSelectedPanel = this.querySelector(`#${this.currentTab.getAttribute("aria-controls")}`);
+        newSelectedPanel.removeAttribute("hidden");
+    }
+}
+
+customElements.define("tabbed-content", TabbedContent);
+
+class TabTriggers extends HTMLElement {
+    #triggersObserver;
+    constructor() {
+        super();
+        this.#triggersObserver = null;
+        this.alignItems = this.parentElement.getAttribute("align-items") || "left";
+    }
+    connectedCallback() {
+        this.#initTriggersObserver();
+        this.#initLinkUpdate();
+        const resizeObserver = new ResizeObserver(debounce((() => {
+            this.#updateControls();
+        }), 50));
+        resizeObserver.observe(this);
+    }
+    #initTriggersObserver() {
+        const callback = mutationList => {
+            mutationList.forEach((mutation => {
+                if (mutation.type === "attributes" && mutation.attributeName === "aria-selected" && mutation.target.getAttribute("aria-selected", "true")) {
+                    this.#moveToSelected();
+                }
+            }));
+        };
+        this.#triggersObserver = new MutationObserver(callback);
+    }
+    #initLinkUpdate() {
+        const triggers = this.querySelectorAll("button");
+        const anchor = this.closest(".section").querySelector(".js-update-link");
+        if (anchor) {
+            Array.from(triggers).forEach((trigger => {
+                trigger.addEventListener("click", (() => {
+                    const link = trigger.dataset.updateLink;
+                    if (link) {
+                        anchor.setAttribute("href", link);
+                    }
+                }));
+            }));
+        }
+    }
+    #moveToSelected() {
+        if (![ "left", "center" ].includes(this.alignItems)) return;
+        const selected = this.querySelector('[aria-selected="true"]');
+        const paddingLeft = Number(window.getComputedStyle(this).paddingLeft.replace("px", ""));
+        if (selected) {
+            const newPosition = this.alignItems === "left" ? selected.offsetLeft - paddingLeft : selected.offsetLeft - (this.offsetWidth - selected.offsetWidth) / 2;
+            this.scrollTo({
+                left: newPosition,
+                behavior: "smooth"
+            });
+        }
+    }
+    #updateControls() {
+        if (this.scrollWidth > this.offsetWidth) {
+            const triggers = this.querySelectorAll("button");
+            Array.from(triggers).forEach((trigger => {
+                this.#triggersObserver.observe(trigger, {
+                    attributes: true,
+                    childList: false,
+                    subtree: false
+                });
+            }));
+            this.#moveToSelected();
+        } else {
+            this.#triggersObserver.disconnect();
+        }
+    }
+}
+
+customElements.define("tab-triggers", TabTriggers);
 //# sourceMappingURL=tabbed-content.js.map

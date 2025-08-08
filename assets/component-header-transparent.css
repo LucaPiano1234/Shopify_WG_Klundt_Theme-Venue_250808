@@ -3,6 +3,9 @@
    ========================================================================== */
 body:not(.header-stuck):not([header-menu-open]) [data-transparent-header=true].header:not(:hover) {
   background-color: transparent;
+  -webkit-transition: border-color 0.3s ease-in, opacity 0.5s ease-in, background-color 0.3s ease-in-out 0.02s, -webkit-transform 350ms ease;
+  -moz-transition: border-color 0.3s ease-in, opacity 0.5s ease-in, background-color 0.3s ease-in-out 0.02s, -moz-transform 350ms ease;
+  transition: border-color 0.3s ease-in, opacity 0.5s ease-in, background-color 0.3s ease-in-out 0.02s, transform 350ms ease;
 }
 body:not(.header-stuck):not([header-menu-open]) [data-transparent-header=true].header--has-transparent-divider:not(:hover) {
   border-bottom: 1px solid var(--header-transparent-text-color-light);

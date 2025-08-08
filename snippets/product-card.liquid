@@ -21,8 +21,8 @@
 
   Ideas for dynamically generated product cards:
     - have some inside web-components responsible for fetching
-      unnaccessible information, ie labels, reviews, etc - create
-      custom layout-less tempaltes just for them, and fetch via product
+      unaccessible information, ie labels, reviews, etc - create
+      custom layout-less templates just for them, and fetch via product
       endpoint
     - alternatively (for labels) cycle through store collections,
       and create a json object with collection ids and all product ids
@@ -144,7 +144,7 @@
     assign current_variant = current_product.selected_or_first_available_variant
 
     comment
-      Process all imges (main and hover)
+      Process all images (main and hover)
     endcomment
     if current_product.featured_media.preview_image != null
       assign image = current_product.featured_media.preview_image
@@ -343,7 +343,11 @@
                 >
                   <staged-action class="staged-action">
                     <staged-action-text class="staged-action__text">
-                      {{ 'products.product.add_to_cart' | t }}
+                      {%- if current_product.template_suffix contains 'pre-order' -%}
+                        {{ 'products.product.pre_order' | t }}
+                      {%- else -%}
+                        {{ 'products.product.add_to_cart' | t }}
+                      {%- endif -%}
                     </staged-action-text>
                     <staged-action-tick class="staged-action__tick">
                       {% render 'icons-theme', icon: 'check' %}
@@ -417,47 +421,45 @@
           {%- endif -%}
         {%- endif -%}
 
-        {%- if settings.product_grid_reviews -%}
+        {%- if settings.product_grid_reviews and current_product.metafields.reviews.rating.value != blank -%}
           <product-card-reviews
             class="review-wrapper"
             {% unless current_product %}
               hidden
             {% endunless %}
           >
-            {%- if current_product.metafields.reviews.rating.value != blank -%}
-              {%- liquid
-                assign rating_decimal = 0
-                assign decimal = current_product.metafields.reviews.rating.value.rating | modulo: 1
-                if decimal >= 0.3 and decimal <= 0.7
-                  assign rating_decimal = 0.5
-                elsif decimal > 0.7
-                  assign rating_decimal = 1
-                endif
-              -%}
-              <div
-                class="rating"
-                role="img"
-                aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: current_product.metafields.reviews.rating.value, rating_max: current_product.metafields.reviews.rating.value.scale_max }}"
-              >
-                <span
-                  aria-hidden="true"
-                  class="rating-star color-icon-{{ settings.accent_icons }}"
-                  style="--rating: {{ current_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ current_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
-                ></span>
-              </div>
-              <div class="review-text-wrapper">
-                <p class="rating-text caption">
-                  <span aria-hidden="true">
-                    {{- current_product.metafields.reviews.rating.value }} /
-                    {{ current_product.metafields.reviews.rating.value.scale_max -}}
-                  </span>
-                </p>
-                <p class="rating-count u-small caption">
-                  <span aria-hidden="true">({{ current_product.metafields.reviews.rating_count }})</span>
-                  <span class="visually-hidden">{{ current_product.metafields.reviews.rating_count }}</span>
-                </p>
-              </div>
-            {%- endif -%}
+            {%- liquid
+              assign rating_decimal = 0
+              assign decimal = current_product.metafields.reviews.rating.value.rating | modulo: 1
+              if decimal >= 0.3 and decimal <= 0.7
+                assign rating_decimal = 0.5
+              elsif decimal > 0.7
+                assign rating_decimal = 1
+              endif
+            -%}
+            <div
+              class="rating"
+              role="img"
+              aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: current_product.metafields.reviews.rating.value, rating_max: current_product.metafields.reviews.rating.value.scale_max }}"
+            >
+              <span
+                aria-hidden="true"
+                class="rating-star color-icon-{{ settings.accent_icons }}"
+                style="--rating: {{ current_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ current_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
+              ></span>
+            </div>
+            <div class="review-text-wrapper">
+              <p class="rating-text caption">
+                <span aria-hidden="true">
+                  {{- current_product.metafields.reviews.rating.value }} /
+                  {{ current_product.metafields.reviews.rating.value.scale_max -}}
+                </span>
+              </p>
+              <p class="rating-count u-small caption">
+                <span aria-hidden="true">({{ current_product.metafields.reviews.rating_count }})</span>
+                <span class="visually-hidden">{{ current_product.metafields.reviews.rating_count }}</span>
+              </p>
+            </div>
           </product-card-reviews>
         {%- endif -%}
       </a>

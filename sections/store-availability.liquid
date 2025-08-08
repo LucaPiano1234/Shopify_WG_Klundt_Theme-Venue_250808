@@ -123,7 +123,7 @@
                     {{ availability.location.name }}
                   </strong>
                 </div>
-                <div class="store-availability-list__stock store-availability-small-text">
+                <div class="store-availability-list__stock">
                   {%- if availability.available -%}
                     {% render 'icons-theme', icon: 'check', additional_classes: 'icon-in-stock' %}
                     {{ 'store_availability.general.pick_up_available' | t }}, {{ availability.pick_up_time | downcase }}

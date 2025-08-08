@@ -27,12 +27,6 @@ scrolling-logos .scrolling-logos__track--reverse {
   -webkit-animation-direction: reverse;
   animation-direction: reverse;
 }
-@media (prefers-reduced-motion: reduce) {
-  scrolling-logos .scrolling-logos__track {
-    -webkit-animation-play-state: paused !important;
-    animation-play-state: paused !important;
-  }
-}
 scrolling-logos .scrolling-logos__item {
   display: flex;
   justify-content: center;

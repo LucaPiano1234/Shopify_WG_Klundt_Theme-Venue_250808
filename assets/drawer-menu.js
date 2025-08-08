@@ -1,2 +1,163 @@
-import{debounce,removeTrapFocus,trapFocus}from"utils";class DrawerMenu extends HTMLElement{#e;constructor(){super(),this.#e=this.closeAllOpenPanels.bind(this)}connectedCallback(){this.modal=this.closest("modal-dialog"),this.bannerHeightObserver=null,this.setCurrentPanelId(),this.bindEvents(),this.modal.addEventListener("on:modal:closed",this.#e)}disconnectedCallback(){this.modal.removeEventListener("on:modal:closed",this.#e)}setCurrentPanelId(){const e=Array.from(this.querySelectorAll("details[open]")).pop();this.currentPanelId=e?e.id:null}bindEvents(){this.querySelectorAll("summary").forEach((e=>e.addEventListener("click",this.onSummaryClick.bind(this)))),this.querySelectorAll("button").forEach((e=>e.addEventListener("click",this.onCloseButtonClick.bind(this))))}enableBannerHeightControl(e){e&&(this.bannerHeightObserver=new ResizeObserver(debounce((e=>{e.forEach((e=>{e.target.style.setProperty("--banner-height",`${Math.round(e.contentRect.height)}px`)}))}),10)),this.bannerHeightObserver.observe(e))}disableBannerHeightControl(){this.bannerHeightObserver&&(this.bannerHeightObserver.disconnect(),this.bannerHeightObserver=null)}onSummaryClick(e){const t=e.currentTarget,n=t.parentNode,s=n.hasAttribute("open");n===this.mainDetailsToggle?(s&&e.preventDefault(),s?this.closeMenuDrawer(e,t):this.openMenuDrawer(t)):setTimeout((()=>{this.currentPanelId=this.openPanel(n)}),100)}onCloseButtonClick(e){const t=e.currentTarget.closest("details");this.closeSubmenu(t)}closeSubmenu(e,t=!0){e.classList.remove("is-opening"),e.querySelector("summary").setAttribute("aria-expanded",!1);const n=e.parentElement.closest("details[open]"),s=n?document.getElementById(`${n.id}-banner`):null;this.disableBannerHeightControl(),s?(e.closest(".modal").classList.add("has-banner"),this.enableBannerHeightControl(s)):e.closest(".modal").classList.remove("has-banner"),removeTrapFocus(e.querySelector("summary")),t?DrawerMenu.closeAnimation(e):(e.removeAttribute("open"),e.closest("details[open]")&&trapFocus(e.closest("details[open]"),e.querySelector("summary"))),this.currentPanelId=n?n.id:null}static closeAnimation(e){let t;const n=s=>{void 0===t&&(t=s);s-t<400?window.requestAnimationFrame(n):(e.removeAttribute("open"),e.closest("details[open]")&&trapFocus(e.closest("details[open]"),e.querySelector("summary")))};window.requestAnimationFrame(n)}openMenuPanelById(e,t=!0,n=!0){const s=document.getElementById(e);if(!s)return;this.closeAllOpenPanels();const r=s.parentElement.closest("details");r&&(r.setAttribute("open",""),t?setTimeout((()=>{this.openPanel(r,!1)}),100):this.openPanel(r,!1)),s.setAttribute("open",""),t?setTimeout((()=>{this.currentPanelId=this.openPanel(s,n)}),100):this.currentPanelId=this.openPanel(s,n)}openPanel(e,t=!0){const n=e.querySelector("summary"),s=document.getElementById(`${e.id}-banner`),r=window.matchMedia("(prefers-reduced-motion: reduce)");function o(){trapFocus(n.nextElementSibling,e.querySelector("button")),n.nextElementSibling.removeEventListener("transitionend",o)}return this.disableBannerHeightControl(),s?(this.enableBannerHeightControl(s),e.closest(".modal").classList.add("has-banner")):e.closest(".modal").classList.remove("has-banner"),e.classList.add("is-opening"),n.setAttribute("aria-expanded",!0),t&&(!r||r.matches?o():n.nextElementSibling.addEventListener("transitionend",o)),e.id}closeAllOpenPanels(){this.querySelectorAll("details[open]").forEach((e=>{this.closeSubmenu(e,!1)}))}}customElements.define("drawer-menu",DrawerMenu);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import { debounce, removeTrapFocus, trapFocus } from "utils";
+
+class DrawerMenu extends HTMLElement {
+    #boundCloseAllOpenPanels;
+    constructor() {
+        super();
+        this.#boundCloseAllOpenPanels = this.closeAllOpenPanels.bind(this);
+    }
+    connectedCallback() {
+        this.modal = this.closest("modal-dialog");
+        this.bannerHeightObserver = null;
+        this.setCurrentPanelId();
+        this.bindEvents();
+        this.modal.addEventListener("on:modal:closed", this.#boundCloseAllOpenPanels);
+    }
+    disconnectedCallback() {
+        this.modal.removeEventListener("on:modal:closed", this.#boundCloseAllOpenPanels);
+    }
+    setCurrentPanelId() {
+        const currentPanel = Array.from(this.querySelectorAll("details[open]")).pop();
+        this.currentPanelId = currentPanel ? currentPanel.id : null;
+    }
+    bindEvents() {
+        this.querySelectorAll("summary").forEach((summary => summary.addEventListener("click", this.onSummaryClick.bind(this))));
+        this.querySelectorAll("button").forEach((button => button.addEventListener("click", this.onCloseButtonClick.bind(this))));
+    }
+    enableBannerHeightControl(banner) {
+        if (!banner) return;
+        this.bannerHeightObserver = new ResizeObserver(debounce((entries => {
+            entries.forEach((entry => {
+                entry.target.style.setProperty("--banner-height", `${Math.round(entry.contentRect.height)}px`);
+            }));
+        }), 10));
+        this.bannerHeightObserver.observe(banner);
+    }
+    disableBannerHeightControl() {
+        if (!this.bannerHeightObserver) return;
+        this.bannerHeightObserver.disconnect();
+        this.bannerHeightObserver = null;
+    }
+    onSummaryClick(event) {
+        const summaryElement = event.currentTarget;
+        const detailsElement = summaryElement.parentNode;
+        const isOpen = detailsElement.hasAttribute("open");
+        if (detailsElement === this.mainDetailsToggle) {
+            if (isOpen) event.preventDefault();
+            if (isOpen) {
+                this.closeMenuDrawer(event, summaryElement);
+            } else {
+                this.openMenuDrawer(summaryElement);
+            }
+        } else {
+            setTimeout((() => {
+                this.currentPanelId = this.openPanel(detailsElement);
+            }), 100);
+        }
+    }
+    onCloseButtonClick(event) {
+        const detailsElement = event.currentTarget.closest("details");
+        this.closeSubmenu(detailsElement);
+    }
+    closeSubmenu(detailsElement, animate = true) {
+        detailsElement.classList.remove("is-opening");
+        detailsElement.querySelector("summary").setAttribute("aria-expanded", false);
+        const openParent = detailsElement.parentElement.closest("details[open]");
+        const parentBanner = openParent ? document.getElementById(`${openParent.id}-banner`) : null;
+        this.disableBannerHeightControl();
+        if (!parentBanner) {
+            detailsElement.closest(".modal").classList.remove("has-banner");
+        } else {
+            detailsElement.closest(".modal").classList.add("has-banner");
+            this.enableBannerHeightControl(parentBanner);
+        }
+        removeTrapFocus(detailsElement.querySelector("summary"));
+        if (animate) {
+            DrawerMenu.closeAnimation(detailsElement);
+        } else {
+            detailsElement.removeAttribute("open");
+            if (detailsElement.closest("details[open]")) {
+                trapFocus(detailsElement.closest("details[open]"), detailsElement.querySelector("summary"));
+            }
+        }
+        this.currentPanelId = openParent ? openParent.id : null;
+    }
+    static closeAnimation(detailsElement) {
+        let animationStart;
+        const handleAnimation = time => {
+            if (animationStart === undefined) {
+                animationStart = time;
+            }
+            const elapsedTime = time - animationStart;
+            if (elapsedTime < 400) {
+                window.requestAnimationFrame(handleAnimation);
+            } else {
+                detailsElement.removeAttribute("open");
+                if (detailsElement.closest("details[open]")) {
+                    trapFocus(detailsElement.closest("details[open]"), detailsElement.querySelector("summary"));
+                }
+            }
+        };
+        window.requestAnimationFrame(handleAnimation);
+    }
+    openMenuPanelById(id, animate = true, focus = true) {
+        const detailsElement = document.getElementById(id);
+        if (!detailsElement) return;
+        this.closeAllOpenPanels();
+        const parentPanel = detailsElement.parentElement.closest("details");
+        if (parentPanel) {
+            parentPanel.setAttribute("open", "");
+            if (animate) {
+                setTimeout((() => {
+                    this.openPanel(parentPanel, false);
+                }), 100);
+            } else {
+                this.openPanel(parentPanel, false);
+            }
+        }
+        detailsElement.setAttribute("open", "");
+        if (animate) {
+            setTimeout((() => {
+                this.currentPanelId = this.openPanel(detailsElement, focus);
+            }), 100);
+        } else {
+            this.currentPanelId = this.openPanel(detailsElement, focus);
+        }
+    }
+    openPanel(detailsElement, focus = true) {
+        const summaryElement = detailsElement.querySelector("summary");
+        const banner = document.getElementById(`${detailsElement.id}-banner`);
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        function addTrapFocus() {
+            trapFocus(summaryElement.nextElementSibling, detailsElement.querySelector("button"));
+            summaryElement.nextElementSibling.removeEventListener("transitionend", addTrapFocus);
+        }
+        this.disableBannerHeightControl();
+        if (banner) {
+            this.enableBannerHeightControl(banner);
+            detailsElement.closest(".modal").classList.add("has-banner");
+        } else {
+            detailsElement.closest(".modal").classList.remove("has-banner");
+        }
+        detailsElement.classList.add("is-opening");
+        summaryElement.setAttribute("aria-expanded", true);
+        if (focus) {
+            if (!reducedMotion || reducedMotion.matches) {
+                addTrapFocus();
+            } else {
+                summaryElement.nextElementSibling.addEventListener("transitionend", addTrapFocus);
+            }
+        }
+        return detailsElement.id;
+    }
+    closeAllOpenPanels() {
+        const currentlyOpenPanels = this.querySelectorAll("details[open]");
+        currentlyOpenPanels.forEach((panel => {
+            this.closeSubmenu(panel, false);
+        }));
+    }
+}
+
+customElements.define("drawer-menu", DrawerMenu);
 //# sourceMappingURL=drawer-menu.js.map

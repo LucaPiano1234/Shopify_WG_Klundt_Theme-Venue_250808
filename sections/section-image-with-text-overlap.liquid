@@ -40,7 +40,7 @@
       section
       section--padded
       section--{{ section.id }}
-      {% if section.settings.section_bottom_margin %}section--mb-0{% endif %}
+      {% if section.settings.section_bottom_margin or request.visual_preview_mode %}section--mb-0{% endif %}
     "
     data-section-id="{{ section.id }}"
     data-section-type="image-with-text-overlap"

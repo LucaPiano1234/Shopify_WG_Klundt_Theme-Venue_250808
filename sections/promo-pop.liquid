@@ -2,6 +2,12 @@
 {%- liquid
   assign popup_delay = section.settings.delay
   assign promo_form = ''
+
+  if settings.design_radius_button != '0' or settings.design_radius_form != '0'
+    assign radius_form_value = 'true'
+  else
+    assign radius_form_value = 'false'
+  endif
 -%}
 
 {% if section.settings.enable_newsletter %}
@@ -56,8 +62,10 @@
   "
   data-open-on-page-load="{{ popup_delay }}000"
   data-remember-state="{{ section.settings.expiry }}"
+  data-radius-form="{{ radius_form_value }}"
   aria-hidden="true"
   aria-labelledby="promo-popup-title"
+  data-a11y-dialog-no-focus-trap
 >
   <div class="popup__wrapper">
     <div

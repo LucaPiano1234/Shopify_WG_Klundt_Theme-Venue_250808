@@ -1,2 +1,43 @@
-class ImageSkeleton extends HTMLElement{#e;#t;#i;connectedCallback(){this.hasAttribute("loaded")||(this.#t=Number(this.getAttribute("minimum-reveal-delay")||0),this.#i=null,this.#e=Date.now(),this.init())}init(){const e=this.nextElementSibling&&"IMG"===this.nextElementSibling.tagName?this.nextElementSibling:null;if(!e)return;const t=()=>{this.#i=setInterval((()=>{Date.now()-this.#e>=this.#t&&(clearInterval(this.#i),setTimeout((()=>{this.markAsLoaded()}),250))}),50)};e.hasAttribute("src")&&e.complete?this.#t?t():this.markAsLoaded():e.addEventListener("load",t.bind(this))}markAsLoaded(){this.setAttribute("loaded",""),this.setAttribute("aria-hidden","true")}}customElements.define("image-skeleton",ImageSkeleton);
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+class ImageSkeleton extends HTMLElement {
+    #loadStartTime;
+    #minimumRevealDelay;
+    #revealInterval;
+    connectedCallback() {
+        if (this.hasAttribute("loaded")) return;
+        this.#minimumRevealDelay = Number(this.getAttribute("minimum-reveal-delay") || 0);
+        this.#revealInterval = null;
+        this.#loadStartTime = Date.now();
+        this.init();
+    }
+    init() {
+        const image = this.nextElementSibling && this.nextElementSibling.tagName === "IMG" ? this.nextElementSibling : null;
+        if (!image) return;
+        const onLoad = () => {
+            this.#revealInterval = setInterval((() => {
+                if (Date.now() - this.#loadStartTime >= this.#minimumRevealDelay) {
+                    clearInterval(this.#revealInterval);
+                    setTimeout((() => {
+                        this.markAsLoaded();
+                    }), 250);
+                }
+            }), 50);
+        };
+        if (image.hasAttribute("src") && image.complete) {
+            if (this.#minimumRevealDelay) {
+                onLoad();
+            } else {
+                this.markAsLoaded();
+            }
+        } else {
+            image.addEventListener("load", onLoad.bind(this));
+        }
+    }
+    markAsLoaded() {
+        this.setAttribute("loaded", "");
+        this.setAttribute("aria-hidden", "true");
+    }
+}
+
+customElements.define("image-skeleton", ImageSkeleton);
 //# sourceMappingURL=image-skeleton.js.map

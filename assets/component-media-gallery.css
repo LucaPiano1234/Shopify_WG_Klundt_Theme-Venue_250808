@@ -343,8 +343,14 @@
 .media-gallery__arrow--prev {
   left: 18px;
 }
+.media-gallery__arrow--prev .icon {
+  left: -1px;
+}
 .media-gallery__arrow--next {
   right: 18px;
+}
+.media-gallery__arrow--next .icon {
+  left: 1px;
 }
 .media-gallery__arrow[disabled] {
   opacity: 0;
@@ -490,8 +496,8 @@
   font-family: var(--font--body);
   font-weight: var(--font--body-weight);
   font-style: var(--font--body-style);
-  background-color: #f0f0f0;
-  color: rgb(13, 13, 13);
+  background-color: #f2f2f2;
+  color: rgb(33, 33, 33);
   position: relative;
   border: none;
   width: 100%;
@@ -505,11 +511,11 @@
   visibility: visible;
 }
 .media-gallery__view-in-space:hover .media-gallery__view-in-space-text, .media-gallery__view-in-space:focus .media-gallery__view-in-space-text {
-  border-bottom-color: rgb(13, 13, 13);
+  border-bottom-color: rgb(33, 33, 33);
 }
 .media-gallery__view-in-space .icon--3d-badge {
   --size: 24px;
-  --color: rgb(13, 13, 13);
+  --color: rgb(33, 33, 33);
   margin-right: 3px;
   position: relative;
   top: 6px;

@@ -1,2 +1,121 @@
-import A11yDialog from"a11y-dialog";class ModalDialog extends HTMLElement{#n;#o;#i;#t;#e;constructor(){super(),this.#o=this.#s.bind(this),this.#i=this.#d.bind(this),this.#t=this.#l.bind(this),this.#e=this.#a.bind(this)}connectedCallback(){this.init()}disconnectedCallback(){this.destroy()}get shown(){return this.#n.shown}init(){this.#n=new A11yDialog(this),this.content=this.querySelector('[role="document"]'),document.querySelectorAll(`[data-a11y-dialog-show="${this.#n.id}"]`).forEach((n=>{n.addEventListener("click",ModalDialog.#h)})),this.#n.on("opening",this.#o).on("show",this.#t).on("closing",this.#i).on("hide",this.#e)}destroy(){document.querySelectorAll(`[data-a11y-dialog-show="${this.#n.id}"]`).forEach((n=>{n.removeEventListener("click",ModalDialog.#h)})),this.#n.off("opening",this.#o).off("show",this.#t).off("closing",this.#i).off("hide",this.#e),this.removeAttribute("aria-modal"),this.removeAttribute("tabindex"),this.removeAttribute("role")}async open(n=null){return n&&n instanceof HTMLElement&&"MODAL-DIALOG"===n.tagName&&this.#n.on("hide",(()=>n.open()),{once:!0}),this.#n.show(),new Promise((n=>{this.#n.shown?n():this.#n.on("show",(()=>{n()}),{once:!0})}))}openInstantly(){this.content.style.animation="none",this.#n.show(),this.content.style.animation=null}async close(){return this.#n.hide(),new Promise((n=>{this.#n.shown?this.#n.on("hide",(()=>{n()}),{once:!0}):n()}))}closeInstantly(){this.content.style.animation="none",this.#n.hide(),this.content.style.animation=null}on(n,o,i){return this.addEventListener(n,o,i),this}off(n,o,i){return this.removeEventListener(n,o,i),this}#s(){this.dispatchEvent(new CustomEvent("on:modal:opening")),document.body.classList.add("u-scroll-disabled")}#d(){this.dispatchEvent(new CustomEvent("on:modal:closing"))}#l(){this.dispatchEvent(new CustomEvent("on:modal:opened"))}#a(){this.dispatchEvent(new CustomEvent("on:modal:closed")),document.body.classList.remove("u-scroll-disabled")}static#h(n){n.preventDefault()}}customElements.define("modal-dialog",ModalDialog);export default ModalDialog;
+/*! Copyright (c) Safe As Milk. All rights reserved. */
+import A11yDialog from "a11y-dialog";
+
+class ModalDialog extends HTMLElement {
+    #dialog;
+    #boundOnOpening;
+    #boundOnClosing;
+    #boundOnShow;
+    #boundOnHide;
+    constructor() {
+        super();
+        this.movedModalsElementId = "moved-modal-elements";
+        const movedModalsElement = document.getElementById(this.movedModalsElementId);
+        if (Object.hasOwn(this.dataset, "moveToModalsElement") && movedModalsElement) {
+            movedModalsElement.appendChild(this);
+        }
+        this.#boundOnOpening = this.#onOpening.bind(this);
+        this.#boundOnClosing = this.#onClosing.bind(this);
+        this.#boundOnShow = this.#onShow.bind(this);
+        this.#boundOnHide = this.#onHide.bind(this);
+    }
+    connectedCallback() {
+        this.init();
+    }
+    disconnectedCallback() {
+        this.destroy();
+    }
+    get shown() {
+        return this.#dialog.shown;
+    }
+    init() {
+        this.#dialog = new A11yDialog(this);
+        this.content = this.querySelector('[role="document"]');
+        document.querySelectorAll(`[data-a11y-dialog-show="${this.#dialog.id}"]`).forEach((trigger => {
+            trigger.addEventListener("click", ModalDialog.#onTriggerClick);
+        }));
+        this.#dialog.on("opening", this.#boundOnOpening).on("show", this.#boundOnShow).on("closing", this.#boundOnClosing).on("hide", this.#boundOnHide);
+    }
+    destroy() {
+        document.querySelectorAll(`[data-a11y-dialog-show="${this.#dialog.id}"]`).forEach((trigger => {
+            trigger.removeEventListener("click", ModalDialog.#onTriggerClick);
+        }));
+        this.#dialog.off("opening", this.#boundOnOpening).off("show", this.#boundOnShow).off("closing", this.#boundOnClosing).off("hide", this.#boundOnHide);
+        this.removeAttribute("aria-modal");
+        this.removeAttribute("tabindex");
+        this.removeAttribute("role");
+    }
+    async open(openElementAfterClose = null) {
+        if (openElementAfterClose && openElementAfterClose instanceof HTMLElement && openElementAfterClose.tagName === "MODAL-DIALOG") {
+            this.#dialog.on("hide", (() => openElementAfterClose.open()), {
+                once: true
+            });
+        }
+        this.#dialog.show();
+        return new Promise((resolve => {
+            if (!this.#dialog.shown) {
+                this.#dialog.on("show", (() => {
+                    resolve();
+                }), {
+                    once: true
+                });
+            } else {
+                resolve();
+            }
+        }));
+    }
+    openInstantly() {
+        this.content.style.animation = "none";
+        this.#dialog.show();
+        this.content.style.animation = null;
+    }
+    async close() {
+        this.#dialog.hide();
+        return new Promise((resolve => {
+            if (this.#dialog.shown) {
+                this.#dialog.on("hide", (() => {
+                    resolve();
+                }), {
+                    once: true
+                });
+            } else {
+                resolve();
+            }
+        }));
+    }
+    closeInstantly() {
+        this.content.style.animation = "none";
+        this.#dialog.hide();
+        this.content.style.animation = null;
+    }
+    on(type, handler, options) {
+        this.addEventListener(type, handler, options);
+        return this;
+    }
+    off(type, handler, options) {
+        this.removeEventListener(type, handler, options);
+        return this;
+    }
+    #onOpening() {
+        this.dispatchEvent(new CustomEvent("on:modal:opening"));
+        document.body.classList.add("u-scroll-disabled");
+    }
+    #onClosing() {
+        this.dispatchEvent(new CustomEvent("on:modal:closing"));
+    }
+    #onShow() {
+        this.dispatchEvent(new CustomEvent("on:modal:opened"));
+    }
+    #onHide() {
+        this.dispatchEvent(new CustomEvent("on:modal:closed"));
+        document.body.classList.remove("u-scroll-disabled");
+    }
+    static #onTriggerClick(event) {
+        event.preventDefault();
+    }
+}
+
+customElements.define("modal-dialog", ModalDialog);
+
+export default ModalDialog;
 //# sourceMappingURL=modal-dialog.js.map

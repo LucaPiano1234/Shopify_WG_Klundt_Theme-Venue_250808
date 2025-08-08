@@ -165,7 +165,12 @@
               </p>
             {%- endif -%}
             {%- if visibility_heading -%}
-              <h3 class="collection-list__content-heading{% if settings.type_header_border == false or visibility_border == false %} collection-list__content-heading--no-border{% endif %}">
+              <h3
+                class="
+                  collection-list__content-heading
+                  {% if settings.type_header_border == false or visibility_border == false %}collection-list__content-heading--no-border{% endif %}
+                "
+              >
                 {%- if heading != blank -%}
                   {{ heading | escape }}
                 {%- elsif collection.empty? -%}

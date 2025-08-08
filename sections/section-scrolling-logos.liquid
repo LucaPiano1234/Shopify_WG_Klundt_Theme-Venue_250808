@@ -22,6 +22,13 @@
 
   assign sizes = '(min-width: 769px) calc((100vw - ' | append: logo_spacing_desktop | append: 'vw) / ' | append: logos_displayed_desktop | append: '), calc((100vw - ' | append: logo_spacing_mobile | append: 'vw) / ' | append: logos_displayed_mobile | append: ')'
 %}
+{% if request.visual_preview_mode %}
+  <style>
+    scrolling-logos .scrolling-logos__track {
+      display: flex;
+    }
+  </style>
+{% endif %}
 <section
   class="
     section
@@ -30,7 +37,7 @@
     section--scrolling-logos
     {% if section.settings.divider_top %}section-divider--top{% endif %}
     {% if section.settings.divider_bottom %}section-divider--bottom{% endif %}
-    {% if section.settings.section_bottom_margin %}section--mb-0{% endif %}
+    {% if section.settings.section_bottom_margin or request.visual_preview_mode %}section--mb-0{% endif %}
   "
   data-section-id="{{ section.id }}"
   data-section-type="scrolling-logos"
@@ -41,7 +48,7 @@
   "
 >
   <scrolling-logos
-    class="scrolling-logos js-animate-single"
+    class="scrolling-logos {% unless request.visual_preview_mode %}js-animate-single{% endunless %}"
     data-scroll-speed="{{ section.settings.scroll_speed }}"
     data-scroll-direction="{{ section.settings.scroll_direction }}"
     data-scroll-style="{{ section.settings.scroll_style }}"

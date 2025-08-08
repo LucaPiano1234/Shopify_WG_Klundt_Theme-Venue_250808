@@ -5,10 +5,15 @@
   - video: {Object} Video object
   - class: {String} Custom video class
   - sizes: {String} Poster media sizes string
+  - screen_size: {String} Video source screen size
 {% endcomment %}
 
 <script src="{{ 'lazy-video.js' | asset_url }}" type="module"></script>
-<lazy-video>
+<lazy-video
+  {% if screen_size %}
+    data-screen-size="{{ screen_size }}"
+  {% endif %}
+>
   {%- render 'theme-spinner' -%}
   <media-poster>
     {{

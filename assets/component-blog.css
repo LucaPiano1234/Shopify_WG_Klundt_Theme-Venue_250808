@@ -47,15 +47,26 @@
 .blog__date {
   position: absolute;
   z-index: 3;
-  top: 12px;
-  right: -6px;
+  top: 9px;
+  right: 9px;
   margin-bottom: 0;
   text-align: center;
+}
+@media (max-width: 47.9275em) {
+  .blog__date {
+    top: 6px;
+    right: 6px;
+  }
 }
 
 .blog__date--position_left {
   right: auto;
-  left: -6px;
+  left: 9px;
+}
+@media (max-width: 47.9275em) {
+  .blog__date--position_left {
+    left: 6px;
+  }
 }
 
 .blog__date--inline {

@@ -3,7 +3,7 @@
    ========================================================================== */
 .newsletter {
   padding: 48px 24px;
-  background: var(--background-color, #f0f0f0);
+  background: var(--background-color, #f2f2f2);
 }
 
 .newsletter--divider-top {
@@ -33,30 +33,34 @@
     margin-bottom: 0;
   }
 }
-.newsletter__input {
-  border-color: #f0f0f0;
+.newsletter__input.newsletter__input {
+  border-color: #f2f2f2;
   background-color: rgb(255, 255, 255);
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
+}
+
+.section-newsletter.section--no-bg .newsletter__input {
+  border-color: var(--text-color-light);
 }
 
 input[type=email].newsletter__input::-webkit-input-placeholder {
-  color: rgba(13, 13, 13, 0.55);
+  color: rgba(33, 33, 33, 0.55);
 }
 
 input[type=email].newsletter__input::-moz-placeholder {
-  color: rgba(13, 13, 13, 0.55);
+  color: rgba(33, 33, 33, 0.55);
 }
 
 input[type=email].newsletter__input::-ms-input-placeholder {
-  color: rgba(13, 13, 13, 0.55);
+  color: rgba(33, 33, 33, 0.55);
 }
 
 input[type=email].newsletter__input::-moz-placeholder {
-  color: rgba(13, 13, 13, 0.55);
+  color: rgba(33, 33, 33, 0.55);
 }
 
 input[type=email].newsletter__input::placeholder {
-  color: rgba(13, 13, 13, 0.55);
+  color: rgba(33, 33, 33, 0.55);
 }
 
 .newsletter__form-message {
@@ -86,9 +90,6 @@ input[type=email].newsletter__input::placeholder {
 }
 .newsletter .section__title-desc.rte a {
   border-color: var(--text-color);
-}
-.newsletter .section__title-text:after {
-  background-color: var(--color--title-border);
 }
 
 .newsletter__btn {

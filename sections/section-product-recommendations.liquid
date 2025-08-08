@@ -143,19 +143,15 @@
         {%- endif -%}
 
         <div class="container container--{{ section.settings.section_width }} u-ph0@mob">
-          <link
-            rel="stylesheet"
-            href="{{ 'component-items-scroll.css' | asset_url }}"
-            media="print"
-            onload="this.media='all'"
-          >
-          <noscript>
-            {{ 'component-items-scroll.css' | asset_url | stylesheet_tag }}
-          </noscript>
-          <items-scroll
-            {% unless container_ratio == 'natural' %}
-              class="ratio-navigation"
-            {% endunless %}
+          {{ 'component-items-scroll.css' | asset_url | stylesheet_tag }}
+          {{ 'theme-component-items-scroll-paged-navigation.css' | asset_url | stylesheet_tag }}
+          <items-scroll-paged-navigation
+            class="
+              items-scroll
+              {% unless container_ratio == 'natural' %}
+                ratio-navigation
+              {% endunless %}
+            "
             {% if items_overflow %}
               items-overflow
             {% elsif items_overflow_max %}
@@ -192,7 +188,7 @@
                 endfor
               -%}
             </div>
-          </items-scroll>
+          </items-scroll-paged-navigation>
 
           {% render 'section-link',
             title: section.settings.section_link_title,
@@ -207,7 +203,7 @@
 </product-recommendations>
 
 <script src="{{ 'product-recommendations.js' | asset_url }}" type="module"></script>
-<script src="{{ 'items-scroll.js' | asset_url }}" type="module"></script>
+<script src="{{ 'items-scroll-paged-navigation.js' | asset_url }}" type="module"></script>
 
 {% schema %}
 {

@@ -3,7 +3,6 @@
    ========================================================================== */
 .callout {
   padding: 15px;
-  border-radius: 3px;
   border: 1px solid var(--border-color);
   background-color: var(--bg-color);
 }
@@ -48,5 +47,8 @@
 }
 .callout__text.rte a:hover {
   opacity: 1;
+}
+.callout__text .metafield-rich_text_field {
+  margin-bottom: 0;
 }
 /*# sourceMappingURL=component-callout.css.map */

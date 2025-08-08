@@ -10,6 +10,9 @@
     padding: 48px;
   }
 }
+.image-with-text--overlap .image-with-text__media {
+  overflow: hidden;
+}
 @media (max-width: 61.24em) {
   .image-with-text--overlap .image-with-text__item.image-with-text__item:first-child {
     padding-top: 24px;

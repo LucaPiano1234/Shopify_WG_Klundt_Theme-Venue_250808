@@ -53,7 +53,8 @@
       </noscript>
       {%- unless settings.cart_checkout_button_type == 'checkout_cart_amount' -%}
         <p class="cart__total">
-          <span>{{ 'cart.general.subtotal' | t }}</span><cart-total class="money">{{- total_cart_price -}}</cart-total>
+          <span>{{ 'cart.general.subtotal' | t }}</span
+          ><cart-total class="money" data-cart-subtotal>{{- total_cart_price -}}</cart-total>
         </p>
       {%- endunless -%}
 
@@ -92,69 +93,77 @@
         {%- endif %}
       "
     >
-      <form id="{{ form_id }}" action="{{ routes.cart_url }}" method="post" class="cart__form" novalidate>
-        {%- if show_view_cart_button and settings.cart_checkout_button_type contains 'checkout_view_cart' -%}
-          <a href="{{ routes.cart_url }}" class="c-btn c-btn--hollow c-btn--full cart__view">
-            {{- 'cart.general.view_cart' | t -}}
-          </a>
-        {%- endif -%}
-        <noscript>
-          <button type="submit" name="update" class="c-btn c-btn--hollow cart__button-update update-cart">
-            {{ 'cart.general.update' | t }}
-          </button>
-        </noscript>
-        <button type="submit" class="c-btn c-btn--full c-btn--primary cart__checkout" name="checkout">
-          {%- liquid
-            if settings.cart_checkout_button_icon_enable
-              render 'icons-theme', icon: 'lock'
-            endif
-          -%}
-          <span>{{- 'cart.general.checkout' | t -}}</span>
-          {%- if settings.cart_checkout_button_type == 'checkout_cart_amount' -%}
-            <span>&ndash;</span><cart-total class="money">{{- total_cart_price -}}</cart-total>
+      {%- form 'cart', cart, id: form_id %}
+        {{- form | payment_terms -}}
+        <div class="cart__form">
+          {%- if show_view_cart_button and settings.cart_checkout_button_type contains 'checkout_view_cart' -%}
+            <a href="{{ routes.cart_url }}" class="c-btn c-btn--hollow c-btn--full cart__view">
+              {{- 'cart.general.view_cart' | t -}}
+            </a>
           {%- endif -%}
-        </button>
+          <noscript>
+            <button type="submit" name="update" class="c-btn c-btn--hollow cart__button-update update-cart">
+              {{ 'cart.general.update' | t }}
+            </button>
+          </noscript>
+          <button type="submit" class="c-btn c-btn--full c-btn--primary cart__checkout" name="checkout">
+            {%- liquid
+              if settings.cart_checkout_button_icon_enable
+                render 'icons-theme', icon: 'lock'
+              endif
+            -%}
+            <span>{{- 'cart.general.checkout' | t -}}</span>
+            {%- if settings.cart_checkout_button_type == 'checkout_cart_amount' -%}
+              <span>&ndash;</span><cart-total class="money" data-cart-subtotal>{{- total_cart_price -}}</cart-total>
+            {%- endif -%}
+          </button>
 
-        {%- if show_additional_checkout_buttons and additional_checkout_buttons -%}
-          <dynamic-button class="dynamic-button">
-            <div class="dynamic-button__placeholder skeleton-button">
-              <span
-                class="skeleton-text skeleton-text--inverse skeleton-text--small skeleton-text--inline skeleton-text--1/2"
-              ></span>
-            </div>
-            <div class="additional-checkout-buttons">
-              {{ content_for_additional_checkout_buttons }}
-            </div>
-          </dynamic-button>
-        {%- endif %}
+          {%- if show_additional_checkout_buttons and additional_checkout_buttons -%}
+            <dynamic-button class="dynamic-button">
+              <div class="dynamic-button__placeholder skeleton-button">
+                <span
+                  class="skeleton-text skeleton-text--inverse skeleton-text--small skeleton-text--inline skeleton-text--1/2"
+                ></span>
+              </div>
+              <div class="additional-checkout-buttons">
+                {{ content_for_additional_checkout_buttons }}
+              </div>
+            </dynamic-button>
+          {%- endif %}
 
-        {%- if settings.cart_terms -%}
-          {% comment %} TODO: Color has to depend on context {% endcomment %}
-          {%- liquid
-            assign text_brightness = settings.color_text | color_brightness
-            if text_brightness > 125
-              assign check_color = 'dark'
-            else
-              assign check_color = 'light'
-            endif
-          -%}
+          {%- if settings.cart_terms -%}
+            {% comment %} TODO: Color has to depend on context {% endcomment %}
+            {%- liquid
+              assign text_brightness = settings.color_text | color_brightness
+              if text_brightness > 125
+                assign check_color = 'dark'
+              else
+                assign check_color = 'light'
+              endif
+            -%}
 
-          <cart-terms class="cart-terms">
-            <div class="cart-terms__content">
-              <cart-terms-error class="cart-terms__error" hidden>{{ 'cart.general.cart_error' | t }}</cart-terms-error>
-              <input
-                type="checkbox"
-                class="cart-terms__input checkbox checkbox--{{ check_color }}"
-                id="{{ form_id }}-agree"
-                form="{{ form_id }}"
-              >
-              <label for="{{ form_id }}-agree" class="cart-terms__label rte">
-                {{ settings.cart_terms_text }}
-              </label>
-            </div>
-          </cart-terms>
-        {%- endif -%}
-      </form>
+            <cart-terms class="cart-terms">
+              <div class="cart-terms__content">
+                <cart-terms-error class="cart-terms__error" hidden>
+                  {{- 'cart.general.cart_error' | t -}}
+                </cart-terms-error>
+                <label for="{{ form_id }}-agree" class="cart-terms__label checkbox-label rte">
+                  <input
+                    type="checkbox"
+                    class="cart-terms__input checkbox checkbox--{{ check_color }}"
+                    id="{{ form_id }}-agree"
+                    form="{{ form_id }}"
+                  >
+                  {%- render 'icons-theme', icon: 'check' -%}
+                  <span class="cart-terms__label-text">
+                    {{ settings.cart_terms_text }}
+                  </span>
+                </label>
+              </div>
+            </cart-terms>
+          {%- endif -%}
+        </div>
+      {%- endform -%}
       {%- if settings.cart_payment_icons_enable and shop.enabled_payment_types -%}
         <ul class="cart__icons icons-list">
           {%- for type in shop.enabled_payment_types -%}

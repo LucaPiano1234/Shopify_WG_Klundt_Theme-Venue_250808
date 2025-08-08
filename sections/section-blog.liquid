@@ -12,7 +12,7 @@
   {{ 'component-blog.css' | asset_url | stylesheet_tag }}
 {% endif %}
 {%- liquid
-  if section.settings.section_bottom_margin
+  if section.settings.section_bottom_margin or request.visual_preview_mode
     assign margin_class = 'section--mb-0'
   endif
 

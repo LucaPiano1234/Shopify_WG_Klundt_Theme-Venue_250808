@@ -20,26 +20,22 @@
   border: none;
   outline: none;
   cursor: pointer;
-  border-radius: 50%;
   text-align: center;
   line-height: 42px;
   opacity: 0;
   visibility: hidden;
 }
 .back-to-top-button.back-to-top-button--dark {
-  background-color: rgb(13, 13, 13);
+  background-color: rgb(33, 33, 33);
   color: rgb(255, 255, 255);
 }
 .back-to-top-button.back-to-top-button--light {
   background-color: rgb(255, 255, 255);
-  color: rgb(13, 13, 13);
+  color: rgb(33, 33, 33);
 }
 .back-to-top-button.back-to-top-button--brand {
   background-color: var(--color--brand);
   color: var(--color--btn);
-}
-.back-to-top-button.back-to-top-button--square {
-  border-radius: 0;
 }
 .back-to-top-button[align-left] {
   left: 24px;

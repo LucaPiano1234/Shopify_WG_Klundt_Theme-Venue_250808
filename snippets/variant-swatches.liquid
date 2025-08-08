@@ -11,7 +11,7 @@
   {% render 'variant-swatches', form_id: product_form_id, option: option, section_id: section.id %}
 {% endcomment %}
 
-<variant-swatches data-form-id="{{ form_id }}">
+<variant-swatches data-form-id="{{ form_id }}" style="--swatch-size: {{ settings.design_variant_swatch_size }}px">
   <fieldset class="product-form__swatch">
     <div class="product-form__swatch__title">
       <legend class="f-family--{{ settings.type_product_form_headings_style }} f-caps--{{ settings.type_product_form_headings_capitalize }} f-space--{{ settings.type_product_form_headings_letterspace }}">

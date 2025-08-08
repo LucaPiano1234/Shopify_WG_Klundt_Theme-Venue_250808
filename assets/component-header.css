@@ -53,6 +53,9 @@ header-container.is-sticky {
   -webkit-transform: translateY(calc(-1 * var(--header-height) - 4px));
   transform: translateY(calc(-1 * var(--header-height) - 4px));
 }
+.header-up header-container {
+  pointer-events: none;
+}
 
 .header {
   position: relative;
@@ -60,9 +63,9 @@ header-container.is-sticky {
   min-height: 54px;
   background: var(--header-bg-color);
   border-bottom: 1px solid transparent;
-  -webkit-transition: border-color 0.3s ease-in, opacity 0.5s ease-in, background-color 0.3s 0.02s ease-in-out, -webkit-transform 350ms ease;
-  -moz-transition: border-color 0.3s ease-in, opacity 0.5s ease-in, background-color 0.3s 0.02s ease-in-out, -moz-transform 350ms ease;
-  transition: border-color 0.3s ease-in, opacity 0.5s ease-in, background-color 0.3s 0.02s ease-in-out, transform 350ms ease;
+  -webkit-transition: border-color 0.3s ease-in, opacity 0.5s ease-in, background-color 0.3s ease-in-out 0.02s, -webkit-transform 350ms ease;
+  -moz-transition: border-color 0.3s ease-in, opacity 0.5s ease-in, background-color 0.3s ease-in-out 0.02s, -moz-transform 350ms ease;
+  transition: border-color 0.3s ease-in, opacity 0.5s ease-in, background-color 0.3s ease-in-out 0.02s, transform 350ms ease;
 }
 @media (max-width: 47.9275em) {
   .header {
@@ -80,7 +83,7 @@ header-container.is-sticky {
 }
 .header .list-menu__link:hover::before,
 .header .list-menu__text:hover::before {
-  background-color: var(--header-text-color-lightest);
+  background-color: var(--header-text-color-bg);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -153,6 +156,11 @@ header-details-disclosure details {
   text-transform: var(--font--title-transform);
   font-size: 1.4rem;
   line-height: 1.25em;
+}
+@media (max-width: 47.9275em) {
+  .header__logo-link--text {
+    font-size: 1.1rem;
+  }
 }
 
 .header__logo-img {
@@ -615,8 +623,13 @@ details[open] > .nav__sub-t > .nav__sub-t-wrap > .has-animation {
   left: 0;
 }
 .header.header--center .secondary-nav__localize .secondary-nav__item {
-  margin-left: 18px;
+  margin-left: 30px;
   margin-right: calc(var(--font--nav-spacing) - 18px);
+}
+@media (max-width: 61.24em) {
+  .header.header--center .secondary-nav__localize .secondary-nav__item {
+    margin-left: 18px;
+  }
 }
 .header.header--center .nav__sub--header-localize {
   right: auto;
