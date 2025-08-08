@@ -1,1 +1,763 @@
-{"sections":{"section_image_text_banner_yJ8q3X":{"type":"section-image-text-banner","blocks":{"heading_qbz8Y3":{"type":"heading","settings":{"heading":"Unsere Wurzeln","text_size":9,"text_width":40,"text_size_mobile":8}}},"block_order":["heading_qbz8Y3"],"settings":{"bg_image":"shopify:\/\/shop_images\/WG_Klundt_Team_3.webp","content_alignment":"bottom-center","section_height":620,"section_height_mobile":300,"section_full_screen":false,"section_width":"full","bg_color":"#f2f2f2","content_color":"#ffffff","overlay_color":"#000000","overlay_strength":10,"content_heading_color":false,"divider_top":false,"divider_bottom":false,"section_bottom_margin":false}},"main":{"type":"main-page","disabled":true,"settings":{}},"section_rich_text_kL3mx8":{"type":"section-rich-text","disabled":true,"settings":{"section_title":"Weingut Hautnah","text":"<p>Bei Landau in der südlichen Pfalz gelegen, verfügt das Weingut Klundt <strong>über rund 21 ha Weinberge, die sich teils in den renommiertesten Lagen der Region befinden<\/strong>. Bereits seit weit über 30 Jahren begreift man eine nachhaltig-umweltschonende Weinbergsbewirtschaftung als elementaren Baustein auf dem Weg zum Spitzenwein.<\/p><p>Der <strong>Verzicht auf Herbizide und eine sorgsame Bodenbearbeitung<\/strong>, die den jeweiligen Bodengegebenheiten Rechnung trägt, sind hierbei nur einige der prägnantesten Glieder in einer ganzen Kette an Maßnahmen, auf dem Weg zu einem optimal-gesunden und reifen Lesegut. <\/p><p><strong>Den Weinanbau in der Familie Klundt können wir bis ins 16. Jahrhundert zurückverfolgen.<\/strong> Über viele Jahrhunderte hinweg war der Weinanbau, wie in der Südpfalz üblich, jedoch nur ein Teil eines landwirtschaftlichen Mischbetriebes.<\/p>","section_width":"large","padding_top":21,"padding_bottom":9,"section_bottom_margin":false}},"section_custom_WJpyHG":{"type":"section-custom","blocks":{"text_WTk4mH":{"type":"text","settings":{"title":"","text":"<p>Unser Weingut liegt bei Landau in der Südpfalz und umfasst rund 21 ha Weinberge in <strong>einigen der renommiertesten Lagen der Region.<\/strong><\/p><p><strong>Seit über 30 Jahren legen wir großen Wert auf nachhaltigen und umweltschonenden Weinanbau.<\/strong><\/p><p>Der Verzicht auf Herbizide und eine sorgfältige Bodenbearbeitung, die den natürlichen Gegebenheiten Rechnung trägt, sind nur einige der Maßnahmen, die uns auf dem Weg zu optimalen und gesunden Trauben begleiten.<\/p><p><strong>Unsere Familientradition reicht bis ins 16. Jahrhundert zurück.<\/strong><\/p>","align":"center","width":"2\/3"}},"image_LbrGBa":{"type":"image","disabled":true,"settings":{"link":"","width":"2\/3"}},"spacer_pdm8QU":{"type":"spacer","settings":{"space":"none"}},"button_QBadHD":{"type":"button","settings":{"title":"So schmecken 400 Jahre Tradition","link":"shopify:\/\/products\/probierpaket-pfalzer-weinkunst","link_style":"mono","width":"1\/3"}}},"block_order":["text_WTk4mH","image_LbrGBa","spacer_pdm8QU","button_QBadHD"],"settings":{"padding_top":0,"padding_bottom":0,"section-bottom-margin":false}},"section_image_with_text_overlap_tdWD4R":{"type":"section-image-with-text-overlap","blocks":{"image_iWUmm6":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Annika_Martin_Fotografie-9201_Sven_2bdbb707-e486-4294-a60a-1f01b522b519.webp","video":"","video_button_color":"light","title":"Sven Klundt","desc":"<p>...wurde die Leidenschaft für die Weinbereitung praktisch in die Wiege gelegt.<\/p><p>Er blickte schon in frühester Kindheit über die Schultern seiner Großeltern und seiner Eltern und half, fasziniert vom komplexen Prozess des Weinanbaus und der Weinbereitung, im Weinberg und im Weinkeller mit. <\/p><p>Ein regelrechtes Erweckungserlebnis hatte Sven dann mit einem<strong> Rheingauer Riesling vom Rüdesheimer Berg<\/strong>, der den Entschluss in Geisenheim Weinbau und Önologie zu studieren festigte. Während und nach dem Studium <strong>absolvierte Sven Praktika in bekannten österreichischen Weingütern<\/strong> und trat 2009 in das elterliche Weingut ein.<\/p><p>Seit 2013 ist er alleiniger Geschäftsführer des 21 Hektar großen Weinguts und lässt sich leiten von Tradition, Leidenschaft, Genuss und der Liebe zum Wein.<\/p>","horizontal_align":"left","link_title":"Svens Lieblingswein","link":"shopify:\/\/products\/2023-obsession-riesling-trocken-ortswein-qualitatswein-b-a","bg_color_block":"rgba(0,0,0,0)","bg_color_content":"#f2f2f2","color_text":"#131313","text_heading_color":false,"text_border_color":true}},"image_6HVDGM":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Annika_Martin_Fotografie-8497_Caro.webp","video":"","video_button_color":"primary","title":"Caroline Mohr","desc":"<p>...stammt zwar nicht aus einer Winzerfamilie, doch wurde sie durch Ihre nebenberuflich weinbaubetreibenden Großeltern <strong>schon früh für den Weinbau begeistert.<\/strong><\/p><p>Sie unterstützt Sven bei administrativen und organisatorischen Aufgaben, bei Messen und Veranstaltungen im In- und Ausland sowie im Verkauf auf dem Weingut.<\/p><p>Außerdem <strong>hält sie die Stimmung und Moral oben<\/strong> und öffnet den Blick auch aus weinbaufernen Perspektiven auf das eigene Tun.<\/p>","horizontal_align":"left","link_title":"Caros Lieblingswein","link":"","bg_color_block":"rgba(0,0,0,0)","bg_color_content":"#183a46","color_text":"#ffffff","text_heading_color":false,"text_border_color":true}},"image_xC9GaA":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/team_hans_klundt_8e5b66ba-7aa8-44cf-8437-60c78b2601af.jpg","video":"","video_button_color":"primary","title":"Hans Klundt","desc":"<p>...hat in den 1970er Jahren den gemischt-landwirtschaftlichen Betrieb seiner Eltern übernommen und ihn gemeinsam mit seiner Frau Brigitte zum Weingut mit Flaschenweinvermarktung umgebaut.<\/p><p>Auch im wohlverdienten Ruhestand ist Hans Klundt mit seinem reichen Erfahrungswissen<strong> ein wertvoller Ratgeber und eine tatkräftige Unterstützung <\/strong>rund um alle täglich anfallenden Arbeiten im Weingut.<\/p>","horizontal_align":"left","link_title":"","link":"","bg_color_block":"#f2f2f2","bg_color_content":"#ffffff","color_text":"#212121","text_heading_color":true,"text_border_color":true}},"image_fCb9fp":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/team_brigitte_klundt_1.jpg","video":"","video_button_color":"primary","title":"Brigitte Klundt","desc":"<p>...ist die gute Seele und das Koordinationstalent des Weingutes. Sie liebt die vielfältigen Handarbeiten draußen im Weinberg und bringt sich <strong>mit Ihrer langjährigen Erfahrung vor allem in die Kundebetreuung und den Verkauf auf dem Hof ein.<\/strong><\/p><p>Obgleich im verdienten Ruhestand, ist sie nahezu täglich in den Weinbergen bei der Pflege unserer Reben anzutreffen.<\/p>","horizontal_align":"left","link_title":"","link":"","bg_color_block":"#e5e5e5","bg_color_content":"#183a46","color_text":"#ffffff","text_heading_color":false,"text_border_color":true}}},"block_order":["image_iWUmm6","image_6HVDGM","image_xC9GaA","image_fCb9fp"],"custom_css":[],"settings":{"image_ratio":"16:9","block_align":"left","container":"large","block_spacing":2,"block_layout":"2\/3","text_style":"solid","heading_size":3,"link_style":"hollow","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_image_with_text_NhnpHa":{"type":"section-image-with-text","blocks":{"image_qxEJUi":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/team_hans_klundt.jpg","video":"","video_button_color":"primary","title":"Hans Klundt","desc":"<p>...hat in den 1970er Jahren den gemischt-landwirtschaftlichen Betrieb seiner Eltern übernommen und ihn gemeinsam mit seiner Frau Brigitte zum Weingut mit Flaschenweinvermarktung umgebaut. Auch im wohlverdienten Ruhestand ist Hans Klundt mit seinem reichen Erfahrungswissen ein wertvoller Ratgeber und eine tatkräftige Unterstützung rund um alle täglich anfallenden Arbeiten im Weingut.<\/p>","horizontal_align":"left","link_title":"","link":"","bg_color_block":"#e5e5e5","bg_color_content":"rgba(0,0,0,0)","color_text":"rgba(0,0,0,0)","text_heading_color":true,"text_border_color":true}},"image_Ci7hyf":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/team_brigitte_klundt.jpg","video":"","video_button_color":"primary","title":"Brigitte Klundt","desc":"<p>...ist die gute Seele und das Koordinationstalent des Weingutes. Sie liebt die vielfältigen Handarbeiten draußen im Weinberg und bringt sich mit Ihrer langjährigen Erfahrung vor allem in die Kundebetreuung und den Verkauf auf dem Hof ein. Obgleich im verdienten Ruhestand, ist sie nahezu täglich in den Weinbergen bei der Pflege unserer Reben anzutreffen.<\/p>","horizontal_align":"left","link_title":"","link":"","bg_color_block":"#ffffff","bg_color_content":"rgba(0,0,0,0)","color_text":"rgba(0,0,0,0)","text_heading_color":true,"text_border_color":true}},"image_d3WyNJ":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/team_sven_klundt.jpg","video":"","video_button_color":"primary","title":"Sven Klundt","desc":"<p>...wurde die Leidenschaft für die Weinbereitung praktisch in die Wiege gelegt. Er blickte schon in frühester Kindheit über die Schultern seiner Großeltern und seiner Eltern und half, fasziniert vom komplexen Prozess des Weinanbaus und der Weinbereitung, im Weinberg und im Weinkeller mit. Ein regelrechtes Erweckungserlebnis hatte Sven dann mit einem Rheingauer Riesling vom Rüdesheimer Berg, der den Entschluss in Geisenheim Weinbau und Oenologie zu studieren festigte. Während und nach dem Studium absolvierte Sven Praktika in bekannten österreichischen Weingütern und trat 2009 in das elterliche Weingut ein. Seit 2013 ist er alleiniger Geschäftsführer des 21 Hektar großen Weinguts und lässt sich leiten von Tradition, Leidenschaft, Genuss und der Liebe zum Wein.<\/p>","horizontal_align":"left","link_title":"","link":"","bg_color_block":"#e5e5e5","bg_color_content":"rgba(0,0,0,0)","color_text":"rgba(0,0,0,0)","text_heading_color":true,"text_border_color":true}},"image_jhVbwJ":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/team_caroline_mohr.jpg","video":"","video_button_color":"primary","title":"Caroline Mohr","desc":"<p>...stammt zwar nicht aus einer Winzerfamilie, doch wurde Sie durch Ihre nebenberuflich weinbaubetreibenden Großeltern schon früh für den Weinbau begeistert. Sie unterstützt Sven bei administrativen und organisatorischen Aufgaben, bei Messen und Veranstaltungen im In- und Ausland sowie im Verkauf auf dem Weingut. Außerdem hält sie die Stimmung und Moral oben und öffnet den Blick auch aus weinbaufernen Perspektiven auf das eigene Tun.<\/p>","horizontal_align":"left","link_title":"","link":"","bg_color_block":"rgba(0,0,0,0)","bg_color_content":"rgba(0,0,0,0)","color_text":"rgba(0,0,0,0)","text_heading_color":true,"text_border_color":true}}},"block_order":["image_qxEJUi","image_Ci7hyf","image_d3WyNJ","image_jhVbwJ"],"disabled":true,"settings":{"image_ratio":"4:3","block_align":"left","vertical_align":"top","container":"small","block_spacing":2,"block_layout":"1\/2","heading_size":3,"link_style":"hollow","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_custom_3YRyrb":{"type":"section-custom","blocks":{"text_wnJH8E":{"type":"text","settings":{"title":"Unsere Obsession: Charakterstarke Weine","text":"<p><strong>Große Weine entstehen, wenn außergewöhnliches Klima, starke Lagen und sorgfältige Vinifikation zusammentreffen. <\/strong>Dabei ist der nachhaltige Umgang mit natürlichen Ressourcen für uns selbstverständlich.<\/p><p><strong>Seit über 25 Jahren verzichten wir auf Herbizide und arbeiten nach den Prinzipien des kontrolliert umweltschonenden Weinbaus.<\/strong><\/p><p>In unseren Weinbergen dominieren Riesling, Weißburgunder und Pinot Noir. Doch auch internationale Sorten wie Chardonnay, Sauvignon Blanc, Cabernet und Syrah finden ihren Platz. <strong>Unsere Weine sind geprägt von Mineralität, Eleganz und Herkunft <\/strong>– von frischen Gutsweinen bis hin zu komplexen Lagenweinen.<\/p>","align":"center","width":"2\/3"}},"button_GVYC4g":{"type":"button","settings":{"title":"Obsession entdecken","link":"shopify:\/\/collections\/ortsweine","link_style":"hollow","width":"2\/3"}},"spacer_xzBpye":{"type":"spacer","settings":{"space":"none"}},"image_EMVpNc":{"type":"image","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/IMG_9386Klundt2018Klundt2018kl_Large_e867b74e-beae-44b9-8671-c24a587feb07.jpg","link":"","width":"2\/3"}}},"block_order":["text_wnJH8E","button_GVYC4g","spacer_xzBpye","image_EMVpNc"],"settings":{"padding_top":0,"padding_bottom":0,"section-bottom-margin":false}},"section_rich_text_yQd6cn":{"type":"section-rich-text","disabled":true,"settings":{"section_title":"Unsere Qualitätsstufe","text":"","section_width":"tiny","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_collection_list_ktgQiy":{"type":"section-collection-list","blocks":{"collection_X8gWnK":{"type":"collection","settings":{"collection":"lagenweine","heading":"","description":"","button_label":"","link":""}},"collection_cNWzX6":{"type":"collection","settings":{"collection":"ortsweine","heading":"","description":"","button_label":"","link":""}},"collection_TdN4it":{"type":"collection","settings":{"collection":"gutsweine","heading":"","description":"","button_label":"","link":""}},"collection_zh8w4U":{"type":"collection","settings":{"collection":"literweine","heading":"","description":"","button_label":"","link":""}}},"block_order":["collection_X8gWnK","collection_cNWzX6","collection_TdN4it","collection_zh8w4U"],"custom_css":["{background-color: #f2f2f2; padding: 30px;}"],"name":"Collection list","settings":{"title":"Unsere Qualitätsstufen","desc":"","image_ratio":"3:4","heading_alignment":"center","alignment":"middle-center","text_alignment":"center","visibility_heading":true,"visibility_count":false,"visibility_border":true,"visibility_description":false,"visibility_button":false,"hover_options":"hover-button","section_width":"large","grid":4,"spacing":2,"enable_carousel_desktop":true,"grid_mobile":"1","enable_carousel_mobile":false,"color_text":"#ffffff","color_overlay":"#000000","color_overlay_strength":30,"color_default_heading":false,"color_default_border":true,"divider_top":false,"divider_bottom":false,"title_size":3,"button_style":"c-btn c-btn--hollow","section_link_title":"View all","section_link_link":"","section_link_style":"link link--arrow","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_multi_column_images_8pQCzE":{"type":"section-multi-column-images","blocks":{"image_UUqGba":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/20250319_WG_Kludt_wacholderberg_weisser_burgunder.png","title":"Lagenweine","sub_title":"","desc":"<p>Unsere Lagenweine sind die Aushängeschilder unseres Weinguts und zeigen Mineralität, Eleganz und Charakter [...]<\/p>","link_title":"Mehr dazu","link":"shopify:\/\/collections\/lagenweine"}},"image_bR9Dwm":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/20250319_WG_Kludt_obsession_weiser_burgunder.png","title":"Ortsweine","sub_title":"","desc":"<p>Unsere Ortsweine lassen ihre unverwechselbare regionale Identität klar erkennen<br\/>[...]<\/p>","link_title":"Mehr dazu","link":"shopify:\/\/collections\/ortsweine"}},"image_WLWEWB":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/20250319_WG_Kludt_sauvignonblanc.png","title":"Gutsweine","sub_title":"","desc":"<p>Mit ihrem Fokus auf Fruchtigkeit und Frische sind unsere Gutsweine die optimalen Alltagsbegleiter für viele Gelegenheiten [...]<\/p>","link_title":"Mehr dazu","link":"shopify:\/\/collections\/gutsweine"}},"image_eBCbTg":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/20250319_WG_Kludt_liter_kerner.png","title":"Literweine","sub_title":"","desc":"<p> Unsere Literweine sind regionaltypische, unkomplizierte Alltagsweine mit saftig frischen Fruchtaromen und angenehmer Säurestruktur [...]<\/p>","link_title":"Mehr dazu","link":"shopify:\/\/collections\/literweine"}}},"block_order":["image_UUqGba","image_bR9Dwm","image_WLWEWB","image_eBCbTg"],"disabled":true,"settings":{"title":"Unsere Qualitätsstufen","desc":"","image_toggle":true,"image_ratio":"3:4","image_fit":false,"image_size":100,"image_padding":0,"heading_alignment":"center","alignment":"center","container":"large","grid":4,"spacing":3,"grid_mobile":"1","mobile_carousel":true,"bg_color":"#f2f2f2","color_image":"#e5e5e5","color_text":"rgba(0,0,0,0)","text_heading_color":true,"text_border_color":true,"divider_top":false,"divider_bottom":false,"heading_size":3,"block_link_style":"body","section_link_title":"View all","section_link_link":"","section_link_style":"c-btn c-btn--mono","padding_top":0,"padding_bottom":0,"section_bottom_margin":true}},"section_slideshow_PeXVTP":{"type":"section-slideshow","blocks":{"image_9X4hhD":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/4_409ade47-3193-4be5-a39f-aff4272a97df.png","title":"Lagenweine","text":"<p>Unsere Lagenweine sind die Aushängeschilder unseres Weinguts und zeigen Mineralität, Eleganz und Charakter. Sie spiegeln die Gegebenheiten unserer einzigartigen Weinbergslagen wieder, wie dem weltbekannten Kastanienbusch in Birkweiler, dem Hochborn in Godramstein oder dem Wacholderberg in Mörzheim.<\/p><p>Für unsere Lagenweine selektieren wir in mehreren Durchgängen nur die besten, hochreifen Trauben von Hand. Eine lange Reifezeit auf der Hefe in Verbindung mit einer späten Abfüllung in Flaschen lässt individuelle Weincharaktere entstehen.<\/p>","alignment":"left","link_title":"Zu den Lagenweinen","link":"shopify:\/\/collections\/lagenweine","link_style":"c-btn c-btn--hollow","link_title_2":"","link_2":"","link_style_2":"c-btn c-btn--primary"}},"image_FgUNDc":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/3_60dd0ff7-7043-4979-b7c4-4bb51f98020f.png","title":"Ortsweine","text":"<p>Unsere Ortsweine lassen ihre unverwechselbare regionale Identität klar erkennen. Sie finden hier ausdrucksstarke und ausgewogene Weine mit Reifepotential, die deutlich vom Terroir innerhalb der jeweiligen Ortsgemarkung geprägt sind.<\/p><p>Sie eignen sich für besondere Anlässe und anspruchsvolle Menüs und überzeugen den Weinkenner durch Komplexität und Vielschichtigkeit.<\/p>","alignment":"left","link_title":"Zu den Ortsweinen","link":"shopify:\/\/collections\/ortsweine","link_style":"c-btn c-btn--hollow","link_title_2":"","link_2":"","link_style_2":"c-btn c-btn--primary"}},"image_xW6GcB":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/2_48c6ea5b-4158-4328-8bee-f42cf4e38c3e.png","title":"Gutsweine","text":"<p>Mit ihrem Fokus auf Fruchtigkeit und Frische sind unsere Gutsweine die optimalen Alltagsbegleiter für viele Gelegenheiten, die dennoch deutlich mehr als das „Alltägliche“ bieten.<\/p><p>Alle Gutsweine stammen aus gutseigenen Weinbergen und bilden die typischen Gegebenheiten der Region Südpfalz ab.<\/p>","alignment":"left","link_title":"Zu den Gutsweinen","link":"shopify:\/\/collections\/gutsweine","link_style":"c-btn c-btn--hollow","link_title_2":"","link_2":"","link_style_2":"c-btn c-btn--primary"}},"image_4cigKp":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/1_22a6de1d-09c5-410d-a1ed-7816de09fe07.png","title":"Literweine","text":"<p> Unsere Literweine sind regionaltypische, unkomplizierte Alltagsweine mit saftig frischen Fruchtaromen und angenehmer Säurestruktur.<\/p>","alignment":"left","link_title":"Zu den Literweinen","link":"shopify:\/\/collections\/gutsweine","link_style":"c-btn c-btn--hollow","link_title_2":"","link_2":"","link_style_2":"c-btn c-btn--primary"}}},"block_order":["image_9X4hhD","image_FgUNDc","image_xW6GcB","image_4cigKp"],"disabled":true,"custom_css":[".home-carousel .media-carousel__arrow {background: #f2f2f2; color: #173945;}"],"settings":{"slideshow_height":"large","slideshow_width":"contained","nav_style":"solid-brand","hide_nav_arrows":false,"autoplay":true,"autoplay_speed":10,"style":"semi","text_bg_color":"#183a46","text_color":"#ffffff","overlay_color":"#000000","overlay_strength":30,"text_heading_color":false,"text_border_color":true,"title_size":5,"section_bottom_margin":false}},"section_image_with_text_rjQ4jN":{"type":"section-image-with-text","blocks":{"image_npYa3q":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/WG_Klundt_Sekt.jpg","video":"","video_button_color":"primary","title":"Unser Sekt: ein Herzensprojekt","desc":"<p>Unseren Sekt stellen wir ausschließlich aus Weiß- und Spätburgundertrauben unserer eigenen Weinberge her. <strong>Der Ausbau des Sekt-Grundweines sowie die traditionelle Flaschengärung erfolgen direkt auf unserem Weingut.<\/strong><\/p><p>Nach mindestens zehn Monaten Reifezeit auf der Hefe folgen Remuage und Degorgieren. Diese handwerkliche Methode macht jede Flasche zu einem individuellen Genuss.<\/p>","horizontal_align":"left","link_title":"Zum Sekt","link":"shopify:\/\/collections\/sekt","bg_color_block":"#f2f2f2","bg_color_content":"rgba(0,0,0,0)","color_text":"rgba(0,0,0,0)","text_heading_color":true,"text_border_color":true}}},"block_order":["image_npYa3q"],"settings":{"image_ratio":"4:3","block_align":"left","vertical_align":"top","container":"large","block_spacing":2,"block_layout":"2\/3","heading_size":3,"link_style":"hollow","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_liquid_7mpRQX":{"type":"section-liquid","disabled":true,"settings":{"custom_liquid":"<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d2608.6152623401567!2d8.071231877430016!3d49.169910571376064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47965a074a0b35fb%3A0x2beec0b27dcf13b2!2sWeingut%20Klundt!5e0!3m2!1sde!2sde!4v1743179015355!5m2!1sde!2sde\" width=\"max\" height=\"500\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>"}},"section_image_text_banner_meAwQm":{"type":"section-image-text-banner","blocks":{"heading_RTkRTV":{"type":"heading","settings":{"heading":"Weingut Klundt","text_size":9,"text_width":40,"text_size_mobile":6}},"text_8KaxM7":{"type":"text","settings":{"text":"<p>Nachhaltige Spitzenweine aus der Südpfalz<\/p>","text_size":6,"text_width":40,"text_size_mobile":6}},"text_gEETEx":{"type":"text","settings":{"text":"<p>Bei Landau in der südlichen Pfalz gelegen, verfügt das Weingut Klundt über rund 21 ha Weinberge, die sich teils in den renommiertesten Lagen der Region befinden.<\/p>","text_size":3,"text_width":40,"text_size_mobile":2}},"button_FtjBTa":{"type":"button","settings":{"button_label":"Alle Weine entdecken","button_link":"shopify:\/\/collections\/alle-weine","button_style":"c-btn c-btn--mono","button_2_label":"","button_2_link":"","button_2_style":"c-btn c-btn--primary"}}},"block_order":["heading_RTkRTV","text_8KaxM7","text_gEETEx","button_FtjBTa"],"settings":{"bg_image":"shopify:\/\/shop_images\/WG_Klundt_Aussicht_Pfalz_Weinberge.jpg","content_alignment":"center","section_height":600,"section_height_mobile":400,"section_full_screen":false,"section_width":"full","bg_color":"#f2f2f2","content_color":"#ffffff","overlay_color":"#000000","overlay_strength":20,"content_heading_color":false,"divider_top":false,"divider_bottom":false,"section_bottom_margin":false}}},"order":["section_image_text_banner_yJ8q3X","main","section_rich_text_kL3mx8","section_custom_WJpyHG","section_image_with_text_overlap_tdWD4R","section_image_with_text_NhnpHa","section_custom_3YRyrb","section_rich_text_yQd6cn","section_collection_list_ktgQiy","section_multi_column_images_8pQCzE","section_slideshow_PeXVTP","section_image_with_text_rjQ4jN","section_liquid_7mpRQX","section_image_text_banner_meAwQm"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "section_image_text_banner_yJ8q3X": {
+      "type": "section-image-text-banner",
+      "blocks": {
+        "heading_qbz8Y3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Unsere Wurzeln",
+            "text_size": 9,
+            "text_width": 40,
+            "text_size_mobile": 8
+          }
+        }
+      },
+      "block_order": [
+        "heading_qbz8Y3"
+      ],
+      "settings": {
+        "bg_image": "shopify://shop_images/WG_Klundt_Team_3.webp",
+        "content_alignment": "bottom-center",
+        "section_height": 620,
+        "section_height_mobile": 300,
+        "section_full_screen": false,
+        "section_width": "full",
+        "bg_color": "#f2f2f2",
+        "content_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_strength": 10,
+        "content_heading_color": false,
+        "divider_top": false,
+        "divider_bottom": false,
+        "section_bottom_margin": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "section_rich_text_kL3mx8": {
+      "type": "section-rich-text",
+      "disabled": true,
+      "settings": {
+        "section_title": "Weingut Hautnah",
+        "text": "<p>Bei Landau in der südlichen Pfalz gelegen, verfügt das Weingut Klundt <strong>über rund 21 ha Weinberge, die sich teils in den renommiertesten Lagen der Region befinden</strong>. Bereits seit weit über 30 Jahren begreift man eine nachhaltig-umweltschonende Weinbergsbewirtschaftung als elementaren Baustein auf dem Weg zum Spitzenwein.</p><p>Der <strong>Verzicht auf Herbizide und eine sorgsame Bodenbearbeitung</strong>, die den jeweiligen Bodengegebenheiten Rechnung trägt, sind hierbei nur einige der prägnantesten Glieder in einer ganzen Kette an Maßnahmen, auf dem Weg zu einem optimal-gesunden und reifen Lesegut. </p><p><strong>Den Weinanbau in der Familie Klundt können wir bis ins 16. Jahrhundert zurückverfolgen.</strong> Über viele Jahrhunderte hinweg war der Weinanbau, wie in der Südpfalz üblich, jedoch nur ein Teil eines landwirtschaftlichen Mischbetriebes.</p>",
+        "section_width": "large",
+        "padding_top": 21,
+        "padding_bottom": 9,
+        "section_bottom_margin": false
+      }
+    },
+    "section_custom_WJpyHG": {
+      "type": "section-custom",
+      "blocks": {
+        "text_WTk4mH": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "text": "<p>Unser Weingut liegt bei Landau in der Südpfalz und umfasst rund 21 ha Weinberge in <strong>einigen der renommiertesten Lagen der Region.</strong></p><p><strong>Seit über 30 Jahren legen wir großen Wert auf nachhaltigen und umweltschonenden Weinanbau.</strong></p><p>Der Verzicht auf Herbizide und eine sorgfältige Bodenbearbeitung, die den natürlichen Gegebenheiten Rechnung trägt, sind nur einige der Maßnahmen, die uns auf dem Weg zu optimalen und gesunden Trauben begleiten.</p><p><strong>Unsere Familientradition reicht bis ins 16. Jahrhundert zurück.</strong></p>",
+            "align": "center",
+            "width": "2/3"
+          }
+        },
+        "image_LbrGBa": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "link": "",
+            "width": "2/3"
+          }
+        },
+        "spacer_pdm8QU": {
+          "type": "spacer",
+          "settings": {
+            "space": "none"
+          }
+        },
+        "button_QBadHD": {
+          "type": "button",
+          "settings": {
+            "title": "So schmecken 400 Jahre Tradition",
+            "link": "shopify://products/probierpaket-pfalzer-weinkunst",
+            "link_style": "primary",
+            "width": "1/3"
+          }
+        }
+      },
+      "block_order": [
+        "text_WTk4mH",
+        "image_LbrGBa",
+        "spacer_pdm8QU",
+        "button_QBadHD"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section-bottom-margin": false
+      }
+    },
+    "section_image_with_text_overlap_tdWD4R": {
+      "type": "section-image-with-text-overlap",
+      "blocks": {
+        "image_iWUmm6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Annika_Martin_Fotografie-9201_Sven_2bdbb707-e486-4294-a60a-1f01b522b519.webp",
+            "video": "",
+            "video_button_color": "light",
+            "title": "Sven Klundt",
+            "desc": "<p>...wurde die Leidenschaft für die Weinbereitung praktisch in die Wiege gelegt.</p><p>Er blickte schon in frühester Kindheit über die Schultern seiner Großeltern und seiner Eltern und half, fasziniert vom komplexen Prozess des Weinanbaus und der Weinbereitung, im Weinberg und im Weinkeller mit. </p><p>Ein regelrechtes Erweckungserlebnis hatte Sven dann mit einem<strong> Rheingauer Riesling vom Rüdesheimer Berg</strong>, der den Entschluss in Geisenheim Weinbau und Önologie zu studieren festigte. Während und nach dem Studium <strong>absolvierte Sven Praktika in bekannten österreichischen Weingütern</strong> und trat 2009 in das elterliche Weingut ein.</p><p>Seit 2013 ist er alleiniger Geschäftsführer des 21 Hektar großen Weinguts und lässt sich leiten von Tradition, Leidenschaft, Genuss und der Liebe zum Wein.</p>",
+            "horizontal_align": "left",
+            "link_title": "Svens Lieblingswein",
+            "link": "shopify://products/2023-obsession-riesling-trocken-ortswein-qualitatswein-b-a",
+            "bg_color_block": "rgba(0,0,0,0)",
+            "bg_color_content": "#f2f2f2",
+            "color_text": "#131313",
+            "text_heading_color": false,
+            "text_border_color": true
+          }
+        },
+        "image_6HVDGM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Annika_Martin_Fotografie-8497_Caro.webp",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Caroline Mohr",
+            "desc": "<p>...stammt zwar nicht aus einer Winzerfamilie, doch wurde sie durch Ihre nebenberuflich weinbaubetreibenden Großeltern <strong>schon früh für den Weinbau begeistert.</strong></p><p>Sie unterstützt Sven bei administrativen und organisatorischen Aufgaben, bei Messen und Veranstaltungen im In- und Ausland sowie im Verkauf auf dem Weingut.</p><p>Außerdem <strong>hält sie die Stimmung und Moral oben</strong> und öffnet den Blick auch aus weinbaufernen Perspektiven auf das eigene Tun.</p>",
+            "horizontal_align": "left",
+            "link_title": "Caros Lieblingswein",
+            "link": "",
+            "bg_color_block": "rgba(0,0,0,0)",
+            "bg_color_content": "#183a46",
+            "color_text": "#ffffff",
+            "text_heading_color": false,
+            "text_border_color": true
+          }
+        },
+        "image_xC9GaA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/team_hans_klundt_8e5b66ba-7aa8-44cf-8437-60c78b2601af.jpg",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Hans Klundt",
+            "desc": "<p>...hat in den 1970er Jahren den gemischt-landwirtschaftlichen Betrieb seiner Eltern übernommen und ihn gemeinsam mit seiner Frau Brigitte zum Weingut mit Flaschenweinvermarktung umgebaut.</p><p>Auch im wohlverdienten Ruhestand ist Hans Klundt mit seinem reichen Erfahrungswissen<strong> ein wertvoller Ratgeber und eine tatkräftige Unterstützung </strong>rund um alle täglich anfallenden Arbeiten im Weingut.</p>",
+            "horizontal_align": "left",
+            "link_title": "",
+            "link": "",
+            "bg_color_block": "#f2f2f2",
+            "bg_color_content": "#ffffff",
+            "color_text": "#212121",
+            "text_heading_color": true,
+            "text_border_color": true
+          }
+        },
+        "image_fCb9fp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/team_brigitte_klundt_1.jpg",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Brigitte Klundt",
+            "desc": "<p>...ist die gute Seele und das Koordinationstalent des Weingutes. Sie liebt die vielfältigen Handarbeiten draußen im Weinberg und bringt sich <strong>mit Ihrer langjährigen Erfahrung vor allem in die Kundebetreuung und den Verkauf auf dem Hof ein.</strong></p><p>Obgleich im verdienten Ruhestand, ist sie nahezu täglich in den Weinbergen bei der Pflege unserer Reben anzutreffen.</p>",
+            "horizontal_align": "left",
+            "link_title": "",
+            "link": "",
+            "bg_color_block": "#f2f2f2",
+            "bg_color_content": "#183a46",
+            "color_text": "#ffffff",
+            "text_heading_color": false,
+            "text_border_color": true
+          }
+        }
+      },
+      "block_order": [
+        "image_iWUmm6",
+        "image_6HVDGM",
+        "image_xC9GaA",
+        "image_fCb9fp"
+      ],
+      "custom_css": [],
+      "settings": {
+        "image_ratio": "16:9",
+        "block_align": "left",
+        "container": "large",
+        "block_spacing": 2,
+        "block_layout": "2/3",
+        "text_style": "solid",
+        "heading_size": 3,
+        "link_style": "hollow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_image_with_text_NhnpHa": {
+      "type": "section-image-with-text",
+      "blocks": {
+        "image_qxEJUi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/team_hans_klundt.jpg",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Hans Klundt",
+            "desc": "<p>...hat in den 1970er Jahren den gemischt-landwirtschaftlichen Betrieb seiner Eltern übernommen und ihn gemeinsam mit seiner Frau Brigitte zum Weingut mit Flaschenweinvermarktung umgebaut. Auch im wohlverdienten Ruhestand ist Hans Klundt mit seinem reichen Erfahrungswissen ein wertvoller Ratgeber und eine tatkräftige Unterstützung rund um alle täglich anfallenden Arbeiten im Weingut.</p>",
+            "horizontal_align": "left",
+            "link_title": "",
+            "link": "",
+            "bg_color_block": "#e5e5e5",
+            "bg_color_content": "rgba(0,0,0,0)",
+            "color_text": "rgba(0,0,0,0)",
+            "text_heading_color": true,
+            "text_border_color": true
+          }
+        },
+        "image_Ci7hyf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/team_brigitte_klundt.jpg",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Brigitte Klundt",
+            "desc": "<p>...ist die gute Seele und das Koordinationstalent des Weingutes. Sie liebt die vielfältigen Handarbeiten draußen im Weinberg und bringt sich mit Ihrer langjährigen Erfahrung vor allem in die Kundebetreuung und den Verkauf auf dem Hof ein. Obgleich im verdienten Ruhestand, ist sie nahezu täglich in den Weinbergen bei der Pflege unserer Reben anzutreffen.</p>",
+            "horizontal_align": "left",
+            "link_title": "",
+            "link": "",
+            "bg_color_block": "#ffffff",
+            "bg_color_content": "rgba(0,0,0,0)",
+            "color_text": "rgba(0,0,0,0)",
+            "text_heading_color": true,
+            "text_border_color": true
+          }
+        },
+        "image_d3WyNJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/team_sven_klundt.jpg",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Sven Klundt",
+            "desc": "<p>...wurde die Leidenschaft für die Weinbereitung praktisch in die Wiege gelegt. Er blickte schon in frühester Kindheit über die Schultern seiner Großeltern und seiner Eltern und half, fasziniert vom komplexen Prozess des Weinanbaus und der Weinbereitung, im Weinberg und im Weinkeller mit. Ein regelrechtes Erweckungserlebnis hatte Sven dann mit einem Rheingauer Riesling vom Rüdesheimer Berg, der den Entschluss in Geisenheim Weinbau und Oenologie zu studieren festigte. Während und nach dem Studium absolvierte Sven Praktika in bekannten österreichischen Weingütern und trat 2009 in das elterliche Weingut ein. Seit 2013 ist er alleiniger Geschäftsführer des 21 Hektar großen Weinguts und lässt sich leiten von Tradition, Leidenschaft, Genuss und der Liebe zum Wein.</p>",
+            "horizontal_align": "left",
+            "link_title": "",
+            "link": "",
+            "bg_color_block": "#e5e5e5",
+            "bg_color_content": "rgba(0,0,0,0)",
+            "color_text": "rgba(0,0,0,0)",
+            "text_heading_color": true,
+            "text_border_color": true
+          }
+        },
+        "image_jhVbwJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/team_caroline_mohr.jpg",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Caroline Mohr",
+            "desc": "<p>...stammt zwar nicht aus einer Winzerfamilie, doch wurde Sie durch Ihre nebenberuflich weinbaubetreibenden Großeltern schon früh für den Weinbau begeistert. Sie unterstützt Sven bei administrativen und organisatorischen Aufgaben, bei Messen und Veranstaltungen im In- und Ausland sowie im Verkauf auf dem Weingut. Außerdem hält sie die Stimmung und Moral oben und öffnet den Blick auch aus weinbaufernen Perspektiven auf das eigene Tun.</p>",
+            "horizontal_align": "left",
+            "link_title": "",
+            "link": "",
+            "bg_color_block": "rgba(0,0,0,0)",
+            "bg_color_content": "rgba(0,0,0,0)",
+            "color_text": "rgba(0,0,0,0)",
+            "text_heading_color": true,
+            "text_border_color": true
+          }
+        }
+      },
+      "block_order": [
+        "image_qxEJUi",
+        "image_Ci7hyf",
+        "image_d3WyNJ",
+        "image_jhVbwJ"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_ratio": "4:3",
+        "block_align": "left",
+        "vertical_align": "top",
+        "container": "small",
+        "block_spacing": 2,
+        "block_layout": "1/2",
+        "heading_size": 3,
+        "link_style": "hollow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_custom_3YRyrb": {
+      "type": "section-custom",
+      "blocks": {
+        "text_wnJH8E": {
+          "type": "text",
+          "settings": {
+            "title": "Unsere Obsession: Charakterstarke Weine",
+            "text": "<p><strong>Große Weine entstehen, wenn außergewöhnliches Klima, starke Lagen und sorgfältige Vinifikation zusammentreffen. </strong>Dabei ist der nachhaltige Umgang mit natürlichen Ressourcen für uns selbstverständlich.</p><p><strong>Seit über 25 Jahren verzichten wir auf Herbizide und arbeiten nach den Prinzipien des kontrolliert umweltschonenden Weinbaus.</strong></p><p>In unseren Weinbergen dominieren Riesling, Weißburgunder und Pinot Noir. Doch auch internationale Sorten wie Chardonnay, Sauvignon Blanc, Cabernet und Syrah finden ihren Platz. <strong>Unsere Weine sind geprägt von Mineralität, Eleganz und Herkunft </strong>– von frischen Gutsweinen bis hin zu komplexen Lagenweinen.</p>",
+            "align": "center",
+            "width": "2/3"
+          }
+        },
+        "button_GVYC4g": {
+          "type": "button",
+          "settings": {
+            "title": "Obsession entdecken",
+            "link": "shopify://collections/ortsweine",
+            "link_style": "hollow",
+            "width": "2/3"
+          }
+        },
+        "spacer_xzBpye": {
+          "type": "spacer",
+          "settings": {
+            "space": "none"
+          }
+        },
+        "image_EMVpNc": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/IMG_9386Klundt2018Klundt2018kl_Large_e867b74e-beae-44b9-8671-c24a587feb07.jpg",
+            "link": "",
+            "width": "2/3"
+          }
+        }
+      },
+      "block_order": [
+        "text_wnJH8E",
+        "button_GVYC4g",
+        "spacer_xzBpye",
+        "image_EMVpNc"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section-bottom-margin": false
+      }
+    },
+    "section_rich_text_yQd6cn": {
+      "type": "section-rich-text",
+      "disabled": true,
+      "settings": {
+        "section_title": "Unsere Qualitätsstufe",
+        "text": "",
+        "section_width": "tiny",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_collection_list_ktgQiy": {
+      "type": "section-collection-list",
+      "blocks": {
+        "collection_X8gWnK": {
+          "type": "collection",
+          "settings": {
+            "collection": "lagenweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_cNWzX6": {
+          "type": "collection",
+          "settings": {
+            "collection": "ortsweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_TdN4it": {
+          "type": "collection",
+          "settings": {
+            "collection": "gutsweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_zh8w4U": {
+          "type": "collection",
+          "settings": {
+            "collection": "literweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_X8gWnK",
+        "collection_cNWzX6",
+        "collection_TdN4it",
+        "collection_zh8w4U"
+      ],
+      "custom_css": [
+        "{background-color: #f2f2f2; padding: 30px;}"
+      ],
+      "name": "Collection list",
+      "settings": {
+        "title": "Unsere Qualitätsstufen",
+        "desc": "",
+        "image_ratio": "3:4",
+        "heading_alignment": "center",
+        "alignment": "middle-center",
+        "text_alignment": "center",
+        "visibility_heading": true,
+        "visibility_count": false,
+        "visibility_border": true,
+        "visibility_description": false,
+        "visibility_button": false,
+        "hover_options": "hover-button",
+        "section_width": "large",
+        "grid": 4,
+        "spacing": 2,
+        "enable_carousel_desktop": true,
+        "grid_mobile": "1",
+        "enable_carousel_mobile": false,
+        "color_text": "#ffffff",
+        "color_overlay": "#000000",
+        "color_overlay_strength": 30,
+        "color_default_heading": false,
+        "color_default_border": true,
+        "divider_top": false,
+        "divider_bottom": false,
+        "title_size": 3,
+        "button_style": "c-btn c-btn--hollow",
+        "section_link_title": "View all",
+        "section_link_link": "",
+        "section_link_style": "link link--arrow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_multi_column_images_8pQCzE": {
+      "type": "section-multi-column-images",
+      "blocks": {
+        "image_UUqGba": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/20250319_WG_Kludt_wacholderberg_weisser_burgunder.png",
+            "title": "Lagenweine",
+            "sub_title": "",
+            "desc": "<p>Unsere Lagenweine sind die Aushängeschilder unseres Weinguts und zeigen Mineralität, Eleganz und Charakter [...]</p>",
+            "link_title": "Mehr dazu",
+            "link": "shopify://collections/lagenweine"
+          }
+        },
+        "image_bR9Dwm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/20250319_WG_Kludt_obsession_weiser_burgunder.png",
+            "title": "Ortsweine",
+            "sub_title": "",
+            "desc": "<p>Unsere Ortsweine lassen ihre unverwechselbare regionale Identität klar erkennen<br/>[...]</p>",
+            "link_title": "Mehr dazu",
+            "link": "shopify://collections/ortsweine"
+          }
+        },
+        "image_WLWEWB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/20250319_WG_Kludt_sauvignonblanc.png",
+            "title": "Gutsweine",
+            "sub_title": "",
+            "desc": "<p>Mit ihrem Fokus auf Fruchtigkeit und Frische sind unsere Gutsweine die optimalen Alltagsbegleiter für viele Gelegenheiten [...]</p>",
+            "link_title": "Mehr dazu",
+            "link": "shopify://collections/gutsweine"
+          }
+        },
+        "image_eBCbTg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/20250319_WG_Kludt_liter_kerner.png",
+            "title": "Literweine",
+            "sub_title": "",
+            "desc": "<p> Unsere Literweine sind regionaltypische, unkomplizierte Alltagsweine mit saftig frischen Fruchtaromen und angenehmer Säurestruktur [...]</p>",
+            "link_title": "Mehr dazu",
+            "link": "shopify://collections/literweine"
+          }
+        }
+      },
+      "block_order": [
+        "image_UUqGba",
+        "image_bR9Dwm",
+        "image_WLWEWB",
+        "image_eBCbTg"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Unsere Qualitätsstufen",
+        "desc": "",
+        "image_toggle": true,
+        "image_ratio": "3:4",
+        "image_fit": false,
+        "image_size": 100,
+        "image_padding": 0,
+        "heading_alignment": "center",
+        "alignment": "center",
+        "container": "large",
+        "grid": 4,
+        "spacing": 3,
+        "grid_mobile": "1",
+        "mobile_carousel": true,
+        "bg_color": "#f2f2f2",
+        "color_image": "#e5e5e5",
+        "color_text": "rgba(0,0,0,0)",
+        "text_heading_color": true,
+        "text_border_color": true,
+        "divider_top": false,
+        "divider_bottom": false,
+        "heading_size": 3,
+        "block_link_style": "body",
+        "section_link_title": "View all",
+        "section_link_link": "",
+        "section_link_style": "c-btn c-btn--mono",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": true
+      }
+    },
+    "section_slideshow_PeXVTP": {
+      "type": "section-slideshow",
+      "blocks": {
+        "image_9X4hhD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/4_409ade47-3193-4be5-a39f-aff4272a97df.png",
+            "title": "Lagenweine",
+            "text": "<p>Unsere Lagenweine sind die Aushängeschilder unseres Weinguts und zeigen Mineralität, Eleganz und Charakter. Sie spiegeln die Gegebenheiten unserer einzigartigen Weinbergslagen wieder, wie dem weltbekannten Kastanienbusch in Birkweiler, dem Hochborn in Godramstein oder dem Wacholderberg in Mörzheim.</p><p>Für unsere Lagenweine selektieren wir in mehreren Durchgängen nur die besten, hochreifen Trauben von Hand. Eine lange Reifezeit auf der Hefe in Verbindung mit einer späten Abfüllung in Flaschen lässt individuelle Weincharaktere entstehen.</p>",
+            "alignment": "left",
+            "link_title": "Zu den Lagenweinen",
+            "link": "shopify://collections/lagenweine",
+            "link_style": "c-btn c-btn--hollow",
+            "link_title_2": "",
+            "link_2": "",
+            "link_style_2": "c-btn c-btn--primary"
+          }
+        },
+        "image_FgUNDc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/3_60dd0ff7-7043-4979-b7c4-4bb51f98020f.png",
+            "title": "Ortsweine",
+            "text": "<p>Unsere Ortsweine lassen ihre unverwechselbare regionale Identität klar erkennen. Sie finden hier ausdrucksstarke und ausgewogene Weine mit Reifepotential, die deutlich vom Terroir innerhalb der jeweiligen Ortsgemarkung geprägt sind.</p><p>Sie eignen sich für besondere Anlässe und anspruchsvolle Menüs und überzeugen den Weinkenner durch Komplexität und Vielschichtigkeit.</p>",
+            "alignment": "left",
+            "link_title": "Zu den Ortsweinen",
+            "link": "shopify://collections/ortsweine",
+            "link_style": "c-btn c-btn--hollow",
+            "link_title_2": "",
+            "link_2": "",
+            "link_style_2": "c-btn c-btn--primary"
+          }
+        },
+        "image_xW6GcB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2_48c6ea5b-4158-4328-8bee-f42cf4e38c3e.png",
+            "title": "Gutsweine",
+            "text": "<p>Mit ihrem Fokus auf Fruchtigkeit und Frische sind unsere Gutsweine die optimalen Alltagsbegleiter für viele Gelegenheiten, die dennoch deutlich mehr als das „Alltägliche“ bieten.</p><p>Alle Gutsweine stammen aus gutseigenen Weinbergen und bilden die typischen Gegebenheiten der Region Südpfalz ab.</p>",
+            "alignment": "left",
+            "link_title": "Zu den Gutsweinen",
+            "link": "shopify://collections/gutsweine",
+            "link_style": "c-btn c-btn--hollow",
+            "link_title_2": "",
+            "link_2": "",
+            "link_style_2": "c-btn c-btn--primary"
+          }
+        },
+        "image_4cigKp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1_22a6de1d-09c5-410d-a1ed-7816de09fe07.png",
+            "title": "Literweine",
+            "text": "<p> Unsere Literweine sind regionaltypische, unkomplizierte Alltagsweine mit saftig frischen Fruchtaromen und angenehmer Säurestruktur.</p>",
+            "alignment": "left",
+            "link_title": "Zu den Literweinen",
+            "link": "shopify://collections/gutsweine",
+            "link_style": "c-btn c-btn--hollow",
+            "link_title_2": "",
+            "link_2": "",
+            "link_style_2": "c-btn c-btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "image_9X4hhD",
+        "image_FgUNDc",
+        "image_xW6GcB",
+        "image_4cigKp"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".home-carousel .media-carousel__arrow {background: #f2f2f2; color: #173945;}"
+      ],
+      "settings": {
+        "slideshow_height": "large",
+        "slideshow_height_mobile": "full-screen",
+        "slideshow_width": "contained",
+        "nav_style": "solid-brand",
+        "hide_nav_arrows": false,
+        "autoplay": true,
+        "autoplay_speed": 10,
+        "style": "semi",
+        "text_bg_color": "#183a46",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_strength": 30,
+        "text_heading_color": false,
+        "text_border_color": true,
+        "title_size": 5,
+        "section_bottom_margin": false
+      }
+    },
+    "section_image_with_text_rjQ4jN": {
+      "type": "section-image-with-text",
+      "blocks": {
+        "image_npYa3q": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/WG_Klundt_Sekt.jpg",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Unser Sekt: ein Herzensprojekt",
+            "desc": "<p>Unseren Sekt stellen wir ausschließlich aus Weiß- und Spätburgundertrauben unserer eigenen Weinberge her. <strong>Der Ausbau des Sekt-Grundweines sowie die traditionelle Flaschengärung erfolgen direkt auf unserem Weingut.</strong></p><p>Nach mindestens zehn Monaten Reifezeit auf der Hefe folgen Remuage und Degorgieren. Diese handwerkliche Methode macht jede Flasche zu einem individuellen Genuss.</p>",
+            "horizontal_align": "left",
+            "link_title": "Zum Sekt",
+            "link": "shopify://collections/sekt",
+            "bg_color_block": "#f2f2f2",
+            "bg_color_content": "rgba(0,0,0,0)",
+            "color_text": "rgba(0,0,0,0)",
+            "text_heading_color": true,
+            "text_border_color": true
+          }
+        }
+      },
+      "block_order": [
+        "image_npYa3q"
+      ],
+      "settings": {
+        "image_ratio": "4:3",
+        "block_align": "left",
+        "vertical_align": "top",
+        "container": "large",
+        "block_spacing": 2,
+        "block_layout": "2/3",
+        "heading_size": 3,
+        "link_style": "hollow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_liquid_7mpRQX": {
+      "type": "section-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2608.6152623401567!2d8.071231877430016!3d49.169910571376064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47965a074a0b35fb%3A0x2beec0b27dcf13b2!2sWeingut%20Klundt!5e0!3m2!1sde!2sde!4v1743179015355!5m2!1sde!2sde\" width=\"max\" height=\"500\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+      }
+    },
+    "section_image_text_banner_meAwQm": {
+      "type": "section-image-text-banner",
+      "blocks": {
+        "heading_RTkRTV": {
+          "type": "heading",
+          "settings": {
+            "heading": "Weingut Klundt",
+            "text_size": 9,
+            "text_width": 40,
+            "text_size_mobile": 6
+          }
+        },
+        "text_8KaxM7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nachhaltige Spitzenweine aus der Südpfalz</p>",
+            "text_size": 6,
+            "text_width": 40,
+            "text_size_mobile": 6
+          }
+        },
+        "text_gEETEx": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bei Landau in der südlichen Pfalz gelegen, verfügt das Weingut Klundt über rund 21 ha Weinberge, die sich teils in den renommiertesten Lagen der Region befinden.</p>",
+            "text_size": 3,
+            "text_width": 40,
+            "text_size_mobile": 2
+          }
+        },
+        "button_FtjBTa": {
+          "type": "button",
+          "settings": {
+            "button_label": "Alle Weine entdecken",
+            "button_link": "shopify://collections/alle-weine",
+            "button_style": "c-btn c-btn--mono",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": "c-btn c-btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_RTkRTV",
+        "text_8KaxM7",
+        "text_gEETEx",
+        "button_FtjBTa"
+      ],
+      "settings": {
+        "bg_image": "shopify://shop_images/WG_Klundt_Aussicht_Pfalz_Weinberge.jpg",
+        "content_alignment": "center",
+        "section_height": 600,
+        "section_height_mobile": 400,
+        "section_full_screen": false,
+        "section_width": "full",
+        "bg_color": "#f2f2f2",
+        "content_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_strength": 20,
+        "content_heading_color": false,
+        "divider_top": false,
+        "divider_bottom": false,
+        "section_bottom_margin": false
+      }
+    }
+  },
+  "order": [
+    "section_image_text_banner_yJ8q3X",
+    "main",
+    "section_rich_text_kL3mx8",
+    "section_custom_WJpyHG",
+    "section_image_with_text_overlap_tdWD4R",
+    "section_image_with_text_NhnpHa",
+    "section_custom_3YRyrb",
+    "section_rich_text_yQd6cn",
+    "section_collection_list_ktgQiy",
+    "section_multi_column_images_8pQCzE",
+    "section_slideshow_PeXVTP",
+    "section_image_with_text_rjQ4jN",
+    "section_liquid_7mpRQX",
+    "section_image_text_banner_meAwQm"
+  ]
+}
