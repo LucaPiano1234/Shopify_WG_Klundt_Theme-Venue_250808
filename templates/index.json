@@ -1,1 +1,1090 @@
-{"sections":{"section_image_text_banner_qxFhe9":{"type":"section-image-text-banner","blocks":{"heading_FHRPUN":{"type":"heading","settings":{"heading":"Weingut Klundt","text_size":9,"text_width":30,"text_size_mobile":5}},"text_WzjkkQ":{"type":"text","settings":{"text":"<p>Nachhaltige Spitzenweine aus der Südpfalz<\/p>","text_size":4,"text_width":40,"text_size_mobile":2}},"button_QYbw9N":{"type":"button","settings":{"button_label":"Dein Einstieg in unsere Weinwelt","button_link":"shopify:\/\/products\/kennenlernpaket","button_style":"c-btn c-btn--mono","button_2_label":"","button_2_link":"shopify:\/\/products\/kennenlernpaket","button_2_style":"c-btn c-btn--primary"}}},"block_order":["heading_FHRPUN","text_WzjkkQ","button_QYbw9N"],"custom_css":[".c-btn--mono {background-color: #f0f2f5;}"],"settings":{"bg_image":"shopify:\/\/shop_images\/WG_Klundt_hero_Start_annika_martin.webp","content_alignment":"left","section_height":880,"section_height_mobile":400,"section_full_screen":false,"section_width":"full","bg_color":"#f2f2f2","content_color":"#ffffff","overlay_color":"#000000","overlay_strength":10,"content_heading_color":false,"divider_top":false,"divider_bottom":false,"section_bottom_margin":true}},"section_multi_column_icons_WgPmKF":{"type":"section-multi-column-icons","blocks":{"text_WwCGVX":{"type":"text","settings":{"icon":"icon-champagne-cheers","color_icon":"#d7b347","svg-code":"","title":"Terroirgeprägte Weine","sub_title":"","desc":"<p>Aus den besten Lagen der Pfalz.<\/p>","link_title":"Learn more","link":""}},"text_CNN9GV":{"type":"text","settings":{"icon":"icon-love-it","color_icon":"#d7b347","svg-code":"","title":"Seit dem 16. Jahrhundert verwurzelt","sub_title":"","desc":"<p>Authentische Weine, fair kalkuliert, für echten Genuss.<\/p>","link_title":"Learn more","link":""}},"text_YpYHRH":{"type":"text","settings":{"icon":"icon-pasta-bowl-warm","color_icon":"#d7b347","svg-code":"","title":"Perfekte Menübegleiter","sub_title":"","desc":"<p>Genuss, der zu jedem Gericht passt<br\/><\/p>","link_title":"Learn more","link":""}}},"block_order":["text_WwCGVX","text_CNN9GV","text_YpYHRH"],"custom_css":[],"settings":{"title":"","desc":"","heading_alignment":"center","alignment":"center","container":"full","grid":3,"spacing":3,"grid_mobile":"1","mobile_carousel":false,"bg_color":"#183a46","color_text":"#f2f2f2","text_heading_color":false,"text_border_color":true,"divider_top":true,"divider_bottom":true,"heading_size":3,"icon_size":30,"icon_padding":0,"block_link_style":"hollow","section_link_title":"View all","section_link_link":"","section_link_style":"link link--arrow","padding_top":0,"padding_bottom":0,"section_bottom_margin":true}},"section_logo_list_3mWUGH":{"type":"section-logo-list","blocks":{"logo_TxwLEQ":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/Essen_Trinken.jpg","scale":65,"link":""}},"logo_VFex6H":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/VINUM-gross_0bb71b90-99b1-46f1-b012-d49ea3ab0d27.png","scale":50,"link":""}},"logo_dzaFL4":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/Eichelmann-Logo_f4513578-8cfb-44db-bcc2-5357a2d128ee.png","scale":85,"link":""}},"logo_tPnaRf":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/Fleischherkunft_Feinschmeck.jpg","scale":60,"link":""}},"logo_Ppx4A4":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/Logo_Gault_millau-CMJN_2.png","scale":100,"link":""}}},"block_order":["logo_TxwLEQ","logo_VFex6H","logo_dzaFL4","logo_tPnaRf","logo_Ppx4A4"],"settings":{"title":"","desc":"<h4>Empfohlen von:<\/h4>","heading_alignment":"center","section_width":"full","content_width":"small","grid":5,"logo_width":49,"grid_mobile":"1","logo_width_mobile":25,"enable_carousel_mobile":false,"bg_color":"#ffffff","color_text":"rgba(0,0,0,0)","color_default_heading":true,"color_default_border":true,"divider_top":false,"divider_bottom":false,"opacity":100,"link_title":"View all","link":"","section_link_style":"link link--arrow","padding_top":54,"padding_bottom":51,"section_bottom_margin":false}},"section-slideshow":{"type":"section-slideshow","blocks":{"section-slideshow-0":{"type":"image","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Header3_klundt.jpg","title":"","text":"","alignment":"left","link_title":"","link":"","link_style":"c-btn c-btn--hollow","link_title_2":"","link_2":"","link_style_2":"c-btn c-btn--primary"}},"image_NbEBFY":{"type":"image","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/IMGM9767.jpg","title":"Weine zum FEST","text":"<p>Entdecke unsere liebevoll zusammengestellten Pakete<\/p>","alignment":"left","link_title":"Pakete","link":"shopify:\/\/collections\/aktion","link_style":"c-btn c-btn--hollow","link_title_2":"Alle Weine","link_2":"shopify:\/\/collections\/alle-weine","link_style_2":"c-btn c-btn--primary"}},"section-slideshow-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/IMGM4437_Large_f7c709d1-c6c7-4c6b-9301-c7e4ced2f782.webp","title":"Weingut Klundt","text":"<p>Nachhaltige Spitzenweine aus der Südpfalz<\/p>","alignment":"left","link_title":"","link":"","link_style":"c-btn c-btn--hollow","link_title_2":"","link_2":"","link_style_2":"c-btn c-btn--primary"}}},"block_order":["section-slideshow-0","image_NbEBFY","section-slideshow-1"],"disabled":true,"settings":{"slideshow_height":"medium","slideshow_width":"contained","nav_style":"solid-brand","hide_nav_arrows":false,"autoplay":true,"autoplay_speed":8,"style":"semi","text_bg_color":"#ffffff","text_color":"#212121","overlay_color":"#000000","overlay_strength":10,"text_heading_color":false,"text_border_color":true,"title_size":3,"section_bottom_margin":false}},"section_rich_text_wnh8mU":{"type":"section-rich-text","custom_css":[],"name":"Rich text","settings":{"section_title":"Dein Einstieg in feinste Pfälzer Weinkunst","text":"<p>Entdecke Weine, die mit jedem Tropfen die Qualität und Leidenschaft widerspiegeln, die in ihnen steckt. Feinfruchtig, mineralisch und von Hand veredelt – so schmeckt Handwerk in seiner besten Form.<\/p>","section_width":"tiny","padding_top":6,"padding_bottom":48,"section_bottom_margin":true}},"section_product_tce4FF":{"type":"section-product","blocks":{"title_j9hfhE":{"type":"title","settings":{"title_size":3,"title_size_mobile":3}},"price_FbtpR9":{"type":"price","settings":{"price_label_discount":true,"price_label_discount_type":"text","price_label_discount_color":"#ffffff"}},"spacer_rjerAP":{"type":"spacer","settings":{"top":"small","bottom":"small","border":true}},"description_yk9MD8":{"type":"description","settings":{"desc_text":""}},"variant_picker_qaLReA":{"type":"variant_picker","settings":{"product_variant_style":"swatches-buttons","popup_enable":false,"popup_trigger":"Size\nGröße\nTaille\nTaglia\nTalla","popup_label":"Size guide","popup_content":""}},"quantity_selector_GMXYx3":{"type":"quantity_selector","settings":{}},"buy_buttons_KxN6rj":{"type":"buy_buttons","settings":{"enable_payment_button":true}}},"block_order":["title_j9hfhE","price_FbtpR9","spacer_rjerAP","description_yk9MD8","variant_picker_qaLReA","quantity_selector_GMXYx3","buy_buttons_KxN6rj"],"custom_css":[],"settings":{"featured_product":"probierpaket-pfalzer-weinkunst","enable_video_looping":false,"product_image_ratio":"1:1","thumbnails_ratio":"1:1","content_align":"default","thumbnails_position":"bottom","enable_gallery_arrows":true,"thumbnails_show_border":false,"padding_top":0,"padding_bottom":0}},"section_testimonials_J4JtqX":{"type":"section-testimonials","blocks":{"text_bVLLQb":{"type":"text","settings":{"media":"stars","svg-code":"","image_round":true,"text":"<p>\"Wir hatten eine Weinprobe in den Weinbergen mit einer Gruppe von Freunden gebucht und waren begeistert! Die Weine und die Erklärungen dazu waren einfach Klasse, mit viel Humor und einer tollen Location! Vielen Dank auch an den Neffen des Winzers, wir hatten einen tollen Nachmittag :)\"<\/p>","name":"Nina B.","source":"Google"}},"text_kHKPrH":{"type":"text","settings":{"media":"stars","svg-code":"","image_round":true,"text":"<p>\"Die Weine vom Sven sind einfach der Wahnsinn!\"<\/p>","name":"Christian C.","source":"Google"}},"text_LEjQ7w":{"type":"text","settings":{"media":"stars","svg-code":"","image_round":true,"text":"<p>\"Super cool. Sehr netter, kompetenter und sympathischer Winzer. Fast das gesamte Sortiment probiert und nur gute Weine getrunken. Hervorragend für mein Geschmack der Pinot Nior Obsession und der Sauvignon Blanc Reserve.\"<\/p>","name":"Thomas D.","source":"Google"}},"text_LQxy7i":{"type":"text","settings":{"media":"stars","svg-code":"","image_round":true,"text":"<p>\"Leckerer Wein, ausgezeichneter Apfel- und Traubensaft und auch eine große Auswahl an Apfel\"<\/p>","name":"Y.L.","source":"Google"}}},"block_order":["text_bVLLQb","text_kHKPrH","text_LEjQ7w","text_LQxy7i"],"custom_css":["{background-color: #f2f2f2;}"],"settings":{"title":"Das sagen unsere Kunden","desc":"","heading_alignment":"center","autoplay":true,"autoplay_speed":8,"style_desktop":"grid","desktop_carousel":true,"mobile_carousel":true,"section_link_title":"View all","section_link_link":"","section_link_style":"link link--arrow","padding_top":27,"padding_bottom":30}},"section_image_with_text_overlap_tGGhtp":{"type":"section-image-with-text-overlap","blocks":{"image_7TeThk":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Annika_Martin_Fotografie-8483.webp","video":"","video_button_color":"primary","title":"Echt Klundt:  Wein mit Charakter","desc":"<p>Klundt steht für <strong>ehrlichen, authentischen Weinbau, der tief in den Böden der Südpfalz verwurzelt ist.<\/strong><\/p><p>Seit über 40 Jahren arbeiten wir <strong>nachhaltig, ohne Herbizide oder Insektizide,<\/strong> um Weine von höchster Qualität zu produzieren.<\/p><p>Unsere Weine zeichnen sich durch <strong>klare, trockene Stilistik aus und kommen direkt aus den besten Lagen der Region.<\/strong> Fair im Preis, groß in der Qualität – mit Charakter und Herkunft.<\/p>","horizontal_align":"left","link_title":"Entdecke die Spitze unserer Weinphilosophie","link":"shopify:\/\/collections\/lagenweine","bg_color_block":"#183a46","bg_color_content":"#f2f2f2","color_text":"#183a46","text_heading_color":false,"text_border_color":true}},"image_XPQeHH":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/WG_Klundt_Weinberge_4.png","video":"","video_button_color":"primary","title":"Weinberge und Lagen","desc":"<p>Unsere Weinberge profitieren von einer <strong>einzigartigen Geologie und einem milden Klima.<\/strong><\/p><p>Lagen wie der Kastanienbusch, der Hochborn und der Wacholderberg bringen Spitzenweine hervor, die <strong>die Charakteristik ihrer Herkunft perfekt widerspiegeln. <\/strong><\/p>","horizontal_align":"left","link_title":"Weinberge und Lagen","link":"shopify:\/\/pages\/weinberge-lagen","bg_color_block":"#183a46","bg_color_content":"#f2f2f2","color_text":"#212121","text_heading_color":false,"text_border_color":true}},"image_F9f6aU":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Annika_Martin_Fotografie-8773_1.webp","video":"","video_button_color":"primary","title":"Obsession - unsere Ortsweine","desc":"<p>Unsere Ortsweine lassen ihre unverwechselbare regionale Identität klar erkennen. Sie finden hier ausdrucksstarke und ausgewogene Weine mit Reifepotential, die deutlich vom Terroir innerhalb der jeweiligen Ortsgemarkung geprägt sind<\/p><p>Alle Weine werden mit höchster Sorgfalt und minimalem Eingriff ausgebaut, um <strong>das Beste aus jeder Traube herauszuholen.<\/strong> <\/p>","horizontal_align":"left","link_title":"Zur OBSESSION-Kollektion","link":"shopify:\/\/collections\/ortsweine","bg_color_block":"#183a46","bg_color_content":"#e5e5e5","color_text":"#212121","text_heading_color":false,"text_border_color":true}}},"block_order":["image_7TeThk","image_XPQeHH","image_F9f6aU"],"settings":{"image_ratio":"4:3","block_align":"right","container":"full","block_spacing":6,"block_layout":"2\/3","text_style":"solid","heading_size":2,"link_style":"primary","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_collection_list_3kBDH6":{"type":"section-collection-list","blocks":{"collection_DLKnkG":{"type":"collection","disabled":true,"settings":{"collection":"alle-weine","heading":"","description":"","button_label":"","link":"","image":"shopify:\/\/shop_images\/20250319_WG_Kludt_Alle_Weine_2_1.png"}},"collection_KbiAEC":{"type":"collection","settings":{"collection":"sekt","heading":"","description":"","button_label":"","link":""}},"collection_UChWMJ":{"type":"collection","settings":{"collection":"weissweine","heading":"","description":"","button_label":"","link":""}},"collection_HJf9eT":{"type":"collection","settings":{"collection":"roseweine","heading":"","description":"","button_label":"","link":""}},"collection_Cdj38H":{"type":"collection","settings":{"collection":"rotweine","heading":"","description":"","button_label":"","link":""}},"collection_79TP6f":{"type":"collection","settings":{"collection":"probierpakete","heading":"","description":"","button_label":"","link":""}},"collection_LyU4Vt":{"type":"collection","settings":{"collection":"monats-empfehlung","heading":"","description":"","button_label":"","link":""}},"collection_7gGFk6":{"type":"collection","settings":{"collection":"aktion","heading":"","description":"","button_label":"","link":""}}},"block_order":["collection_DLKnkG","collection_KbiAEC","collection_UChWMJ","collection_HJf9eT","collection_Cdj38H","collection_79TP6f","collection_LyU4Vt","collection_7gGFk6"],"custom_css":[],"settings":{"title":"Unser Sortiment","desc":"","image_ratio":"2:3","heading_alignment":"center","alignment":"middle-center","text_alignment":"center","visibility_heading":true,"visibility_count":true,"visibility_border":true,"visibility_description":false,"visibility_button":false,"hover_options":"hover-button","section_width":"large","grid":4,"spacing":5,"enable_carousel_desktop":true,"grid_mobile":"1","enable_carousel_mobile":false,"color_text":"#ffffff","color_overlay":"#000000","color_overlay_strength":30,"color_default_heading":false,"color_default_border":true,"divider_top":false,"divider_bottom":true,"title_size":4,"button_style":"c-btn c-btn--hollow","section_link_title":"View all","section_link_link":"","section_link_style":"link link--arrow","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_rich_text_fjwVpY":{"type":"section-rich-text","disabled":true,"settings":{"section_title":"Klundt⎥Weingut HAUTNAH","text":"<p>Bei Landau in der südlichen Pfalz gelegen, verfügt das Weingut Klundt über rund 21 ha Weinberge, <strong>die sich teils in den renommiertesten Lagen der Region befinden.<\/strong> Bereits seit weit über 30 Jahren begreift man eine nachhaltig-umweltschonende Weinbergsbewirtschaftung als elementaren Baustein auf dem Weg zum Spitzenwein.<\/p><p>Der Verzicht auf Herbizide und eine sorgsame Bodenbearbeitung, die den jeweiligen Bodengegebenheiten Rechnung trägt, sind hierbei nur einige der prägnantesten Glieder in einer ganzen Kette an Maßnahmen, auf dem Weg zu einem optimal-gesunden und reifen Lesegut. <strong>Den Weinanbau in der Familie Klundt können wir bis ins 16. Jahrhundert zurückverfolgen.<\/strong><\/p><p>Über viele Jahrhunderte hinweg war der Weinanbau, wie in der Südpfalz üblich, jedoch nur ein Teil eines landwirtschaftlichen Mischbetriebes.<\/p>","section_width":"tiny","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_countdown_timer_hFyqfK":{"type":"section-countdown-timer","blocks":{"heading_ijj8fK":{"type":"heading","settings":{"heading":"Wei(h)nachten beginnt in:","text_size":5,"text_width":60,"text_size_mobile":6,"hide_when_countdown_ends":false}},"countdown_wFXJgQ":{"type":"countdown","settings":{"countdown_year":"2024","countdown_month":"12","countdown_day":"24","countdown_hour":"00","countdown_minute":"00","countdown_completion":"hide","countdown_completion_message":"<p>Frohes Fest!<\/p>","text_size":3,"text_size_mobile":5,"text_style":"mono","text_bold":false,"divider_style":"border","divider_gap":5,"show_labels":true}},"button_fKBaLy":{"type":"button","settings":{"button_label":"Weihnachtspräsente shoppen","button_link":"shopify:\/\/collections\/aktion","button_style":"c-btn c-btn--primary","button_2_label":"","button_2_link":"shopify:\/\/collections\/all","button_2_style":"c-btn c-btn--primary"}}},"block_order":["heading_ijj8fK","countdown_wFXJgQ","button_fKBaLy"],"disabled":true,"settings":{"bg_image":"shopify:\/\/shop_images\/IMG-0819-1024x768.jpg","content_alignment":"bottom-left","section_height":220,"section_height_mobile":200,"section_full_screen":false,"section_width":"contained","bg_color":"#f2f2f2","content_color":"#ffffff","overlay_color":"#000000","overlay_strength":60,"content_heading_color":false,"divider_top":false,"divider_bottom":false,"section_bottom_margin":false}},"section_collection_ba3jhY":{"type":"section-collection","blocks":{"collection_M6yUQB":{"type":"collection","settings":{"heading":"","heading_color":"rgba(0,0,0,0)","collection":"gern-getrunken","link":""}}},"block_order":["collection_M6yUQB"],"custom_css":[".quick-shop__title {position: relative; line-height: normal;}"],"settings":{"title":"Unsere Bestseller","desc":"<p>Unsere beliebtesten Weine – Finde heraus, was sie so besonders macht!<\/p>","heading_alignment":"center","section_width":"large","maximum_products":18,"grid":4,"enable_carousel_desktop":true,"grid_mobile":"1","enable_carousel_mobile":true,"divider_top":false,"divider_bottom":false,"section_link_title":"Alle ansehen","section_link_link":"shopify:\/\/collections\/gern-getrunken","section_link_style":"link link--arrow","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_image_with_text_gdk8Ur":{"type":"section-image-with-text","blocks":{"image_9cc4UT":{"type":"image","settings":{"video":"","video_button_color":"primary","title":"Kennenlernpaket","desc":"<p>Use these blocks to share your brand's story. You can focus on a particular collection, a product detail, or even embed a video.<\/p>","horizontal_align":"left","link_title":"Learn more","link":"","bg_color_block":"rgba(0,0,0,0)","bg_color_content":"rgba(0,0,0,0)","color_text":"rgba(0,0,0,0)","text_heading_color":true,"text_border_color":true}}},"block_order":["image_9cc4UT"],"disabled":true,"settings":{"image_ratio":"4:3","block_align":"left","vertical_align":"top","container":"large","block_spacing":2,"block_layout":"2\/3","heading_size":3,"link_style":"hollow","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_image_text_banner_nzJKgG":{"type":"section-image-text-banner","blocks":{"text_inTkrQ":{"type":"text","settings":{"text":"<p>Offer some insight into your brand and history. Use images, text and video to describe your value proposition<\/p>","text_size":5,"text_width":40,"text_size_mobile":2}}},"block_order":["text_inTkrQ"],"disabled":true,"settings":{"bg_image":"shopify:\/\/shop_images\/header_keller.jpg","content_alignment":"center","section_height":260,"section_height_mobile":400,"section_full_screen":false,"section_width":"full","bg_color":"#f2f2f2","content_color":"#131313","overlay_color":"#000000","overlay_strength":10,"content_heading_color":false,"divider_top":false,"divider_bottom":false,"section_bottom_margin":false}},"section_collection_GD7LrG":{"type":"section-collection","blocks":{"collection_FYYjkU":{"type":"collection","settings":{"heading":"Aktion","heading_color":"rgba(0,0,0,0)","collection":"aktion","link":""}},"collection_Fdn6q9":{"type":"collection","settings":{"heading":"Gern getrunken","heading_color":"rgba(0,0,0,0)","collection":"gern-getrunken","link":""}},"collection_kWrfFy":{"type":"collection","settings":{"heading":"Monats-Empfehlung","heading_color":"rgba(0,0,0,0)","collection":"monats-empfehlung","link":""}}},"block_order":["collection_FYYjkU","collection_Fdn6q9","collection_kWrfFy"],"disabled":true,"settings":{"title":"Highlights","desc":"","heading_alignment":"center","section_width":"small","maximum_products":18,"grid":4,"enable_carousel_desktop":true,"grid_mobile":"1","enable_carousel_mobile":true,"divider_top":false,"divider_bottom":false,"section_link_title":"View all","section_link_link":"","section_link_style":"link link--arrow","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_image_text_banner_MWrRTr":{"type":"section-image-text-banner","blocks":{"heading_nzpMGb":{"type":"heading","settings":{"heading":"Weingut Klundt","text_size":9,"text_width":40,"text_size_mobile":6}},"text_HEfwTR":{"type":"text","settings":{"text":"<p><strong>Konsequent trocken<\/strong><\/p>","text_size":6,"text_width":40,"text_size_mobile":6}},"text_qDCNmU":{"type":"text","settings":{"text":"<p>Klundt steht für nachhaltig erzeugte, trockene Weine in Spitzenqualität - zu fairen Preisen. Unser handwerklicher Ansatz und das Bekenntnis zu Authentizität und Herkunft machen unsere Weine einzigartig.<\/p>","text_size":3,"text_width":40,"text_size_mobile":2}},"button_adrLHf":{"type":"button","settings":{"button_label":"Alle Weine entdecken","button_link":"","button_style":"c-btn c-btn--mono","button_2_label":"","button_2_link":"shopify:\/\/collections\/alle-weine","button_2_style":"c-btn c-btn--primary"}}},"block_order":["heading_nzpMGb","text_HEfwTR","text_qDCNmU","button_adrLHf"],"settings":{"bg_image":"shopify:\/\/shop_images\/Annika_Martin_Fotografie-8581.webp","content_alignment":"center","section_height":680,"section_height_mobile":400,"section_full_screen":false,"section_width":"full","bg_color":"#f2f2f2","content_color":"#ffffff","overlay_color":"#000000","overlay_strength":40,"content_heading_color":false,"divider_top":false,"divider_bottom":false,"section_bottom_margin":false}},"section_testimonials_8FhyHj":{"type":"section-testimonials","blocks":{"text_z6fk4Y":{"type":"text","settings":{"media":"quote","svg-code":"","image_round":true,"text":"<p>« Sven Klundt präsentiert uns wieder eine rundum überzeugende Kollektion […] »<\/p>","name":"Eichelmann","source":"Deutsche Weine 2018"}},"text_KfWcRE":{"type":"text","settings":{"media":"quote","svg-code":"","image_round":true,"text":"<p>« Top-Weine dicht und intensiv […] »<\/p>","name":"Vinum Weinguide 2018","source":""}},"text_mjErgf":{"type":"text","settings":{"media":"quote","svg-code":"","image_round":true,"text":"<p>« Kastanienbusch […] shared the structure, peppery spice, and strong herbal elements […] »<\/p>","name":"John Winthrop Haeger","source":"Riesling Rediscovered: Bold, Bright, and Dry"}},"text_VrXPeh":{"type":"text","settings":{"media":"quote","svg-code":"","image_round":true,"text":"<p>« Top-Weine dicht und intensiv […] »<\/p>","name":"VINUM Weinguide 2018","source":""}},"text_3tcEbj":{"type":"text","settings":{"media":"quote","svg-code":"","image_round":true,"text":"<p>« […] rot wie weiß - zeigen Format. »<\/p>","name":"Gault & Millau Weinguide 2018","source":""}}},"block_order":["text_z6fk4Y","text_KfWcRE","text_mjErgf","text_VrXPeh","text_3tcEbj"],"settings":{"title":"Presse","desc":"","heading_alignment":"center","autoplay":true,"autoplay_speed":8,"style_desktop":"grid","desktop_carousel":true,"mobile_carousel":true,"section_link_title":"View all","section_link_link":"","section_link_style":"link link--arrow","padding_top":0,"padding_bottom":0}}},"order":["section_image_text_banner_qxFhe9","section_multi_column_icons_WgPmKF","section_logo_list_3mWUGH","section-slideshow","section_rich_text_wnh8mU","section_product_tce4FF","section_testimonials_J4JtqX","section_image_with_text_overlap_tGGhtp","section_collection_list_3kBDH6","section_rich_text_fjwVpY","section_countdown_timer_hFyqfK","section_collection_ba3jhY","section_image_with_text_gdk8Ur","section_image_text_banner_nzJKgG","section_collection_GD7LrG","section_image_text_banner_MWrRTr","section_testimonials_8FhyHj"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "section_image_text_banner_qxFhe9": {
+      "type": "section-image-text-banner",
+      "blocks": {
+        "heading_FHRPUN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Weingut Klundt",
+            "text_size": 9,
+            "text_width": 30,
+            "text_size_mobile": 5
+          }
+        },
+        "text_WzjkkQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nachhaltige Spitzenweine aus der Südpfalz</p>",
+            "text_size": 4,
+            "text_width": 40,
+            "text_size_mobile": 2
+          }
+        },
+        "button_QYbw9N": {
+          "type": "button",
+          "settings": {
+            "button_label": "Dein Einstieg in unsere Weinwelt",
+            "button_link": "shopify://products/kennenlernpaket",
+            "button_style": "c-btn c-btn--mono",
+            "button_2_label": "",
+            "button_2_link": "shopify://products/kennenlernpaket",
+            "button_2_style": "c-btn c-btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_FHRPUN",
+        "text_WzjkkQ",
+        "button_QYbw9N"
+      ],
+      "custom_css": [
+        ".c-btn--mono {background-color: #f0f2f5;}"
+      ],
+      "settings": {
+        "bg_image": "shopify://shop_images/WG_Klundt_hero_Start_annika_martin.webp",
+        "content_alignment": "left",
+        "section_height": 880,
+        "section_height_mobile": 400,
+        "section_full_screen": false,
+        "section_width": "full",
+        "bg_color": "#f2f2f2",
+        "content_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_strength": 10,
+        "content_heading_color": false,
+        "divider_top": false,
+        "divider_bottom": false,
+        "section_bottom_margin": true
+      }
+    },
+    "section_multi_column_icons_WgPmKF": {
+      "type": "section-multi-column-icons",
+      "blocks": {
+        "text_WwCGVX": {
+          "type": "text",
+          "settings": {
+            "icon": "icon-champagne-cheers",
+            "color_icon": "#d7b347",
+            "svg-code": "",
+            "title": "Terroirgeprägte Weine",
+            "sub_title": "",
+            "desc": "<p>Aus den besten Lagen der Pfalz.</p>",
+            "link_title": "Learn more",
+            "link": ""
+          }
+        },
+        "text_CNN9GV": {
+          "type": "text",
+          "settings": {
+            "icon": "icon-love-it",
+            "color_icon": "#d7b347",
+            "svg-code": "",
+            "title": "Seit dem 16. Jahrhundert verwurzelt",
+            "sub_title": "",
+            "desc": "<p>Authentische Weine, fair kalkuliert, für echten Genuss.</p>",
+            "link_title": "Learn more",
+            "link": ""
+          }
+        },
+        "text_YpYHRH": {
+          "type": "text",
+          "settings": {
+            "icon": "icon-pasta-bowl-warm",
+            "color_icon": "#d7b347",
+            "svg-code": "",
+            "title": "Perfekte Menübegleiter",
+            "sub_title": "",
+            "desc": "<p>Genuss, der zu jedem Gericht passt<br/></p>",
+            "link_title": "Learn more",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_WwCGVX",
+        "text_CNN9GV",
+        "text_YpYHRH"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "",
+        "desc": "",
+        "heading_alignment": "center",
+        "alignment": "center",
+        "container": "full",
+        "grid": 3,
+        "spacing": 3,
+        "grid_mobile": "1",
+        "mobile_carousel": false,
+        "bg_color": "#183a46",
+        "color_text": "#f2f2f2",
+        "text_heading_color": false,
+        "text_border_color": true,
+        "divider_top": true,
+        "divider_bottom": true,
+        "heading_size": 3,
+        "icon_size": 30,
+        "icon_padding": 0,
+        "block_link_style": "hollow",
+        "section_link_title": "View all",
+        "section_link_link": "",
+        "section_link_style": "link link--arrow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": true
+      }
+    },
+    "section_logo_list_3mWUGH": {
+      "type": "section-logo-list",
+      "blocks": {
+        "logo_TxwLEQ": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Essen_Trinken.jpg",
+            "scale": 65,
+            "link": ""
+          }
+        },
+        "logo_VFex6H": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/VINUM-gross_0bb71b90-99b1-46f1-b012-d49ea3ab0d27.png",
+            "scale": 50,
+            "link": ""
+          }
+        },
+        "logo_dzaFL4": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Eichelmann-Logo_f4513578-8cfb-44db-bcc2-5357a2d128ee.png",
+            "scale": 85,
+            "link": ""
+          }
+        },
+        "logo_tPnaRf": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Fleischherkunft_Feinschmeck.jpg",
+            "scale": 60,
+            "link": ""
+          }
+        },
+        "logo_Ppx4A4": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Logo_Gault_millau-CMJN_2.png",
+            "scale": 100,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_TxwLEQ",
+        "logo_VFex6H",
+        "logo_dzaFL4",
+        "logo_tPnaRf",
+        "logo_Ppx4A4"
+      ],
+      "settings": {
+        "title": "",
+        "desc": "<h4>Empfohlen von:</h4>",
+        "heading_alignment": "center",
+        "section_width": "full",
+        "content_width": "small",
+        "grid": 5,
+        "logo_width": 49,
+        "grid_mobile": "1",
+        "logo_width_mobile": 25,
+        "enable_carousel_mobile": false,
+        "bg_color": "#ffffff",
+        "color_text": "rgba(0,0,0,0)",
+        "color_default_heading": true,
+        "color_default_border": true,
+        "divider_top": false,
+        "divider_bottom": false,
+        "opacity": 100,
+        "link_title": "View all",
+        "link": "",
+        "section_link_style": "link link--arrow",
+        "padding_top": 54,
+        "padding_bottom": 51,
+        "section_bottom_margin": false
+      }
+    },
+    "section-slideshow": {
+      "type": "section-slideshow",
+      "blocks": {
+        "section-slideshow-0": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Header3_klundt.jpg",
+            "title": "",
+            "text": "",
+            "alignment": "left",
+            "link_title": "",
+            "link": "",
+            "link_style": "c-btn c-btn--hollow",
+            "link_title_2": "",
+            "link_2": "",
+            "link_style_2": "c-btn c-btn--primary"
+          }
+        },
+        "image_NbEBFY": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/IMGM9767.jpg",
+            "title": "Weine zum FEST",
+            "text": "<p>Entdecke unsere liebevoll zusammengestellten Pakete</p>",
+            "alignment": "left",
+            "link_title": "Pakete",
+            "link": "shopify://collections/aktion",
+            "link_style": "c-btn c-btn--hollow",
+            "link_title_2": "Alle Weine",
+            "link_2": "shopify://collections/alle-weine",
+            "link_style_2": "c-btn c-btn--primary"
+          }
+        },
+        "section-slideshow-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMGM4437_Large_f7c709d1-c6c7-4c6b-9301-c7e4ced2f782.webp",
+            "title": "Weingut Klundt",
+            "text": "<p>Nachhaltige Spitzenweine aus der Südpfalz</p>",
+            "alignment": "left",
+            "link_title": "",
+            "link": "",
+            "link_style": "c-btn c-btn--hollow",
+            "link_title_2": "",
+            "link_2": "",
+            "link_style_2": "c-btn c-btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "section-slideshow-0",
+        "image_NbEBFY",
+        "section-slideshow-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "slideshow_height": "medium",
+        "slideshow_height_mobile": "full-screen",
+        "slideshow_width": "contained",
+        "nav_style": "solid-brand",
+        "hide_nav_arrows": false,
+        "autoplay": true,
+        "autoplay_speed": 8,
+        "style": "semi",
+        "text_bg_color": "#ffffff",
+        "text_color": "#212121",
+        "overlay_color": "#000000",
+        "overlay_strength": 10,
+        "text_heading_color": false,
+        "text_border_color": true,
+        "title_size": 3,
+        "section_bottom_margin": false
+      }
+    },
+    "section_rich_text_wnh8mU": {
+      "type": "section-rich-text",
+      "custom_css": [],
+      "name": "Rich text",
+      "settings": {
+        "section_title": "Dein Einstieg in feinste Pfälzer Weinkunst",
+        "text": "<p>Entdecke Weine, die mit jedem Tropfen die Qualität und Leidenschaft widerspiegeln, die in ihnen steckt. Feinfruchtig, mineralisch und von Hand veredelt – so schmeckt Handwerk in seiner besten Form.</p>",
+        "section_width": "tiny",
+        "padding_top": 6,
+        "padding_bottom": 48,
+        "section_bottom_margin": true
+      }
+    },
+    "section_product_tce4FF": {
+      "type": "section-product",
+      "blocks": {
+        "title_j9hfhE": {
+          "type": "title",
+          "settings": {
+            "title_size": 3,
+            "title_size_mobile": 3
+          }
+        },
+        "price_FbtpR9": {
+          "type": "price",
+          "settings": {
+            "price_label_discount": true,
+            "price_label_discount_type": "text",
+            "price_label_discount_color": "#ffffff",
+            "price_label_text_discount_color": "#ffffff",
+            "show_label_border": false
+          }
+        },
+        "spacer_rjerAP": {
+          "type": "spacer",
+          "settings": {
+            "top": "small",
+            "bottom": "small",
+            "border": true
+          }
+        },
+        "description_yk9MD8": {
+          "type": "description",
+          "settings": {
+            "desc_text": ""
+          }
+        },
+        "variant_picker_qaLReA": {
+          "type": "variant_picker",
+          "settings": {
+            "product_variant_style": "swatches-buttons",
+            "popup_enable": false,
+            "popup_trigger": "Size\nGröße\nTaille\nTaglia\nTalla",
+            "popup_label": "Size guide",
+            "popup_content": ""
+          }
+        },
+        "quantity_selector_GMXYx3": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_KxN6rj": {
+          "type": "buy_buttons",
+          "settings": {
+            "enable_payment_button": true
+          }
+        }
+      },
+      "block_order": [
+        "title_j9hfhE",
+        "price_FbtpR9",
+        "spacer_rjerAP",
+        "description_yk9MD8",
+        "variant_picker_qaLReA",
+        "quantity_selector_GMXYx3",
+        "buy_buttons_KxN6rj"
+      ],
+      "custom_css": [],
+      "settings": {
+        "featured_product": "probierpaket-pfalzer-weinkunst",
+        "enable_video_looping": false,
+        "product_image_ratio": "1:1",
+        "enable_product_image_rounded_corners": false,
+        "thumbnails_ratio": "1:1",
+        "content_align": "default",
+        "thumbnails_position": "bottom",
+        "enable_gallery_arrows": true,
+        "thumbnails_show_border": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "section_testimonials_J4JtqX": {
+      "type": "section-testimonials",
+      "blocks": {
+        "text_bVLLQb": {
+          "type": "text",
+          "settings": {
+            "media": "stars",
+            "svg-code": "",
+            "image_round": true,
+            "text": "<p>\"Wir hatten eine Weinprobe in den Weinbergen mit einer Gruppe von Freunden gebucht und waren begeistert! Die Weine und die Erklärungen dazu waren einfach Klasse, mit viel Humor und einer tollen Location! Vielen Dank auch an den Neffen des Winzers, wir hatten einen tollen Nachmittag :)\"</p>",
+            "name": "Nina B.",
+            "source": "Google"
+          }
+        },
+        "text_kHKPrH": {
+          "type": "text",
+          "settings": {
+            "media": "stars",
+            "svg-code": "",
+            "image_round": true,
+            "text": "<p>\"Die Weine vom Sven sind einfach der Wahnsinn!\"</p>",
+            "name": "Christian C.",
+            "source": "Google"
+          }
+        },
+        "text_LEjQ7w": {
+          "type": "text",
+          "settings": {
+            "media": "stars",
+            "svg-code": "",
+            "image_round": true,
+            "text": "<p>\"Super cool. Sehr netter, kompetenter und sympathischer Winzer. Fast das gesamte Sortiment probiert und nur gute Weine getrunken. Hervorragend für mein Geschmack der Pinot Nior Obsession und der Sauvignon Blanc Reserve.\"</p>",
+            "name": "Thomas D.",
+            "source": "Google"
+          }
+        },
+        "text_LQxy7i": {
+          "type": "text",
+          "settings": {
+            "media": "stars",
+            "svg-code": "",
+            "image_round": true,
+            "text": "<p>\"Leckerer Wein, ausgezeichneter Apfel- und Traubensaft und auch eine große Auswahl an Apfel\"</p>",
+            "name": "Y.L.",
+            "source": "Google"
+          }
+        }
+      },
+      "block_order": [
+        "text_bVLLQb",
+        "text_kHKPrH",
+        "text_LEjQ7w",
+        "text_LQxy7i"
+      ],
+      "custom_css": [
+        "{background-color: #f2f2f2;}"
+      ],
+      "settings": {
+        "title": "Das sagen unsere Kunden",
+        "desc": "",
+        "heading_alignment": "center",
+        "autoplay": true,
+        "autoplay_speed": 8,
+        "style_desktop": "grid",
+        "desktop_carousel": true,
+        "mobile_carousel": true,
+        "section_link_title": "View all",
+        "section_link_link": "",
+        "section_link_style": "link link--arrow",
+        "padding_top": 27,
+        "padding_bottom": 30
+      }
+    },
+    "section_image_with_text_overlap_tGGhtp": {
+      "type": "section-image-with-text-overlap",
+      "blocks": {
+        "image_7TeThk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Annika_Martin_Fotografie-8483.webp",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Echt Klundt:  Wein mit Charakter",
+            "desc": "<p>Klundt steht für <strong>ehrlichen, authentischen Weinbau, der tief in den Böden der Südpfalz verwurzelt ist.</strong></p><p>Seit über 40 Jahren arbeiten wir <strong>nachhaltig, ohne Herbizide oder Insektizide,</strong> um Weine von höchster Qualität zu produzieren.</p><p>Unsere Weine zeichnen sich durch <strong>klare, trockene Stilistik aus und kommen direkt aus den besten Lagen der Region.</strong> Fair im Preis, groß in der Qualität – mit Charakter und Herkunft.</p>",
+            "horizontal_align": "left",
+            "link_title": "Entdecke die Spitze unserer Weinphilosophie",
+            "link": "shopify://collections/lagenweine",
+            "bg_color_block": "#183a46",
+            "bg_color_content": "#f2f2f2",
+            "color_text": "#183a46",
+            "text_heading_color": false,
+            "text_border_color": true
+          }
+        },
+        "image_XPQeHH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/WG_Klundt_Weinberge_4.png",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Weinberge und Lagen",
+            "desc": "<p>Unsere Weinberge profitieren von einer <strong>einzigartigen Geologie und einem milden Klima.</strong></p><p>Lagen wie der Kastanienbusch, der Hochborn und der Wacholderberg bringen Spitzenweine hervor, die <strong>die Charakteristik ihrer Herkunft perfekt widerspiegeln. </strong></p>",
+            "horizontal_align": "left",
+            "link_title": "Weinberge und Lagen",
+            "link": "shopify://pages/weinberge-lagen",
+            "bg_color_block": "#183a46",
+            "bg_color_content": "#f2f2f2",
+            "color_text": "#212121",
+            "text_heading_color": false,
+            "text_border_color": true
+          }
+        },
+        "image_F9f6aU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Annika_Martin_Fotografie-8773_1.webp",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Obsession - unsere Ortsweine",
+            "desc": "<p>Unsere Ortsweine lassen ihre unverwechselbare regionale Identität klar erkennen. Sie finden hier ausdrucksstarke und ausgewogene Weine mit Reifepotential, die deutlich vom Terroir innerhalb der jeweiligen Ortsgemarkung geprägt sind</p><p>Alle Weine werden mit höchster Sorgfalt und minimalem Eingriff ausgebaut, um <strong>das Beste aus jeder Traube herauszuholen.</strong> </p>",
+            "horizontal_align": "left",
+            "link_title": "Zur OBSESSION-Kollektion",
+            "link": "shopify://collections/ortsweine",
+            "bg_color_block": "#183a46",
+            "bg_color_content": "#e5e5e5",
+            "color_text": "#212121",
+            "text_heading_color": false,
+            "text_border_color": true
+          }
+        }
+      },
+      "block_order": [
+        "image_7TeThk",
+        "image_XPQeHH",
+        "image_F9f6aU"
+      ],
+      "settings": {
+        "image_ratio": "4:3",
+        "block_align": "right",
+        "container": "full",
+        "block_spacing": 6,
+        "block_layout": "2/3",
+        "text_style": "solid",
+        "heading_size": 2,
+        "link_style": "primary",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_collection_list_3kBDH6": {
+      "type": "section-collection-list",
+      "blocks": {
+        "collection_DLKnkG": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "alle-weine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": "",
+            "image": "shopify://shop_images/20250319_WG_Kludt_Alle_Weine_2_1.png"
+          }
+        },
+        "collection_KbiAEC": {
+          "type": "collection",
+          "settings": {
+            "collection": "sekt",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_UChWMJ": {
+          "type": "collection",
+          "settings": {
+            "collection": "weissweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_HJf9eT": {
+          "type": "collection",
+          "settings": {
+            "collection": "roseweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_Cdj38H": {
+          "type": "collection",
+          "settings": {
+            "collection": "rotweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_79TP6f": {
+          "type": "collection",
+          "settings": {
+            "collection": "probierpakete",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_LyU4Vt": {
+          "type": "collection",
+          "settings": {
+            "collection": "monats-empfehlung",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_7gGFk6": {
+          "type": "collection",
+          "settings": {
+            "collection": "aktion",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_DLKnkG",
+        "collection_KbiAEC",
+        "collection_UChWMJ",
+        "collection_HJf9eT",
+        "collection_Cdj38H",
+        "collection_79TP6f",
+        "collection_LyU4Vt",
+        "collection_7gGFk6"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "",
+        "desc": "",
+        "image_ratio": "2:3",
+        "heading_alignment": "center",
+        "alignment": "middle-center",
+        "text_alignment": "center",
+        "visibility_heading": true,
+        "visibility_count": true,
+        "visibility_border": true,
+        "visibility_description": false,
+        "visibility_button": false,
+        "hover_options": "hover-button",
+        "section_width": "large",
+        "grid": 4,
+        "spacing": 5,
+        "enable_carousel_desktop": true,
+        "grid_mobile": "1",
+        "enable_carousel_mobile": false,
+        "color_text": "#ffffff",
+        "color_overlay": "#000000",
+        "color_overlay_strength": 30,
+        "color_default_heading": false,
+        "color_default_border": true,
+        "divider_top": false,
+        "divider_bottom": true,
+        "title_size": 4,
+        "button_style": "c-btn c-btn--hollow",
+        "section_link_title": "View all",
+        "section_link_link": "",
+        "section_link_style": "link link--arrow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_rich_text_fjwVpY": {
+      "type": "section-rich-text",
+      "disabled": true,
+      "settings": {
+        "section_title": "Klundt⎥Weingut HAUTNAH",
+        "text": "<p>Bei Landau in der südlichen Pfalz gelegen, verfügt das Weingut Klundt über rund 21 ha Weinberge, <strong>die sich teils in den renommiertesten Lagen der Region befinden.</strong> Bereits seit weit über 30 Jahren begreift man eine nachhaltig-umweltschonende Weinbergsbewirtschaftung als elementaren Baustein auf dem Weg zum Spitzenwein.</p><p>Der Verzicht auf Herbizide und eine sorgsame Bodenbearbeitung, die den jeweiligen Bodengegebenheiten Rechnung trägt, sind hierbei nur einige der prägnantesten Glieder in einer ganzen Kette an Maßnahmen, auf dem Weg zu einem optimal-gesunden und reifen Lesegut. <strong>Den Weinanbau in der Familie Klundt können wir bis ins 16. Jahrhundert zurückverfolgen.</strong></p><p>Über viele Jahrhunderte hinweg war der Weinanbau, wie in der Südpfalz üblich, jedoch nur ein Teil eines landwirtschaftlichen Mischbetriebes.</p>",
+        "section_width": "tiny",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_countdown_timer_hFyqfK": {
+      "type": "section-countdown-timer",
+      "blocks": {
+        "heading_ijj8fK": {
+          "type": "heading",
+          "settings": {
+            "heading": "Wei(h)nachten beginnt in:",
+            "text_size": 5,
+            "text_width": 60,
+            "text_size_mobile": 6,
+            "hide_when_countdown_ends": false
+          }
+        },
+        "countdown_wFXJgQ": {
+          "type": "countdown",
+          "settings": {
+            "countdown_year": "2024",
+            "countdown_month": "12",
+            "countdown_day": "24",
+            "countdown_hour": "00",
+            "countdown_minute": "00",
+            "countdown_completion": "hide",
+            "countdown_completion_message": "<p>Frohes Fest!</p>",
+            "text_size": 3,
+            "text_size_mobile": 5,
+            "text_style": "mono",
+            "text_bold": false,
+            "divider_style": "border",
+            "divider_gap": 5,
+            "show_labels": true
+          }
+        },
+        "button_fKBaLy": {
+          "type": "button",
+          "settings": {
+            "button_label": "Weihnachtspräsente shoppen",
+            "button_link": "shopify://collections/aktion",
+            "button_style": "c-btn c-btn--primary",
+            "button_2_label": "",
+            "button_2_link": "shopify://collections/all",
+            "button_2_style": "c-btn c-btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ijj8fK",
+        "countdown_wFXJgQ",
+        "button_fKBaLy"
+      ],
+      "disabled": true,
+      "settings": {
+        "bg_image": "shopify://shop_images/IMG-0819-1024x768.jpg",
+        "content_alignment": "bottom-left",
+        "section_height": 220,
+        "section_height_mobile": 200,
+        "section_full_screen": false,
+        "section_width": "contained",
+        "bg_color": "#f2f2f2",
+        "content_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_strength": 60,
+        "content_heading_color": false,
+        "divider_top": false,
+        "divider_bottom": false,
+        "section_bottom_margin": false
+      }
+    },
+    "section_collection_ba3jhY": {
+      "type": "section-collection",
+      "blocks": {
+        "collection_M6yUQB": {
+          "type": "collection",
+          "settings": {
+            "heading": "",
+            "heading_color": "rgba(0,0,0,0)",
+            "collection": "gern-getrunken",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_M6yUQB"
+      ],
+      "custom_css": [
+        ".quick-shop__title {position: relative; line-height: normal;}"
+      ],
+      "settings": {
+        "title": "Unsere Bestseller",
+        "desc": "<p>Unsere beliebtesten Weine – Finde heraus, was sie so besonders macht!</p>",
+        "heading_alignment": "center",
+        "section_width": "large",
+        "maximum_products": 18,
+        "grid": 4,
+        "enable_carousel_desktop": true,
+        "grid_mobile": "1",
+        "enable_carousel_mobile": true,
+        "divider_top": false,
+        "divider_bottom": false,
+        "section_link_title": "Alle ansehen",
+        "section_link_link": "shopify://collections/gern-getrunken",
+        "section_link_style": "link link--arrow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_image_with_text_gdk8Ur": {
+      "type": "section-image-with-text",
+      "blocks": {
+        "image_9cc4UT": {
+          "type": "image",
+          "settings": {
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Kennenlernpaket",
+            "desc": "<p>Use these blocks to share your brand's story. You can focus on a particular collection, a product detail, or even embed a video.</p>",
+            "horizontal_align": "left",
+            "link_title": "Learn more",
+            "link": "",
+            "bg_color_block": "rgba(0,0,0,0)",
+            "bg_color_content": "rgba(0,0,0,0)",
+            "color_text": "rgba(0,0,0,0)",
+            "text_heading_color": true,
+            "text_border_color": true
+          }
+        }
+      },
+      "block_order": [
+        "image_9cc4UT"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_ratio": "4:3",
+        "block_align": "left",
+        "vertical_align": "top",
+        "container": "large",
+        "block_spacing": 2,
+        "block_layout": "2/3",
+        "heading_size": 3,
+        "link_style": "hollow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_image_text_banner_nzJKgG": {
+      "type": "section-image-text-banner",
+      "blocks": {
+        "text_inTkrQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Offer some insight into your brand and history. Use images, text and video to describe your value proposition</p>",
+            "text_size": 5,
+            "text_width": 40,
+            "text_size_mobile": 2
+          }
+        }
+      },
+      "block_order": [
+        "text_inTkrQ"
+      ],
+      "disabled": true,
+      "settings": {
+        "bg_image": "shopify://shop_images/header_keller.jpg",
+        "content_alignment": "center",
+        "section_height": 260,
+        "section_height_mobile": 400,
+        "section_full_screen": false,
+        "section_width": "full",
+        "bg_color": "#f2f2f2",
+        "content_color": "#131313",
+        "overlay_color": "#000000",
+        "overlay_strength": 10,
+        "content_heading_color": false,
+        "divider_top": false,
+        "divider_bottom": false,
+        "section_bottom_margin": false
+      }
+    },
+    "section_collection_GD7LrG": {
+      "type": "section-collection",
+      "blocks": {
+        "collection_FYYjkU": {
+          "type": "collection",
+          "settings": {
+            "heading": "Aktion",
+            "heading_color": "rgba(0,0,0,0)",
+            "collection": "aktion",
+            "link": ""
+          }
+        },
+        "collection_Fdn6q9": {
+          "type": "collection",
+          "settings": {
+            "heading": "Gern getrunken",
+            "heading_color": "rgba(0,0,0,0)",
+            "collection": "gern-getrunken",
+            "link": ""
+          }
+        },
+        "collection_kWrfFy": {
+          "type": "collection",
+          "settings": {
+            "heading": "Monats-Empfehlung",
+            "heading_color": "rgba(0,0,0,0)",
+            "collection": "monats-empfehlung",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_FYYjkU",
+        "collection_Fdn6q9",
+        "collection_kWrfFy"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Highlights",
+        "desc": "",
+        "heading_alignment": "center",
+        "section_width": "small",
+        "maximum_products": 18,
+        "grid": 4,
+        "enable_carousel_desktop": true,
+        "grid_mobile": "1",
+        "enable_carousel_mobile": true,
+        "divider_top": false,
+        "divider_bottom": false,
+        "section_link_title": "View all",
+        "section_link_link": "",
+        "section_link_style": "link link--arrow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_image_text_banner_MWrRTr": {
+      "type": "section-image-text-banner",
+      "blocks": {
+        "heading_nzpMGb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Weingut Klundt",
+            "text_size": 9,
+            "text_width": 40,
+            "text_size_mobile": 6
+          }
+        },
+        "text_HEfwTR": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Konsequent trocken</strong></p>",
+            "text_size": 6,
+            "text_width": 40,
+            "text_size_mobile": 6
+          }
+        },
+        "text_qDCNmU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Klundt steht für nachhaltig erzeugte, trockene Weine in Spitzenqualität - zu fairen Preisen. Unser handwerklicher Ansatz und das Bekenntnis zu Authentizität und Herkunft machen unsere Weine einzigartig.</p>",
+            "text_size": 3,
+            "text_width": 40,
+            "text_size_mobile": 2
+          }
+        },
+        "button_adrLHf": {
+          "type": "button",
+          "settings": {
+            "button_label": "Alle Weine entdecken",
+            "button_link": "",
+            "button_style": "c-btn c-btn--mono",
+            "button_2_label": "",
+            "button_2_link": "shopify://collections/alle-weine",
+            "button_2_style": "c-btn c-btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_nzpMGb",
+        "text_HEfwTR",
+        "text_qDCNmU",
+        "button_adrLHf"
+      ],
+      "settings": {
+        "bg_image": "shopify://shop_images/Annika_Martin_Fotografie-8581.webp",
+        "content_alignment": "center",
+        "section_height": 680,
+        "section_height_mobile": 400,
+        "section_full_screen": false,
+        "section_width": "full",
+        "bg_color": "#f2f2f2",
+        "content_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_strength": 40,
+        "content_heading_color": false,
+        "divider_top": false,
+        "divider_bottom": false,
+        "section_bottom_margin": false
+      }
+    },
+    "section_testimonials_8FhyHj": {
+      "type": "section-testimonials",
+      "blocks": {
+        "text_z6fk4Y": {
+          "type": "text",
+          "settings": {
+            "media": "quote",
+            "svg-code": "",
+            "image_round": true,
+            "text": "<p>« Sven Klundt präsentiert uns wieder eine rundum überzeugende Kollektion […] »</p>",
+            "name": "Eichelmann",
+            "source": "Deutsche Weine 2018"
+          }
+        },
+        "text_KfWcRE": {
+          "type": "text",
+          "settings": {
+            "media": "quote",
+            "svg-code": "",
+            "image_round": true,
+            "text": "<p>« Top-Weine dicht und intensiv […] »</p>",
+            "name": "Vinum Weinguide 2018",
+            "source": ""
+          }
+        },
+        "text_mjErgf": {
+          "type": "text",
+          "settings": {
+            "media": "quote",
+            "svg-code": "",
+            "image_round": true,
+            "text": "<p>« Kastanienbusch […] shared the structure, peppery spice, and strong herbal elements […] »</p>",
+            "name": "John Winthrop Haeger",
+            "source": "Riesling Rediscovered: Bold, Bright, and Dry"
+          }
+        },
+        "text_VrXPeh": {
+          "type": "text",
+          "settings": {
+            "media": "quote",
+            "svg-code": "",
+            "image_round": true,
+            "text": "<p>« Top-Weine dicht und intensiv […] »</p>",
+            "name": "VINUM Weinguide 2018",
+            "source": ""
+          }
+        },
+        "text_3tcEbj": {
+          "type": "text",
+          "settings": {
+            "media": "quote",
+            "svg-code": "",
+            "image_round": true,
+            "text": "<p>« […] rot wie weiß - zeigen Format. »</p>",
+            "name": "Gault & Millau Weinguide 2018",
+            "source": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_z6fk4Y",
+        "text_KfWcRE",
+        "text_mjErgf",
+        "text_VrXPeh",
+        "text_3tcEbj"
+      ],
+      "settings": {
+        "title": "Presse",
+        "desc": "",
+        "heading_alignment": "center",
+        "autoplay": true,
+        "autoplay_speed": 8,
+        "style_desktop": "grid",
+        "desktop_carousel": true,
+        "mobile_carousel": true,
+        "section_link_title": "View all",
+        "section_link_link": "",
+        "section_link_style": "link link--arrow",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "section_image_text_banner_qxFhe9",
+    "section_multi_column_icons_WgPmKF",
+    "section_logo_list_3mWUGH",
+    "section-slideshow",
+    "section_rich_text_wnh8mU",
+    "section_product_tce4FF",
+    "section_testimonials_J4JtqX",
+    "section_image_with_text_overlap_tGGhtp",
+    "section_collection_list_3kBDH6",
+    "section_rich_text_fjwVpY",
+    "section_countdown_timer_hFyqfK",
+    "section_collection_ba3jhY",
+    "section_image_with_text_gdk8Ur",
+    "section_image_text_banner_nzJKgG",
+    "section_collection_GD7LrG",
+    "section_image_text_banner_MWrRTr",
+    "section_testimonials_8FhyHj"
+  ]
+}
