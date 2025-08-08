@@ -216,7 +216,7 @@
       ],
       "name": "Custom Liquid",
       "settings": {
-        "custom_liquid": "<body>\n<h3>Du möchtest nichts verpassen?</h3>\n<p>Jetzt anmelden und 10 % auf Ihre erste Bestellung sichern\n</p>\n</body>\n</html>"
+        "custom_liquid": "<body>\n<h3>Willkommen bei uns – dein 10 % Rabatt zum Kennenlernen!\n</h3>\n<p>Jetzt anmelden und 10 % auf Ihre erste Bestellung sichern\n</p>\n</body>\n</html>"
       }
     },
     "1741945163cd9641f9": {

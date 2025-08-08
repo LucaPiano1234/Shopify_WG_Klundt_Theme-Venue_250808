@@ -19,7 +19,7 @@
       "type": "section-rich-text",
       "settings": {
         "section_title": "{{ page.title }}",
-        "text": "<p>Willkommen im Weingut Klundt! </p>",
+        "text": "<p>Wir sind ein kleines, modernes Familienweingut mitten in der Südpfalz – mit Gummistiefeln im Weinberg und dem Kopf in der ganzen Welt.</p>",
         "section_width": "tiny",
         "padding_top": 21,
         "padding_bottom": 9,
