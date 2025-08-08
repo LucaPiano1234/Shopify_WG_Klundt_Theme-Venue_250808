@@ -464,6 +464,9 @@
         "text_PWFCwM",
         "button_FqJwqe"
       ],
+      "custom_css": [
+        "@media only screen and (max-width: 600px) {.c-btn {margin-top: 10px;}}"
+      ],
       "settings": {
         "bg_image": "shopify://shop_images/WG_Klundt_Weinfinder_Asiatisch.webp",
         "content_alignment": "center",
