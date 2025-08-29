@@ -23,7 +23,7 @@
         "link_title": "Zur Newsletter-Anmeldung",
         "link": "shopify://pages/newsletteranmeldung",
         "delay": 15,
-        "expiry": 20
+        "expiry": 25
       }
     },
     "age-checker": {

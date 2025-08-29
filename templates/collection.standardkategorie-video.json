@@ -1,1 +1,498 @@
-{"sections":{"banner":{"type":"main-collection-banner","disabled":true,"custom_css":[],"settings":{"image_ratio":"16:9","image_ratio_mobile":"16:9","use_first_product_image":false,"collection_banner_style":"center","text_align":"center","show_collection_description":false,"show_collection_image":false,"overlay_color":"#000000","overlay_strength":0}},"section_announcement_bar_Bqc3wE":{"type":"section-announcement-bar","blocks":{"announcement_7w76BX":{"type":"announcement","settings":{"icon":"icon-shipment-give","svg-code":"","text":"Perfekt zum Probieren, Verschenken oder einfach zum Genießen –","text_link":"und das zum besonderen Kennenlernpreis!","link":"https:\/\/klundt.de\/products\/kennenlernpaket"}}},"block_order":["announcement_7w76BX"],"settings":{"close_icon":false,"carousel_desktop":false,"auto_carousel":true,"carousel_speed":8,"message_color_bg":"#e5e5e5","message_color_text":"#183a46","divider_top":true,"divider_bottom":true,"text_size_desktop":4,"text_size_mobile":2,"text_style":"body","text_bold":false,"text_capitalize":true,"text_letter_spacing":0,"padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"product-grid":{"type":"main-collection-product-grid","blocks":{"filter":{"type":"filter","settings":{"count":true,"show_swatches":true,"square_check":true,"filter_visibility":"none"}}},"block_order":["filter"],"custom_css":[],"settings":{"show_count":true,"sort_enable":true,"filter_style":"sidebar","maximum_products":18,"grid":3,"grid_mobile":"2"}},"section_multi_column_icons_3M7FmM":{"type":"section-multi-column-icons","blocks":{"text_HcqJxY":{"type":"text","settings":{"icon":"icon-champagne-cheers","color_icon":"#d7b347","svg-code":"","title":"Terroirgeprägte Weine","sub_title":"","desc":"<p>Aus den besten Lagen der Pfalz. Trocken, klar, charakterstark.<\/p>","link_title":"","link":""}},"text_mfzWpV":{"type":"text","settings":{"icon":"icon-love-it","color_icon":"#d7b347","svg-code":"","title":"Seit dem 16. Jahrhundert verwurzelt","sub_title":"","desc":"<p>Authentische Weine, fair kalkuliert, für echten Genuss.<\/p>","link_title":"","link":""}},"text_r6TQJC":{"type":"text","settings":{"icon":"icon-pasta-bowl-warm","color_icon":"#d7b347","svg-code":"","title":"Perfekte Essensbegleiter","sub_title":"","desc":"<p>Genuss, der mit jedem Bissen harmoniert<\/p>","link_title":"Learn more","link":""}}},"block_order":["text_HcqJxY","text_mfzWpV","text_r6TQJC"],"custom_css":[],"settings":{"title":"","desc":"","heading_alignment":"center","alignment":"center","container":"full","grid":3,"spacing":3,"grid_mobile":"1","mobile_carousel":true,"bg_color":"#183a46","color_text":"#f2f2f2","text_heading_color":false,"text_border_color":true,"divider_top":true,"divider_bottom":true,"heading_size":3,"icon_size":30,"icon_padding":0,"block_link_style":"hollow","section_link_title":"View all","section_link_link":"","section_link_style":"link link--arrow","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_rich_text_HWWnLi":{"type":"section-rich-text","disabled":true,"name":"Rich text","settings":{"section_title":"{{ collection.title }}","text":"{{ collection.description }}","section_width":"tiny","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_image_with_text_overlap_3J6ADr":{"type":"section-image-with-text-overlap","blocks":{"image_UqkKe8":{"type":"image","settings":{"image":"{{ collection.image }}","video_file":"{{ collection.metafields.custom.kategorie_video.value }}","video":"","video_button_color":"primary","title":"{{ collection.title }}","desc":"{{ collection.description }}","horizontal_align":"left","link_title":"Learn more","link":"","bg_color_block":"#f2f2f2","bg_color_content":"#ffffff","color_text":"#212121","text_heading_color":true,"text_border_color":true}}},"block_order":["image_UqkKe8"],"settings":{"image_ratio":"4:3","block_align":"left","container":"large","block_spacing":2,"block_layout":"2\/3","text_style":"solid","heading_size":3,"link_style":"hollow","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_image_with_text_PMyHji":{"type":"section-image-with-text","blocks":{"image_6Nz7iz":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/20250319_WG_Klundt_Qualitaetspyramide_1_84cf4dbc-fe50-473d-8d6b-ae264789cd18.webp","video":"","video_button_color":"primary","title":"Qualitätseinstufung unserer Weine","desc":"<p>Vom unkomplizierten Alltagswein bis hin zum charakterstarken Spitzenwein – bei uns findest du für jeden Anlass den passenden Wein:<\/p><p><strong>Lagenweine<\/strong> – Unsere Spitzenweine: mineralisch, elegant und von Hand selektiert, geprägt von den besten Lagen wie dem Kastanienbusch.<\/p><p><strong>Ortsweine<\/strong> – Ausdrucksstarke Weine, die das Terroir unserer Heimat widerspiegeln und mit Frische und Charakter überzeugen.<\/p><p><strong>Gutsweine<\/strong> – Feinfruchtige, ausgewogene Weine, die die typischen Eigenschaften der Südpfalz verkörpern – ideal für den Alltag.<\/p><p><strong>Literweine<\/strong> – Frische, regionale Alltagsweine mit saftiger Frucht und angenehmer Säure.<\/p>","horizontal_align":"left","link_title":"","link":"","bg_color_block":"rgba(0,0,0,0)","bg_color_content":"rgba(0,0,0,0)","color_text":"rgba(0,0,0,0)","text_heading_color":true,"text_border_color":true}}},"block_order":["image_6Nz7iz"],"settings":{"image_ratio":"natural","block_align":"left","vertical_align":"middle","container":"large","block_spacing":5,"block_layout":"1\/2","heading_size":3,"link_style":"hollow","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_collection_list_MPNypL":{"type":"section-collection-list","blocks":{"collection_3Bhafe":{"type":"collection","disabled":true,"settings":{"collection":"alle-weine","heading":"","description":"","button_label":"","link":"","image":"shopify:\/\/shop_images\/3_60dd0ff7-7043-4979-b7c4-4bb51f98020f.png"}},"collection_ck6NXD":{"type":"collection","settings":{"collection":"sekt","heading":"","description":"","button_label":"","link":""}},"collection_RWKhER":{"type":"collection","settings":{"collection":"weissweine","heading":"","description":"","button_label":"","link":""}},"collection_UAMTHF":{"type":"collection","settings":{"collection":"roseweine","heading":"","description":"","button_label":"","link":""}},"collection_ePiPUT":{"type":"collection","settings":{"collection":"rotweine","heading":"","description":"","button_label":"","link":""}},"collection_hBeWiD":{"type":"collection","settings":{"collection":"probierpakete","heading":"","description":"","button_label":"","link":""}},"collection_T9yDAN":{"type":"collection","settings":{"collection":"monats-empfehlung","heading":"","description":"","button_label":"","link":""}},"collection_mxRwRM":{"type":"collection","settings":{"collection":"aktion","heading":"","description":"","button_label":"","link":""}}},"block_order":["collection_3Bhafe","collection_ck6NXD","collection_RWKhER","collection_UAMTHF","collection_ePiPUT","collection_hBeWiD","collection_T9yDAN","collection_mxRwRM"],"settings":{"title":"Unser Sortiment","desc":"","image_ratio":"2:3","heading_alignment":"center","alignment":"middle-center","text_alignment":"center","visibility_heading":true,"visibility_count":true,"visibility_border":true,"visibility_description":false,"visibility_button":false,"hover_options":"hover-button","section_width":"large","grid":4,"spacing":3,"enable_carousel_desktop":true,"grid_mobile":"1","enable_carousel_mobile":true,"color_text":"#ffffff","color_overlay":"#000000","color_overlay_strength":40,"color_default_heading":false,"color_default_border":true,"divider_top":false,"divider_bottom":false,"title_size":3,"button_style":"c-btn c-btn--hollow","section_link_title":"Alle ansehen","section_link_link":"","section_link_style":"link link--arrow","padding_top":0,"padding_bottom":0,"section_bottom_margin":false}},"section_image_text_banner_CYPjjB":{"type":"section-image-text-banner","blocks":{"heading_cYYzf4":{"type":"heading","settings":{"heading":"Die perfekte Weinbegleitung – leicht gemacht","text_size":6,"text_width":40,"text_size_mobile":6}},"text_PWFCwM":{"type":"text","settings":{"text":"<p>Unser Essenbegleiter<\/p>","text_size":3,"text_width":40,"text_size_mobile":2}},"button_FqJwqe":{"type":"button","settings":{"button_label":"Welcher Wein passt am besten?","button_link":"shopify:\/\/pages\/menuebegleiter","button_style":"c-btn c-btn--primary","button_2_label":"Persönliche Beratung","button_2_link":"shopify:\/\/pages\/contact","button_2_style":"c-btn c-btn--primary"}}},"block_order":["heading_cYYzf4","text_PWFCwM","button_FqJwqe"],"settings":{"bg_image":"shopify:\/\/shop_images\/WG_Klundt_Weinfinder_Asiatisch.webp","content_alignment":"center","section_height":250,"section_height_mobile":400,"section_full_screen":false,"section_width":"full","bg_color":"#f2f2f2","content_color":"#ffffff","overlay_color":"#000000","overlay_strength":30,"content_heading_color":false,"divider_top":false,"divider_bottom":false,"section_bottom_margin":false}},"subcollections":{"type":"section-sub-collections","settings":{}}},"order":["banner","subcollections","section_announcement_bar_Bqc3wE","product-grid","section_multi_column_icons_3M7FmM","section_rich_text_HWWnLi","section_image_with_text_overlap_3J6ADr","section_image_with_text_PMyHji","section_collection_list_MPNypL","section_image_text_banner_CYPjjB"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "image_ratio": "16:9",
+        "image_ratio_mobile": "16:9",
+        "use_first_product_image": false,
+        "collection_banner_style": "center",
+        "text_align": "center",
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "overlay_color": "#000000",
+        "overlay_strength": 0,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "subcollections": {
+      "type": "section-sub-collections",
+      "settings": {
+        "menu": "",
+        "title": "",
+        "desc": "",
+        "image_source": "collection",
+        "image_ratio": "1:1",
+        "image_fit": false,
+        "image_padding": 0,
+        "heading_alignment": "center",
+        "show_related": true,
+        "show_parent": true,
+        "section_width": "full",
+        "layout_size_desktop": 5,
+        "layout_spacing_desktop": 5,
+        "layout_size_mobile": 5,
+        "layout_spacing_mobile": 5,
+        "bg_color": "rgba(0,0,0,0)",
+        "image_color": "rgba(0,0,0,0)",
+        "color_text": "rgba(0,0,0,0)",
+        "color_default_heading": true,
+        "color_default_border": true,
+        "divider_top": false,
+        "divider_bottom": false,
+        "text_size_desktop": 5,
+        "text_size_mobile": 5,
+        "text_style": "body",
+        "text_bold": false,
+        "text_capitalize": false,
+        "text_letter_spacing": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_announcement_bar_Bqc3wE": {
+      "type": "section-announcement-bar",
+      "blocks": {
+        "announcement_7w76BX": {
+          "type": "announcement",
+          "settings": {
+            "icon": "icon-shipment-give",
+            "svg-code": "",
+            "text": "Perfekt zum Probieren, Verschenken oder einfach zum Genießen –",
+            "text_link": "und das zum besonderen Kennenlernpreis!",
+            "link": "https://klundt.de/products/kennenlernpaket"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_7w76BX"
+      ],
+      "settings": {
+        "close_icon": false,
+        "carousel_desktop": false,
+        "auto_carousel": true,
+        "carousel_speed": 8,
+        "message_color_bg": "#e5e5e5",
+        "message_color_text": "#183a46",
+        "divider_top": true,
+        "divider_bottom": true,
+        "text_size_desktop": 4,
+        "text_size_mobile": 2,
+        "text_style": "body",
+        "text_bold": false,
+        "text_capitalize": true,
+        "text_letter_spacing": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "filter": {
+          "type": "filter",
+          "settings": {
+            "count": true,
+            "show_swatches": true,
+            "square_check": true,
+            "filter_visibility": "none"
+          }
+        }
+      },
+      "block_order": [
+        "filter"
+      ],
+      "custom_css": [],
+      "settings": {
+        "show_count": true,
+        "sort_enable": true,
+        "filter_style": "sidebar",
+        "maximum_products": 18,
+        "grid": 3,
+        "grid_mobile": "2"
+      }
+    },
+    "section_multi_column_icons_3M7FmM": {
+      "type": "section-multi-column-icons",
+      "blocks": {
+        "text_HcqJxY": {
+          "type": "text",
+          "settings": {
+            "icon": "icon-champagne-cheers",
+            "color_icon": "#d7b347",
+            "svg-code": "",
+            "title": "Terroirgeprägte Weine",
+            "sub_title": "",
+            "desc": "<p>Aus den besten Lagen der Pfalz. Trocken, klar, charakterstark.</p>",
+            "link_title": "",
+            "link": ""
+          }
+        },
+        "text_mfzWpV": {
+          "type": "text",
+          "settings": {
+            "icon": "icon-love-it",
+            "color_icon": "#d7b347",
+            "svg-code": "",
+            "title": "Seit dem 16. Jahrhundert verwurzelt",
+            "sub_title": "",
+            "desc": "<p>Authentische Weine, fair kalkuliert, für echten Genuss.</p>",
+            "link_title": "",
+            "link": ""
+          }
+        },
+        "text_r6TQJC": {
+          "type": "text",
+          "settings": {
+            "icon": "icon-pasta-bowl-warm",
+            "color_icon": "#d7b347",
+            "svg-code": "",
+            "title": "Perfekte Essensbegleiter",
+            "sub_title": "",
+            "desc": "<p>Genuss, der mit jedem Bissen harmoniert</p>",
+            "link_title": "Learn more",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_HcqJxY",
+        "text_mfzWpV",
+        "text_r6TQJC"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "",
+        "desc": "",
+        "heading_alignment": "center",
+        "alignment": "center",
+        "container": "full",
+        "grid": 3,
+        "spacing": 3,
+        "grid_mobile": "1",
+        "mobile_carousel": true,
+        "bg_color": "#183a46",
+        "color_text": "#f2f2f2",
+        "text_heading_color": false,
+        "text_border_color": true,
+        "divider_top": true,
+        "divider_bottom": true,
+        "heading_size": 3,
+        "icon_size": 30,
+        "icon_padding": 0,
+        "block_link_style": "hollow",
+        "section_link_title": "View all",
+        "section_link_link": "",
+        "section_link_style": "link link--arrow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_rich_text_HWWnLi": {
+      "type": "section-rich-text",
+      "disabled": true,
+      "name": "Rich text",
+      "settings": {
+        "section_title": "{{ collection.title }}",
+        "text": "{{ collection.description }}",
+        "section_width": "tiny",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_image_with_text_overlap_3J6ADr": {
+      "type": "section-image-with-text-overlap",
+      "blocks": {
+        "image_UqkKe8": {
+          "type": "image",
+          "settings": {
+            "image": "{{ collection.image }}",
+            "video_file": "{{ collection.metafields.custom.kategorie_video.value }}",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "{{ collection.title }}",
+            "desc": "{{ collection.description }}",
+            "horizontal_align": "left",
+            "link_title": "Learn more",
+            "link": "",
+            "bg_color_block": "#f2f2f2",
+            "bg_color_content": "#ffffff",
+            "color_text": "#212121",
+            "text_heading_color": true,
+            "text_border_color": true
+          }
+        }
+      },
+      "block_order": [
+        "image_UqkKe8"
+      ],
+      "settings": {
+        "image_ratio": "4:3",
+        "block_align": "left",
+        "container": "large",
+        "block_spacing": 2,
+        "block_layout": "2/3",
+        "text_style": "solid",
+        "heading_size": 3,
+        "link_style": "hollow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_image_with_text_PMyHji": {
+      "type": "section-image-with-text",
+      "blocks": {
+        "image_6Nz7iz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/20250319_WG_Klundt_Qualitaetspyramide_1_84cf4dbc-fe50-473d-8d6b-ae264789cd18.webp",
+            "video": "",
+            "video_button_color": "primary",
+            "title": "Qualitätseinstufung unserer Weine",
+            "desc": "<p>Vom unkomplizierten Alltagswein bis hin zum charakterstarken Spitzenwein – bei uns findest du für jeden Anlass den passenden Wein:</p><p><strong>Lagenweine</strong> – Unsere Spitzenweine: mineralisch, elegant und von Hand selektiert, geprägt von den besten Lagen wie dem Kastanienbusch.</p><p><strong>Ortsweine</strong> – Ausdrucksstarke Weine, die das Terroir unserer Heimat widerspiegeln und mit Frische und Charakter überzeugen.</p><p><strong>Gutsweine</strong> – Feinfruchtige, ausgewogene Weine, die die typischen Eigenschaften der Südpfalz verkörpern – ideal für den Alltag.</p><p><strong>Literweine</strong> – Frische, regionale Alltagsweine mit saftiger Frucht und angenehmer Säure.</p>",
+            "horizontal_align": "left",
+            "link_title": "",
+            "link": "",
+            "bg_color_block": "rgba(0,0,0,0)",
+            "bg_color_content": "rgba(0,0,0,0)",
+            "color_text": "rgba(0,0,0,0)",
+            "text_heading_color": true,
+            "text_border_color": true
+          }
+        }
+      },
+      "block_order": [
+        "image_6Nz7iz"
+      ],
+      "settings": {
+        "image_ratio": "natural",
+        "block_align": "left",
+        "vertical_align": "middle",
+        "container": "large",
+        "block_spacing": 5,
+        "block_layout": "1/2",
+        "heading_size": 3,
+        "link_style": "hollow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_collection_list_MPNypL": {
+      "type": "section-collection-list",
+      "blocks": {
+        "collection_3Bhafe": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "alle-weine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": "",
+            "image": "shopify://shop_images/3_60dd0ff7-7043-4979-b7c4-4bb51f98020f.png"
+          }
+        },
+        "collection_ck6NXD": {
+          "type": "collection",
+          "settings": {
+            "collection": "sekt",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_RWKhER": {
+          "type": "collection",
+          "settings": {
+            "collection": "weissweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_UAMTHF": {
+          "type": "collection",
+          "settings": {
+            "collection": "roseweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_ePiPUT": {
+          "type": "collection",
+          "settings": {
+            "collection": "rotweine",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_hBeWiD": {
+          "type": "collection",
+          "settings": {
+            "collection": "probierpakete",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_T9yDAN": {
+          "type": "collection",
+          "settings": {
+            "collection": "monats-empfehlung",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        },
+        "collection_mxRwRM": {
+          "type": "collection",
+          "settings": {
+            "collection": "aktion",
+            "heading": "",
+            "description": "",
+            "button_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_3Bhafe",
+        "collection_ck6NXD",
+        "collection_RWKhER",
+        "collection_UAMTHF",
+        "collection_ePiPUT",
+        "collection_hBeWiD",
+        "collection_T9yDAN",
+        "collection_mxRwRM"
+      ],
+      "settings": {
+        "title": "Unser Sortiment",
+        "desc": "",
+        "image_ratio": "2:3",
+        "heading_alignment": "center",
+        "alignment": "middle-center",
+        "text_alignment": "center",
+        "visibility_heading": true,
+        "visibility_count": true,
+        "visibility_border": true,
+        "visibility_description": false,
+        "visibility_button": false,
+        "hover_options": "hover-button",
+        "section_width": "large",
+        "grid": 4,
+        "spacing": 3,
+        "enable_carousel_desktop": true,
+        "grid_mobile": "1",
+        "enable_carousel_mobile": true,
+        "color_text": "#ffffff",
+        "color_overlay": "#000000",
+        "color_overlay_strength": 40,
+        "color_default_heading": false,
+        "color_default_border": true,
+        "divider_top": false,
+        "divider_bottom": false,
+        "title_size": 3,
+        "button_style": "c-btn c-btn--hollow",
+        "section_link_title": "Alle ansehen",
+        "section_link_link": "",
+        "section_link_style": "link link--arrow",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_bottom_margin": false
+      }
+    },
+    "section_image_text_banner_CYPjjB": {
+      "type": "section-image-text-banner",
+      "blocks": {
+        "heading_cYYzf4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Die perfekte Weinbegleitung – leicht gemacht",
+            "text_size": 6,
+            "text_width": 40,
+            "text_size_mobile": 6
+          }
+        },
+        "text_PWFCwM": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Unser Essenbegleiter</p>",
+            "text_size": 3,
+            "text_width": 40,
+            "text_size_mobile": 2
+          }
+        },
+        "button_FqJwqe": {
+          "type": "button",
+          "settings": {
+            "button_label": "Welcher Wein passt am besten?",
+            "button_link": "shopify://pages/menuebegleiter",
+            "button_style": "c-btn c-btn--primary",
+            "button_2_label": "Persönliche Beratung",
+            "button_2_link": "shopify://pages/contact",
+            "button_2_style": "c-btn c-btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cYYzf4",
+        "text_PWFCwM",
+        "button_FqJwqe"
+      ],
+      "settings": {
+        "bg_image": "shopify://shop_images/WG_Klundt_Weinfinder_Asiatisch.webp",
+        "content_alignment": "center",
+        "section_height": 250,
+        "section_height_mobile": 400,
+        "section_full_screen": false,
+        "section_width": "full",
+        "bg_color": "#f2f2f2",
+        "content_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_strength": 30,
+        "content_heading_color": false,
+        "divider_top": false,
+        "divider_bottom": false,
+        "section_bottom_margin": false
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "subcollections",
+    "section_announcement_bar_Bqc3wE",
+    "product-grid",
+    "section_multi_column_icons_3M7FmM",
+    "section_rich_text_HWWnLi",
+    "section_image_with_text_overlap_3J6ADr",
+    "section_image_with_text_PMyHji",
+    "section_collection_list_MPNypL",
+    "section_image_text_banner_CYPjjB"
+  ]
+}

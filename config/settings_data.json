@@ -108,11 +108,16 @@
     "currency_codes_on_totals_enabled": true,
     "content_for_index": [],
     "blocks": {
+      "13768625480086291342": {
+        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "disabled": false,
+        "settings": {}
+      },
       "13180643132867056963": {
         "type": "shopify://apps/complianz-gdpr-cookie-consent/blocks/bc-block/e49729f0-d37d-4e24-ac65-e0e2f472ac27",
         "disabled": false,
         "settings": {
-          "hide_label": false
+          "hide_label": true
         }
       }
     }
