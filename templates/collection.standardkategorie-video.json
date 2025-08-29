@@ -222,7 +222,7 @@
         "image_UqkKe8": {
           "type": "image",
           "settings": {
-            "image": "{{ collection.image }}",
+            "image": "shopify://shop_images/Annika_Martin_Fotografie-9201_Sven_2bdbb707-e486-4294-a60a-1f01b522b519.webp",
             "video_file": "{{ collection.metafields.custom.kategorie_video.value }}",
             "video": "",
             "video_button_color": "primary",
