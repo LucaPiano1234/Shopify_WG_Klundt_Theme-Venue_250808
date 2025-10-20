@@ -32,14 +32,14 @@
             "column": "primary",
             "title": "Sven sagt:",
             "style": "h3",
-            "text": "<p>\"{{ product.metafields.custom.der_wein_in_einem_satz.value }}\"</p>",
-            "divider": true,
+            "text": "<p><em>\"</em><em>{{ product.metafields.custom.der_wein_in_einem_satz.value }}</em><em>\"</em></p>",
+            "divider": false,
             "image_toggle": true,
             "image": "shopify://shop_images/Annika_Martin_Fotografie-8483.png",
             "image_ratio": "circle",
             "image_fit": false,
-            "layout_desktop": "desk-col-2",
-            "layout_mobile": "mob-col-2",
+            "layout_desktop": "desk-col-1",
+            "layout_mobile": "mob-col-1",
             "link_title": "Learn more",
             "link": "",
             "link_style": "body"
@@ -146,6 +146,9 @@
         "custom_liquid_czWajf",
         "free_shipping_bar_CY7M3G",
         "description_8YdptW"
+      ],
+      "custom_css": [
+        ".o-ratio--circle.o-ratio--circle.o-ratio--circle {width: 70px;}"
       ],
       "settings": {
         "style": "classic-shadow",
